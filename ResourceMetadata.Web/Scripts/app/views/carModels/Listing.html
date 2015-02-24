@@ -1,0 +1,28 @@
+<h5 class="ui header">Moдели</h5>
+<div class="ui divider"></div>
+<div>
+    <table ng-table="tableParams" class="ui small table segment">
+        <tr ng-repeat="carModel in $data">
+            <td sortable="'Name'" data-title="'Имя'">
+                <a href="/CarModels/{{carModel.Id}}">{{carModel.Name}} </a>
+            </td>
+            <td style="width: 4%;">
+                <a href="/CarModels/Edit/{{carModel.Id}}"><i class="edit icon"></i></a>
+            </td>
+            <td style="width: 4%;">
+                <i class="trash icon" style="float: right;" title="Удалить {{carModel.Name}}" message="Вы хотите удалить данный элемент?"
+                   modal-id="{{carModel.Id}}" on-approve="deleteCarModel(carModel.Id);"
+                   on-deny="closeModal();" cst-confirm-modal></i>
+            </td>
+        </tr>
+        <tr ng-hide="$data">
+            <td colspan="4" class="danger">Список пуст</td>
+        </tr>
+    </table>
+
+    <div style="float: right;">
+        <a class="ui mini blue button" href="/CarModels/Add">Добавить модель</a>
+    </div>
+</div>
+
+
