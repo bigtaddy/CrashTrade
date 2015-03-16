@@ -1,8 +1,6 @@
 ﻿app.controller('ResourceMngrCtrl', ['$scope', '$location', 'resourceMngrSvc', function ($scope, $location, resourceMngrSvc) {
 
     $scope.login = function (userLogin) {
-        userLogin.Email ='admin@marlabs.com';
-        userLogin.Password ='Marlabs';
         $scope.errorMessage = '';
         resourceMngrSvc.login(userLogin).$promise
         .then(function (data) {

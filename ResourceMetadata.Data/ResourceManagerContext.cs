@@ -49,8 +49,7 @@ namespace ResourceMetadata.Data
     {
         protected override void Seed(ResourceManagerEntities context)
         {
-            /*
-            try
+        /*    try
             {
                 var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
                 userManager.UserValidator = new UserValidator<ApplicationUser>(userManager)
@@ -71,11 +70,11 @@ namespace ResourceMetadata.Data
 
                 var user = new ApplicationUser();
                 user.FirstName = "Admin";
-                user.LastName = "Marlabs";
-                user.Email = "admin@marlabs.com";
-                user.UserName = "admin@marlabs.com";
+                user.LastName = "Admin";
+                user.Email = "admin@admin.com";
+                user.UserName = "admin@admin.com";
 
-                var userResult = userManager.Create(user, "Marlabs");
+                var userResult = userManager.Create(user, "admin");
 
                 if (userResult.Succeeded)
                 {
@@ -87,11 +86,10 @@ namespace ResourceMetadata.Data
             {
 
                 throw ex;
-            }
+            }*/
 
             //context.Users.Add(new ApplicationUser { Email = "abc@yahoo.com", Password = "Marlabs" });
             //context.SaveChanges();  
-             */
                
         }
             

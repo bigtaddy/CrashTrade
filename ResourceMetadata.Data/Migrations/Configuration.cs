@@ -43,7 +43,7 @@ namespace ResourceMetadata.Data.Migrations
                 user.Email = "admin@admin.com";
                 user.UserName = "admin@admin.com";
 
-                var userResult = userManager.Create(user, "admin");
+                var userResult = userManager.Create(user, "Admin123");
 
                 if (userResult.Succeeded)
                 {
