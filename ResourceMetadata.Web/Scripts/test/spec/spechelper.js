@@ -1,5 +1,11 @@
-﻿function serviceHelperMock() {
-    var baseUrl = config.apiurl;
+﻿(function(global) {
+
+    'use strict';
+
+}(window));
+
+function serviceHelperMock() {
+    var baseUrl = global.CrashTradeSettings.apiurl;
     var buildUrl = function (resourceUrl) {
         return baseUrl + resourceUrl;
     };

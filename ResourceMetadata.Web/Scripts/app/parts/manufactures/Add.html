@@ -1,0 +1,26 @@
+
+<h5 class="ui header">Добавить производителя</h5>
+<div class="ui divider"></div>
+<form name="manufactureForm" role="form" class="ui secondary small form segment">
+    <h5 class="ui header">Добавить производителя</h5>
+    <div class="ui divider"></div>
+    <div class="field">
+        <label for="name">Название<span style="color:Red">*</span></label>
+        <input type="text" id="name" placeholder="Name" required data-ng-model="manufacture.Name">
+    </div>
+    <div class="ui divider"></div>
+    <div class="field">
+        <label for="description">
+            Описание<span style="color:Red">*</span>
+        </label>
+        <textarea id="description" placeholder="Description" required data-ng-model="manufacture.Description"></textarea>
+    </div>
+    <div class="ui divider"></div>
+    <div class="inline field">
+        <button data-ng-disabled=" manufactureForm.$invalid" data-ng-click="addManufacture(manufacture)" class="ui blue mini button">
+            Подтвердить
+        </button>
+        <a class="ui black mini button" href="#/Manufactures">Отменить</a>
+
+    </div>
+</form>
