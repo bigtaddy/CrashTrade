@@ -48,6 +48,7 @@ namespace ResourceMetadata.Service
         {
             var manufacture = repository.GetById(manufactureId);
             repository.Delete(manufacture);
+            SaveChanges();
         }
 
         public void SaveChanges()

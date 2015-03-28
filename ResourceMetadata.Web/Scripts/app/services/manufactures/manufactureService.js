@@ -2,25 +2,41 @@
 
     'use strict';
 
-    app.factory('manufactureService', ['$resource', 'serviceHelperSvc', function ($resource, serviceHelper) {
-        var Manufacture = serviceHelper.Manufacture;
+    app.factory('manufactureService', ['$http', function ($http) {
+
+        var baseUrl = global.CrashTradeSettings.baseUrl;
+
         var add = function (manufacture) {
-            //$resource.save will immediately return an object which will have $promise property.
-            //This property will get resolved with values, once the Server returns response
-            return Manufacture.save(manufacture);
+            return $http({
+                method: 'POST',
+                url: baseUrl + 'Manufactures',
+                data: manufacture
+            });
         };
         var edit = function (manufacture) {
-            var updation = Manufacture.update(manufacture);
-            return updation;
+            return $http({
+                method: 'PUT',
+                url: baseUrl + 'Manufactures/' + manufacture.Id,
+                data: manufacture
+            });
         };
-        var getById = function (id) {
-            return Manufacture.get({manufactureId: id});
+        var getById = function (manufactureId) {
+            return $http({
+                method: 'GET',
+                url: baseUrl + 'Manufactures/' + manufactureId
+            });
         };
         var getAll = function () {
-            return Manufacture.query();
+            return $http({
+                method: 'GET',
+                url: baseUrl + 'Manufactures'
+            });
         };
         var deleteById = function (manufactureId) {
-            return Manufacture.delete({manufactureId: manufactureId});
+            return $http({
+                method: 'DELETE',
+                url: baseUrl + 'Manufactures/' + manufactureId
+            });
         };
 
         return {
@@ -33,4 +49,3 @@
     }]);
 
 }(window));
-

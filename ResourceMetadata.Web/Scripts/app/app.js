@@ -4,10 +4,10 @@
 
     global.app = angular.module('resourceManagerApp', ['ui.select2', 'ngTable', 'ngRoute', 'ngResource', 'ngAnimate', 'custom-utilities']);
 
-    app.config(['$routeProvider', '$locationProvider', '$httpProvider', '$provide', function ($routeProvider, $locationProvider, $httpProvider, $provide) {
+    app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
-        $httpProvider.defaults.headers.common.Authorization = 'Bearer ' + global.localStorage[global.CrashTradeSettings.tokenKey];
+        $httpProvider.defaults.headers.common.Authorization = 'Bearer ' + global.sessionStorage[global.CrashTradeSettings.tokenKey];
 
         $locationProvider.html5Mode(false);
 
@@ -100,10 +100,15 @@
 
         $httpProvider.interceptors.push('authorizationInterceptor');
         $httpProvider.interceptors.push('httpInterceptor');
-    }]).factory('userProfileSvc', function () {
-        return {};
-    });
 
+    }]).factory('userProfileSvc', function () {
+
+        return {};
+
+    }).run(['$rootScope', function ($rootScope) {
+
+
+    }]);
     global.utilities = angular.module("custom-utilities", []);
 
 

@@ -10,15 +10,14 @@
             }, {
                 counts: [],
                 getData: function ($defer, params) {
-                    carModelService.getAll().$promise.then(function (carModels) {
-                        $defer.resolve(carModels);
+                    carModelService.getAll().then(function (response) {
+                        $defer.resolve(response.data);
                     });
                 }
             });
 
             $scope.deleteCarModel = function (carModelId) {
-                carModelService.delete(carModelId).$promise
-                    .then(function (data, responseHeaders) {
+                carModelService.deleteById(carModelId).then(function (response) {
                         $scope.tableParams.reload();
                     });
             };

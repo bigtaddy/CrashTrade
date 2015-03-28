@@ -10,6 +10,18 @@
         <input type="text" id="name" placeholder="Name" required data-ng-model="carModel.Name">
     </div>
     <div class="ui divider"></div>
+    <div class="field" style="margin-bottom:10px;">
+        <label for="manufacture">
+            Производитель<span style="color: Red">*</span>
+        </label>
+
+        <select ui-select2 ng-model="carModel.ManufactureId" ng-required="true" data-placeholder="Производитель" style="width:100%;">
+            <option value="">--Выбрать--</option>
+            <option ng-repeat="manufacture in manufactures" value="{{manufacture.Id}}">{{manufacture.Name}}</option>
+        </select>
+
+    </div>
+    <div class="ui divider"></div>
     <div class="inline field">
         <button data-ng-disabled="manufactureForm.$invalid" data-ng-click="editCarModel(carModel)" class="ui blue mini button">
             Подтвердить

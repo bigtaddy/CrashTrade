@@ -193,14 +193,14 @@
     <Content Include="Scripts\app\parts\shared\Error.html" />
     <Content Include="Scripts\app\parts\shared\Login.html" />
     <Content Include="Scripts\app\parts\shared\Register.html" />
-    <Content Include="Scripts\app\parts\shared\resourcemngrcontroller.js" />
+    <Content Include="Scripts\app\parts\shared\accountController.js" />
     <Content Include="Scripts\app\services\activities\activityservice.js" />
     <Content Include="Scripts\app\services\authorizationService.js" />
     <Content Include="Scripts\app\services\carModels\carModelService.js" />
     <Content Include="Scripts\app\services\locations\locationservice.js" />
     <Content Include="Scripts\app\services\manufactures\manufactureService.js" />
     <Content Include="Scripts\app\services\resources\resourceservice.js" />
-    <Content Include="Scripts\app\services\shared\resourcemngrservice.js" />
+    <Content Include="Scripts\app\services\shared\accountService.js" />
     <Content Include="Scripts\app\services\shared\servicehelper.js" />
     <Content Include="Scripts\config.js" />
     <Content Include="Scripts\libs\angular-1.2.16.js" />

@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="Content/themes/select2/select2.min.css" />
 </head>
 <body>
-    <div ng-controller="ResourceMngrCtrl">
-        <div class="menu-container"><cst-top-menu ng-show="isAuthenticated" /></div>
+    <div ng-controller="AccountCtrl">
+        <div class="menu-container"><cst-top-menu ng-show="isAuthenticated"/></div>
         <section id="main" style="height:90%;">
             <div data-ng-view ng-animate>
             </div>
@@ -32,8 +32,8 @@
     <!--<script src="/Scripts/app/ngscripts.js"></script>-->
     <script src="/Scripts/app/app.js"></script>
     <script src="/Scripts/app/helpers/authorizationinterceptor.js"></script>
-    <script src="/Scripts/app/parts/shared/resourcemngrcontroller.js"></script>
-    <script src="/Scripts/app/services/shared/resourcemngrservice.js"></script>
+    <script src="/Scripts/app/parts/shared/accountController.js"></script>
+    <script src="/Scripts/app/services/shared/accountService.js"></script>
     <script src="/Scripts/app/directives/shared/datepicker.js"></script>
     <script src="/Scripts/app/directives/shared/modal.js"></script>
     <script src="/Scripts/app/directives/shared/confirmmodal.js"></script>
@@ -57,7 +57,7 @@
     <script src="/Scripts/app/parts/manufactures/manufactureController.js"></script>
     <script src="/Scripts/app/services/manufactures/manufactureService.js"></script>
     <script src="/Scripts/app/parts/carModels/carModelsController.js"></script>
-    <script src="/Scripts/app/parts /carModels/carModelController.js"></script>
+    <script src="/Scripts/app/parts/carModels/carModelController.js"></script>
     <script src="/Scripts/app/services/carModels/carModelService.js"></script>
 </body>
 </html>

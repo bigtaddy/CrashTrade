@@ -14,6 +14,9 @@
                     $(this).addClass('active');
                 });
 
+                if (global.sessionStorage[global.CrashTradeSettings.tokenKey]) {
+                    scope.isAuthenticated = true;
+                }
                 scope.$on('logOff', function () {
                     scope.isAuthenticated = false;
                 });

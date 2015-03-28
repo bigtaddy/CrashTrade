@@ -48,6 +48,7 @@ namespace ResourceMetadata.Service
         {
             var carModel = repository.GetById(carModelId);
             repository.Delete(carModel);
+            SaveChanges();
         }
 
         public void SaveChanges()

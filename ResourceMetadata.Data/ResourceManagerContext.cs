@@ -45,7 +45,7 @@ namespace ResourceMetadata.Data
         }
     }
 
-    public class ResourceManagerDbInitializer : DropCreateDatabaseIfModelChanges<ResourceManagerEntities>
+    public class ResourceManagerDbInitializer : CreateDatabaseIfNotExists<ResourceManagerEntities>
     {
         protected override void Seed(ResourceManagerEntities context)
         {

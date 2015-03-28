@@ -5,13 +5,13 @@
     app.controller('ManufactureCtrl', ['$scope', '$location', '$routeParams', 'manufactureService',
         function ($scope, $location, $routeParams, manufactureService) {
             $scope.addManufacture = function (location) {
-                manufactureService.add(location).$promise
-                    .then(function (data) {
+                manufactureService.add(location)
+                    .then(function (response) {
                         $location.url('/Manufactures');
                     });
             };
             $scope.editManufacture = function (manufacture) {
-                manufactureService.edit(manufacture).$promise.then(function (data) {
+                manufactureService.edit(manufacture).then(function (response) {
                     $location.url('/Manufactures');
                 });
             };
@@ -19,7 +19,9 @@
             init();
             function init() {
                 if ($routeParams.manufactureId > 0) {
-                    $scope.manufacture = manufactureService.getById($routeParams.manufactureId);
+                    manufactureService.getById($routeParams.manufactureId).then(function (response) {
+                        $scope.manufacture = response.data;
+                    });
                 }
             }
         }]);

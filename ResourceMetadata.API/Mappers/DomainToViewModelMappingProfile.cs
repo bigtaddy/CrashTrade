@@ -27,7 +27,7 @@ namespace ResourceMetadata.API.Mappers
                 .ForMember(vm => vm.ActivityDateString, dm=> dm.MapFrom(dModel => dModel.ActivityDate.ToLongDateString()));
             Mapper.CreateMap<ApplicationUser, RegisterViewModel>();
             Mapper.CreateMap<Manufacture, ManufactureViewModel>();
-            Mapper.CreateMap<CarModel, CarModelViewModel>();
+            Mapper.CreateMap<CarModel, CarModelViewModel>().ForMember(c => c.Manufacture, c=> c.MapFrom((carModel => carModel.Manufacture.Name)));
             Mapper.CreateMap<Advert, AdvertViewModel>();
 
         }

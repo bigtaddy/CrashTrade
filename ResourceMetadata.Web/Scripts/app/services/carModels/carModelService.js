@@ -2,25 +2,41 @@
 
     'use strict';
 
-    app.factory('carModelService', ['$resource', 'serviceHelperSvc', function ($resource, serviceHelper) {
-        var CarModel = serviceHelper.CarModel;
+    app.factory('carModelService', ['$http', function ($http) {
+
+        var baseUrl = global.CrashTradeSettings.baseUrl;
+
         var add = function (carModel) {
-            //$resource.save will immediately return an object which will have $promise property.
-            //This property will get resolved with values, once the Server returns response
-            return CarModel.save(carModel);
+            return $http({
+                method: 'POST',
+                url: baseUrl + 'CarModels',
+                data: carModel
+            });
         };
         var edit = function (carModel) {
-            var updation = CarModel.update(carModel);
-            return updation;
+            return $http({
+                method: 'PUT',
+                url: baseUrl + 'CarModels/' + carModel.Id,
+                data: carModel
+            });
         };
-        var getById = function (id) {
-            return CarModel.get({carModelId: id});
+        var getById = function (carModelId) {
+            return $http({
+                method: 'GET',
+                url: baseUrl + 'CarModels/' + carModelId
+            });
         };
         var getAll = function () {
-            return CarModel.query();
+            return $http({
+                method: 'GET',
+                url: baseUrl + 'CarModels'
+            });
         };
         var deleteById = function (carModelId) {
-            return CarModel.delete({carModelId: carModelId});
+            return $http({
+                method: 'DELETE',
+                url: baseUrl + 'CarModels/' + carModelId
+            });
         };
 
         return {

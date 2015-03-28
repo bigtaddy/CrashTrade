@@ -10,15 +10,14 @@
             }, {
                 counts: [],
                 getData: function ($defer, params) {
-                    manufactureService.getAll().$promise.then(function (manufactures) {
-                        $defer.resolve(manufactures);
+                    manufactureService.getAll().then(function (response) {
+                        $defer.resolve(response.data);
                     });
                 }
             });
 
             $scope.deleteManufacture = function (manufactureId) {
-                manufactureService.deleteById(manufactureId).$promise
-                    .then(function (data, responseHeaders) {
+                manufactureService.deleteById(manufactureId).then(function (data, responseHeaders) {
                         $scope.tableParams.reload();
                     });
             };
