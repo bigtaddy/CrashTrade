@@ -9,7 +9,6 @@
     <script src="../Scripts/libs/jquery.min.js"></script>
     <script src="../Scripts/libs/bootstrap.min.js"></script>
     <script src="../Scripts/trunk8.js"></script>
-    <script src="../Scripts/tabs.js"></script>
 </head>
 <body>
 <div class="btn-group-all-pages">
@@ -20,9 +19,9 @@
 </div>
 <div style="clear: both;"></div>
 <!--<div class="btn-group-all-pages">-->
-    <!--<a href="http://twitter.com/" class="btn social-icon twitter"></a>-->
-    <!--<a href="http://facebook.com/" class="btn social-icon facebook"></a>-->
-    <!--<a href="http://plus.google.com/" class="btn social-icon google-plus"></a>-->
+<!--<a href="http://twitter.com/" class="btn social-icon twitter"></a>-->
+<!--<a href="http://facebook.com/" class="btn social-icon facebook"></a>-->
+<!--<a href="http://plus.google.com/" class="btn social-icon google-plus"></a>-->
 <!--</div>-->
 
 <div class="btn-group-all-pages">
@@ -140,3 +139,16 @@
 </div>
 </body>
 </html>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('nav.nav-tabs li').on('click', function () {
+            $(this).parent().find('.active').removeClass('active');
+            $(this).addClass('active');
+        });
+    });
+    $('.text-new-line').trunk8({
+        lines: 6
+    });
+</script>

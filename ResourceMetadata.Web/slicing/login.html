@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../styles/login.css" media="all" rel="stylesheet"/>
+</head>
+<body id="">
+<section id="passport" class="social-login-disabled">
+    <form accept-charset="UTF-8" action="/session" method="post">
+        <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input
+                name="authenticity_token" type="hidden" value=""></div>
+        <div class="passport-left">
+            <h3>CrashTrade.com</h3>
+        </div>
+        <div class="passport-right">
+            <div id="emailLogin">
+                <h5 class="hide-for-small">Вход</h5>
+                <input id="source_url" name="source_url" type="hidden" value="">
+                <input id="application_id" name="application_id" type="hidden" value="17">
+                <input autocapitalize="off" autocorrect="off" id="login" name="login" placeholder="Email" type="text">
+                <input id="password" name="password" placeholder="Пароль" type="password">
+                <label>
+                    <input checked="checked" id="remember_me" name="remember_me" type="checkbox" value="remember_me">
+                    Запомнить меня
+                </label>
+                <button id="signIn" type="submit">Войти »</button>
+                <p><a href="">Забыли пароль?</a></p>
+            </div>
+        </div>
+
+    </form>
+</section>
+
+</body>
+</html>
