@@ -16,10 +16,15 @@ namespace ResourceMetadata.Data.Repositories
         {
 
         }
+
+        public IEnumerable<Advert> GetAll(AdvertType advertType)
+        {
+            return base.GetAll().Where(c => c.AdvertType == advertType);
+        }
     }
 
     public interface IAdvertRepository : IRepository<Advert>
     {
-
+        IEnumerable<Advert> GetAll(AdvertType advertType);
     }
 }

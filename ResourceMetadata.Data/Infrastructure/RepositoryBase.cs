@@ -11,8 +11,8 @@ namespace ResourceMetadata.Data.Infrastructure
 {
     public abstract class RepositoryBase<T> where T : class, new()
     {
-        private ResourceManagerEntities dataContext;
-        private readonly IDbSet<T> dbset;
+        protected ResourceManagerEntities dataContext;
+        protected readonly IDbSet<T> dbset;
         protected RepositoryBase(IDatabaseFactory databaseFactory)
         {
             DatabaseFactory = databaseFactory;

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../styles/create-account.css" media="all" rel="stylesheet"/>
+</head>
+<body>
+<div class="large-7 small-12 columns center-column">
+    <div class="create-account">
+        <div class="row sign-up">
+            <div class="large-12 small-12 columns">
+                <h3 class="section-sub-title">Регистрация:</h3>
+
+                <div class="row">
+                    <div class="large-12 columns small-12 columns">
+                        <div>
+                            <input id="user_name" name="user[name]" pattern="[a-zA-Z]+"
+                                   placeholder="Ваше имя"
+                                   required="required" type="text">
+                        </div>
+                        <div>
+                            <input id="user_email" name="user[email]" placeholder="Email" required="required" type="text">
+                        </div>
+                        <div>
+                            <input class="passwordField1" id="user_password"  pattern="^.{4,}"
+                                   placeholder="Пароль" required="required" type="password">
+                        </div>
+
+                        <div>
+                            <input class="passwordField2" id="user_password_confirmation"
+                                   pattern="^.{4,}" placeholder="Подтверждение пароля" required="required" type="password">
+                        </div>
+                        <div>
+                            <input id="user_city"
+                                   name="user[city]"  placeholder="Ваш город" type="text">
+                        </div>
+                        <table class="table">
+                            <thead>
+                            <tr class="success"><th>By clicking on "Create an account" below, you are agreeing to the <a href="">Privacy Policy</a></th></tr></table>
+                        <button class="button forum right" type="submit">
+                            Зарегистрироваться
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

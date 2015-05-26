@@ -40,10 +40,10 @@ namespace ResourceMetadata.Data.Migrations
                 var user = new ApplicationUser();
                 user.FirstName = "Admin";
                 user.LastName = "Admin";
-                user.Email = "admin@admin.com";
-                user.UserName = "admin@admin.com";
+                user.Email = "admin1@admin.com";
+                user.UserName = "admin1@admin.com";
 
-                var userResult = userManager.Create(user, "Admin123");
+                var userResult = userManager.Create(user, "Admin123456789");
 
                 if (userResult.Succeeded)
                 {

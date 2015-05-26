@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,6 +10,10 @@ namespace ResourceMetadata.Models
     public class Advert
     {
         public int Id { get; set; }
+
+        public AdvertType AdvertType { get; set; }
+
+        public string Title { get; set; }
 
         public string Description { get; set; }
 
@@ -38,5 +43,11 @@ namespace ResourceMetadata.Models
     {
         Petrol = 1,
         Diesel = 2
+    }
+
+    public enum AdvertType : int
+    {
+        Repair = 1,
+        Sale = 2
     }
 }

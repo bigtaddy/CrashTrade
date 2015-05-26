@@ -1,0 +1,40 @@
+.top-menu {
+    /*position: fixed;*/
+    width: 100%;
+    background: #97c579;
+    text-align: center;
+    margin-top: -3%;
+    padding-top: 3%;
+    z-index: 1000;
+}
+.background-logo {
+    background: #ffffff;
+    width: 100%;
+    /*padding-right: 1%;*/
+}
+.logo {
+    display: block;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+.create-unit {
+    display: block;
+    float: none;
+    margin: 1% auto;
+    height: auto;
+    border: #e5e5ea 1px solid;
+    padding: 2%;
+    min-width: 250px;
+}
+.create-section {
+    display: block;
+    /*border-radius: 5px;*/
+    margin-bottom: 1%;
+}
+.create-advert {
+    display: block;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}

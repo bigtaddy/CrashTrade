@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
 using ResourceMetadata.Data.Infrastructure;
 using ResourceMetadata.Data.Repositories;
 using ResourceMetadata.Models;
@@ -14,6 +16,8 @@ namespace ResourceMetadata.Service
 
         private IAdvertRepository repository;
         private IUnitOfWork unitOfWork;
+        private readonly UserManager<ApplicationUser> userManager;
+
 
         public AdvertService(IAdvertRepository repository, IUnitOfWork unitOfWork)
         {
@@ -26,8 +30,14 @@ namespace ResourceMetadata.Service
             return repository.GetAll();
         }
 
+        public IEnumerable<Advert> GetAdverts(AdvertType advertType)
+        {
+            return repository.GetAll(advertType);
+        }
+
         public Advert AddAdvert(Advert advert)
         {
+            advert.CreatedOn = DateTime.Now;
             repository.Add(advert);
             SaveChanges();
             return advert;
@@ -40,7 +50,7 @@ namespace ResourceMetadata.Service
 
         public Advert UpdateAdvert(Advert advert)
         {
-            repository.Add(advert);
+            repository.Update(advert);
             SaveChanges();
             return advert;
         }
@@ -49,6 +59,7 @@ namespace ResourceMetadata.Service
         {
             var advert = repository.GetById(advertId);
             repository.Delete(advert);
+            SaveChanges();
         }
 
         public void SaveChanges()
@@ -60,6 +71,7 @@ namespace ResourceMetadata.Service
     public interface IAdvertService
     {
         IEnumerable<Advert> GetAdverts();
+        IEnumerable<Advert> GetAdverts(AdvertType advertType);
         Advert AddAdvert(Advert advert);
         Advert GetAdvertById(int id);
         Advert UpdateAdvert(Advert advert);
