@@ -31,16 +31,10 @@ namespace ResourceMetadata.API
         {
             containerBuilder.RegisterType<DatabaseFactory>().As<IDatabaseFactory>().AsImplementedInterfaces().InstancePerApiRequest();
             containerBuilder.RegisterType<UnitOfWork>().As<IUnitOfWork>().AsImplementedInterfaces().InstancePerApiRequest();
-            containerBuilder.RegisterType<ResourceRepository>().As<IResourceRepository>().AsImplementedInterfaces().InstancePerApiRequest();
-            containerBuilder.RegisterType<ResourceActivityRepository>().As<IResourceActivityRepository>().InstancePerApiRequest();
-            containerBuilder.RegisterType<LocationRepository>().As<ILocationRepository>().InstancePerApiRequest();
             containerBuilder.RegisterType<ManufactureRepository>().As<IManufactureRepository>().InstancePerApiRequest();
             containerBuilder.RegisterType<CarModelRepository>().As<ICarModelRepository>().InstancePerApiRequest();
             containerBuilder.RegisterType<AdvertRepository>().As<IAdvertRepository>().InstancePerApiRequest();
             containerBuilder.RegisterType<UserRepository>().As<IUserRepository>().InstancePerApiRequest();
-            containerBuilder.RegisterType<ResourceService>().As<IResourceService>().InstancePerApiRequest();
-            containerBuilder.RegisterType<ResourceActivityService>().As<IResourceActivityService>().InstancePerApiRequest();
-            containerBuilder.RegisterType<LocationService>().As<ILocationService>().InstancePerApiRequest();
             containerBuilder.RegisterType<ManufactureService>().As<IManufactureService>().InstancePerApiRequest();
             containerBuilder.RegisterType<CarModelService>().As<ICarModelService>().InstancePerApiRequest();
             containerBuilder.RegisterType<AdvertService>().As<IAdvertService>().InstancePerApiRequest();

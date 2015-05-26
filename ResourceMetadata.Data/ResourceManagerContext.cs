@@ -21,8 +21,6 @@ namespace ResourceMetadata.Data
 
         }
 
-        public DbSet<Resource> Resources { get; set; }
-        public DbSet<Location> Locations { get; set; }
 
         public DbSet<CarModel> CarModels { get; set; }
         public DbSet<Manufacture> Manufactures { get; set; }
@@ -32,8 +30,6 @@ namespace ResourceMetadata.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new LocationConfiguration());
-            modelBuilder.Configurations.Add(new ResourceConfiguration());
 
             modelBuilder.Configurations.Add(new CarModelConfiguration());
             modelBuilder.Configurations.Add(new ManufactureConfiguration());

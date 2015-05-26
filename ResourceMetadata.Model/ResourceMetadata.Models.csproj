@@ -48,12 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Advert.cs" />
-    <Compile Include="Location.cs" />
     <Compile Include="Manufacture.cs" />
     <Compile Include="CarModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resource.cs" />
-    <Compile Include="ResourceActivity.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

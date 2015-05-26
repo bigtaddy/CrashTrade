@@ -67,11 +67,8 @@
     <Compile Include="Configurations\AdvertConfiguration.cs" />
     <Compile Include="Configurations\IdentityUserLoginConfiguration.cs" />
     <Compile Include="Configurations\IdentityUserRoleConfiguration.cs" />
-    <Compile Include="Configurations\LocationConfiguration.cs" />
     <Compile Include="Configurations\ManufactureConfiguration.cs" />
     <Compile Include="Configurations\CarModelConfiguration.cs" />
-    <Compile Include="Configurations\ResourceActivityConfiguration.cs" />
-    <Compile Include="Configurations\ResourceConfiguration.cs" />
     <Compile Include="Infrastructure\DatabaseFactory.cs" />
     <Compile Include="Infrastructure\Disposable.cs" />
     <Compile Include="Infrastructure\IDatabaseFactory.cs" />
@@ -91,14 +88,15 @@
     <Compile Include="Migrations\201505241522558_add_type_to_Adverts.Designer.cs">
       <DependentUpon>201505241522558_add_type_to_Adverts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505261018567_delete_redundant_models.cs" />
+    <Compile Include="Migrations\201505261018567_delete_redundant_models.Designer.cs">
+      <DependentUpon>201505261018567_delete_redundant_models.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AdvertRepository.cs" />
-    <Compile Include="Repositories\LocationRepository.cs" />
     <Compile Include="Repositories\ManufactureRepository.cs" />
     <Compile Include="Repositories\CarModelRepository.cs" />
-    <Compile Include="Repositories\ResourceActivityRepository.cs" />
-    <Compile Include="Repositories\ResourceRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="ResourceManagerContext.cs" />
   </ItemGroup>
@@ -124,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505241522558_add_type_to_Adverts.resx">
       <DependentUpon>201505241522558_add_type_to_Adverts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505261018567_delete_redundant_models.resx">
+      <DependentUpon>201505261018567_delete_redundant_models.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

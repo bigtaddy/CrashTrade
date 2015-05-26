@@ -195,10 +195,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdvertsController.cs" />
     <Compile Include="Controllers\CarModelsController.cs" />
-    <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\ManufacturesController.cs" />
-    <Compile Include="Controllers\ResourceActivitiesController.cs" />
-    <Compile Include="Controllers\ResourcesController.cs" />
     <Compile Include="Enums\Enum.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -215,13 +212,10 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AdvertViewModel.cs" />
     <Compile Include="ViewModels\CarModelViewModel.cs" />
-    <Compile Include="ViewModels\LocationViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ManufactureViewModel.cs" />
     <Compile Include="ViewModels\PagedCollectionViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
-    <Compile Include="ViewModels\ResourceActivityViewModel.cs" />
-    <Compile Include="ViewModels\ResourceViewModel.cs" />
     <Compile Include="ViewModels\UserProfileViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
