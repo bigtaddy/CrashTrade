@@ -92,6 +92,10 @@
     <Compile Include="Migrations\201505261018567_delete_redundant_models.Designer.cs">
       <DependentUpon>201505261018567_delete_redundant_models.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505301627588_ImageInfo_Added.cs" />
+    <Compile Include="Migrations\201505301627588_ImageInfo_Added.Designer.cs">
+      <DependentUpon>201505301627588_ImageInfo_Added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AdvertRepository.cs" />
@@ -125,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505261018567_delete_redundant_models.resx">
       <DependentUpon>201505261018567_delete_redundant_models.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505301627588_ImageInfo_Added.resx">
+      <DependentUpon>201505301627588_ImageInfo_Added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -17,8 +17,6 @@ namespace ResourceMetadata.Models
 
         public string Description { get; set; }
 
-        public string ImagePath { get; set; }
-
         public DateTime CreatedOn { get; set; }
 
         public int ManufactureId { get; set; }
@@ -36,6 +34,8 @@ namespace ResourceMetadata.Models
         public string UserId { get; set; }
 
         public virtual ApplicationUser User { get; set; }
+
+        public virtual ICollection<ImageInfo> ImageInfos { get; set; }
 
     }
 

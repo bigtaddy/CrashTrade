@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Advert.cs" />
+    <Compile Include="ImageInfo.cs" />
     <Compile Include="Manufacture.cs" />
     <Compile Include="CarModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -16,7 +16,7 @@
                     case 401:
                     {
                         global.sessionStorage.removeItem(global.CrashTradeSettings.tokenKey);
-                        $http.defaults.headers.common.Authorization = null;
+                       // $http.defaults.headers.common.Authorization = null;
                         $rootScope.$broadcast('logOff');
                         $location.url('/Login');
                         break;

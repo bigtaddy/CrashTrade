@@ -14,3 +14,6 @@ add-migration -ProjectName ResourceMetadata.Data -StartUpProjectName ResourceMet
 3. Update-Database will apply any pending migrations to the database
 
  update-database -ProjectName ResourceMetadata.Data -StartUpProjectName ResourceMetadata.API
+
+
+      /* http://www.strathweb.com/2012/04/html5-drag-and-drop-asynchronous-multi-file-upload-with-asp-net-webapi/  */

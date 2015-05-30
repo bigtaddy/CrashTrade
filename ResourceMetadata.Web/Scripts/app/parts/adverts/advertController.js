@@ -57,21 +57,8 @@
             }
 
 
-
-
-
-
-
-
-
-
-
-
-            var uploader = $scope.uploader = new FileUploader({
-                url: 'http://localhost:7777/api/Adverts/UploadImage'
-            });
-            uploader.headers.common = {}
-            uploader.headers.common.Authorization = 'Bearer ' + global.sessionStorage[global.CrashTradeSettings.tokenKey]
+            var uploader = $scope.uploader = new FileUploader();
+            uploader.headers.Authorization = 'Bearer ' + global.sessionStorage[global.CrashTradeSettings.tokenKey];
 
             // FILTERS
 
@@ -95,6 +82,8 @@
                 console.info('onAfterAddingAll', addedFileItems);
             };
             uploader.onBeforeUploadItem = function(item) {
+                item.url = 'http://localhost:7777/api/Adverts/UploadImage/' + $scope.advert.Id
+
                 console.info('onBeforeUploadItem', item);
             };
             uploader.onProgressItem = function(fileItem, progress) {
