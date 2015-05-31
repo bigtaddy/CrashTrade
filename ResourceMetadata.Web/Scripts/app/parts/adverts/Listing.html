@@ -15,10 +15,10 @@
             <td sortable="'Name'" data-title="'Модель'">
               {{advert.CarModelName}}
             </td>
-            <td style="width: 4%;">
+            <td ng-show="isAuthenticated" style="width: 4%;">
                 <a href="#/Adverts/{{advertType}}/Edit/{{advert.Id}}"><i class="edit icon"></i></a>
             </td>
-            <td style="width: 4%;">
+            <td ng-show="isAuthenticated" style="width: 4%;">
                 <i class="trash icon" style="float: right;" title="Удалить" message="Вы хотите удалить данный элемент?"
                    modal-id="{{advert.Id}}" on-approve="deleteAdvert(advert.Id);"
                    on-deny="closeModal();" cst-confirm-modal></i>
@@ -30,7 +30,7 @@
     </table>
 
     <div style="float: right;">
-        <a class="ui mini blue button" href="#/Adverts/{{advertType}}/Add">Добавить модель</a>
+        <a ng-show="isAuthenticated" class="ui mini blue button" href="#/Adverts/{{advertType}}/Add">Добавить модель</a>
     </div>
 </div>
 

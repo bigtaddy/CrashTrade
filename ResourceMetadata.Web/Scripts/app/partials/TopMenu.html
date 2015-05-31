@@ -4,6 +4,8 @@
     <a class="item" href="#/Adverts/Repair">Объявления Ремонт</a>
     <a class="item" href="#/About">О приложении</a>
     <div class="right menu">
-        <a class="item" href="javascript:;" ng-click="logOff();">Выйти</a>
+        <a class="item" href="javascript:;" ng-show="isAuthenticated" ng-click="logOff();">Выйти</a>
+        <a class="item" href="javascript:;" ng-show="!isAuthenticated" ng-click="goToLogin();">Войти</a>
+        <a class="item" href="javascript:;" ng-show="!isAuthenticated" ng-click="goToRegistration();">Зарегистрироваться</a>
     </div>
 </div>

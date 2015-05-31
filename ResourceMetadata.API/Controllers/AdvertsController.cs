@@ -34,6 +34,7 @@ namespace ResourceMetadata.API.Controllers
 
         [HttpGet]
         [Route("api/Adverts/Sale")]
+        [AllowAnonymous]
         public HttpResponseMessage SaleAdverts(int pageNumber, int itemsPerPage)
         {
             var advertModels = advertService.GetAdverts(AdvertType.Sale, pageNumber, itemsPerPage);
@@ -46,6 +47,7 @@ namespace ResourceMetadata.API.Controllers
 
         [HttpGet]
         [Route("api/Adverts/Repair")]
+        [AllowAnonymous]
         public HttpResponseMessage RepairAdverts(int pageNumber, int itemsPerPage)
         {
             var advertModels = advertService.GetAdverts(AdvertType.Repair, pageNumber, itemsPerPage);
@@ -84,7 +86,7 @@ namespace ResourceMetadata.API.Controllers
             var advert = advertService.GetAdvertById(id);
             if (advert.UserId != User.Identity.GetUserId())
             {
-                return ResponseMessage(Request.CreateResponse(HttpStatusCode.InternalServerError, "Permission denied"));
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.Forbidden, "Permission denied"));
             }
 
 
