@@ -14,7 +14,7 @@
 
             $scope.deleteAdvert = function (advertId) {
                 entityService.deleteById(advertId, "Adverts").then(function (response) {
-                    $scope.tableParams.reload();
+                    $scope.pageChangeHandler($scope.currentPage);
                 });
             };
 

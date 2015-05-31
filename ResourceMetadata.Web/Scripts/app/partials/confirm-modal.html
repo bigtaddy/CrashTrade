@@ -1,4 +1,5 @@
-﻿<div class="ui small modal" id="{{id}}" style="margin-top:-110px;">
+﻿<script type="text/ng-template" id="myModalContent.html">
+    <div id="{{id}}">
     <div class="header">
         {{title}}
     </div>
@@ -6,11 +7,12 @@
         {{message}}
     </div>
     <div class="actions">
-        <div class="ui small negative button" ng-click="deny()">
+        <div class="ui small negative button" ng-click="deny();closeModal();">
             Нет
         </div>
-        <div class="ui small positive right labeled icon button" ng-click="approve()">
+        <div class="ui small positive right labeled icon button" ng-click="approve();closeModal()">
             Да <i class="checkmark icon"></i>
         </div>
     </div>
 </div>
+</script>
