@@ -17,14 +17,25 @@ namespace ResourceMetadata.Data.Repositories
 
         }
 
-        public IEnumerable<Advert> GetAll(AdvertType advertType)
+        public IEnumerable<Advert> GetAll(AdvertType advertType, int pageNumber, int itemsPerPage)
         {
-            return base.GetAll().Where(c => c.AdvertType == advertType);
+            return
+                dbset
+                    .Where(c => c.AdvertType == advertType)
+                    .OrderBy(c => c.CreatedOn)
+                    .Skip((pageNumber - 1) * itemsPerPage)
+                    .Take(itemsPerPage);
+        }
+
+        public int GetCount(AdvertType advertType)
+        {
+            return dbset.Count(c => c.AdvertType == advertType);
         }
     }
 
     public interface IAdvertRepository : IRepository<Advert>
     {
-        IEnumerable<Advert> GetAll(AdvertType advertType);
+        IEnumerable<Advert> GetAll(AdvertType advertType, int pageNumber, int itemsPerPage);
+        int GetCount(AdvertType advertType);
     }
 }

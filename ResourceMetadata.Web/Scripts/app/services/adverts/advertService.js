@@ -9,10 +9,10 @@
 
         var baseUrl = global.CrashTradeSettings.baseUrl;
 
-        var getAll = function (advertTypeName) {
+        var getAll = function (advertTypeName, currentPage, pageSize) {
             return $http({
                 method: 'GET',
-                url: baseUrl + "Adverts/" + advertTypeName
+                url: baseUrl + "Adverts/" + advertTypeName + "/?pageNumber=" + currentPage + "&itemsPerPage=" + pageSize
             });
         };
 

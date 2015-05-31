@@ -46,14 +46,15 @@
 
             $scope.errorMessage = '';
 
-            accountService.registerUser(userRegistration).$promise
+            accountService.registerUser(userRegistration)
                 .then(function (data) {
-                    return accountService.login({
-                        Email: userRegistration.email,
-                        Password: userRegistration.password
-                    }).$promise.then(function (data) {
-                            $scope.$emit('logOn');
-                            $location.url('/Home');
+                    var formData = {username: userRegistration.Email, password: userRegistration.Password, grant_type: 'password'};
+                    return accountService.login(buildFormData(formData)).then(function (response) {
+                        $http.defaults.headers.common.Authorization = "Bearer " + response.data.access_token;
+                        global.sessionStorage.setItem(global.CrashTradeSettings.tokenKey, response.data.access_token);
+                        userProfileSvc.role = response.data.role;
+                        $scope.$emit('logOn');
+                        $location.url('/Home');
                         });
                 }).catch(function (error) {
                     if (error.status === 400) {
@@ -68,7 +69,6 @@
         $scope.logOff = function () {
             accountService.logOffUser();
             $scope.$emit('logOff');
-            $location.url('/Login');
         };
     }]);
 

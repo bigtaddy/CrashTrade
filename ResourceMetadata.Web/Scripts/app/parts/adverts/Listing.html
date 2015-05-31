@@ -1,8 +1,8 @@
 <h5 class="ui header">Moдели</h5>
 <div class="ui divider"></div>
 <div>
-    <table ng-table="tableParams" class="ui small table segment">
-        <tr ng-repeat="advert in $data">
+    <table class="ui small table segment">
+        <tr ng-repeat="advert in adverts">
             <td sortable="'Name'" data-title="'Краткое описание'">
                 <a href="#/Adverts/{{advertType}}/{{advert.Id}}">{{advert.Title}} </a>
             </td>
@@ -15,10 +15,10 @@
             <td sortable="'Name'" data-title="'Модель'">
               {{advert.CarModelName}}
             </td>
-            <td style="width: 4%;">
+            <td ng-show="isAuthenticated" style="width: 4%;">
                 <a href="#/Adverts/{{advertType}}/Edit/{{advert.Id}}"><i class="edit icon"></i></a>
             </td>
-            <td style="width: 4%;">
+            <td ng-show="isAuthenticated" style="width: 4%;">
                 <i class="trash icon" style="float: right;" title="Удалить" message="Вы хотите удалить данный элемент?"
                    modal-id="{{advert.Id}}" on-approve="deleteAdvert(advert.Id);"
                    on-deny="closeModal();" cst-confirm-modal></i>
@@ -30,8 +30,21 @@
     </table>
 
     <div style="float: right;">
-        <a class="ui mini blue button" href="#/Adverts/{{advertType}}/Add">Добавить модель</a>
+        <a ng-show="isAuthenticated" class="ui mini blue button" href="#/Adverts/{{advertType}}/Add">Добавить модель</a>
     </div>
 </div>
 
+<select ui-select2 ng-model="pageSize" convert-to-number
+        data-placeholder="Объявлений на странице" style="width:10%;">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="15">15</option>
+    <option value="20">20</option>
+    <option value="30">30</option>
+    <option value="40">40</option>
+</select>
 
+<pagination boundary-links="true" items-per-page="pageSize" on-select-page="pageChangeHandler(page)" total-items="count" page="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>

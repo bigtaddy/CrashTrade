@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="Content/themes/Site.css" />
     <link rel="stylesheet" href="Content/themes/smoothness/jquery-ui.min.css" />
     <link rel="stylesheet" href="Content/themes/select2/select2.min.css" />
+    <link rel="stylesheet" href="Content/themes/foundation/foundation.min.css" />
 </head>
 <body>
     <div ng-controller="AccountCtrl">
-        <div class="menu-container"><cst-top-menu ng-show="isAuthenticated"/></div>
+        <div class="menu-container"><cst-top-menu/></div>
         <section id="main" style="height:90%;">
             <div data-ng-view ng-animate>
             </div>
@@ -31,7 +32,7 @@
 
 
     <script src="/Scripts/libs/angular-file-upload.js"></script>
-
+    <script src="/Scripts/libs/mm-foundation-tpls-0.6.0.min.js"></script>
 
     <script src="/Scripts/config.js"></script>
     <!--<script src="/Scripts/app/ngscripts.js"></script>-->

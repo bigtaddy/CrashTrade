@@ -50,7 +50,7 @@
                 redirectTo: '/Home'
             });
 
-        $httpProvider.interceptors.push('authorizationInterceptor');
+  //      $httpProvider.interceptors.push('authorizationInterceptor');
         $httpProvider.interceptors.push('httpInterceptor');
 
     }]).factory('userProfileSvc', function () {
@@ -61,7 +61,7 @@
 
 
     }]);
-    global.utilities = angular.module("custom-utilities", []);
+    global.utilities = angular.module("custom-utilities", ['mm.foundation']);
 
 
 }(window));

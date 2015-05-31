@@ -2,7 +2,7 @@
 
     'use strict';
 
-    app.directive('cstTopMenu', function () {
+    app.directive('cstTopMenu', function ($location, $rootScope) {
         return {
             restrict: 'E',
             replace: true,
@@ -18,12 +18,20 @@
                     scope.isAuthenticated = true;
                 }
                 scope.$on('logOff', function () {
-                    scope.isAuthenticated = false;
+                    $rootScope.isAuthenticated = false;
                 });
 
                 scope.$on('logOn', function () {
-                    scope.isAuthenticated = true;
+                    $rootScope.isAuthenticated = true;
                 });
+
+                scope.goToRegistration = function () {
+                    $location.url('/Register');
+                }
+
+                scope.goToLogin = function () {
+                    $location.url('/Login');
+                }
             }
         };
     });

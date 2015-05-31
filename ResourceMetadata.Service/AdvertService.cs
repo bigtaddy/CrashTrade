@@ -30,9 +30,9 @@ namespace ResourceMetadata.Service
             return repository.GetAll();
         }
 
-        public IEnumerable<Advert> GetAdverts(AdvertType advertType)
+        public IEnumerable<Advert> GetAdverts(AdvertType advertType, int pageNumber, int itemsPerPage)
         {
-            return repository.GetAll(advertType);
+            return repository.GetAll(advertType, pageNumber, itemsPerPage);
         }
 
         public Advert AddAdvert(Advert advert)
@@ -62,6 +62,11 @@ namespace ResourceMetadata.Service
             SaveChanges();
         }
 
+        public int GetCount(AdvertType advertType)
+        {
+            return repository.GetCount(advertType);
+        }
+
         public void SaveChanges()
         {
             unitOfWork.SaveChanges();
@@ -71,10 +76,11 @@ namespace ResourceMetadata.Service
     public interface IAdvertService
     {
         IEnumerable<Advert> GetAdverts();
-        IEnumerable<Advert> GetAdverts(AdvertType advertType);
+        IEnumerable<Advert> GetAdverts(AdvertType advertType, int pageNumber, int itemsPerPage);
         Advert AddAdvert(Advert advert);
         Advert GetAdvertById(int id);
         Advert UpdateAdvert(Advert advert);
         void DeleteAdvert(int advertId);
+        int GetCount(AdvertType advertType);
     }
 }

@@ -2,9 +2,9 @@
 
     'use strict';
 
-    app.factory('accountService', ['$http', 'userProfileSvc', function ($http, serviceHelper) {
+    app.factory('accountService', ['$http', 'serviceHelperSvc', function ($http, serviceHelper) {
 
-        var Account = serviceHelper.Account;
+        var Account = '/api/Account/';
         var tokenUrl = global.CrashTradeSettings.tokenUrl;
 
         return {
@@ -18,8 +18,14 @@
             },
 
             registerUser: function (userRegistration) {
-                var registration = Account.register(userRegistration);
-                return registration;
+                //var registration = Account.register(userRegistration);
+                //return registration;
+
+                return $http({
+                    method: 'POST',
+                    url: Account,
+                    data: userRegistration
+                })
             },
             logOffUser: function () {
                 global.sessionStorage.removeItem(global.CrashTradeSettings.tokenKey);
