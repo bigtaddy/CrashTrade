@@ -61,7 +61,7 @@
 
 
     }]);
-    global.utilities = angular.module("custom-utilities", []);
+    global.utilities = angular.module("custom-utilities", ['mm.foundation']);
 
 
 }(window));

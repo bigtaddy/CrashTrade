@@ -34,22 +34,26 @@ namespace ResourceMetadata.API.Controllers
 
         [HttpGet]
         [Route("api/Adverts/Sale")]
-        public IHttpActionResult SaleAdverts()
+        public HttpResponseMessage SaleAdverts(int pageNumber, int itemsPerPage)
         {
-            var advertModels = advertService.GetAdverts(AdvertType.Sale);
+            var advertModels = advertService.GetAdverts(AdvertType.Sale, pageNumber, itemsPerPage);
             var advertModelViewModels = new List<AdvertViewModel>();
+
+            var count = advertService.GetCount(AdvertType.Sale);
             Mapper.Map(advertModels, advertModelViewModels);
-            return Ok(advertModelViewModels);
+            return Request.CreateResponse(HttpStatusCode.OK, new { adverts = advertModelViewModels, count });
         }
 
         [HttpGet]
         [Route("api/Adverts/Repair")]
-        public IHttpActionResult RepairAdverts()
+        public HttpResponseMessage RepairAdverts(int pageNumber, int itemsPerPage)
         {
-            var advertModels = advertService.GetAdverts(AdvertType.Repair);
+            var advertModels = advertService.GetAdverts(AdvertType.Repair, pageNumber, itemsPerPage);
             var advertModelViewModels = new List<AdvertViewModel>();
+
+            var count = advertService.GetCount(AdvertType.Repair);
             Mapper.Map(advertModels, advertModelViewModels);
-            return Ok(advertModelViewModels);
+            return Request.CreateResponse(HttpStatusCode.OK, new { adverts = advertModelViewModels, count });
         }
 
         public IHttpActionResult Get(int id)
@@ -95,7 +99,7 @@ namespace ResourceMetadata.API.Controllers
             var advert = advertService.GetAdvertById(id);
             if (advert.UserId != User.Identity.GetUserId())
             {
-                return ResponseMessage(Request.CreateResponse(HttpStatusCode.InternalServerError, "Permission denied"));
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.Forbidden, "Permission denied"));
             }
 
             advertService.DeleteAdvert(id);
@@ -112,6 +116,11 @@ namespace ResourceMetadata.API.Controllers
         public async Task<HttpResponseMessage> UploadImage(int id )
         {
             var advertModel = advertService.GetAdvertById(id);
+
+            if (advertModel.UserId != User.Identity.GetUserId())
+            {
+                return Request.CreateResponse(HttpStatusCode.Forbidden);
+            }
 
             string uploadPath = HttpContext.Current.Server.MapPath("~/App_Data/FileUploads");
 
