@@ -1,6 +1,16 @@
 .bs-example {
     padding-top: 50px;
 }
+a.active {
+    background-color: #ffffff;
+}
+.nav > li > a:focus{
+    background-color: #ffffff;
+}
+.pagination {
+    float: right;
+    margin-right: 10%;
+}
 
 .btn-group-all-pages {
     display: block;

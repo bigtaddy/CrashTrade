@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="Content/themes/smoothness/jquery-ui.min.css" />
     <link rel="stylesheet" href="Content/themes/select2/select2.min.css" />
     <link rel="stylesheet" href="Content/themes/foundation/foundation.min.css" />
+    <link href="../styles/bootstrap.css" media="all" rel="stylesheet"/>
+    <link href="../styles/style.css" media="all" rel="stylesheet"/>
+    <link href="../styles/style2.css" media="all" rel="stylesheet"/>
+    <link href="../styles/login.css" media="all" rel="stylesheet"/>
 </head>
 <body>
     <div ng-controller="AccountCtrl">
@@ -33,6 +37,9 @@
 
     <script src="/Scripts/libs/angular-file-upload.js"></script>
     <script src="/Scripts/libs/mm-foundation-tpls-0.6.0.min.js"></script>
+
+    <script src="../Scripts/trunk8.js"></script>
+    <script src="../Scripts/tabs.js"></script>
 
     <script src="/Scripts/config.js"></script>
     <!--<script src="/Scripts/app/ngscripts.js"></script>-->
@@ -65,3 +72,14 @@
     <script src="/Scripts/app/services/adverts/advertService.js"></script>
 </body>
 </html>
+
+<script>
+    $('.nav-tabs li a').on('click', function () {
+        $(this).parent().parent().find('.active').removeClass('active');
+        $(this).parent().parent().addClass('active');
+    });
+
+    $('.text-new-line').trunk8({
+        lines: 2
+    });
+</script>

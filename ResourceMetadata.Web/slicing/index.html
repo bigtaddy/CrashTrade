@@ -7,7 +7,6 @@
     <link href="../styles/style.css" media="all" rel="stylesheet"/>
     <link href="../styles/style2.css" media="all" rel="stylesheet"/>
     <script src="../Scripts/libs/jquery.min.js"></script>
-    <script src="../Scripts/libs/bootstrap.min.js"></script>
     <script src="../Scripts/trunk8.js"></script>
     <script src="../Scripts/tabs.js"></script>
 </head>
@@ -38,6 +37,13 @@
     </ul>
 </div>
 <div class="padding-bottom"></div>
+
+
+
+
+
+
+
 <div class="row site-listing home">
     <div class="eight columns">
         <a href="">
@@ -63,6 +69,14 @@
     </div>
     <hr class="solid">
 </div>
+
+
+
+
+
+
+
+
 <div class="row site-listing home ">
     <div class="eight columns">
         <a href="">
@@ -140,3 +154,14 @@
 </div>
 </body>
 </html>
+
+        <script>
+            $('.nav-tabs li a').on('click', function () {
+                $(this).parent().parent().find('.active').removeClass('active');
+                $(this).parent().parent().addClass('active');
+            });
+
+            $('.text-new-line').trunk8({
+                lines: 2
+            });
+        </script>

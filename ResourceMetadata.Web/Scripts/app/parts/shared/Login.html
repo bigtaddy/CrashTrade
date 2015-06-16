@@ -1,37 +1,66 @@
-﻿<div style="margin-top:75px;">
-    <div id="logincontainer" name="logincontainer">
-        <form name="loginform" role="form" class="ui secondary small form segment">
-            <h5 class="ui header">Вход</h5>
-            <div class="ui divider"></div>
+﻿<!--<div style="margin-top:75px;">-->
+    <!--<div id="logincontainer" name="logincontainer">-->
+        <!--<form name="loginform" role="form" class="ui secondary small form segment">-->
+            <!--<h5 class="ui header">Вход</h5>-->
+            <!--<div class="ui divider"></div>-->
+            <!--<div ng-show="errorMessage">-->
+                <!--<div class="error-message">-->
+                    <!--{{errorMessage}}-->
+                <!--</div>-->
+                <!--<div class="ui divider"></div>-->
+            <!--</div>-->
+            <!--<div class="field">-->
+                <!--<label for="email">-->
+                    <!--Email<span style="color: Red">*</span>-->
+                <!--</label>-->
+                <!--<input type="email" id="email" class="error" name="email" placeholder="Email" required data-ng-model="userLogin.Email" />-->
+            <!--</div><div class="ui divider"></div>-->
+            <!--<div class="field">-->
+                <!--<label for="password">-->
+                    <!--Пароль<span style="color: Red">*</span>-->
+                <!--</label>-->
+                <!--<input type="password" id="password" name="password" placeholder="Password" required data-ng-model="userLogin.Password" />-->
+            <!--</div><div class="ui divider"></div>-->
+            <!--<div class="inline field">-->
+                <!--<button data-ng-click="login(userLogin)" data-ng-disabled="loginform.$invalid" class="ui blue mini button">-->
+                    <!--Войти-->
+                <!--</button>-->
+                <!--<a href="#/Register">Зарегистрироваться</a>-->
+            <!--</div>-->
+        <!--</form>-->
+    <!--</div>-->
+<!--</div>-->
+
+<section id="passport" class="social-login-disabled">
+    <form accept-charset="UTF-8" action="/session" method="post">
+        <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input
+                name="authenticity_token" type="hidden" value=""></div>
+        <div class="passport-left">
+            <h3><strong>CrashTrade.com</strong></h3>
+
             <div ng-show="errorMessage">
                 <div class="error-message">
                     {{errorMessage}}
                 </div>
                 <div class="ui divider"></div>
             </div>
-            <div class="field">
-                <label for="email">
-                    Email<span style="color: Red">*</span>
-                </label>
-                <input type="email" id="email" class="error" name="email" placeholder="Email" required data-ng-model="userLogin.Email" />
-            </div><div class="ui divider"></div>
-            <div class="field">
-                <label for="password">
-                    Пароль<span style="color: Red">*</span>
-                </label>
+        </div>
+        <div class="passport-right">
+            <div id="emailLogin">
+                <h5 class="hide-for-small"><strong>Вход</strong></h5>
+                <input autocapitalize="off" autocorrect="off" id="login" name="login" placeholder="Email" type="text">
                 <input type="password" id="password" name="password" placeholder="Password" required data-ng-model="userLogin.Password" />
-            </div><div class="ui divider"></div>
-            <div class="inline field">
-                <button data-ng-click="login(userLogin)" data-ng-disabled="loginform.$invalid"
-                        class="ui blue mini button">
+                <label>
+                    <input checked="checked" id="remember_me" name="remember_me" type="checkbox" value="remember_me">
+                    Запомнить меня
+                </label>
+                <button data-ng-click="login(userLogin)" data-ng-disabled="loginform.$invalid">
                     Войти
                 </button>
                 <a href="#/Register">Зарегистрироваться</a>
+                <p><a href="">Забыли пароль?</a></p>
             </div>
-        </form>
-    </div>
+        </div>
 
-    
-
-
-</div>
+    </form>
+</section>

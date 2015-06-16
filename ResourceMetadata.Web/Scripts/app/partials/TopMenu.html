@@ -1,11 +1,13 @@
-﻿<div class="ui small inverted menu">
-    <a class="item" href="#/Home">На главную</a>
-    <a class="item" href="#/Adverts/Sale">Объявления Продажа</a>
-    <a class="item" href="#/Adverts/Repair">Объявления Ремонт</a>
-    <a class="item" href="#/About">О приложении</a>
+﻿<div class="bs-example">
     <div class="right menu">
-        <a class="item" href="javascript:;" ng-show="isAuthenticated" ng-click="logOff();">Выйти</a>
-        <a class="item" href="javascript:;" ng-show="!isAuthenticated" ng-click="goToLogin();">Войти</a>
-        <a class="item" href="javascript:;" ng-show="!isAuthenticated" ng-click="goToRegistration();">Зарегистрироваться</a>
+        <a class="btn btn-success" href="javascript:;" ng-show="isAuthenticated" ng-click="logOff();">Выйти</a>
+        <a class="btn btn-success" href="javascript:;" ng-show="!isAuthenticated" ng-click="goToLogin();">Войти</a>
+        <a class="btn btn-default" href="javascript:;" ng-show="!isAuthenticated" ng-click="goToRegistration();">Регистрация</a>
     </div>
+    <ul class="nav nav-tabs">
+        <li role="presentation" ><a class="active" href="#/Home">Главная</a></li>
+        <li role="presentation"><a href="#/Adverts/Sale">Продажа</a></li>
+        <li role="presentation"><a href="#/Adverts/Repair">Восстановление</a></li>
+        <li role="presentation"><a href="#/About">Контакты</a></li>
+    </ul>
 </div>

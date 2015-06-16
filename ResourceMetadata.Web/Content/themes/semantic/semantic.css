@@ -14,6 +14,7 @@
 .ui.breadcrumb {
   margin: 1em 0em;
   display: inline-block;
+  display: inline-block;
   vertical-align: middle;
 }
 .ui.breadcrumb:first-child {
@@ -120,6 +121,7 @@
 .ui.form input[type="date"],
 .ui.form input[type="password"],
 .ui.form input[type="email"] ,
+.ui.form input[type="number"] ,
 .ui.form .ui.input {
   width: 100%;
 }
@@ -127,9 +129,9 @@
 .ui.form input[type="text"],
 .ui.form input[type="date"],
 .ui.form input[type="password"],
+.ui.form input[type="number"] ,
 .ui.form input[type="email"] {
   margin: 0em;
-  padding: 0.85em 1.2em;
   font-size: 0.875em;
   background-color: #FFFFFF;
   border: 1px solid rgba(0, 0, 0, 0.15);

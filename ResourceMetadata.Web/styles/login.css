@@ -2282,7 +2282,7 @@ select {
     margin-right: auto;
     margin-top: 0;
     margin-bottom: 0;
-    max-width: 45em;
+    max-width: 55em;
     *zoom: 1;
 }
 /* line 121, ../../../../shared/bundle/ruby/2.1.0/gems/zurb-foundation-4.2.2/scss/foundation/components/_global.scss */
@@ -8495,7 +8495,7 @@ h5 {
     margin-right: auto;
     margin-top: 0;
     margin-bottom: 0;
-    max-width: 45em;
+    max-width: 55em;
     *zoom: 1;
     position: relative;
     overflow: hidden;
