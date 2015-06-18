@@ -20,6 +20,7 @@ namespace ResourceMetadata.API.Controllers
             this.manufactureService = manufactureService;
         }
 
+        [AllowAnonymous]
         public IHttpActionResult Get()
         {
             var manufactures = manufactureService.GetManufactures();
@@ -28,6 +29,7 @@ namespace ResourceMetadata.API.Controllers
             return Ok(manufactureViewModels);
         }
 
+        [AllowAnonymous]
         public IHttpActionResult Get(int id)
         {
             var manufacture = manufactureService.GetManufactureById(id);

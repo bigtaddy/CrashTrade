@@ -20,6 +20,7 @@ namespace ResourceMetadata.API.Controllers
             this.carModelService = carModelService;
         }
 
+        [AllowAnonymous]
         public IHttpActionResult Get()
         {
             var carModels = carModelService.GetCarModels();
@@ -28,6 +29,7 @@ namespace ResourceMetadata.API.Controllers
             return Ok(carModelViewModels);
         }
 
+        [AllowAnonymous]
         public IHttpActionResult Get(int id)
         {
             var carModel = carModelService.GetCarModelById(id);

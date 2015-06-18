@@ -24,12 +24,28 @@ namespace ResourceMetadata.API.Controllers
             this.advertService = advertService;
         }
 
-        public IHttpActionResult Get()
+        [HttpGet]
+        [Route("api/Adverts/All")]
+        [AllowAnonymous]
+        public HttpResponseMessage GetAll(int pageNumber, int itemsPerPage)
         {
-            var advertModels = advertService.GetAdverts();
+            var advertModels = advertService.GetAdverts(pageNumber, itemsPerPage);
             var advertModelViewModels = new List<AdvertViewModel>();
+            var count = advertService.GetCount();
             Mapper.Map(advertModels, advertModelViewModels);
-            return Ok(advertModelViewModels);
+            return Request.CreateResponse(HttpStatusCode.OK, new { adverts = advertModelViewModels, count });
+        }
+
+        [HttpGet]
+        [Route("api/Adverts/My")]
+        [Authorize(Roles = "Admin, Member")]
+        public HttpResponseMessage GetForUser(int pageNumber, int itemsPerPage)
+        {
+            var advertModels = advertService.GetAdvertsForUser(pageNumber, itemsPerPage, User.Identity.GetUserId());
+            var advertModelViewModels = new List<AdvertViewModel>();
+            var count = advertService.GetCount(User.Identity.GetUserId());
+            Mapper.Map(advertModels, advertModelViewModels);
+            return Request.CreateResponse(HttpStatusCode.OK, new { adverts = advertModelViewModels, count });
         }
 
         [HttpGet]
@@ -58,6 +74,7 @@ namespace ResourceMetadata.API.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, new { adverts = advertModelViewModels, count });
         }
 
+        [AllowAnonymous]
         public IHttpActionResult Get(int id)
         {
             var advertModel = advertService.GetAdvertById(id);
