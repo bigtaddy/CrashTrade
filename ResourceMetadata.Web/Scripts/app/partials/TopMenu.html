@@ -1,13 +1,15 @@
 ﻿<div class="bs-example">
     <div class="right menu">
+        <a class="btn btn-default"  href="#/Adverts/Add" ng-show="isAuthenticated">Добавить объявление</a>
+        <a class="btn btn-default"  href="#/Adverts/List/My" ng-show="isAuthenticated">Мои объявления</a>
         <a class="btn btn-success" href="javascript:;" ng-show="isAuthenticated" ng-click="logOff();">Выйти</a>
         <a class="btn btn-success" href="javascript:;" ng-show="!isAuthenticated" ng-click="goToLogin();">Войти</a>
         <a class="btn btn-default" href="javascript:;" ng-show="!isAuthenticated" ng-click="goToRegistration();">Регистрация</a>
     </div>
     <ul class="nav nav-tabs">
         <li role="presentation" ><a class="active" href="#/Home">Главная</a></li>
-        <li role="presentation"><a href="#/Adverts/Sale">Продажа</a></li>
-        <li role="presentation"><a href="#/Adverts/Repair">Восстановление</a></li>
+        <li role="presentation"><a href="#/Adverts/List/Sale">Продажа</a></li>
+        <li role="presentation"><a href="#/Adverts/List/Repair">Восстановление</a></li>
         <li role="presentation"><a href="#/About">Контакты</a></li>
     </ul>
 </div>

@@ -8,11 +8,6 @@
             $scope.manufactures = [];
             $scope.carModels = [];
 
-            $scope.advertType = $routeParams.advertType;
-            if(advertService.getCodeOfAdvertType($scope.advertType) == false){
-                $location.url('/Home');
-            }
-
 
             init();
 
@@ -21,10 +16,9 @@
              * @param advert
              */
             $scope.addAdvert = function (advert) {
-                advert.AdvertType = advertService.getCodeOfAdvertType($scope.advertType);
                 entityService.add(advert, "Adverts")
                     .then(function (data) {
-                        $location.url('/Adverts/' + $routeParams.advertType);
+                        $location.url('/Adverts/List/My');
                     });
             };
 
@@ -35,7 +29,7 @@
             $scope.editAdvert = function (advert) {
                 entityService.edit(advert, "Adverts")
                     .then(function (data) {
-                        $location.url('/Adverts/'+ $routeParams.advertType);
+                        $location.url('/Adverts/List/My');
                     });
             };
 

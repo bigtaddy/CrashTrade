@@ -23,25 +23,28 @@
                 templateUrl: '/Scripts/app/parts/about/About.html'
             })
 
-            .when('/Adverts/:advertType', {
-                templateUrl: '/Scripts/app/parts/adverts/Listing.html',
-                controller: 'AdvertsCtrl'
-            })
-            .when('/Adverts/:advertType/Add', {
+            .when('/Adverts/Add', {
                 templateUrl: '/Scripts/app/parts/adverts/Add.html',
                 controller: 'AdvertCtrl'
             })
-            .when('/Adverts/:advertType/Edit/:advertId', {
+
+            .when('/Adverts/List/:advertType', {
+                templateUrl: '/Scripts/app/parts/adverts/Listing.html',
+                controller: 'AdvertsCtrl'
+            })
+
+            .when('/Adverts/Edit/:advertId', {
                 templateUrl: '/Scripts/app/parts/adverts/Edit.html',
                 controller: 'AdvertCtrl'
             })
-            .when('/Adverts/:advertType/:advertId', {
+            .when('/Adverts/:advertId', {
                 templateUrl: '/Scripts/app/parts/adverts/Details.html',
                 controller: 'AdvertCtrl'
             })
 
             .when('/Home', {
-                templateUrl: '/Scripts/app/parts/home/Home.html', controller: 'HomeCtrl'
+                templateUrl: '/Scripts/app/parts/adverts/Listing.html',
+                controller: 'AdvertsCtrl'
             })
             .when('/Error', {
                 templateUrl: '/Scripts/app/parts/shared/Error.html'

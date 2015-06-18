@@ -12,7 +12,7 @@
             link: function (scope, element, attribute) {
                 var requestQueue = [];
                 httpInterceptor.request = function (config) {
-                    console.log('request: ' + config.url);
+                   // console.log('request: ' + config.url);
                     requestQueue.push({});
                     if (requestQueue.length == 1) {
                         showOverlay(element);
@@ -27,7 +27,7 @@
                         }
                     }
 
-                    console.log('response: ' + response.config.url);
+                  //  console.log('response: ' + response.config.url);
                     requestQueue.pop();
                     if (requestQueue.length === 0) {
                         $timeout(function () {

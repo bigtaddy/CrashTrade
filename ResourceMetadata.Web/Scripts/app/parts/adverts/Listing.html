@@ -1,6 +1,5 @@
 <!--<div class="ui divider"></div>-->
 <div>
-
     <div class="row site-listing home" ng-repeat="advert in adverts">
         <div class="eight columns">
             <a href="">
@@ -8,10 +7,10 @@
                     <li class="desktop-screenshot"><img alt="" class="site" src="../images/index/5d.jpg"></li>
                     <li class="mobile-screenshot"><img alt="" class="site" src="../images/index/6d.jpg"></li>
                 </ul>
-            </a> </div>
+            </a></div>
         <div class="four mobile-four columns end" style="margin-bottom:25px;">
             <div class="first-section">
-                <h3 class="regular foundation-build"><a href="#/Adverts/{{advertType}}/{{advert.Id}}">{{advert.Title}} </a></h3>
+                <h3 class="regular foundation-build"><a href="#/Adverts/{{advert.Id}}">{{advert.Title}} </a></h3>
                 <hr>
                 <p class="text-new-line">{{advert.Description}}</p>
             </div>
@@ -19,13 +18,19 @@
                 <hr>
                 <a class="button" href="">
                     Фото »
-                </a> </div>
+                </a>
+                <br/>
+                <a ng-show="isAuthenticated && advertType == 'My'" href="#/Adverts/Edit/{{advert.Id}}"><i
+                        class="edit icon"></i></a>
+
+                <i ng-show="isAuthenticated && advertType == 'My'" class="trash icon" style="float: right;" title="Удалить"
+                   message="Вы хотите удалить данный элемент?"
+                   modal-id="{{advert.Id}}" on-approve="deleteAdvert(advert.Id);"
+                   on-deny="closeModal();" cst-confirm-modal></i>
+
+            </div>
         </div>
         <hr class="solid">
-    </div>
-
-    <div style="float: right;">
-        <a ng-show="isAuthenticated" class="ui mini blue button" href="#/Adverts/{{advertType}}/Add">Добавить модель</a>
     </div>
 </div>
 
@@ -33,11 +38,13 @@
 <div>
     <select ng-model="pageSize" convert-to-number data-placeholder="Объявлений на странице"
             style="float: right; width: 60px; margin-right: 10%; margin-bottom: 0">
+        <option value="1">1</option>
         <option value="10">10</option>
         <option value="20">20</option>
         <option value="50">50</option>
         <option value="100">100</option>
     </select>
+
     <div style="clear: both"></div>
 
     <pagination boundary-links="true" items-per-page="pageSize" on-select-page="pageChangeHandler(page)"

@@ -10,9 +10,15 @@
         var baseUrl = global.CrashTradeSettings.baseUrl;
 
         var getAll = function (advertTypeName, currentPage, pageSize) {
+            if (advertTypeName == undefined) {
+                var url = baseUrl + "Adverts/All/?pageNumber=" + currentPage + "&itemsPerPage=" + pageSize;
+            } else {
+                var url = baseUrl + "Adverts/" + advertTypeName + "/?pageNumber=" + currentPage + "&itemsPerPage=" + pageSize;
+            }
+
             return $http({
                 method: 'GET',
-                url: baseUrl + "Adverts/" + advertTypeName + "/?pageNumber=" + currentPage + "&itemsPerPage=" + pageSize
+                url: url
             });
         };
 
@@ -21,9 +27,9 @@
         };
 
         var getCodeOfAdvertType = function (type) {
-            if(type == 'Sale'){
+            if (type == 'Sale') {
                 return 2
-            }else if(type == 'Repair'){
+            } else if (type == 'Repair') {
                 return 1
             }
 

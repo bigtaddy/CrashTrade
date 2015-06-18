@@ -5,10 +5,10 @@
     app.controller('AdvertsCtrl', ['$scope', 'ngTableParams', 'entityService', 'advertService', '$routeParams', '$location',
         function ($scope, ngTableParams, entityService, advertService, $routeParams, $location) {
 
-
+            $scope.adverts = {};
 
             $scope.advertType = $routeParams.advertType;
-            if (advertService.getCodeOfAdvertType($scope.advertType) == false) {
+            if (advertService.getCodeOfAdvertType($scope.advertType) == false && $scope.advertType != undefined && $scope.advertType != "My") {
                 $location.url('/Home');
             }
 
@@ -20,7 +20,7 @@
 
             $scope.pageChangeHandler = function (num) {
                 $scope.currentPage = num;
-                $scope.adverts = {};
+
                 advertService.getAll($scope.advertType, $scope.currentPage, $scope.pageSize).then(function (response) {
                     $scope.adverts = response.data.adverts;
                     $scope.count = response.data.count;

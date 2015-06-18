@@ -32,7 +32,7 @@
 <!--</div>-->
 
 <section id="passport" class="social-login-disabled">
-    <form accept-charset="UTF-8" action="/session" method="post">
+    <form name="loginform" role="form">
         <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input
                 name="authenticity_token" type="hidden" value=""></div>
         <div class="passport-left">
@@ -48,7 +48,7 @@
         <div class="passport-right">
             <div id="emailLogin">
                 <h5 class="hide-for-small"><strong>Вход</strong></h5>
-                <input autocapitalize="off" autocorrect="off" id="login" name="login" placeholder="Email" type="text">
+                <input autocapitalize="off" autocorrect="off" type="email" id="email" name="email" placeholder="Email" required data-ng-model="userLogin.Email">
                 <input type="password" id="password" name="password" placeholder="Password" required data-ng-model="userLogin.Password" />
                 <label>
                     <input checked="checked" id="remember_me" name="remember_me" type="checkbox" value="remember_me">

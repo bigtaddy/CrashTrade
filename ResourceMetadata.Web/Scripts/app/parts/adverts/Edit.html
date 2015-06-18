@@ -11,6 +11,17 @@
     </div>
     <div class="ui divider"></div>
 
+    <div class="field" style="margin-bottom:10px;">
+        <label for="FuelType">
+            Тип объявления<span style="color: Red">*</span>
+        </label>
+        <select ui-select2 ng-model="advert.AdvertType" ng-required="true" data-placeholder="Тип объявления"  style="width:100%;">
+            <option value="">--Выбрать--</option>
+            <option value="1">Продажа</option>
+            <option value="2">Восстановление</option>
+        </select>
+    </div>
+
     <div class="field">
         <label for="description">Описание<span style="color:Red">*</span></label>
         <textarea id="description" placeholder="Description" required data-ng-model="advert.Description"/>
