@@ -14,8 +14,6 @@ namespace ResourceMetadata.API.ViewModels
 
         public string Description { get; set; }
 
-        public string ImagePath { get; set; }
-
         public int ManufactureId { get; set; }
 
         public int CarModelId { get; set; }

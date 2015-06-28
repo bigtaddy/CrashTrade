@@ -1,0 +1,5 @@
+http://stackoverflow.com/questions/28142643/angularjs-angular-file-upload-cannot-upload-data-to-webapi-2-cors
+
+http://www.codeproject.com/Tips/878730/File-Upload-Using-AngularJS-and-ASP-NET-MVC
+http://www.ngroutes.com/questions/AUuADFjya5vEqxqlK4uQ/angular-submit-form-data.html
+https://damienbod.wordpress.com/2014/03/28/web-api-file-upload-single-or-multiple-files/

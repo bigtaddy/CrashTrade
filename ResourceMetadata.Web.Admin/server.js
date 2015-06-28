@@ -2,7 +2,7 @@
 
     'use strict';
 
-    var PORT = 7777,
+    var PORT = 5555,
         PROXY_URL = 'http://localhost:7888';
 
     var http = require('http'),
