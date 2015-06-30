@@ -2,16 +2,31 @@
 
     'use strict';
 
-    app.controller('AdvertCtrl', ['$scope', '$location', '$routeParams', 'entityService', 'manufactureService', 'carModelService', 'advertService', 'FileUploader', '$http', 'flowFactory',
-        function ($scope, $location, $routeParams, entityService, manufactureService, carModelService, advertService, FileUploader, $http, flowFactory) {
+    app.controller('AdvertCtrl', ['$scope', '$location', '$routeParams', 'entityService', 'manufactureService', 'carModelService', 'advertService', '$http', 'flowFactory',
+        function ($scope, $location, $routeParams, entityService, manufactureService, carModelService, advertService, $http, flowFactory) {
 
-            $scope.flowObject = flowFactory.create();
+            $scope.flowObject = flowFactory.create({
+                chunkSize: 1024 * 1024
+            });
 
             $scope.advert = {};
             $scope.manufactures = [];
             $scope.carModels = [];
 
             init();
+
+            $scope.isSubmitDisabled = function () {
+                var isDisabled = false;
+                if($scope.flowObject.files.length) {
+                    for(var i = 0, length = $scope.flowObject.files.length; i < length; i++){
+                        if($scope.flowObject.files[i].size > 2048000) {
+                            isDisabled = true;
+                            break;
+                        }
+                    }
+                }
+                return isDisabled;
+            };
 
             /**
              * addAdvert
@@ -29,25 +44,28 @@
              * @param advert
              */
             $scope.editAdvert = function (advert) {
-                var fd = new FormData();
-                var imageFiles = $scope.flowObject.files.forEach(function(file, index){
-                    fd.append(('file' + index), file.file);
-                });
+
                 entityService.edit(advert, "Adverts")
                     .then(function (data) {
-                        $http({
-                            method: 'POST',
-                            url: global.CrashTradeSettings.baseUrl + 'Adverts/UploadImage/' + advert.Id,
-                            data: fd,
-                            transformRequest: angular.identity,
-                            headers: {
-                                'Content-Type': undefined,
-                                'enctype': 'multipart/form-data'
+                        if($scope.flowObject.files.length) {
+                            var fd = new FormData();
+                            var imageFiles = $scope.flowObject.files.forEach(function(file, index){
+                                fd.append(('file' + index), file.file);
+                            });
+                            $http({
+                                method: 'POST',
+                                url: global.CrashTradeSettings.baseUrl + 'Adverts/UploadImages/' + advert.Id,
+                                data: fd,
+                                transformRequest: angular.identity,
+                                headers: {
+                                    'Content-Type': undefined,
+                                    'enctype': 'multipart/form-data'
 
-                            }
-                        }).success(function(data){
+                                }
+                            }).success(function(data){
 
-                        });
+                            });
+                        }
                     /*    $scope.flowObject.defaults.target = global.CrashTradeSettings.baseUrl + 'Adverts/UploadImage/' + advert.Id;
                         $scope.flowObject.defaults.withCredentials = true;
                         $scope.flowObject.defaults.headers.Authorization = 'Bearer ' + global.sessionStorage[global.CrashTradeSettings.tokenKey];
@@ -70,36 +88,6 @@
                     $scope.carModels = response.data;
                 });
             }
-
-
-          /*  var uploader = $scope.uploader = new FileUploader();
-            uploader.headers.Authorization = 'Bearer ' + global.sessionStorage[global.CrashTradeSettings.tokenKey];
-
-
-            uploader.filters.push({
-                name: 'imageFilter',
-                fn: function(item , options) {
-                    var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
-                    return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
-                }
-            });
-
-
-            uploader.onWhenAddingFileFailed = function(item , filter, options) {
-                console.info('onWhenAddingFileFailed', item, filter, options);
-            };
-            uploader.onAfterAddingFile = function(fileItem) {
-                console.info('onAfterAddingFile', fileItem);
-            };
-            uploader.onAfterAddingAll = function(addedFileItems) {
-                console.info('onAfterAddingAll', addedFileItems);
-            };
-            uploader.onBeforeUploadItem = function(item) {
-                item.url = 'http://localhost:7777/api/Adverts/UploadImage/' + $scope.advert.Id
-
-                console.info('onBeforeUploadItem', item);
-            };*/
-
 
         }]);
 

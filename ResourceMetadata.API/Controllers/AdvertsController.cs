@@ -126,13 +126,23 @@ namespace ResourceMetadata.API.Controllers
         }
 
 
-   
+        [HttpGet]
+        [Authorize(Roles = "Admin, Member")]
+        [Route("api/Adverts/DownloadImages/{id}")]
+        public IHttpActionResult DownloadImages(int id)
+        {
+            var advertModel = advertService.GetAdvertById(id);
+            var images = Mapper.Map<ICollection<ImageInfo>, ICollection<ImageViewModel>>(advertModel.ImageInfos);
+
+            return Ok(images);
+        }
+
 
 
         [HttpPost]
         [Authorize(Roles = "Admin, Member")]
-        [Route("api/Adverts/UploadImage/{id}")]
-        public async Task<HttpResponseMessage> UploadImage(int id )
+        [Route("api/Adverts/UploadImages/{id}")]
+        public async Task<HttpResponseMessage> UploadImages(int id)
         {
             var advertModel = advertService.GetAdvertById(id);
 
@@ -183,6 +193,16 @@ namespace ResourceMetadata.API.Controllers
         }
 
 
+
+        [HttpDelete]
+        [Authorize(Roles = "Admin, Member")]
+        [Route("api/Adverts/DeleteImages/{id}")]
+        public async Task<HttpResponseMessage> DeleteImages(int id)
+        {
+            var advertModel = advertService.GetAdvertById(id);
+
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
 
     }
 
