@@ -19,6 +19,9 @@ namespace ResourceMetadata.API.Controllers
     {
         private readonly IAdvertService advertService;
 
+        private const string RelativeUploadPath = "~/App_Data/FileUploads";
+        private string uploadPath = HttpContext.Current.Server.MapPath(RelativeUploadPath);
+
         public AdvertsController(IAdvertService advertService)
         {
             this.advertService = advertService;
@@ -134,6 +137,20 @@ namespace ResourceMetadata.API.Controllers
             var advertModel = advertService.GetAdvertById(id);
             var images = Mapper.Map<ICollection<ImageInfo>, ICollection<ImageViewModel>>(advertModel.ImageInfos);
 
+            var urlBuilder =
+                new System.UriBuilder(Request.RequestUri.Authority)
+                {
+                    Path = Url.Content(RelativeUploadPath),
+                    Query = null,
+                };
+
+            var uri = urlBuilder.Uri;
+            var urlToImage = urlBuilder.ToString();
+
+            foreach (var image in images)
+            {
+                image.FullName = urlToImage + "/" + image.FullName;
+            }
             return Ok(images);
         }
 
@@ -150,8 +167,6 @@ namespace ResourceMetadata.API.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.Forbidden);
             }
-
-            string uploadPath = HttpContext.Current.Server.MapPath("~/App_Data/FileUploads");
 
             if (Request.Content.IsMimeMultipartContent())
             {
@@ -173,7 +188,7 @@ namespace ResourceMetadata.API.Controllers
 
                         advertModel.ImageInfos.Add(new ImageInfo
                         {
-                            FullName = fi.FullName
+                            FullName = fi.Name
                         });                   
                     }
                     advertService.UpdateAdvert(advertModel);
@@ -197,11 +212,12 @@ namespace ResourceMetadata.API.Controllers
         [HttpDelete]
         [Authorize(Roles = "Admin, Member")]
         [Route("api/Adverts/DeleteImages/{id}")]
-        public async Task<HttpResponseMessage> DeleteImages(int id)
+        public HttpResponseMessage DeleteImages(int id)
         {
             var advertModel = advertService.GetAdvertById(id);
 
-            return Request.CreateResponse(HttpStatusCode.OK);
+            return Request.CreateResponse(
+                HttpStatusCode.OK);
         }
 
     }

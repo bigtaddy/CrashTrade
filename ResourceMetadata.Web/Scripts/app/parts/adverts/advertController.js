@@ -79,6 +79,12 @@
                 if ($routeParams.advertId > 0) {
                     entityService.getById($routeParams.advertId, "Adverts").then(function (response) {
                         $scope.advert = response.data;
+                        $http({
+                            method: 'GET',
+                            url: global.CrashTradeSettings.baseUrl + 'Adverts/DownloadImages/' + $scope.advert.Id
+                        }).success(function(data){
+                            console.log(data);
+                        });
                     });
                 }
                 manufactureService.getAll().then(function (response) {
