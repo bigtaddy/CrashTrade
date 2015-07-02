@@ -19,7 +19,7 @@ namespace ResourceMetadata.API.Controllers
     {
         private readonly IAdvertService advertService;
 
-        private const string RelativeUploadPath = "~/App_Data/FileUploads";
+        private const string RelativeUploadPath = "~/Images/";
         private string uploadPath = HttpContext.Current.Server.MapPath(RelativeUploadPath);
 
         public AdvertsController(IAdvertService advertService)
@@ -137,19 +137,10 @@ namespace ResourceMetadata.API.Controllers
             var advertModel = advertService.GetAdvertById(id);
             var images = Mapper.Map<ICollection<ImageInfo>, ICollection<ImageViewModel>>(advertModel.ImageInfos);
 
-            var urlBuilder =
-                new System.UriBuilder(Request.RequestUri.Authority)
-                {
-                    Path = Url.Content(RelativeUploadPath),
-                    Query = null,
-                };
-
-            var uri = urlBuilder.Uri;
-            var urlToImage = urlBuilder.ToString();
 
             foreach (var image in images)
             {
-                image.FullName = urlToImage + "/" + image.FullName;
+                image.FullName = Url.Content(RelativeUploadPath + image.FullName);
             }
             return Ok(images);
         }
