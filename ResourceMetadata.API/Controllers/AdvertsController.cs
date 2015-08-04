@@ -130,7 +130,7 @@ namespace ResourceMetadata.API.Controllers
 
 
         [HttpGet]
-        [Authorize(Roles = "Admin, Member")]
+        [AllowAnonymous]
         [Route("api/Adverts/DownloadImages/{id}")]
         public IHttpActionResult DownloadImages(int id)
         {
@@ -197,8 +197,6 @@ namespace ResourceMetadata.API.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
-
-
 
         [HttpDelete]
         [Authorize(Roles = "Admin, Member")]

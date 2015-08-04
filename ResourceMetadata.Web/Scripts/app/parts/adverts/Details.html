@@ -1,118 +1,33 @@
-<!--<div>-->
-    <!--<h5 class="ui header">Детальное описание</h5>-->
-
-    <!--<div class="ui divider"></div>-->
-    <!--<div style="font-size:small">-->
-        <!--<div>-->
-            <!--<strong>Краткое описание: {{advert.Title}}</strong> <br/>-->
-        <!--</div>-->
-    <!--</div>-->
-
-    <!--<div style="font-size:small">-->
-        <!--<div>-->
-            <!--<strong>Год: {{advert.Year}}</strong> <br/>-->
-        <!--</div>-->
-    <!--</div>-->
-
-    <!--<div style="font-size:small">-->
-        <!--<div>-->
-            <!--<strong>Производитель: {{advert.ManufactureName}}</strong> <br/>-->
-        <!--</div>-->
-    <!--</div>-->
-
-    <!--<div style="font-size:small">-->
-        <!--<div>-->
-            <!--<strong>Модель: {{advert.CarModelName}}</strong> <br/>-->
-        <!--</div>-->
-    <!--</div>-->
-
-    <!--<div style="font-size:small">-->
-        <!--<div>-->
-            <!--<strong>Полное описание: {{advert.Description}}</strong> <br/>-->
-        <!--</div>-->
-    <!--</div>-->
-
-    <!--<br/>-->
-
-    <!--<div style="float:right;">-->
-        <!--<a class="ui blue mini button" href="#/Adverts/{{advertType}}/Edit/{{advert.Id}}">Редактировать</a>-->
-    <!--</div>-->
-    <!--<br/><br/>-->
-
-<!--</div>-->
-
-
-
-
 <div class="row site-listing home">
-    <div class="eight columns">
-        <a href="">
-            <ul class="">
-                <li class=""><img alt="" class="site" src="../images/index/5d.jpg"></li>
-            </ul>
-        </a>
-
-        <div class="twelve columns">
-            <div class="three columns ">
-                <ul class="">
-                    <li class=""><img alt="" class="site" src="../images/index/5d.jpg"></li>
-                </ul>
-            </div>
-            <div class="three columns ">
-                <ul class="">
-                    <li class=""><img alt="" class="site" src="../images/index/5d.jpg"></li>
-                </ul>
-            </div>
-            <div class="three columns ">
-                <ul class="">
-                    <li class=""><img alt="" class="site" src="../images/index/5d.jpg"></li>
-                </ul>
-            </div>
-            <div class="three columns ">
-                <ul class="">
-                    <li class=""><img alt="" class="site" src="../images/index/5d.jpg"></li>
-                </ul>
-            </div>
-            <div class="three columns ">
-                <ul class="">
-                    <li class=""><img alt="" class="site" src="../images/index/5d.jpg"></li>
-                </ul>
-            </div>
-            <div class="three columns ">
-                <ul class="">
-                    <li class=""><img alt="" class="site" src="../images/index/5d.jpg"></li>
-                </ul>
-            </div>
-            <div class="three columns ">
-                <ul class="">
-                    <!--<li class=""><img alt="" class="site" src="image/5d.jpg"></li>-->
-                </ul>
-            </div>
-
-        </div>
-    </div>
+    <div photo-swipe images-promise="imagesPromise.promise"></div>
 
 
-    <div class="four mobile-four columns end">
-        <div class="first-section">
-            <h3 class="regular">Контакты:</h3>
-            <hr>
-            <h5 class="regular">Номер телефона:</h5>
-            <h5 class="regular">+375 29 777 77 77</h5>
-            <h5 class="regular">Иван Иванович</h5>
-            <h5 class="regular">Звонить с 9.00 - 21.00</h5>
-            <hr>
-            <h3 class="regular">{{advert.ManufactureName}} {{advert.CarModelName}}</h3>
-            <h3 class="regular">{{advert.Year}} г.в.</h3>
-        </div>
-    </div>
-    <div style="clear: both;"></div>
-    <div class="twelve mobile-twelve columns end">
-        <div class="first-section">
-            <h3 class="regular">Детальное описание:</h3>
-            <hr>
-            <p>{{advert.Description}}</p>
-        </div>
-    </div>
-    <hr class="solid">
 </div>
+
+
+<div class="four mobile-four columns end">
+    <div class="first-section">
+        <h3 class="regular">Контакты:</h3>
+        <hr>
+        <h5 class="regular">Номер телефона:</h5>
+        <h5 class="regular">+375 29 777 77 77</h5>
+        <h5 class="regular">Иван Иванович</h5>
+        <h5 class="regular">Звонить с 9.00 - 21.00</h5>
+        <hr>
+        <h3 class="regular">{{advert.ManufactureName}} {{advert.CarModelName}}</h3>
+
+        <h3 class="regular">{{advert.Year}} г.в.</h3>
+    </div>
+</div>
+<div style="clear: both;"></div>
+<div class="twelve mobile-twelve columns end">
+    <div class="first-section">
+        <h3 class="regular">Детальное описание:</h3>
+        <hr>
+        <p>{{advert.Description}}</p>
+    </div>
+</div>
+<hr class="solid">
+</div>
+
+

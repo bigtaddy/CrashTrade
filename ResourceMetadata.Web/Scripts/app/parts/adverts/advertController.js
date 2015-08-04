@@ -2,8 +2,8 @@
 
     'use strict';
 
-    app.controller('AdvertCtrl', ['$scope', '$location', '$routeParams', 'entityService', 'manufactureService', 'carModelService', 'advertService', '$http', 'flowFactory',
-        function ($scope, $location, $routeParams, entityService, manufactureService, carModelService, advertService, $http, flowFactory) {
+    app.controller('AdvertCtrl', ['$scope', '$location', '$routeParams', 'entityService', 'manufactureService', 'carModelService', 'advertService', '$http', 'flowFactory', '$q',
+        function ($scope, $location, $routeParams, entityService, manufactureService, carModelService, advertService, $http, flowFactory, $q) {
 
             $scope.flowObject = flowFactory.create({
                 chunkSize: 1024 * 1024
@@ -77,13 +77,19 @@
 
             function init() {
                 if ($routeParams.advertId > 0) {
+                    $scope.imagesPromise = $q.defer();
+
                     entityService.getById($routeParams.advertId, "Adverts").then(function (response) {
                         $scope.advert = response.data;
+
+
+
                         $http({
                             method: 'GET',
                             url: global.CrashTradeSettings.baseUrl + 'Adverts/DownloadImages/' + $scope.advert.Id
                         }).success(function(data){
                             console.log(data);
+                            $scope.imagesPromise.resolve(data);
                         });
                     });
                 }

@@ -297,6 +297,12 @@ textarea {
     opacity: 0;
 }
 
-
-
-
+.gallery-box {
+    width: 200px;
+    padding: 5px;
+    margin: 7px;
+    float: left;
+    min-height: 200px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+}
