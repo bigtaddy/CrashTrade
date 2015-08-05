@@ -15,7 +15,8 @@
         <label for="FuelType">
             Тип объявления<span style="color: Red">*</span>
         </label>
-        <select ui-select2 ng-model="advert.AdvertType" ng-required="true" data-placeholder="Тип объявления"  style="width:100%;">
+        <select ui-select2 ng-model="advert.AdvertType" ng-required="true" data-placeholder="Тип объявления"
+                style="width:100%;">
             <option value="">--Выбрать--</option>
             <option value="1">Продажа</option>
             <option value="2">Восстановление</option>
@@ -70,17 +71,28 @@
         </select>
     </div>
     <div class="ui divider"></div>
-
+    <div class="field" style="margin-bottom:10px;">
+        <label>
+            Загруженные изображения
+        </label>
+        <manage-images images="images"></manage-images>
+    </div>
+    <div class="ui divider"></div>
 
 
     <div class="inline field">
-        <label for="Images">
-           Фото
+        <label>
+            Фото
         </label>
-        <div flow-init="" flow-object="flowObject" flow-files-submitted="$flow.upload()" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" class="ng-scope">
+
+        <div flow-init="" flow-object="flowObject" flow-files-submitted="$flow.upload()"
+             flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" class="ng-scope">
             <div class="drop" flow-drop="" ng-class="dropClass">
-                <span class="btn btn-default" flow-btn="">Загрузить фото<input type="file" multiple="multiple" style="visibility: hidden; position: absolute;"></span>
-                <span class="btn btn-default" flow-btn="" flow-directory="" ng-show="$flow.supportDirectory">Загрузить папку с фото<input type="file" multiple="multiple" webkitdirectory="webkitdirectory" style="visibility: hidden; position: absolute;"></span>
+                <span class="btn btn-default" flow-btn="">Загрузить фото<input type="file" multiple="multiple"
+                                                                               style="visibility: hidden; position: absolute;"></span>
+                <span class="btn btn-default" flow-btn="" flow-directory="" ng-show="$flow.supportDirectory">Загрузить папку с фото<input
+                        type="file" multiple="multiple" webkitdirectory="webkitdirectory"
+                        style="visibility: hidden; position: absolute;"></span>
                 <b>OR</b>
                 Перетащите файл сюда
             </div>
@@ -90,16 +102,18 @@
             <div>
                 <div ng-repeat="file in $flow.files" class="gallery-box ng-scope">
                     <span class="title ng-binding">Безымянный.png</span>
+
                     <div class="thumbnail" ng-show="$flow.files.length">
                         <img flow-img="file">
                     </div>
                     <div class="progress progress-striped" ng-class="{active: file.isUploading()}">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ng-style="{width: (file.progress() * 100) + '%'}" style="width: 100%;">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+                             aria-valuemax="100" ng-style="{width: (file.progress() * 100) + '%'}" style="width: 100%;">
                             <span class="sr-only ng-binding">{{(file.progress() * 100)}}% Завершено</span>
                         </div>
                     </div>
                     <div class="ui negative message" ng-show="file.size > 2048000">
-                        <p >превышен максимальный размер фото 2мб</p>
+                        <p>превышен максимальный размер фото 2мб</p>
 
                     </div>
                     <div class="btn-group">
@@ -118,7 +132,8 @@
 
 
     <div class="inline field">
-        <button data-ng-disabled="advertForm.$invalid || isSubmitDisabled()" data-ng-click="editAdvert(advert)" class="ui blue mini button">
+        <button data-ng-disabled="advertForm.$invalid || isSubmitDisabled()" data-ng-click="editAdvert(advert)"
+                class="ui blue mini button">
             Подтвердить
         </button>
         <a class="ui black mini button" href="#/Adverts/{{advertType}}">Отменить</a>

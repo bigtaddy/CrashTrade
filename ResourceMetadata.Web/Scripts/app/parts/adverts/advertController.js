@@ -90,6 +90,7 @@
                         }).success(function(data){
                             console.log(data);
                             $scope.imagesPromise.resolve(data);
+                            $scope.images = data;
                         });
                     });
                 }
