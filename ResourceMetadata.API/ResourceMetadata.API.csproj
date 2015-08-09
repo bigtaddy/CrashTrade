@@ -243,6 +243,7 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+    <None Include="Properties\PublishProfiles\crash.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ResourceMetadata.Data\ResourceMetadata.Data.csproj">

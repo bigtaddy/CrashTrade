@@ -6,7 +6,7 @@
         return {
             restrict: 'E',
             replace: true,
-            templateUrl: '/Scripts/app/partials/TopMenu.html',
+            templateUrl: 'Scripts/app/partials/TopMenu.html',
             link: function (scope, element, attrs) {
                 var menuItems = element.find("a");
                 menuItems.on('click', function () {
