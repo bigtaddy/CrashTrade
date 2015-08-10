@@ -15,12 +15,14 @@
         <label for="FuelType">
             Тип объявления<span style="color: Red">*</span>
         </label>
-        <select ui-select2 ng-model="advert.AdvertType" ng-required="true" data-placeholder="Тип объявления"
-                style="width:100%;">
-            <option value="">--Выбрать--</option>
-            <option value="1">Продажа</option>
-            <option value="2">Восстановление</option>
-        </select>
+
+
+        <ui-select ng-model="advert.AdvertType" ng-required="true" theme="selectize" style="width:100%;">
+            <ui-select-match placeholder="Select type of advert...">{{$select.selected.Name}}</ui-select-match>
+            <ui-select-choices repeat="advertType.Id as advertType in advertTypes | filter: $select.search">
+                <span ng-bind-html="advertType.Name | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
     </div>
 
     <div class="field">
@@ -33,11 +35,17 @@
         <label for="manufacture">
             Производитель<span style="color: Red">*</span>
         </label>
-        <select ui-select2 ng-model="advert.ManufactureId" ng-required="true" data-placeholder="Производитель"
-                id="manufacture" style="width:100%;">
-            <option value="">--Выбрать--</option>
-            <option ng-repeat="manufacture in manufactures" value="{{manufacture.Id}}">{{manufacture.Name}}</option>
-        </select>
+
+        <ui-select ng-model="advert.ManufactureId" ng-required="true" theme="selectize" style="width:100%;"
+                   id="manufacture">
+            <ui-select-match placeholder="Select or search a manufacture in the list...">{{$select.selected.Name}}
+            </ui-select-match>
+            <ui-select-choices repeat="manufacture.Id as manufacture in manufactures | filter: $select.search">
+                <span ng-bind-html="manufacture.Name | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+
+
     </div>
     <div class="ui divider"></div>
 
@@ -45,11 +53,14 @@
         <label for="carModel">
             Модель<span style="color: Red">*</span>
         </label>
-        <select ui-select2 ng-model="advert.CarModelId" ng-required="true" data-placeholder="Модель" id="carModel"
-                style="width:100%;">
-            <option value="">--Выбрать--</option>
-            <option ng-repeat="carModel in carModels" value="{{carModel.Id}}">{{carModel.Name}}</option>
-        </select>
+
+        <ui-select ng-model="advert.CarModelId" theme="selectize" ng-required="true" style="width:100%;" id="carModel">
+            <ui-select-match placeholder="Select or search a carModel in the list...">{{$select.selected.Name}}
+            </ui-select-match>
+            <ui-select-choices repeat="carModel.Id as carModel in carModels | filter: $select.search">
+                <span ng-bind-html="carModel.Name | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
     </div>
     <div class="ui divider"></div>
 
@@ -63,12 +74,14 @@
         <label for="FuelType">
             Тип топлива<span style="color: Red">*</span>
         </label>
-        <select ui-select2 ng-model="advert.FuelType" convert-to-number ng-required="true"
-                data-placeholder="Тип топлива" id="FuelType" style="width:100%;">
-            <option value="">--Выбрать--</option>
-            <option value="1">Бензин</option>
-            <option value="2">Дизель</option>
-        </select>
+
+        <ui-select ng-model="advert.FuelType" theme="selectize" ng-required="true" style="width:100%;" id="FuelType">
+            <ui-select-match placeholder="Select or search a carModel in the list...">{{$select.selected.Name}}
+            </ui-select-match>
+            <ui-select-choices repeat="fuelType.Id as fuelType in fuelTypes | filter: $select.search">
+                <span ng-bind-html="fuelType.Name | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
     </div>
     <div class="ui divider"></div>
     <div class="field" style="margin-bottom:10px;">
@@ -125,7 +138,6 @@
                 </div>
                 <div class="clear"></div>
             </div>
-
         </div>
     </div>
     <div class="ui divider"></div>
