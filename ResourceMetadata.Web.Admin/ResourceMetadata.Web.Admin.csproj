@@ -73,6 +73,7 @@
     <Content Include="Content\themes\fonts\icons.woff" />
     <Content Include="Content\themes\jasmine-2.0.0\jasmine.css" />
     <Content Include="package.json" />
+    <Content Include="styles\bootstrap.css.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -163,6 +164,12 @@
     <Content Include="Scripts\app\parts\activities\activitiescontroller.js" />
     <Content Include="Scripts\app\parts\activities\activityaddcontroller.js" />
     <Content Include="Scripts\app\parts\activities\Add.html" />
+    <Content Include="Scripts\app\parts\adverts\Add.html" />
+    <Content Include="Scripts\app\parts\adverts\advertController.js" />
+    <Content Include="Scripts\app\parts\adverts\advertsController.js" />
+    <Content Include="Scripts\app\parts\adverts\Details.html" />
+    <Content Include="Scripts\app\parts\adverts\Edit.html" />
+    <Content Include="Scripts\app\parts\adverts\Listing.html" />
     <Content Include="Scripts\app\parts\carModels\Add.html" />
     <Content Include="Scripts\app\parts\carModels\carModelController.js" />
     <Content Include="Scripts\app\parts\carModels\carModelsController.js" />
@@ -171,25 +178,12 @@
     <Content Include="Scripts\app\parts\carModels\Listing.html" />
     <Content Include="Scripts\app\parts\home\Home.html" />
     <Content Include="Scripts\app\parts\home\homecontroller.js" />
-    <Content Include="Scripts\app\parts\locations\Add.html" />
-    <Content Include="Scripts\app\parts\locations\Edit.html" />
-    <Content Include="Scripts\app\parts\locations\locationcontroller.js" />
-    <Content Include="Scripts\app\parts\locations\Locations.html" />
-    <Content Include="Scripts\app\parts\locations\locationscontroller.js" />
     <Content Include="Scripts\app\parts\manufactures\Add.html" />
     <Content Include="Scripts\app\parts\manufactures\Details.html" />
     <Content Include="Scripts\app\parts\manufactures\Edit.html" />
     <Content Include="Scripts\app\parts\manufactures\Listing.html" />
     <Content Include="Scripts\app\parts\manufactures\manufactureController.js" />
     <Content Include="Scripts\app\parts\manufactures\manufacturesController.js" />
-    <Content Include="Scripts\app\parts\resources\Add.html" />
-    <Content Include="Scripts\app\parts\resources\Details.html" />
-    <Content Include="Scripts\app\parts\resources\Edit.html" />
-    <Content Include="Scripts\app\parts\resources\resourcecontroller.js" />
-    <Content Include="Scripts\app\parts\resources\resourceeditcontroller.js" />
-    <Content Include="Scripts\app\parts\resources\Resources-ng-table.html" />
-    <Content Include="Scripts\app\parts\resources\Resources.html" />
-    <Content Include="Scripts\app\parts\resources\resourcescontroller.js" />
     <Content Include="Scripts\app\parts\shared\Error.html" />
     <Content Include="Scripts\app\parts\shared\Login.html" />
     <Content Include="Scripts\app\parts\shared\Register.html" />
@@ -245,6 +239,16 @@
     <Content Include="Scripts\test\spec\resourceservicespec.js" />
     <Content Include="Scripts\test\spec\spechelper.js" />
     <Content Include="SpecRunner.html" />
+    <Content Include="styles\bootstrap.css" />
+    <Content Include="styles\create-account.css" />
+    <Content Include="styles\create.css" />
+    <Content Include="styles\delete.css" />
+    <Content Include="styles\detail.css" />
+    <Content Include="styles\login.css" />
+    <Content Include="styles\main-part.css" />
+    <Content Include="styles\main.css" />
+    <Content Include="styles\style.css" />
+    <Content Include="styles\style2.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

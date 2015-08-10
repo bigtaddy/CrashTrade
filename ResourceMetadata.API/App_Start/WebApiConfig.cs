@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Routing;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
+using System.Web.Http.Cors;
 
 
 namespace ResourceMetadata.API
@@ -14,8 +15,10 @@ namespace ResourceMetadata.API
     {
         public static void Register(HttpConfiguration config)
         {
+            var corsAttr = new EnableCorsAttribute("http://admin.c-tr.by", "*", "*");
+            config.EnableCors(corsAttr);
 
-            config.EnableCors();
+
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();

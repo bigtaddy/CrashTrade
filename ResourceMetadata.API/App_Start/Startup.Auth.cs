@@ -9,6 +9,10 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using ResourceMetadata.API.Providers;
 using ResourceMetadata.Data;
+using System.Threading.Tasks;
+using System.Web.Http;
+using Microsoft.Owin.Cors;
+using System.Web.Cors;
 
 namespace ResourceMetadata.API
 {
