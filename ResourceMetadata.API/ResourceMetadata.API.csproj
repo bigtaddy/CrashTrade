@@ -202,6 +202,7 @@
     </Compile>
     <Compile Include="Infrastructure\DbExceptionFilter.cs" />
     <Compile Include="Infrastructure\ExceptionFilter.cs" />
+    <Compile Include="Infrastructure\ResponseHandler.cs" />
     <Compile Include="Mappers\AutoMapperConfiguration.cs" />
     <Compile Include="Mappers\DomainToViewModelMappingProfile.cs" />
     <Compile Include="Mappers\ViewModelToDomainMappingProfile.cs" />

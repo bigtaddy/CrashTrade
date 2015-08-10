@@ -42,9 +42,10 @@ namespace ResourceMetadata.API.Controllers
 
         [HttpPost]
         [OverrideAuthorization]
+        [Route("api/Register")]
         public async Task<IHttpActionResult> Post(RegisterViewModel viewModel)
         {
-            if (ModelState.IsValid)
+                if (ModelState.IsValid)
             {
                 try
                 {

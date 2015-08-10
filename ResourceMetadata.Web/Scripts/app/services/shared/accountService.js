@@ -4,7 +4,6 @@
 
     app.factory('accountService', ['$http', 'serviceHelperSvc', function ($http, serviceHelper) {
 
-        var Account = '/api/Account/';
         var tokenUrl = global.CrashTradeSettings.tokenUrl;
 
         return {
@@ -23,7 +22,8 @@
 
                 return $http({
                     method: 'POST',
-                    url: Account,
+                    url: global.CrashTradeSettings.baseUrl + 'Register' +
+                    '',
                     data: userRegistration
                 })
             },

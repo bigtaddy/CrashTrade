@@ -16,4 +16,12 @@ add-migration -ProjectName ResourceMetadata.Data -StartUpProjectName ResourceMet
  update-database -ProjectName ResourceMetadata.Data -StartUpProjectName ResourceMetadata.API
 
 
+
+ SQl SCRIPT  ------------------
+Update-Database -ProjectName ResourceMetadata.Data -StartUpProjectName ResourceMetadata.API -Script -SourceMigration: $InitialDatabase
+
+---------------------------------------------
+
+
+
       /* http://www.strathweb.com/2012/04/html5-drag-and-drop-asynchronous-multi-file-upload-with-asp-net-webapi/  */
