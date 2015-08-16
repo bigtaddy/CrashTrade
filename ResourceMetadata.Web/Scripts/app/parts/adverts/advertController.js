@@ -81,6 +81,8 @@
                         getDropDownDataData();
                         getImages();
                     });
+                } else {
+                    getDropDownDataData();
                 }
 
                 $scope.advertTypes = [{Id: 1, Name: "Sale"}, {Id: 2, Name: "Repair"}];
@@ -91,7 +93,7 @@
              * setCarModelsByManufactureId
              * @param manufactureId
              */
-            function setCarModelsArrayByManufactureId(manufactureId){
+            function setCarModelsArrayByManufactureId(manufactureId) {
                 for (var i = 0; i < $scope.manufactures.length; i++) {
                     if ($scope.manufactures[i].Id == manufactureId) {
                         $scope.carModels = $scope.manufactures[i].CarModels;
@@ -103,7 +105,7 @@
             /**
              * getDropDownDataData
              */
-            function getDropDownDataData(){
+            function getDropDownDataData() {
                 manufactureService.getAll().then(function (response) {
                     $scope.manufactures = response.data;
                     setCarModelsArrayByManufactureId($scope.advert.ManufactureId);
@@ -121,7 +123,7 @@
             /**
              * getImages
              */
-            function getImages(){
+            function getImages() {
                 $http({
                     method: 'GET',
                     url: global.CrashTradeSettings.baseUrl + 'Adverts/DownloadImages/' + $scope.advert.Id

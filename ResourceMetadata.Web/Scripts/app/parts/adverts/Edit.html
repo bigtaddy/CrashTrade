@@ -2,87 +2,7 @@
 <div class="ui divider"></div>
 <form name="advertForm" role="form" class="ui secondary small form segment">
     <h5 class="ui header">Редактировать объявление</h5>
-
-    <div class="ui divider"></div>
-
-    <div class="field">
-        <label for="title">Заголовок<span style="color:Red">*</span></label>
-        <input type="text" id="title" placeholder="Name" required data-ng-model="advert.Title">
-    </div>
-    <div class="ui divider"></div>
-
-    <div class="field" style="margin-bottom:10px;">
-        <label for="FuelType">
-            Тип объявления<span style="color: Red">*</span>
-        </label>
-
-
-        <ui-select ng-model="advert.AdvertType" ng-required="true" theme="selectize" style="width:100%;">
-            <ui-select-match placeholder="Select type of advert...">{{$select.selected.Name}}</ui-select-match>
-            <ui-select-choices repeat="advertType.Id as advertType in advertTypes | filter: $select.search">
-                <span ng-bind-html="advertType.Name | highlight: $select.search"></span>
-            </ui-select-choices>
-        </ui-select>
-    </div>
-
-    <div class="field">
-        <label for="description">Описание<span style="color:Red">*</span></label>
-        <textarea id="description" placeholder="Description" required data-ng-model="advert.Description"/>
-    </div>
-    <div class="ui divider"></div>
-
-    <div class="field" style="margin-bottom:10px;">
-        <label for="manufacture">
-            Производитель<span style="color: Red">*</span>
-        </label>
-
-        <ui-select ng-model="advert.ManufactureId" ng-required="true" theme="selectize" style="width:100%;"
-                   id="manufacture">
-            <ui-select-match placeholder="Select or search a manufacture in the list...">{{$select.selected.Name}}
-            </ui-select-match>
-            <ui-select-choices repeat="manufacture.Id as manufacture in manufactures | filter: $select.search">
-                <span ng-bind-html="manufacture.Name | highlight: $select.search"></span>
-            </ui-select-choices>
-        </ui-select>
-
-
-    </div>
-    <div class="ui divider"></div>
-
-    <div class="field" style="margin-bottom:10px;">
-        <label for="carModel">
-            Модель<span style="color: Red">*</span>
-        </label>
-
-        <ui-select ng-model="advert.CarModelId" theme="selectize" ng-required="true" style="width:100%;" id="carModel">
-            <ui-select-match placeholder="Select or search a carModel in the list...">{{$select.selected.Name}}
-            </ui-select-match>
-            <ui-select-choices repeat="carModel.Id as carModel in carModels | filter: $select.search">
-                <span ng-bind-html="carModel.Name | highlight: $select.search"></span>
-            </ui-select-choices>
-        </ui-select>
-    </div>
-    <div class="ui divider"></div>
-
-    <div class="field">
-        <label for="Year">Год выпуска<span style="color:Red">*</span></label>
-        <input type="number" id="Year" min="1900" max="2020" placeholder="Year" required data-ng-model="advert.Year">
-    </div>
-    <div class="ui divider"></div>
-
-    <div class="field" style="margin-bottom:10px;">
-        <label for="FuelType">
-            Тип топлива<span style="color: Red">*</span>
-        </label>
-
-        <ui-select ng-model="advert.FuelType" theme="selectize" ng-required="true" style="width:100%;" id="FuelType">
-            <ui-select-match placeholder="Select or search a carModel in the list...">{{$select.selected.Name}}
-            </ui-select-match>
-            <ui-select-choices repeat="fuelType.Id as fuelType in fuelTypes | filter: $select.search">
-                <span ng-bind-html="fuelType.Name | highlight: $select.search"></span>
-            </ui-select-choices>
-        </ui-select>
-    </div>
+    <adverts-form></adverts-form>
     <div class="ui divider"></div>
     <div class="field" style="margin-bottom:10px;">
         <label>
@@ -91,59 +11,9 @@
         <manage-images images="images"></manage-images>
     </div>
     <div class="ui divider"></div>
-
-
+    <load-images></load-images>
     <div class="inline field">
-        <label>
-            Фото
-        </label>
 
-        <div flow-init="" flow-object="flowObject" flow-files-submitted="$flow.upload()"
-             flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" class="ng-scope">
-            <div class="drop" flow-drop="" ng-class="dropClass">
-                <span class="btn btn-default" flow-btn="">Загрузить фото<input type="file" multiple="multiple"
-                                                                               style="visibility: hidden; position: absolute;"></span>
-                <span class="btn btn-default" flow-btn="" flow-directory="" ng-show="$flow.supportDirectory">Загрузить папку с фото<input
-                        type="file" multiple="multiple" webkitdirectory="webkitdirectory"
-                        style="visibility: hidden; position: absolute;"></span>
-                <b>OR</b>
-                Перетащите файл сюда
-            </div>
-
-            <br>
-
-            <div>
-                <div ng-repeat="file in $flow.files" class="gallery-box ng-scope">
-                    <span class="title ng-binding">Безымянный.png</span>
-
-                    <div class="thumbnail" ng-show="$flow.files.length">
-                        <img flow-img="file">
-                    </div>
-                    <div class="progress progress-striped" ng-class="{active: file.isUploading()}">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
-                             aria-valuemax="100" ng-style="{width: (file.progress() * 100) + '%'}" style="width: 100%;">
-                            <span class="sr-only ng-binding">{{(file.progress() * 100)}}% Завершено</span>
-                        </div>
-                    </div>
-                    <div class="ui negative message" ng-show="file.size > 2048000">
-                        <p>превышен максимальный размер фото 2мб</p>
-
-                    </div>
-                    <div class="btn-group">
-                        <a class="btn btn-xs btn-danger" ng-click="file.cancel()">
-                            Удалить
-                        </a>
-
-                    </div>
-                </div>
-                <div class="clear"></div>
-            </div>
-        </div>
-    </div>
-    <div class="ui divider"></div>
-
-
-    <div class="inline field">
         <button data-ng-disabled="advertForm.$invalid || isSubmitDisabled()" data-ng-click="editAdvert(advert)"
                 class="ui blue mini button">
             Подтвердить
