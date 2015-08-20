@@ -55,11 +55,9 @@
 
 
 <section id="passport" class="social-login-disabled">
-    <form accept-charset="UTF-8" action="/session" method="post">
-        <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input
-                name="authenticity_token" type="hidden" value=""></div>
+    <form method="post">
         <div class="passport-left">
-            <h3><strong>CrashTrade.com</strong></h3>
+            <h3><strong>CrashTrade</strong></h3>
             <div ng-show="errorMessage">
                 <div class="error-message">
                     {{errorMessage}}
@@ -72,9 +70,9 @@
             <input type="text" id="firstname" placeholder="Имя" required data-ng-model="userRegistration.FirstName" />
             <input type="text" id="lastname" placeholder="Фамилия" required data-ng-model="userRegistration.LastName" />
             <input type="email" id="email" name="email" placeholder="Email" required data-ng-model="userRegistration.Email" />
-            <input type="password" id="password" name="password" placeholder="Password" ng-minlength="6" required data-ng-model="userRegistration.Password" />
+            <input type="password" id="password" name="password" placeholder="Пароль" ng-minlength="6" required data-ng-model="userRegistration.Password" />
             <span ng-show="registrationform.password.$dirty && registrationform.password.$error.minlength" class="field-error">Пароль должен содержать не менее 6 символов</span>
-            <input type="password" id="confirmpassword" placeholder="Password" required data-ng-model="userRegistration.ConfirmPassword" />
+            <input type="password" id="confirmpassword" placeholder="Повторите пароль" required data-ng-model="userRegistration.ConfirmPassword" />
             <button data-ng-disabled="registrationform.$invalid" data-ng-click="register(userRegistration)">
                 Зарегистрироваться
             </button>

@@ -53,7 +53,7 @@
                 redirectTo: '/Home'
             });
 
-  //      $httpProvider.interceptors.push('authorizationInterceptor');
+        $httpProvider.interceptors.push('authorizationInterceptor');
         $httpProvider.interceptors.push('httpInterceptor');
 
     }]).factory('userProfileSvc', function () {

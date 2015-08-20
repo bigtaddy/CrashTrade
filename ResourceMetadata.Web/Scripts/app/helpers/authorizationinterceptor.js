@@ -5,10 +5,12 @@
     app.factory('authorizationInterceptor', ['$rootScope', '$q', '$location', function ($rootScope, $q, $location) {
         return {
             response: function (response) {
-                if (!global.sessionStorage[global.CrashTradeSettings.tokenKey]) {
+                /*if (!global.sessionStorage[global.CrashTradeSettings.tokenKey]) {
                     $rootScope.$broadcast('logOff');
-                    $location.url('/Login');
-                }
+                    if($location.$$path !== '/Register') {
+                        $location.url('/Login');
+                    }
+                }*/
                 return response || $q.when(response);
             },
             responseError: function (rejection) {
