@@ -69,6 +69,7 @@
         $scope.logOff = function () {
             accountService.logOffUser();
             $scope.$emit('logOff');
+            $location.url('/Login');
         };
     }]);
 

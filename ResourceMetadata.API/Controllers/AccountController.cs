@@ -41,8 +41,8 @@ namespace ResourceMetadata.API.Controllers
         }
 
         [HttpPost]
-        [OverrideAuthorization]
-        [Route("api/Register")]
+        [AllowAnonymous]
+        [Route("api/Account/Register")]
         public async Task<IHttpActionResult> Post(RegisterViewModel viewModel)
         {
                 if (ModelState.IsValid)

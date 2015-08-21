@@ -85,7 +85,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/08/2015 09:46:05</publishTime>
     </File>
     <File Include="bin/ResourceMetadata.API.dll">
-      <publishTime>08/11/2015 01:10:43</publishTime>
+      <publishTime>08/16/2015 23:07:54</publishTime>
     </File>
     <File Include="bin/ResourceMetadata.Data.dll">
       <publishTime>08/09/2015 21:31:59</publishTime>
@@ -148,7 +148,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/07/2015 17:59:59</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/09/2015 21:32:02</publishTime>
+      <publishTime>08/16/2015 21:57:57</publishTime>
     </File>
   </ItemGroup>
 </Project>

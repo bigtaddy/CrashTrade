@@ -198,7 +198,7 @@
     <Compile Include="Controllers\ManufacturesController.cs" />
     <Compile Include="Enums\Enum.cs" />
     <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
+      <DependentUpon>Global.asax1</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\DbExceptionFilter.cs" />
     <Compile Include="Infrastructure\ExceptionFilter.cs" />
@@ -226,7 +226,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="favicon.ico" />
-    <Content Include="Global.asax" />
+    <None Include="Global.asax1" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

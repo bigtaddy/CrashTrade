@@ -22,8 +22,7 @@
 
                 return $http({
                     method: 'POST',
-                    url: global.CrashTradeSettings.baseUrl + 'Register' +
-                    '',
+                    url: global.CrashTradeSettings.baseUrl + 'Account/Register/',
                     data: userRegistration
                 })
             },
