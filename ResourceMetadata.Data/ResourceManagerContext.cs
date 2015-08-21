@@ -25,6 +25,7 @@ namespace ResourceMetadata.Data
         public DbSet<CarModel> CarModels { get; set; }
         public DbSet<Manufacture> Manufactures { get; set; }
         public DbSet<Advert> Adverts { get; set; }
+        public DbSet<ImageInfo> ImageInfos { get; set; }
 
         //public DbSet<User> Users { get; set; }
 

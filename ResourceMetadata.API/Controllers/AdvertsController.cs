@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -10,6 +12,8 @@ using System.Web.Http;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
 using ResourceMetadata.API.ViewModels;
+using ResourceMetadata.Data;
+using ResourceMetadata.Data.Infrastructure;
 using ResourceMetadata.Models;
 using ResourceMetadata.Service;
 
@@ -200,10 +204,25 @@ namespace ResourceMetadata.API.Controllers
 
         [HttpDelete]
         [Authorize(Roles = "Admin, Member")]
-        [Route("api/Adverts/DeleteImages/{id}")]
-        public HttpResponseMessage DeleteImages(int id)
+        [Route("api/Adverts/DeleteImages/")]
+        public HttpResponseMessage DeleteImages(int imageId, int advertId)
         {
-            var advertModel = advertService.GetAdvertById(id);
+            var advertModel = advertService.GetAdvertById(advertId);
+            var image = advertModel.ImageInfos.Where(c => c.Id == imageId).FirstOrDefault();
+            var imageName = image.FullName;
+
+
+//            var fullPathName = uploadPath + imageName;
+//            File.Delete(fullPathName);
+
+
+
+//            ResourceManagerEntities rm = new ResourceManagerEntities();
+//            advertModel.ImageInfos.Remove(image);
+//            advertService.UpdateAdvert(advertModel);
+//            IDbSet<ImageInfo> dbset = rm.Set<ImageInfo>();
+//            dbset.Remove(image);
+//            rm.SaveChanges();
 
             return Request.CreateResponse(
                 HttpStatusCode.OK);

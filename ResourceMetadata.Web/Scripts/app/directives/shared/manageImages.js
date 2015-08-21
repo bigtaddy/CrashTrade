@@ -9,7 +9,8 @@
         return {
             restrict: 'E',
             scope: {
-                images: "="
+                images: "=",
+                advertId: "="
             },
             template: '<div>' +
             '  <div ng-repeat="image in images" class="gallery-box ng-scope">' +
@@ -25,13 +26,11 @@
             link: function (scope, element, attrs) {
                 scope.deleteImage = function (imageId, index) {
 
-
-                    entityService.deleteById(imageId, "Adverts/DeleteImages")
+                    var params = "?imageId=" + imageId + "&" + "advertId=" + scope.advertId;
+                    entityService.deleteById(params, "Adverts/DeleteImages")
                         .then(function (data) {
                             scope.images.splice(index, 1)
                         });
-
-
                 }
             }
         };
