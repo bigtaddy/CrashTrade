@@ -1,4 +1,4 @@
-(function (global) {
+﻿(function (global) {
 
     'use strict';
 
@@ -85,8 +85,8 @@
                     getDropDownDataData();
                 }
 
-                $scope.advertTypes = [{Id: 1, Name: "Sale"}, {Id: 2, Name: "Repair"}];
-                $scope.fuelTypes = [{Id: 1, Name: "Benzin"}, {Id: 2, Name: "Diesel"}];
+                $scope.advertTypes = [{Id: 1, Name: "Продажа"}, {Id: 2, Name: "Восстановление"}];
+                $scope.fuelTypes = [{Id: 1, Name: "Бензин"}, {Id: 2, Name: "Дизель"}];
             }
 
             /**
