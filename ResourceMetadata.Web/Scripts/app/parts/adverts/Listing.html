@@ -15,12 +15,8 @@
             </div>
             <div class="second-section">
                 <hr>
-                <a class="button" href="">
-                    Фото
-                </a>
                 <br/>
-                <a ng-show="isAuthenticated && advertType == 'My'" href="#/Adverts/Edit/{{advert.Id}}"><i
-                        class="edit icon"></i></a>
+                <a ng-show="isAuthenticated && advertType == 'My'" href="#/Adverts/Edit/{{advert.Id}}">Edit</a>
 
                 <i ng-show="isAuthenticated && advertType == 'My'" class="trash icon" style="float: right;" title="Удалить"
                    message="Вы хотите удалить данный элемент?"
