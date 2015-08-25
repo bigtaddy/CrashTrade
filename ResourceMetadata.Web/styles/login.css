@@ -2265,7 +2265,7 @@ img {
 
 /* line 310, ../../../../shared/bundle/ruby/2.1.0/gems/zurb-foundation-4.2.2/scss/foundation/components/_global.scss */
 textarea {
-    height: auto;
+    height: 200px;
     min-height: 50px;
 }
 

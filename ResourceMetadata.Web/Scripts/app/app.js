@@ -2,7 +2,7 @@
 
     'use strict';
 
-    global.app = angular.module('resourceManagerApp', ['ngSanitize', 'ui.select', 'ngTable', 'ngRoute', 'ngResource', 'ngAnimate', 'custom-utilities', 'flow', 'ngPhotoSwipe']);
+    global.app = angular.module('resourceManagerApp', ['ngSanitize', 'ui.select', 'ngTable', 'ngRoute', 'ngResource', 'ngAnimate', 'custom-utilities', 'flow', 'ngPhotoSwipe','angular-loading-bar']);
 
     app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
         $httpProvider.defaults.useXDomain = true;
@@ -54,7 +54,7 @@
             });
 
         $httpProvider.interceptors.push('authorizationInterceptor');
-        $httpProvider.interceptors.push('httpInterceptor');
+//        $httpProvider.interceptors.push('httpInterceptor');
 
     }]).factory('userProfileSvc', function () {
 

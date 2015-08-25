@@ -19,7 +19,7 @@
             '    </div>' +
 
             '    <div class="btn-group">' +
-            '      <a class="btn btn-xs btn-danger" ng-click="deleteImage(image.Id, $index)"> Delete </a>' +
+            '      <a class="btn btn-xs btn-danger" ng-click="deleteImage(image.Id, $index)"> Удалить </a>' +
             '    </div>' +
             '  </div>' +
             '</div>',
