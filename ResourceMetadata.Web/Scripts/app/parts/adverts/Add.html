@@ -1,20 +1,16 @@
-<h5 class="ui header">Добавить объявление</h5>
-<div class="ui divider"></div>
 <form name="advertForm" role="form" class="ui secondary small form segment">
-    <h5 class="ui header">Добавить объявление</h5>
-
     <adverts-form></adverts-form>
 
-    <div class="ui divider"></div>
+    <hr>
     <load-images></load-images>
-    <div class="ui divider"></div>
+    <hr>
 
 
-    <div class="inline field">
-        <button data-ng-disabled="advertForm.$invalid" data-ng-click="addAdvert(advert)" class="ui blue mini button">
+
+        <button data-ng-disabled="advertForm.$invalid" data-ng-click="addAdvert(advert)" class="button">
             Подтвердить
         </button>
-        <a class="ui black mini button" href="#/Adverts/{{advertType}}">Отменить</a>
+        <a class="button" href="#/Adverts/{{advertType}}">Отменить</a>
 
-    </div>
+
 </form>
