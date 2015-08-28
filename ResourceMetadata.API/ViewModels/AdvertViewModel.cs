@@ -4,10 +4,13 @@ using System.Linq;
 using System.Web;
 using ResourceMetadata.Models;
 
+
 namespace ResourceMetadata.API.ViewModels
 {
     public class AdvertViewModel
     {
+        private string url;
+
         public int Id { get; set; }
 
         public string Title { get; set; }
@@ -27,5 +30,7 @@ namespace ResourceMetadata.API.ViewModels
         public FuelType FuelType { get; set; }
 
         public AdvertType AdvertType { get; set; }
+
+        public ICollection<ImageViewModel> ImageInfos { get; set; }
     }
 }

@@ -79,7 +79,8 @@
                     entityService.getById($routeParams.advertId, "Adverts").then(function (response) {
                         $scope.advert = response.data;
                         getDropDownDataData();
-                        getImages();
+                        $scope.imagesPromise.resolve($scope.advert.ImageInfos);
+                        $scope.images = $scope.advert.ImageInfos;
                     });
                 } else {
                     getDropDownDataData();
@@ -117,19 +118,6 @@
                         }
                     });
 
-                });
-            }
-
-            /**
-             * getImages
-             */
-            function getImages() {
-                $http({
-                    method: 'GET',
-                    url: global.CrashTradeSettings.baseUrl + 'Adverts/DownloadImages/' + $scope.advert.Id
-                }).success(function (data) {
-                    $scope.imagesPromise.resolve(data);
-                    $scope.images = data;
                 });
             }
         }]);

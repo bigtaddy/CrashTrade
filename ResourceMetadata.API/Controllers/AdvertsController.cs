@@ -40,6 +40,7 @@ namespace ResourceMetadata.API.Controllers
             var advertModelViewModels = new List<AdvertViewModel>();
             var count = advertService.GetCount();
             Mapper.Map(advertModels, advertModelViewModels);
+            SetCorrectImagesPaths(advertModelViewModels);
             return Request.CreateResponse(HttpStatusCode.OK, new { adverts = advertModelViewModels, count });
         }
 
@@ -52,6 +53,7 @@ namespace ResourceMetadata.API.Controllers
             var advertModelViewModels = new List<AdvertViewModel>();
             var count = advertService.GetCount(User.Identity.GetUserId());
             Mapper.Map(advertModels, advertModelViewModels);
+            SetCorrectImagesPaths(advertModelViewModels);
             return Request.CreateResponse(HttpStatusCode.OK, new { adverts = advertModelViewModels, count });
         }
 
@@ -65,6 +67,7 @@ namespace ResourceMetadata.API.Controllers
 
             var count = advertService.GetCount(AdvertType.Sale);
             Mapper.Map(advertModels, advertModelViewModels);
+            SetCorrectImagesPaths(advertModelViewModels);
             return Request.CreateResponse(HttpStatusCode.OK, new { adverts = advertModelViewModels, count });
         }
 
@@ -78,6 +81,7 @@ namespace ResourceMetadata.API.Controllers
 
             var count = advertService.GetCount(AdvertType.Repair);
             Mapper.Map(advertModels, advertModelViewModels);
+            SetCorrectImagesPaths(advertModelViewModels);
             return Request.CreateResponse(HttpStatusCode.OK, new { adverts = advertModelViewModels, count });
         }
 
@@ -87,6 +91,7 @@ namespace ResourceMetadata.API.Controllers
             var advertModel = advertService.GetAdvertById(id);
             var viewModel = new AdvertViewModel();
             Mapper.Map(advertModel, viewModel);
+            SetCorrectImagesPaths(viewModel);
             return Ok(viewModel);
         }
 
@@ -226,6 +231,25 @@ namespace ResourceMetadata.API.Controllers
 
             return Request.CreateResponse(
                 HttpStatusCode.OK);
+        }
+
+        private void SetCorrectImagesPaths(List<AdvertViewModel> adverts)
+        {
+            foreach (var advert in adverts)
+            {
+                foreach (var image in advert.ImageInfos)
+                {
+                    image.FullName = Url.Content(RelativeUploadPath + image.FullName);
+                }
+            }
+        }
+
+        private void SetCorrectImagesPaths(AdvertViewModel advert)
+        {
+            foreach (var image in advert.ImageInfos)
+            {
+                image.FullName = Url.Content(RelativeUploadPath + image.FullName);
+            }
         }
 
     }
