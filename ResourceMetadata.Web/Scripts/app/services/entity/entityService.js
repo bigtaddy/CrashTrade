@@ -16,6 +16,7 @@
                 data: model
             });
         };
+
         var edit = function (model, modelName) {
             return $http({
                 method: 'PUT',
@@ -23,31 +24,46 @@
                 data: model
             });
         };
-        var getById = function (modelId, modelName) {
+        var getById = function (id, modelName) {
             return $http({
                 method: 'GET',
-                url: baseUrl + modelName + "/" + modelId
+                url: baseUrl + modelName,
+                params: {id: id}
             });
         };
+
         var getAll = function (modelName) {
             return $http({
                 method: 'GET',
                 url: baseUrl + modelName
             });
         };
-        var deleteById = function (modelId, modelName) {
+
+        var deleteById = function (id, modelName) {
             return $http({
                 method: 'DELETE',
-                url: baseUrl + modelName + "/" + modelId
+                url: baseUrl + modelName,
+                params: {id: id}
             });
         };
+
+        var deleteByIds = function (ids,  modelName) {
+            return $http({
+                method: 'POST',
+                url: baseUrl + modelName + '/DeleteByIds/',
+                data: ids
+            })
+        };
+
+
 
         return {
             add: add,
             edit: edit,
             getById: getById,
             getAll: getAll,
-            deleteById: deleteById
+            deleteById: deleteById,
+            deleteByIds: deleteByIds
         };
     }]);
 

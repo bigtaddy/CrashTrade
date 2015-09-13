@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="AdvertService.cs" />
     <Compile Include="CarModelService.cs" />
+    <Compile Include="ImageInfoService.cs" />
     <Compile Include="ManufactureService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserService.cs" />

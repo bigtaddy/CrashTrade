@@ -195,11 +195,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdvertsController.cs" />
     <Compile Include="Controllers\CarModelsController.cs" />
+    <Compile Include="Controllers\ImageInfosController.cs" />
     <Compile Include="Controllers\ManufacturesController.cs" />
     <Compile Include="Enums\Enum.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax1</DependentUpon>
-    </Compile>
     <Compile Include="Infrastructure\DbExceptionFilter.cs" />
     <Compile Include="Infrastructure\ExceptionFilter.cs" />
     <Compile Include="Infrastructure\ResponseHandler.cs" />
@@ -209,6 +207,7 @@
     <Compile Include="Models\ErrorModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Providers\MyStreamProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AdvertViewModel.cs" />
@@ -226,7 +225,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="favicon.ico" />
-    <None Include="Global.asax1" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -240,6 +238,7 @@
   <ItemGroup>
     <Folder Include="App_Data\FileUploads\" />
     <Folder Include="Images\" />
+    <Folder Include="Views\ImageInfos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

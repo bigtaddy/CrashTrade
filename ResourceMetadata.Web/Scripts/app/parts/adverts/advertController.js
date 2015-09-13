@@ -29,14 +29,41 @@
                 return isDisabled;
             };
 
+
+            function uploadImages(advertId, callback) {
+                if ($scope.flowObject.files.length) {
+                    var fd = new FormData();
+                    var imageFiles = $scope.flowObject.files.forEach(function (file, index) {
+                        fd.append(('file' + index), file.file);
+                    });
+                    $http({
+                        method: 'POST',
+                        url: global.CrashTradeSettings.baseUrl + 'Images/' + advertId,
+                        data: fd,
+                        transformRequest: angular.identity,
+                        headers: {
+                            'Content-Type': undefined,
+                            'enctype': 'multipart/form-data'
+
+                        }
+                    }).success(function () {
+                        if (callback) {
+                            callback();
+                        }
+                    });
+                }
+            }
+
             /**
              * addAdvert
              * @param advert
              */
             $scope.addAdvert = function (advert) {
                 entityService.add(advert, "Adverts")
-                    .then(function (data) {
-                        $location.url('/Adverts/List/My');
+                    .then(function (response) {
+                        uploadImages(response.data.Id, function () {
+                            $location.url('/Adverts/List/My');
+                        })
                     });
             };
 
@@ -46,26 +73,11 @@
              */
             $scope.editAdvert = function (advert) {
                 entityService.edit(advert, "Adverts")
-                    .then(function (data) {
-                        if ($scope.flowObject.files.length) {
-                            var fd = new FormData();
-                            var imageFiles = $scope.flowObject.files.forEach(function (file, index) {
-                                fd.append(('file' + index), file.file);
-                            });
-                            $http({
-                                method: 'POST',
-                                url: global.CrashTradeSettings.baseUrl + 'Adverts/UploadImages/' + advert.Id,
-                                data: fd,
-                                transformRequest: angular.identity,
-                                headers: {
-                                    'Content-Type': undefined,
-                                    'enctype': 'multipart/form-data'
+                    .then(function (response) {
+                        uploadImages(advert.Id, function () {
+                            $location.url('/Adverts/List/My');
+                        })
 
-                                }
-                            }).success(function (data) {
-
-                            });
-                        }
                     });
             };
 
