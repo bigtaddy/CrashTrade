@@ -306,3 +306,9 @@ textarea {
     border: 1px solid #ddd;
     overflow: hidden;
 }
+.advertDescription {
+    display: block;
+    width: 100%;
+    float: left;
+    word-wrap: break-word;
+}

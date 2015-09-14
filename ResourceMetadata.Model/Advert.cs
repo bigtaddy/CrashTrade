@@ -28,6 +28,8 @@ namespace ResourceMetadata.Models
         public virtual CarModel CarModel { get; set; }
 
         public int Year { get; set; }
+        public int SweptVolume { get; set; }
+        public string Contacts { get; set; }
 
         public FuelType FuelType { get; set; }
 

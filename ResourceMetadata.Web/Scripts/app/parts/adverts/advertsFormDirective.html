@@ -1,6 +1,6 @@
 ﻿<div class="field">
     <label for="title">Заголовок<span style="color:Red">*</span></label>
-    <input type="text" id="title" placeholder="Name" required data-ng-model="advert.Title">
+    <input type="text" id="title" placeholder="Заголовок объявления" required data-ng-model="advert.Title">
 </div>
 <hr>
 
@@ -11,7 +11,7 @@
 
 
     <ui-select ng-model="advert.AdvertType" ng-required="true" theme="selectize" style="width:100%;">
-        <ui-select-match placeholder="Select type of advert...">{{$select.selected.Name}}</ui-select-match>
+        <ui-select-match placeholder="Выберите тип объявления">{{$select.selected.Name}}</ui-select-match>
         <ui-select-choices repeat="advertType.Id as advertType in advertTypes | filter: $select.search">
             <span ng-bind-html="advertType.Name | highlight: $select.search"></span>
         </ui-select-choices>
@@ -20,7 +20,7 @@
 
 <div class="field">
     <label for="description">Описание<span style="color:Red">*</span></label>
-    <textarea id="description" placeholder="Description" required data-ng-model="advert.Description"/>
+    <textarea id="description" placeholder="Описание" required data-ng-model="advert.Description"/>
 </div>
 <hr>
 
@@ -31,7 +31,7 @@
 
     <ui-select ng-model="advert.ManufactureId" ng-required="true" theme="selectize" style="width:100%;"
                id="manufacture">
-        <ui-select-match placeholder="Select or search a manufacture in the list...">{{$select.selected.Name}}
+        <ui-select-match placeholder="Выберите марку">{{$select.selected.Name}}
         </ui-select-match>
         <ui-select-choices repeat="manufacture.Id as manufacture in manufactures | filter: $select.search">
             <span ng-bind-html="manufacture.Name | highlight: $select.search"></span>
@@ -48,7 +48,7 @@
     </label>
 
     <ui-select ng-model="advert.CarModelId" theme="selectize" ng-required="true" style="width:100%;" id="carModel">
-        <ui-select-match placeholder="Select or search a carModel in the list...">{{$select.selected.Name}}
+        <ui-select-match placeholder="Выберите модель">{{$select.selected.Name}}
         </ui-select-match>
         <ui-select-choices repeat="carModel.Id as carModel in carModels | filter: $select.search">
             <span ng-bind-html="carModel.Name | highlight: $select.search"></span>
@@ -59,7 +59,13 @@
 
 <div class="field">
     <label for="Year">Год выпуска<span style="color:Red">*</span></label>
-    <input type="number" id="Year" min="1900" max="2020" placeholder="Year" required data-ng-model="advert.Year">
+    <input type="number" id="Year" min="1900" max="2020" placeholder="Год выпуска" required data-ng-model="advert.Year">
+</div>
+<hr>
+
+<div class="field">
+    <label for="title">Объем двигателя<span style="color:Red">*</span></label>
+    <input type="text" id="swepVolume" placeholder="Объем двигателя" required data-ng-model="advert.SweptVolume">
 </div>
 <hr>
 
@@ -69,10 +75,17 @@
     </label>
 
     <ui-select ng-model="advert.FuelType" theme="selectize" ng-required="true" style="width:100%;" id="FuelType">
-        <ui-select-match placeholder="Select or search a carModel in the list...">{{$select.selected.Name}}
+        <ui-select-match placeholder="Тип двигателя">{{$select.selected.Name}}
         </ui-select-match>
         <ui-select-choices repeat="fuelType.Id as fuelType in fuelTypes | filter: $select.search">
             <span ng-bind-html="fuelType.Name | highlight: $select.search"></span>
         </ui-select-choices>
     </ui-select>
+</div>
+<hr>
+
+
+<div class="field">
+    <label for="contacts">Контактные данные продавца<span style="color:Red">*</span></label>
+    <textarea id="contacts" placeholder="Контакты" required data-ng-model="advert.Contacts"/>
 </div>
