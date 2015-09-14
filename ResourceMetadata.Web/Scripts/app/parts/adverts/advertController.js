@@ -62,7 +62,7 @@
                 entityService.add(advert, "Adverts")
                     .then(function (response) {
                         uploadImages(response.data.Id, function () {
-                            $location.url('/Adverts/List/My');
+                            $location.path('/Adverts/List/My');
                         })
                     });
             };
@@ -75,7 +75,7 @@
                 entityService.edit(advert, "Adverts")
                     .then(function (response) {
                         uploadImages(advert.Id, function () {
-                            $location.url('/Adverts/List/My');
+                            $location.path('/Adverts/List/My');
                         })
 
                     });
