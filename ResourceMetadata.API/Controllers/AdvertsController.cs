@@ -34,11 +34,11 @@ namespace ResourceMetadata.API.Controllers
         [HttpGet]
         [Route("api/Adverts/All")]
         [AllowAnonymous]
-        public HttpResponseMessage GetAll(int pageNumber, int itemsPerPage)
+        public HttpResponseMessage GetAll(int pageNumber, int itemsPerPage, string sortOptions, string filterOptions)
         {
-            var advertModels = advertService.GetAdverts(pageNumber, itemsPerPage);
+            var advertModels = advertService.GetAdverts(pageNumber, itemsPerPage, sortOptions, filterOptions);
             var advertModelViewModels = new List<AdvertViewModel>();
-            var count = advertService.GetCount();
+            var count = advertService.GetCount(filterOptions);
             Mapper.Map(advertModels, advertModelViewModels);
             SetCorrectImagesPaths(advertModelViewModels);
             return Request.CreateResponse(HttpStatusCode.OK, new { adverts = advertModelViewModels, count });
@@ -47,42 +47,11 @@ namespace ResourceMetadata.API.Controllers
         [HttpGet]
         [Route("api/Adverts/My")]
         [Authorize(Roles = "Admin, Member")]
-        public HttpResponseMessage GetForUser(int pageNumber, int itemsPerPage)
+        public HttpResponseMessage GetForUser(int pageNumber, int itemsPerPage, string sortOptions, string filterOptions)
         {
-            var advertModels = advertService.GetAdvertsForUser(pageNumber, itemsPerPage, User.Identity.GetUserId());
-            var advertModelViewModels = new List<AdvertViewModel>();
-            var count = advertService.GetCount(User.Identity.GetUserId());
-            Mapper.Map(advertModels, advertModelViewModels);
-            SetCorrectImagesPaths(advertModelViewModels);
-            return Request.CreateResponse(HttpStatusCode.OK, new { adverts = advertModelViewModels, count });
-        }
+            filterOptions += (" And UserId=\"" + User.Identity.GetUserId() + "\"");
 
-        [HttpGet]
-        [Route("api/Adverts/Sale")]
-        [AllowAnonymous]
-        public HttpResponseMessage SaleAdverts(int pageNumber, int itemsPerPage)
-        {
-            var advertModels = advertService.GetAdverts(AdvertType.Sale, pageNumber, itemsPerPage);
-            var advertModelViewModels = new List<AdvertViewModel>();
-
-            var count = advertService.GetCount(AdvertType.Sale);
-            Mapper.Map(advertModels, advertModelViewModels);
-            SetCorrectImagesPaths(advertModelViewModels);
-            return Request.CreateResponse(HttpStatusCode.OK, new { adverts = advertModelViewModels, count });
-        }
-
-        [HttpGet]
-        [Route("api/Adverts/Repair")]
-        [AllowAnonymous]
-        public HttpResponseMessage RepairAdverts(int pageNumber, int itemsPerPage)
-        {
-            var advertModels = advertService.GetAdverts(AdvertType.Repair, pageNumber, itemsPerPage);
-            var advertModelViewModels = new List<AdvertViewModel>();
-
-            var count = advertService.GetCount(AdvertType.Repair);
-            Mapper.Map(advertModels, advertModelViewModels);
-            SetCorrectImagesPaths(advertModelViewModels);
-            return Request.CreateResponse(HttpStatusCode.OK, new { adverts = advertModelViewModels, count });
+            return GetAll(pageNumber, itemsPerPage, sortOptions, filterOptions);
         }
 
         [AllowAnonymous]

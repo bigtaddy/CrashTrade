@@ -25,9 +25,9 @@ namespace ResourceMetadata.Service
             this.unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<Advert> GetAdverts(int pageNumber, int itemsPerPage)
+        public IEnumerable<Advert> GetAdverts(int pageNumber, int itemsPerPage, string sortOptions, string filterOptions)
         {
-            return repository.GetAll(pageNumber, itemsPerPage);
+            return repository.GetAll(pageNumber, itemsPerPage, sortOptions, filterOptions);
         }
 
         public IEnumerable<Advert> GetAdvertsForUser(int pageNumber, int itemsPerPage, string userId)
@@ -67,19 +67,9 @@ namespace ResourceMetadata.Service
             SaveChanges();
         }
 
-        public int GetCount(AdvertType advertType)
+        public int GetCount(string filterOptions)
         {
-            return repository.GetCount(advertType);
-        }
-
-        public int GetCount(string userId)
-        {
-            return repository.GetCount(userId);
-        }
-
-        public int GetCount()
-        {
-            return repository.GetCount();
+            return repository.GetCount(filterOptions);
         }
 
         public void SaveChanges()
@@ -90,15 +80,13 @@ namespace ResourceMetadata.Service
 
     public interface IAdvertService
     {
-        IEnumerable<Advert> GetAdverts(int pageNumber, int itemsPerPage);
+        IEnumerable<Advert> GetAdverts(int pageNumber, int itemsPerPage, string sortOptions, string filterOptions);
         IEnumerable<Advert> GetAdvertsForUser(int pageNumber, int itemsPerPage, string userId);
         IEnumerable<Advert> GetAdverts(AdvertType advertType, int pageNumber, int itemsPerPage);
         Advert AddAdvert(Advert advert);
         Advert GetAdvertById(int id);
         Advert UpdateAdvert(Advert advert);
         void DeleteAdvert(int advertId);
-        int GetCount(AdvertType advertType);
-        int GetCount();
-        int GetCount(string userId);
+        int GetCount(string filterOptions);
     }
 }

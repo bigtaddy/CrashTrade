@@ -9,12 +9,19 @@
 
         var baseUrl = global.CrashTradeSettings.baseUrl;
 
-        var getAll = function (advertTypeName, currentPage, pageSize) {
+        var getAll = function (advertTypeName, currentPage, pageSize, sortOptions, filterOptions) {
             if (advertTypeName == undefined) {
-                var url = baseUrl + "Adverts/All/?pageNumber=" + currentPage + "&itemsPerPage=" + pageSize;
+                var url = baseUrl + "Adverts/All/?pageNumber=" + currentPage + "&itemsPerPage=" + pageSize + "&sortOptions="
+                    + sortOptions + "&filterOptions=" + filterOptions;
+            } else if (advertTypeName == 'My') {
+                var url = baseUrl + "Adverts/My/?pageNumber=" + currentPage + "&itemsPerPage="
+                    + pageSize + "&sortOptions=" + sortOptions + "&filterOptions=" + filterOptions;
             } else {
-                var url = baseUrl + "Adverts/" + advertTypeName + "/?pageNumber=" + currentPage + "&itemsPerPage=" + pageSize;
+                filterOptions += (" And AdvertType=\"" + advertTypeName + "\"" );
+                var url = baseUrl + "Adverts/All/?pageNumber=" + currentPage + "&itemsPerPage="
+                    + pageSize + "&sortOptions=" + sortOptions + "&filterOptions=" + filterOptions;
             }
+
 
             return $http({
                 method: 'GET',

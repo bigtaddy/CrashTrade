@@ -1,3 +1,7 @@
+<adverts-sort-options-directive sort-options="sortOptions"></adverts-sort-options-directive>
+<adverts-filter-options get-filter-options="getFilterOptions" should-be-filtered="shouldBeFiltered"></adverts-filter-options>
+<a class="btn btn-success" style=" width: 150px" ng-click="filter()">Отфильтровать</a>
+<a class="btn btn-success" style=" width: 150px" ng-click="clearFilter()">Сбросить фильтр</a>
 <div>
     <div class="row site-listing home" ng-repeat="advert in adverts">
         <div class="eight columns">
