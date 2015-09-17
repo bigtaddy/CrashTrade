@@ -27,6 +27,9 @@ namespace ResourceMetadata.API.ViewModels
 
         public int Year { get; set; }
 
+        public int SweptVolume { get; set; }
+        public string Contacts { get; set; }
+
         public FuelType FuelType { get; set; }
 
         public AdvertType AdvertType { get; set; }

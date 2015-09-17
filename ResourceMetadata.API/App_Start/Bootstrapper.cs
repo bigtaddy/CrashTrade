@@ -35,10 +35,12 @@ namespace ResourceMetadata.API
             containerBuilder.RegisterType<CarModelRepository>().As<ICarModelRepository>().InstancePerApiRequest();
             containerBuilder.RegisterType<AdvertRepository>().As<IAdvertRepository>().InstancePerApiRequest();
             containerBuilder.RegisterType<UserRepository>().As<IUserRepository>().InstancePerApiRequest();
+            containerBuilder.RegisterType<ImageInfoRepository>().As<IImageInfoRepository>().InstancePerApiRequest();
             containerBuilder.RegisterType<ManufactureService>().As<IManufactureService>().InstancePerApiRequest();
             containerBuilder.RegisterType<CarModelService>().As<ICarModelService>().InstancePerApiRequest();
             containerBuilder.RegisterType<AdvertService>().As<IAdvertService>().InstancePerApiRequest();
             containerBuilder.RegisterType<UserService>().As<IUserService>().InstancePerApiRequest();
+            containerBuilder.RegisterType<ImageInfoService>().As<IImageInfoService>().InstancePerApiRequest();
 
             containerBuilder.Register(c => new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ResourceManagerEntities())
             {

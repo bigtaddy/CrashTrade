@@ -19,6 +19,7 @@
             '    </div>' +
 
             '    <div class="btn-group">' +
+
             '      <a class="btn btn-xs btn-danger" ng-click="deleteImage(image.Id, $index)"> Удалить </a>' +
             '    </div>' +
             '  </div>' +
@@ -26,8 +27,7 @@
             link: function (scope, element, attrs) {
                 scope.deleteImage = function (imageId, index) {
 
-                    var params = "?imageId=" + imageId + "&" + "advertId=" + scope.advertId;
-                    entityService.deleteById(params, "Adverts/DeleteImages")
+                    entityService.deleteByIds([imageId], 'Images')
                         .then(function (data) {
                             scope.images.splice(index, 1)
                         });

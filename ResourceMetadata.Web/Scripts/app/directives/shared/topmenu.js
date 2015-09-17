@@ -27,11 +27,11 @@
 
                 scope.goToRegistration = function () {
                     $location.url('/Register');
-                }
+                };
 
                 scope.goToLogin = function () {
                     $location.url('/Login');
-                }
+                };
             }
         };
     });

@@ -22,9 +22,8 @@ namespace ResourceMetadata.API.Controllers
     public class AdvertsController : ApiController
     {
         private readonly IAdvertService advertService;
-
         private const string RelativeUploadPath = "~/Images/";
-        private string uploadPath = HttpContext.Current.Server.MapPath(RelativeUploadPath);
+
 
         public AdvertsController(IAdvertService advertService)
         {
@@ -107,101 +106,6 @@ namespace ResourceMetadata.API.Controllers
         }
 
 
-        [HttpGet]
-        [AllowAnonymous]
-        [Route("api/Adverts/DownloadImages/{id}")]
-        public IHttpActionResult DownloadImages(int id)
-        {
-            var advertModel = advertService.GetAdvertById(id);
-            var images = Mapper.Map<ICollection<ImageInfo>, ICollection<ImageViewModel>>(advertModel.ImageInfos);
-
-
-            foreach (var image in images)
-            {
-                image.FullName = Url.Content(RelativeUploadPath + image.FullName);
-            }
-            return Ok(images);
-        }
-
-
-
-        [HttpPost]
-        [Authorize(Roles = "Admin, Member")]
-        [Route("api/Adverts/UploadImages/{id}")]
-        public async Task<HttpResponseMessage> UploadImages(int id)
-        {
-            var advertModel = advertService.GetAdvertById(id);
-
-            if (advertModel.UserId != User.Identity.GetUserId())
-            {
-                return Request.CreateResponse(HttpStatusCode.Forbidden);
-            }
-
-            if (Request.Content.IsMimeMultipartContent())
-            {
-                try
-                {
-                    if (!Directory.Exists(uploadPath))
-                    {
-                        Directory.CreateDirectory(uploadPath);
-                    }
-
-                    var streamProvider = new MyStreamProvider(uploadPath);
-
-                    await Request.Content.ReadAsMultipartAsync(streamProvider);
-
-
-                    foreach (var file in streamProvider.FileData)
-                    {
-                        var fi = new FileInfo(file.LocalFileName);
-
-                        advertModel.ImageInfos.Add(new ImageInfo
-                        {
-                            FullName = fi.Name
-                        });                   
-                    }
-                    advertService.UpdateAdvert(advertModel);
-
-                }
-                catch (Exception e)
-                {
-
-                }
-            }
-            else
-            {
-                Request.CreateResponse(HttpStatusCode.UnsupportedMediaType);
-            }
-
-            return Request.CreateResponse(HttpStatusCode.OK);
-        }
-
-        [HttpDelete]
-        [Authorize(Roles = "Admin, Member")]
-        [Route("api/Adverts/DeleteImages/")]
-        public HttpResponseMessage DeleteImages(int imageId, int advertId)
-        {
-            var advertModel = advertService.GetAdvertById(advertId);
-            var image = advertModel.ImageInfos.Where(c => c.Id == imageId).FirstOrDefault();
-            var imageName = image.FullName;
-
-
-//            var fullPathName = uploadPath + imageName;
-//            File.Delete(fullPathName);
-
-
-
-//            ResourceManagerEntities rm = new ResourceManagerEntities();
-//            advertModel.ImageInfos.Remove(image);
-//            advertService.UpdateAdvert(advertModel);
-//            IDbSet<ImageInfo> dbset = rm.Set<ImageInfo>();
-//            dbset.Remove(image);
-//            rm.SaveChanges();
-
-            return Request.CreateResponse(
-                HttpStatusCode.OK);
-        }
-
         private void SetCorrectImagesPaths(List<AdvertViewModel> adverts)
         {
             foreach (var advert in adverts)
@@ -223,17 +127,4 @@ namespace ResourceMetadata.API.Controllers
 
     }
 
-    public class MyStreamProvider : MultipartFormDataStreamProvider
-    {
-        public MyStreamProvider(string uploadPath)
-            : base(uploadPath)
-        {
-        }
-        public override string GetLocalFileName(HttpContentHeaders headers)
-        {
-            string fileName = Guid.NewGuid().ToString()
-                + Path.GetExtension(headers.ContentDisposition.FileName.Replace("\"", string.Empty));
-            return fileName;
-        }
-    }
 }
