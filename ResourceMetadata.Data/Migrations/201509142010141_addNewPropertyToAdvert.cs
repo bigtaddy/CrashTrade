@@ -7,7 +7,7 @@ namespace ResourceMetadata.Data.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.Adverts", "SweptVolume", c => c.Int(nullable: false));
+            AddColumn("dbo.Adverts", "SweptVolume", c => c.Int(nullable: true));
             AddColumn("dbo.Adverts", "Contacts", c => c.String());
         }
         

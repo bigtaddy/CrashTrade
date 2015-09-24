@@ -2498,7 +2498,7 @@ select {
 
     /* line 145, ../../../../shared/bundle/ruby/2.1.0/gems/zurb-foundation-4.2.2/scss/foundation/components/_grid.scss */
     [class*="column"] + [class*="column"]:last-child {
-        float: right;
+
     }
 
     /* line 146, ../../../../shared/bundle/ruby/2.1.0/gems/zurb-foundation-4.2.2/scss/foundation/components/_grid.scss */

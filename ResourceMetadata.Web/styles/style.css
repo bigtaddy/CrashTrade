@@ -819,7 +819,7 @@ form.custom .custom.disabled {
 }
 
 [class*="column"] + [class*="column"]:last-child {
-    float: right
+
 }
 
 [class*="column"] + [class*="column"].end {
@@ -9124,7 +9124,7 @@ select {
     }
 
     [class*="column"] + [class*="column"]:last-child {
-        float: right
+
     }
 
     [class*="column"] + [class*="column"].end {

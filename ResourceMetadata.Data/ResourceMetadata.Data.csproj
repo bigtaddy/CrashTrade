@@ -95,6 +95,11 @@
     <Compile Include="Migrations\201505261018567_delete_redundant_models.Designer.cs">
       <DependentUpon>201505261018567_delete_redundant_models.cs</DependentUpon>
     </Compile>
+	<Compile Include="Migrations\201509142010141_addNewPropertyToAdvert.cs" />
+    <Compile Include="Migrations\201509142010141_addNewPropertyToAdvert.Designer.cs">
+      <DependentUpon>201509142010141_addNewPropertyToAdvert.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Migrations\201505301627588_ImageInfo_Added.cs" />
     <Compile Include="Migrations\201505301627588_ImageInfo_Added.Designer.cs">
       <DependentUpon>201505301627588_ImageInfo_Added.cs</DependentUpon>
@@ -137,6 +142,10 @@
     <EmbeddedResource Include="Migrations\201505301627588_ImageInfo_Added.resx">
       <DependentUpon>201505301627588_ImageInfo_Added.cs</DependentUpon>
     </EmbeddedResource>
+	<EmbeddedResource Include="Migrations\201509142010141_addNewPropertyToAdvert.resx">
+      <DependentUpon>201509142010141_addNewPropertyToAdvert.cs</DependentUpon>
+    </EmbeddedResource>
+
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
