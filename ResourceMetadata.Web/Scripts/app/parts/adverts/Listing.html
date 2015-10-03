@@ -1,8 +1,10 @@
 <adverts-sort-options-directive sort-options="sortOptions"></adverts-sort-options-directive>
 <adverts-filter-options get-filter-options="getFilterOptions" should-be-filtered="shouldBeFiltered"></adverts-filter-options>
-<a class="btn btn-success" style=" width: 150px" ng-click="filter()">Отфильтровать</a>
-<a class="btn btn-success" style=" width: 150px" ng-click="clearFilter()">Сбросить фильтр</a>
-<div>
+<div style="width: 320px; display: block; float: left; margin-left: -198px;">
+	<a class="btn btn-success" style=" width: 150px" ng-click="filter()">Отфильтровать</a>
+	<a class="btn btn-success" style=" width: 150px" ng-click="clearFilter()">Сбросить фильтр</a>
+</div>
+<div style="display:block;float:right;width:80%;">
     <div class="row site-listing home" ng-repeat="advert in adverts">
         <div class="eight columns">
             <a href="">
@@ -14,7 +16,7 @@
             </a></div>
         <div class="four mobile-four columns end" style="margin-bottom:25px;">
             <div class="first-section">
-                <h3 class="regular foundation-build"><a href="#/Adverts/{{advert.Id}}">{{advert.Title}} </a></h3>
+                <h3 class="regular foundation-build"><a href="#/Adverts/{{advert.Id}}">{{advert.ManufactureName}}</a></h3>
                 <hr>
                 <div class="text-new-line">{{advert.Description}}</div>
             </div>
@@ -33,7 +35,7 @@
         <hr class="solid">
     </div>
 </div>
-
+<div style="clear:both;"></div>
 <!--ui-select2-->
 <div>
     <select ng-model="pageSize" convert-to-number data-placeholder="Объявлений на странице"
@@ -42,7 +44,6 @@
         <option value="10">10</option>
         <option value="20">20</option>
         <option value="50">50</option>
-        <option value="100">100</option>
     </select>
 
     <div style="clear: both"></div>

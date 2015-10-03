@@ -12,7 +12,7 @@
             scope: {
                 sortOptions: "="
             },
-            template: '<span>Сортировать по:<span/>' +
+            template: '<span class="sort-block">Сортировать по:<span/>' +
             '<select ng-model="sortProperty" data-placeholder="Сортировать по" style=" width: 160px; margin-bottom: 0; display: block;">' +
             '<option value="CreatedOn">Дате Создания</option>' +
             '<option value="Year">Году выпуска</option>' +

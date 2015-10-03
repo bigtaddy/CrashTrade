@@ -1,0 +1,83 @@
+﻿<!doctype html>
+<html data-ng-app="resourceManagerApp">
+<head>
+    <meta charset="utf-8">
+    <title>Crash Trade</title>
+    <link rel="stylesheet" href="Content/themes/ng-table/ng-table.css" />
+    <link rel="stylesheet" href="Content/themes/Site.css" />
+    <link rel="stylesheet" href="Content/themes/smoothness/jquery-ui.min.css" />
+    <link href="../styles/bootstrap.css" media="all" rel="stylesheet"/>
+    <link href="../styles/style.css" media="all" rel="stylesheet"/>
+    <link href="../styles/style2.css" media="all" rel="stylesheet"/>
+    <link href="../styles/login.css" media="all" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="Content/themes/photo-swipe/photoswipe.css" />
+    <link rel="stylesheet" href="Content/themes/photo-swipe/default-skin.css" />
+    <link rel="stylesheet" href="Content/themes/photo-swipe/angular-photoswipe.css" />
+    <link rel="stylesheet" href="Content/themes/select/select.min.css" />
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
+    <link rel="stylesheet" href="Content/themes/loading-bar.css" />
+</head>
+<body>
+    <div ng-controller="AccountCtrl">
+        <div class="menu-container"><cst-top-menu/></div>
+        <section id="main" style="height:90%;">
+            <div data-ng-view ng-animate class="slide-load">
+            </div>
+        </section>
+        <cst-loading-overlay class="hide"></cst-loading-overlay>
+    </div>
+
+    <script src="Scripts/libs/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/libs/jquery-ui-1.10.3.min.js"></script>
+    <script src="Scripts/libs/angular.js"></script>
+    <script src="Scripts/libs/angular-sanitize.js"></script>
+    <script src="Scripts/libs/angular-route.js"></script>
+    <script src="Scripts/libs/angular-resource.js"></script>
+    <script src="Scripts/libs/angular-animate.js"></script>
+    <script src="Scripts/libs/select/select.min.js"></script>
+    <script src="Scripts/libs/ng-flow-standalone.js"></script>
+    <script src="Scripts/libs/semantic/semantic.min.js"></script>
+    <script src="Scripts/libs/ng-table/ng-table.min.js"></script>
+    <script src="Scripts/libs/mm-foundation-tpls-0.6.0.min.js"></script>
+    <script src="Scripts/trunk8.js"></script>
+    <script src="Scripts/tabs.js"></script>
+    <script src="Scripts/libs/photoswipe.min.js"></script>
+    <script src="Scripts/libs/photoswipe-ui-default.min.js"></script>
+    <script src="Scripts/libs/angular-photoswipe.js"></script>
+    <script src="Scripts/libs/loading-bar.js"></script>
+    <script src="Scripts/config.js"></script>
+    <script src="Scripts/app/app.js"></script>
+    <script src="Scripts/app/helpers/authorizationinterceptor.js"></script>
+    <script src="Scripts/app/parts/shared/accountController.js"></script>
+    <script src="Scripts/app/services/shared/accountService.js"></script>
+    <script src="Scripts/app/directives/shared/datepicker.js"></script>
+    <script src="Scripts/app/directives/shared/modal.js"></script>
+    <script src="Scripts/app/directives/shared/confirmmodal.js"></script>
+    <script src="Scripts/app/directives/shared/topmenu.js"></script>
+    <script src="Scripts/app/directives/shared/loadingoverlay.js"></script>
+    <script src="Scripts/app/directives/shared/ngThumb.js"></script>
+    <script src="Scripts/app/directives/shared/progress.js"></script>
+    <script src="Scripts/app/directives/shared/manageImages.js"></script>
+    <script src="Scripts/app/services/shared/servicehelper.js"></script>
+    <script src="Scripts/app/parts/home/homeController.js"></script>
+    <script src="Scripts/app/services/manufactures/manufactureService.js"></script>
+    <script src="Scripts/app/services/carModels/carModelService.js"></script>
+    <script src="Scripts/app/parts/adverts/advertController.js"></script>
+    <script src="Scripts/app/parts/adverts/advertsController.js"></script>
+    <script src="Scripts/app/services/entity/entityService.js"></script>
+    <script src="Scripts/app/services/adverts/advertService.js"></script>
+    <script src="Scripts/app/parts/adverts/advertDirectives.js"></script>
+</body>
+</html>
+
+<script>
+    $('.nav-tabs li a').on('click', function () {
+        $(this).parent().parent().find('.active').removeClass('active');
+        $(this).parent().parent().addClass('active');
+    });
+
+    $('.text-new-line').trunk8({
+        lines: 2
+    });
+</script>

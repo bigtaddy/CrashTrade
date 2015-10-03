@@ -2,7 +2,7 @@
 
     'use strict';
 
-    app.controller('AdvertsCtrl', ['$scope', 'ngTableParams', 'entityService', 'advertService', '$routeParams', '$location', '$location', '$rootScope',
+    app.controller('AdvertsCtrl', ['$scope', 'ngTableParams', 'entityService', 'advertService', '$routeParams', '$location', '$timeout', '$rootScope',
         function ($scope, ngTableParams, entityService, advertService, $routeParams, $location, $timeout, $rootScope) {
 
             getAndValidateAdvertType();
