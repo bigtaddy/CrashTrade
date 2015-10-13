@@ -6,7 +6,7 @@
 
     'use strict';
 
-    utilities.directive('advertsFilterOptions', ['entityService', function (entityService) {
+    utilities.directive('advertsFilterOptions', ['entityService', 'manufactureService', function (entityService, manufactureService) {
         return {
             restrict: 'E',
             templateUrl: "/Scripts/app/parts/adverts/advertsFilterOptionsDirective.html",
@@ -15,7 +15,12 @@
                 shouldBeFiltered: "="
             },
             link: function (scope, element, attrs) {
+
+                addDropDownLogicAndGetData(scope);
                 scope.filterOptions = "true";
+                scope.car = {};
+
+                addHandlersAndWatchers(scope);
 
                 /**
                  * getFilterOptions
@@ -23,45 +28,85 @@
                  */
                 scope.getFilterOptions = function () {
                     return scope.filterOptions
-                }
+                };
 
-                /**
-                 * UpdateFilterOptions handler
-                 */
-                scope.$on('UpdateFilterOptions', function (event, args) {
-                    var filterOptions = "";
 
-                    if (scope.yearFrom && scope.yearTo) {
-                        if (scope.yearFrom > scope.yearTo) {
-                            var tmp = scope.yearFrom;
-                            scope.yearFrom = scope.yearTo;
-                            scope.yearTo = tmp;
-                        }
-                    }
-
-                    if (scope.yearFrom) {
-                        filterOptions += getOption(filterOptions, "Year >= " + scope.yearFrom)
-                    }
-
-                    if (scope.yearTo) {
-                        filterOptions += getOption(filterOptions, "Year <= " + scope.yearTo)
-                    }
-
-                    if (filterOptions == "") {
-                        scope.filterOptions = "true";
-                    } else {
-                        scope.filterOptions = filterOptions;
-                    }
-                });
-
-                /**
-                 * ClearFilter handler
-                 */
-                scope.$on('ClearFilter', function (event, args) {
-                    scope.filterOptions = "true";
-                })
             }
         };
+
+        /**
+         * addHandlersAndWatchers
+         * @param scope
+         */
+        function addHandlersAndWatchers(scope){
+            /**
+             * UpdateFilterOptions handler
+             */
+            scope.$on('UpdateFilterOptions', function (event, args) {
+                var filterOptions = "";
+
+                filterOptions += getOption(filterOptions,generateFromToFilterOptions(scope.yearFrom, scope.yearTo, "Year"));
+                filterOptions += getOption(filterOptions,generateFromToFilterOptions(scope.priceFrom, scope.priceTo, "Price"));
+
+                filterOptions += getOption(filterOptions,generateSimpleOption(scope.car.manufactureId, "ManufactureId"));
+                filterOptions += getOption(filterOptions,generateSimpleOption(scope.car.carModelId, "CarModelId"));
+
+                if (filterOptions == "") {
+                    scope.filterOptions = "true";
+                } else {
+                    scope.filterOptions = filterOptions;
+                }
+            });
+
+            /**
+             * ClearFilter handler
+             */
+            scope.$on('ClearFilter', function (event, args) {
+                scope.filterOptions = "true";
+            })
+        }
+
+        /**
+         * generateFromToFilterOptions
+         * @param fromValue
+         * @param toValue
+         * @param propertyName
+         * @returns {string}
+         */
+        function generateFromToFilterOptions(fromValue, toValue, propertyName) {
+            var filterOptions = "";
+
+            if (fromValue && toValue) {
+                if (fromValue > toValue) {
+                    var tmp = fromValue;
+                    fromValue = toValue;
+                    toValue = tmp;
+                }
+            }
+
+            if (fromValue) {
+                filterOptions += getOption(filterOptions, propertyName + " >= " + fromValue)
+            }
+
+            if (toValue) {
+                filterOptions += getOption(filterOptions, propertyName + " <= " + toValue)
+            }
+
+            return filterOptions;
+        }
+
+        /**
+         * generateSimpleOption
+         * @param value
+         * @param propertyName
+         */
+        function generateSimpleOption(value, propertyName){
+            if(value){
+                return propertyName + "=" +  value;
+            }
+
+            return "";
+        }
 
         /**
          * getOption
@@ -70,10 +115,40 @@
          * @returns {*}
          */
         function getOption(filterOptions, option) {
-            if (filterOptions == "") {
+            if (filterOptions == "" || option == "") {
                 return option;
             } else {
                 return " and " + option;
+            }
+        }
+
+        /**
+         * getDropDownDataData
+         */
+        function addDropDownLogicAndGetData($scope) {
+            manufactureService.getAll().then(function (response) {
+                $scope.manufactures = response.data;
+            });
+
+            $scope.$watch('car.manufactureId', function (newValue, oldValue) {
+                if (newValue != oldValue) {
+                    setCarModelsArrayByManufactureId(newValue, $scope);
+                }
+            });
+        }
+
+        /**
+         * setCarModelsByManufactureId
+         * @param manufactureId
+         * @param $scope
+         */
+        function setCarModelsArrayByManufactureId(manufactureId, $scope) {
+            $scope.car.carModelId = null;
+            for (var i = 0; i < $scope.manufactures.length; i++) {
+                if ($scope.manufactures[i].Id == manufactureId) {
+                    $scope.carModels = $scope.manufactures[i].CarModels;
+                    break;
+                }
             }
         }
 

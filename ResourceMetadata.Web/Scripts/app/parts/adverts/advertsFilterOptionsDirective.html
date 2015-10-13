@@ -1,7 +1,33 @@
 <div class="common-filter-block">
+	<span class="filter-block">Производитель:</span>
+	<ui-select ng-model="car.manufactureId" theme="selectize" style="width:100%;"
+			   id="manufacture">
+		<ui-select-match placeholder="Выберите марку">{{$select.selected.Name}}
+		</ui-select-match>
+		<ui-select-choices repeat="manufacture.Id as manufacture in manufactures | filter: $select.search">
+			<span ng-bind-html="manufacture.Name | highlight: $select.search"></span>
+		</ui-select-choices>
+	</ui-select>
+	<div class="clear-block"></div>
+
+	<span class="filter-block">Модель:</span>
+	<ui-select ng-model="car.carModelId" theme="selectize" style="width:100%;" id="carModel">
+		<ui-select-match placeholder="Выберите модель">{{$select.selected.Name}}
+		</ui-select-match>
+		<ui-select-choices repeat="carModel.Id as carModel in carModels | filter: $select.search">
+			<span ng-bind-html="carModel.Name | highlight: $select.search"></span>
+		</ui-select-choices>
+	</ui-select>
+
 	<span class="filter-block">Год:</span>
 	<div class="clear-block"></div>
 	<input class="filter-block" ng-model="yearFrom" placeholder="От" type="text">
 	<div class="clear-block"></div>
 	<input class="filter-block" ng-model="yearTo" placeholder="До" type="text">
+
+	<span class="filter-block">Цена:</span>
+	<div class="clear-block"></div>
+	<input class="filter-block" ng-model="priceFrom" placeholder="От" type="text">
+	<div class="clear-block"></div>
+	<input class="filter-block" ng-model="priceTo" placeholder="До" type="text">
 </div>

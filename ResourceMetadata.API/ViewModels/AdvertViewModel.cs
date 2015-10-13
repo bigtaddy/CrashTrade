@@ -32,7 +32,13 @@ namespace ResourceMetadata.API.ViewModels
 
         public FuelType FuelType { get; set; }
 
-        public AdvertType AdvertType { get; set; }
+        public bool SaleType { get; set; }
+
+        public bool CoachworkRepairType { get; set; }
+
+        public bool MechanicalRepairType { get; set; }
+
+        public int? Price { get; set; }
 
         public ICollection<ImageViewModel> ImageInfos { get; set; }
     }

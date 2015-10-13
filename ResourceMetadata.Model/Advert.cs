@@ -11,7 +11,11 @@ namespace ResourceMetadata.Models
     {
         public int Id { get; set; }
 
-        public AdvertType AdvertType { get; set; }
+        public bool SaleType { get; set; }
+
+        public bool CoachworkRepairType { get; set; }
+
+        public bool MechanicalRepairType { get; set; }
 
         public string Title { get; set; }
 
@@ -28,7 +32,11 @@ namespace ResourceMetadata.Models
         public virtual CarModel CarModel { get; set; }
 
         public int Year { get; set; }
-        public int SweptVolume { get; set; }
+
+        public int? SweptVolume { get; set; }
+
+        public int? Price { get; set; }
+
         public string Contacts { get; set; }
 
         public FuelType FuelType { get; set; }

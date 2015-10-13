@@ -22,7 +22,7 @@ namespace ResourceMetadata.Data.Repositories
         {
             return
                 dbset
-                    .Where(c => c.AdvertType == advertType)
+                    .Where(c => c.CarModelId == 2) //TODO!!!!!!!!!!!!!!!!!!!!!!!
                     .OrderBy(c => c.CreatedOn)
                     .Skip((pageNumber - 1) * itemsPerPage)
                     .Take(itemsPerPage);

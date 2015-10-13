@@ -12,7 +12,6 @@
             $scope.advert = {};
             $scope.manufactures = [];
             $scope.carModels = [];
-            $scope.advertTypes = [];
 
             init();
 
@@ -98,7 +97,6 @@
                     getDropDownDataData();
                 }
 
-                $scope.advertTypes = [{Id: 1, Name: "Продажа"}, {Id: 2, Name: "Восстановление"}];
                 $scope.fuelTypes = [{Id: 1, Name: "Бензин"}, {Id: 2, Name: "Дизель"}];
             }
 

@@ -50,7 +50,7 @@
                 templateUrl: '/Scripts/app/parts/shared/Error.html'
             })
             .otherwise({
-                redirectTo: '/Home'
+                redirectTo: '/Adverts/List/Sale'
             });
 
         $httpProvider.interceptors.push('authorizationInterceptor');

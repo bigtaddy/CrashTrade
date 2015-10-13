@@ -9,13 +9,15 @@
         Тип объявления<span style="color: Red">*</span>
     </label>
 
-
-    <ui-select ng-model="advert.AdvertType" ng-required="true" theme="selectize" style="width:100%;">
-        <ui-select-match placeholder="Выберите тип объявления">{{$select.selected.Name}}</ui-select-match>
-        <ui-select-choices repeat="advertType.Id as advertType in advertTypes | filter: $select.search">
-            <span ng-bind-html="advertType.Name | highlight: $select.search"></span>
-        </ui-select-choices>
-    </ui-select>
+    <label>Продажа:
+        <input type="checkbox" ng-model="advert.SaleType">
+    </label>
+    <label>Кузовной ремонт:
+        <input type="checkbox" ng-model="advert.CoachworkRepairType">
+    </label>
+    <label>Механический ремонт:
+        <input type="checkbox" ng-model="advert.MechanicalRepairType">
+    </label>
 </div>
 
 <div class="field">
@@ -66,6 +68,12 @@
 <div class="field">
     <label for="title">Объем двигателя<span style="color:Red">*</span></label>
     <input type="text" id="swepVolume" placeholder="Объем двигателя" required data-ng-model="advert.SweptVolume">
+</div>
+<hr>
+
+<div class="field">
+    <label for="title">Объем двигателя<span style="color:Red">*</span></label>
+    <input type="text" id="Price" placeholder="Цена" required data-ng-model="advert.Price">
 </div>
 <hr>
 

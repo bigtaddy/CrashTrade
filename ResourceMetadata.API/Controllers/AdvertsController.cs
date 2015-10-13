@@ -48,11 +48,13 @@ namespace ResourceMetadata.API.Controllers
         [Authorize(Roles = "Admin, Member")]
         public HttpResponseMessage GetForUser(int pageNumber, int itemsPerPage, string sortOptions, string filterOptions)
         {
-            filterOptions += (" And UserId=\"" + User.Identity.GetUserId() + "\"");
+            filterOptions = "(" + filterOptions + (") And UserId=\"" + User.Identity.GetUserId() + "\"");
 
             return GetAll(pageNumber, itemsPerPage, sortOptions, filterOptions);
         }
 
+        [HttpGet]
+        [Route("api/Adverts/Get")]
         [AllowAnonymous]
         public IHttpActionResult Get(int id)
         {
