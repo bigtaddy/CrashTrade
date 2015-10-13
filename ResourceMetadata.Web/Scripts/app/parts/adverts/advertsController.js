@@ -28,10 +28,11 @@
 
                 advertService.getAll($scope.advertType, $scope.currentPage, $scope.pageSize, $scope.sortOptions, filterOptions).then(function (response) {
                     $scope.adverts = response.data.adverts;
-					                    $timeout(function() {
+                    $timeout(function () {
                         $('.text-new-line').trunk8({
-                        lines: 5
-                    });  }, 0)
+                            lines: 5
+                        });
+                    }, 0);
                     $scope.count = response.data.count;
                 });
             };
@@ -81,7 +82,7 @@
              */
             function getAndValidateAdvertType(){
                 $scope.advertType = $routeParams.advertType;
-                if (advertService.getCodeOfAdvertType($scope.advertType) == false && $scope.advertType != undefined && $scope.advertType != "My") {
+                if (advertService.validateAdvertType($scope.advertType) == false && $scope.advertType != undefined && $scope.advertType != "My") {
                     $location.url('/Home');
                 }
             }
