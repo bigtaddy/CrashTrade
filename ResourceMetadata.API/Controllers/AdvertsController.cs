@@ -53,8 +53,6 @@ namespace ResourceMetadata.API.Controllers
             return GetAll(pageNumber, itemsPerPage, sortOptions, filterOptions);
         }
 
-        [HttpGet]
-        [Route("api/Adverts/Get")]
         [AllowAnonymous]
         public IHttpActionResult Get(int id)
         {
