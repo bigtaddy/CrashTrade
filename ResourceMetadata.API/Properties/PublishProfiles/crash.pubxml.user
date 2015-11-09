@@ -148,16 +148,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/08/2015 10:46:05</publishTime>
     </File>
     <File Include="bin/ResourceMetadata.API.dll">
-      <publishTime>11/09/2015 03:16:42</publishTime>
+      <publishTime>11/09/2015 22:53:57</publishTime>
     </File>
     <File Include="bin/ResourceMetadata.Data.dll">
-      <publishTime>11/09/2015 03:16:40</publishTime>
+      <publishTime>11/09/2015 22:09:49</publishTime>
     </File>
     <File Include="bin/ResourceMetadata.Models.dll">
       <publishTime>11/09/2015 03:16:38</publishTime>
     </File>
     <File Include="bin/ResourceMetadata.Service.dll">
-      <publishTime>11/09/2015 03:16:41</publishTime>
+      <publishTime>11/09/2015 22:53:55</publishTime>
     </File>
     <File Include="bin/System.Linq.Dynamic.dll">
       <publishTime>09/24/2015 22:56:37</publishTime>

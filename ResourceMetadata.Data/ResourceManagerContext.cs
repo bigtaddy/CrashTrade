@@ -13,18 +13,24 @@ using Microsoft.AspNet.Identity;
 
 namespace ResourceMetadata.Data
 {
-    public class ResourceManagerContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ResourceManagerContext()
-            : base("CrashT")
+        public ApplicationDbContext()
+            : base("CrashT", throwIfV1Schema: false)
         {
-
+            Configuration.ProxyCreationEnabled = false;
+            Configuration.LazyLoadingEnabled = false;
         }
 
         public DbSet<CarModel> CarModels { get; set; }
         public DbSet<Manufacture> Manufactures { get; set; }
         public DbSet<Advert> Adverts { get; set; }
         public DbSet<ImageInfo> ImageInfos { get; set; }
+
+        public static ApplicationDbContext Create()
+        {
+            return new ApplicationDbContext();
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -51,9 +57,9 @@ namespace ResourceMetadata.Data
                .ToTable("AspNetRoles");
         }
 
-        public class ResourceManagerDbInitializer : DropCreateDatabaseIfModelChanges<ResourceManagerContext>
+        public class ResourceManagerDbInitializer : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
         {
-            protected override void Seed(ResourceManagerContext context)
+            protected override void Seed(ApplicationDbContext context)
             {
                 try
                 {

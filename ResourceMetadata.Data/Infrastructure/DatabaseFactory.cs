@@ -5,10 +5,10 @@ namespace ResourceMetadata.Data.Infrastructure
 {
 public class DatabaseFactory : Disposable, IDatabaseFactory
 {
-    private ResourceManagerContext dataContext;
-    public ResourceManagerContext Get()
+    private ApplicationDbContext dataContext;
+    public ApplicationDbContext Get()
     {
-        return dataContext ?? (dataContext = new ResourceManagerContext());
+        return dataContext ?? (dataContext = new ApplicationDbContext());
     }
     protected override void DisposeCore()
     {

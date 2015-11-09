@@ -248,7 +248,6 @@
     <Compile Include="Controllers\ImageInfosController.cs" />
     <Compile Include="Controllers\ManufacturesController.cs" />
     <Compile Include="Enums\Enum.cs" />
-    <Compile Include="Infrastructure\ApplicationDbContext .cs" />
     <Compile Include="Infrastructure\DbExceptionFilter.cs" />
     <Compile Include="Infrastructure\ExceptionFilter.cs" />
     <Compile Include="Infrastructure\ExtendedClaimsProvider.cs" />

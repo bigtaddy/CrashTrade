@@ -42,7 +42,7 @@ namespace ResourceMetadata.API
             containerBuilder.RegisterType<UserService>().As<IUserService>().InstancePerApiRequest();
             containerBuilder.RegisterType<ImageInfoService>().As<IImageInfoService>().InstancePerApiRequest();
 
-            containerBuilder.Register(c => new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ResourceManagerContext())
+            containerBuilder.Register(c => new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())
             {
                 /*Avoids UserStore invoking SaveChanges on every actions.*/
                 //AutoSaveChanges = false

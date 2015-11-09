@@ -11,7 +11,7 @@ namespace ResourceMetadata.Data.Infrastructure
 {
     public abstract class RepositoryBase<T> where T : class, new()
     {
-        protected ResourceManagerContext dataContext;
+        protected ApplicationDbContext dataContext;
         protected readonly IDbSet<T> dbset;
         protected RepositoryBase(IDatabaseFactory databaseFactory)
         {
@@ -25,7 +25,7 @@ namespace ResourceMetadata.Data.Infrastructure
             private set;
         }
 
-        protected ResourceManagerContext DataContext
+        protected ApplicationDbContext DataContext
         {
             get { return dataContext ?? (dataContext = DatabaseFactory.Get()); }
         }

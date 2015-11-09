@@ -14,7 +14,7 @@ namespace ResourceMetadata.Service
             // Credentials:
             var credentialUserName = "bigtaddy@yandex.ru";         //admin@c-tr.by  jH4QGBWV6V
             var sentFrom = "bigtaddy@yandex.ru";
-            var pwd = "mypassword";
+            var pwd = "password!!!!!";
 
             // Configure the client:
             System.Net.Mail.SmtpClient client =

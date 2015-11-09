@@ -67,7 +67,7 @@
             $scope.filter = function () {
                 $rootScope.$broadcast('UpdateFilterOptions');
                 $scope.pageChangeHandler(1);
-            }
+            };
 
             /**
              * clearFilter
@@ -75,7 +75,7 @@
             $scope.clearFilter = function () {
                 $rootScope.$broadcast('ClearFilter');
                 $scope.pageChangeHandler(1);
-            }
+            };
 
             /**
              * getAndValidateAdvertType

@@ -8,9 +8,9 @@ namespace ResourceMetadata.Data.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private ResourceManagerContext dbContext;
+        private ApplicationDbContext dbContext;
         private readonly IDatabaseFactory dbFactory;
-        protected ResourceManagerContext DbContext
+        protected ApplicationDbContext DbContext
         {
             get
             {

@@ -103,14 +103,7 @@
             $scope.isRegistrationInProcess = true;
             accountService.registerUser(userRegistration)
                 .then(function (data) {
-                    var formData = {username: userRegistration.Email, password: userRegistration.Password, grant_type: 'password'};
-                    return accountService.login(buildFormData(formData)).then(function (response) {
-                        $scope.closeModal = function () {
-                            modalInstance.close();
-                            $location.url('/Login');
-                        };
-                        showModal();
-                    });
+                    showModal();
                 }).catch(function (response) {
                     if (response.status === 400) {
                         $scope.errorMessage = "Такой email уже существует.";

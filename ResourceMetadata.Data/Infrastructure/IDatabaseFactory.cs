@@ -5,6 +5,6 @@ namespace ResourceMetadata.Data.Infrastructure
 {
     public interface IDatabaseFactory : IDisposable
     {
-        ResourceManagerContext Get();
+        ApplicationDbContext Get();
     }
 }
