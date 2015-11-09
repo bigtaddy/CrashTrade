@@ -15,7 +15,7 @@ using System.Web.Http;
 
 namespace ResourceMetadata.API.Controllers
 {
-    public class ImageInfosController : ApiController
+    public class ImageInfosController : BaseApiController
     {
         private readonly IImageInfoService imageService;
         private readonly IAdvertService advertService;
@@ -101,7 +101,6 @@ namespace ResourceMetadata.API.Controllers
         {
             var advertModel = advertService.GetAdvertById(id);
             var images = Mapper.Map<ICollection<ImageInfo>, ICollection<ImageViewModel>>(advertModel.ImageInfos);
-
 
             foreach (var image in images)
             {

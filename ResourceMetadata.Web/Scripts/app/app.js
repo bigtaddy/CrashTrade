@@ -15,6 +15,9 @@
             .when('/Login', {
                 templateUrl: '/Scripts/app/parts/shared/Login.html'
             })
+            .when('/Login/userId/:userId/code/:code', {
+                templateUrl: '/Scripts/app/parts/shared/Login.html'
+            })
             .when('/Register', {
                 templateUrl: '/Scripts/app/parts/shared/Register.html'
             })

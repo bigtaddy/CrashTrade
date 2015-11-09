@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Microsoft.Owin.Cors;
 using System.Web.Cors;
+using ResourceMetadata.API.Infrastructure;
+using ResourceMetadata.Service;
 
 namespace ResourceMetadata.API
 {
@@ -20,18 +22,7 @@ namespace ResourceMetadata.API
     {
         static Startup()
         {
-            PublicClientId = "self";
-
-            UserManagerFactory = () => new UserManager<IdentityUser>(new UserStore<IdentityUser>(new ResourceManagerEntities()));
-
-            OAuthOptions = new OAuthAuthorizationServerOptions
-            {
-                TokenEndpointPath = new PathString("/Token"),
-                Provider = new ApplicationOAuthProvider(PublicClientId, UserManagerFactory),
-                AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromHours(12),
-                AllowInsecureHttp = true
-            };
+            
         }
 
         public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
@@ -43,8 +34,25 @@ namespace ResourceMetadata.API
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
+            app.CreatePerOwinContext(ApplicationDbContext.Create);
+            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+            app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
+
+            app.UseCookieAuthentication(new CookieAuthenticationOptions());
+            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+
+            PublicClientId = "self";
+
+            OAuthOptions = new OAuthAuthorizationServerOptions
+            {
+                TokenEndpointPath = new PathString("/Token"),
+                Provider = new ApplicationOAuthProvider(),
+                AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
+                AccessTokenExpireTimeSpan = TimeSpan.FromHours(12),
+                AllowInsecureHttp = true
+            };
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider

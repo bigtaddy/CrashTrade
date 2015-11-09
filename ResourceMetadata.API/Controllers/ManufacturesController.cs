@@ -11,7 +11,7 @@ using ResourceMetadata.Service;
 
 namespace ResourceMetadata.API.Controllers
 {
-    public class ManufacturesController : ApiController
+    public class ManufacturesController : BaseApiController
     {
         private readonly IManufactureService manufactureService;
 

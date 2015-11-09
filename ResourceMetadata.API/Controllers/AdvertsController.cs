@@ -19,7 +19,7 @@ using ResourceMetadata.Service;
 
 namespace ResourceMetadata.API.Controllers
 {
-    public class AdvertsController : ApiController
+    public class AdvertsController : BaseApiController
     {
         private readonly IAdvertService advertService;
         private const string RelativeUploadPath = "~/Images/";

@@ -61,6 +61,21 @@
                 <p><a href="">Забыли пароль?</a></p>
             </div>
         </div>
-
     </form>
+
+    <script type="text/ng-template" id="userRegistrationModal.html">
+        <div id="{{id}}">
+            <div class="header">
+                {{title}}
+            </div>
+            <div class="content">
+                Ваш аккаунт подтвержден .
+            </div>
+            <div class="actions">
+                <div class="ui small positive right labeled icon button" ng-click="closeModal()">
+                    закрыть <i class="checkmark icon"></i>
+                </div>
+            </div>
+        </div>
+    </script>
 </section>

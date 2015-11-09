@@ -9,6 +9,10 @@ namespace ResourceMetadata.API.ViewModels
 {
     public class RegisterViewModel
     {
+
+       // [Required]
+       // public string Username { get; set; }
+
         [Required]
         public string FirstName { get; set; }
 

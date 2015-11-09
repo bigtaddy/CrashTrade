@@ -11,7 +11,7 @@ using ResourceMetadata.Service;
 
 namespace ResourceMetadata.API.Controllers
 {
-    public class CarModelsController : ApiController
+    public class CarModelsController : BaseApiController
     {
         private readonly ICarModelService carModelService;
 

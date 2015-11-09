@@ -34,22 +34,19 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Owin">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.1.0.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Security">
       <HintPath>..\packages\Microsoft.Owin.Security.2.0.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
@@ -67,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationDbContext .cs" />
     <Compile Include="Configurations\AdvertConfiguration.cs" />
     <Compile Include="Configurations\IdentityUserLoginConfiguration.cs" />
     <Compile Include="Configurations\IdentityUserRoleConfiguration.cs" />
@@ -79,38 +77,6 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201502242023314_test.cs" />
-    <Compile Include="Migrations\201502242023314_test.Designer.cs">
-      <DependentUpon>201502242023314_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505231238134_addTitleToAdverts.cs" />
-    <Compile Include="Migrations\201505231238134_addTitleToAdverts.Designer.cs">
-      <DependentUpon>201505231238134_addTitleToAdverts.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505241522558_add_type_to_Adverts.cs" />
-    <Compile Include="Migrations\201505241522558_add_type_to_Adverts.Designer.cs">
-      <DependentUpon>201505241522558_add_type_to_Adverts.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505261018567_delete_redundant_models.cs" />
-    <Compile Include="Migrations\201505261018567_delete_redundant_models.Designer.cs">
-      <DependentUpon>201505261018567_delete_redundant_models.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201509142010141_addNewPropertyToAdvert.cs" />
-    <Compile Include="Migrations\201509142010141_addNewPropertyToAdvert.Designer.cs">
-      <DependentUpon>201509142010141_addNewPropertyToAdvert.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505301627588_ImageInfo_Added.cs" />
-    <Compile Include="Migrations\201505301627588_ImageInfo_Added.Designer.cs">
-      <DependentUpon>201505301627588_ImageInfo_Added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201510101428547_addNewTypesAndPriceToAdverts.cs" />
-    <Compile Include="Migrations\201510101428547_addNewTypesAndPriceToAdverts.Designer.cs">
-      <DependentUpon>201510101428547_addNewTypesAndPriceToAdverts.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201510101440579_typesChange.cs" />
-    <Compile Include="Migrations\201510101440579_typesChange.Designer.cs">
-      <DependentUpon>201510101440579_typesChange.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AdvertRepository.cs" />
@@ -132,32 +98,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Migrations\ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201502242023314_test.resx">
-      <DependentUpon>201502242023314_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505231238134_addTitleToAdverts.resx">
-      <DependentUpon>201505231238134_addTitleToAdverts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505241522558_add_type_to_Adverts.resx">
-      <DependentUpon>201505241522558_add_type_to_Adverts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505261018567_delete_redundant_models.resx">
-      <DependentUpon>201505261018567_delete_redundant_models.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505301627588_ImageInfo_Added.resx">
-      <DependentUpon>201505301627588_ImageInfo_Added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201509142010141_addNewPropertyToAdvert.resx">
-      <DependentUpon>201509142010141_addNewPropertyToAdvert.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201510101428547_addNewTypesAndPriceToAdverts.resx">
-      <DependentUpon>201510101428547_addNewTypesAndPriceToAdverts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201510101440579_typesChange.resx">
-      <DependentUpon>201510101440579_typesChange.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

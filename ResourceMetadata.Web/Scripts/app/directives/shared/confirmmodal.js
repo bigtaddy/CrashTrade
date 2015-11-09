@@ -2,7 +2,7 @@
 
     'use strict';
 
-    utilities.directive("cstConfirmModal", ['$modal', function ($modal) {
+    utilities.directive("cstConfirmModal", ['$modal','$rootScope', function ($modal, $rootScope) {
         return {
             restrict: "A",
             scope: {
@@ -16,15 +16,23 @@
             templateUrl: "/Scripts/app/partials/confirm-modal.html",
             link: function (scope, element, attrs, ngModelCtrl) {
 
-                scope.closeModal = function () {
-                    scope.modalInstance.close();
-                };
 
-                element.on('click', function (e) {
+                function showModal () {
                     scope.modalInstance = $modal.open({
                         templateUrl: 'myModalContent.html',
                         scope: scope
                     });
+                }
+                scope.closeModal = function () {
+                    scope.modalInstance.close();
+                };
+
+                var removeShowModalListener =  $rootScope.$on('Modal.Show', showModal);
+
+                element.on('click',showModal);
+
+                scope.$on('$destroy', function() {
+                    removeShowModalListener();
                 });
             }
         };

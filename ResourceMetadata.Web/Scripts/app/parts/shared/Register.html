@@ -73,11 +73,30 @@
             <input type="password" id="password" name="password" placeholder="Пароль" ng-minlength="6" required data-ng-model="userRegistration.Password" />
             <span ng-show="registrationform.password.$dirty && registrationform.password.$error.minlength" class="field-error">Пароль должен содержать не менее 6 символов</span>
             <input type="password" id="confirmpassword" placeholder="Повторите пароль" required data-ng-model="userRegistration.ConfirmPassword" />
-            <button data-ng-disabled="registrationform.$invalid" data-ng-click="register(userRegistration)">
+            <button data-ng-disabled="registrationform.$invalid || isRegistrationInProcess" data-ng-click="register(userRegistration)">
                 Зарегистрироваться
             </button>
             <a href="#/Login">Вход</a>
         </div>
 
     </form>
+    <script type="text/ng-template" id="userRegistrationModal.html">
+        <div id="{{id}}">
+            <div class="header">
+                {{title}}
+            </div>
+            <div class="content">
+                Письмо с подтвержденем аккаунта выслано на почту.
+            </div>
+            <div class="actions">
+                <div class="ui small positive right labeled icon button" ng-click="closeModal()">
+                    закрыть <i class="checkmark icon"></i>
+                </div>
+            </div>
+        </div>
+    </script>
 </section>
+
+
+
+

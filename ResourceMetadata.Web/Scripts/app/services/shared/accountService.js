@@ -26,6 +26,16 @@
                     data: userRegistration
                 })
             },
+            confirmUser: function (userId, code) {
+                return $http({
+                    method: 'POST',
+                    url: global.CrashTradeSettings.baseUrl + 'Account/ConfirmEmail/',
+                    data: {
+                        userId: userId,
+                        code: code
+                    }
+                })
+            },
             logOffUser: function () {
                 global.sessionStorage.removeItem(global.CrashTradeSettings.tokenKey);
                 $http.defaults.headers.common.Authorization = null;

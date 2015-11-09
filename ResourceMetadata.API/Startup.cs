@@ -19,7 +19,7 @@ namespace ResourceMetadata.API
              ConfigureAuth(app);
              GlobalConfiguration.Configure(WebApiConfig.Register);
              Bootstrapper.Configure();
-             Database.SetInitializer<ResourceManagerEntities>(null);
+             Database.SetInitializer<ResourceManagerContext>(null);
              AreaRegistration.RegisterAllAreas();
              FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
         }

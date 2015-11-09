@@ -9,14 +9,14 @@ namespace ResourceMetadata.Data.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ResourceManagerEntities>
+    internal sealed class Configuration : DbMigrationsConfiguration<ResourceManagerContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(ResourceManagerEntities context)
+        protected override void Seed(ResourceManagerContext context)
         {
             try
             {
@@ -41,14 +41,18 @@ namespace ResourceMetadata.Data.Migrations
                 user.FirstName = "Admin";
                 user.LastName = "Admin";
                 user.Email = "admin@admin.com";
-                user.UserName = "admin1@admin.com";
+                user.UserName = "admin@admin.com";
+                user.JoinDate = DateTime.Now.Date;
 
-                var userResult = userManager.Create(user, "Admin123456789");
+                var userResult = userManager.Create(user, "Admin123456");
 
                 if (userResult.Succeeded)
                 {
-                    //var user = userManager.FindByName("admin@marlabs.com");
-                    userManager.AddToRole<ApplicationUser>(user.Id, "Admin");
+                    var userAdmin = userManager.FindByName("admin@admin.com");
+                    userManager.SetLockoutEnabled(userAdmin.Id, false);
+                    userAdmin.EmailConfirmed = true;
+                    userManager.Update(userAdmin);
+                    userManager.AddToRole(userAdmin.Id, "Admin");
                 }
             }
             catch (Exception ex)
@@ -57,8 +61,6 @@ namespace ResourceMetadata.Data.Migrations
                 throw ex;
             }
 
-            //context.Users.Add(new ApplicationUser { Email = "abc@yahoo.com", Password = "Marlabs" });
-            //context.SaveChanges();           
         }
     }
 }
