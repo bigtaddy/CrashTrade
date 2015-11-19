@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ResourceMetadata.Models;
 using ResourceMetadata.Data.Configurations;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using Microsoft.AspNet.Identity;
 
 namespace ResourceMetadata.Data
@@ -18,8 +12,8 @@ namespace ResourceMetadata.Data
         public ApplicationDbContext()
             : base("CrashT", throwIfV1Schema: false)
         {
-            Configuration.ProxyCreationEnabled = false;
-            Configuration.LazyLoadingEnabled = false;
+            Configuration.ProxyCreationEnabled = true;
+            Configuration.LazyLoadingEnabled = true;
         }
 
         public DbSet<CarModel> CarModels { get; set; }
@@ -103,9 +97,6 @@ namespace ResourceMetadata.Data
 
                     throw ex;
                 }
-
-                //context.Users.Add(new ApplicationUser { Email = "abc@yahoo.com", Password = "Marlabs" });
-                //context.SaveChanges();  
 
             }
 

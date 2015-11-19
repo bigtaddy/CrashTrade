@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.IO;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
 using ResourceMetadata.API.ViewModels;
-using ResourceMetadata.Data;
-using ResourceMetadata.Data.Infrastructure;
 using ResourceMetadata.Models;
 using ResourceMetadata.Service;
 

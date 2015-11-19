@@ -20,6 +20,11 @@
                 });
             }
 
+            $scope.closeModal = function () {
+                modalInstance.close();
+                $location.url('/Home');
+            };
+
 
             function getUrlVars() {
                 var vars = {};
@@ -35,9 +40,6 @@
                 if(userId && code) {
                     accountService.confirmUser(userId,code)
                         .then(function (response) {
-                            $scope.closeModal = function () {
-                                modalInstance.close();
-                            };
                             showModal();
                         }).catch(function (response) {
                             if (response.status === 400) {
