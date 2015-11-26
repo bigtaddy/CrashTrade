@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.IO;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
 using ResourceMetadata.API.ViewModels;
-using ResourceMetadata.Data;
-using ResourceMetadata.Data.Infrastructure;
 using ResourceMetadata.Models;
 using ResourceMetadata.Service;
 
@@ -53,10 +44,8 @@ namespace ResourceMetadata.API.Controllers
             return GetAll(pageNumber, itemsPerPage, sortOptions, filterOptions);
         }
 
-        [HttpGet]
-        [Route("api/Adverts/Get")]
         [AllowAnonymous]
-        public IHttpActionResult GetById(int id)
+        public IHttpActionResult Get(int id)
         {
             var advertModel = advertService.GetAdvertById(id);
             var viewModel = new AdvertViewModel();
@@ -65,17 +54,16 @@ namespace ResourceMetadata.API.Controllers
             return Ok(viewModel);
         }
 
-        [HttpPost]
-        [Route("api/Adverts/Save")]
+
         [Authorize(Roles = "Admin, Member")]
-        public IHttpActionResult Save(AdvertViewModel advertModelViewModel)
+        public IHttpActionResult Post(AdvertViewModel advertModelViewModel)
         {
             var entity = new Advert();
             Mapper.Map(advertModelViewModel, entity);
             entity.UserId = User.Identity.GetUserId();
             advertService.AddAdvert(entity);
             Mapper.Map(entity, advertModelViewModel);
-            return Created(Url.Link("DefaultApi", new {controller = "Adverts", id = advertModelViewModel.Id}),
+            return Created(Url.Link("DefaultApi", new { controller = "Adverts", id = advertModelViewModel.Id }),
                 advertModelViewModel);
         }
 
