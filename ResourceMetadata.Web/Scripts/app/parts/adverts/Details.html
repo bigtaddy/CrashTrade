@@ -1,33 +1,23 @@
-<div class="row site-listing home">
+<div class="row">
     <div photo-swipe images-promise="imagesPromise.promise"></div>
-
-
 </div>
 
+<div class="row">
+    <div class="col-sm-12"><h3>{{advert.ManufactureName}} {{advert.CarModelName}} {{advert.Year}} г.в.</h3></div>
+    <div class="col-sm-8">
+        <div>
+            <h4>Детальное описание:</h4>
+            <hr>
+            <div class="advertDescription">{{advert.Description}}</p>
+            </div>
+        </div>
+        <hr class="solid">
+    </div>
 
-<div class="four mobile-four columns end">
-    <div class="first-section">
-        <h3 class="regular">Контакты:</h3>
+    <div class="col-sm-4">
+        <h4>Контакты:</h4>
         <hr>
-        <h5 class="regular">Номер телефона:</h5>
-        <h5 class="regular">+375 29 777 77 77</h5>
-        <h5 class="regular">Иван Иванович</h5>
-        <h5 class="regular">Звонить с 9.00 - 21.00</h5>
-        <hr>
-        <h3 class="regular">{{advert.ManufactureName}} {{advert.CarModelName}}</h3>
-
-        <h3 class="regular">{{advert.Year}} г.в.</h3>
+        <h5>{{advert.Contacts}}</h5>
     </div>
 </div>
-<div style="clear: both;"></div>
-<div class="twelve mobile-twelve columns end">
-    <div class="first-section">
-        <h3 class="regular">Детальное описание:</h3>
-        <hr>
-        <div class="advertDescription">{{advert.Description}}</p>
-    </div>
-</div>
-<hr class="solid">
-</div>
-
 

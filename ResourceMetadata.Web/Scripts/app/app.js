@@ -2,7 +2,7 @@
 
     'use strict';
 
-    global.app = angular.module('resourceManagerApp', ['ngSanitize', 'ui.select', 'ngTable', 'ngRoute', 'ngResource', 'ngAnimate', 'custom-utilities', 'flow', 'ngPhotoSwipe','angular-loading-bar']);
+    global.app = angular.module('resourceManagerApp', ['ngSanitize', 'ui.select', 'ngTable', 'ngRoute', 'ngResource', 'ngAnimate', 'custom-utilities', 'flow', 'ngPhotoSwipe','angular-loading-bar', 'ui.bootstrap']);
 
     app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
         $httpProvider.defaults.useXDomain = true;
@@ -67,7 +67,7 @@
 
 
     }]);
-    global.utilities = angular.module("custom-utilities", ['mm.foundation']);
+    global.utilities = angular.module("custom-utilities", []);
 
 
 }(window));

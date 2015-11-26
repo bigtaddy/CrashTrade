@@ -1,81 +1,61 @@
-﻿<!--<div style="margin-top:75px;">-->
-    <!--<div id="logincontainer" name="logincontainer">-->
-        <!--<form name="loginform" role="form" class="ui secondary small form segment">-->
-            <!--<h5 class="ui header">Вход</h5>-->
-            <!--<div class="ui divider"></div>-->
-            <!--<div ng-show="errorMessage">-->
-                <!--<div class="error-message">-->
-                    <!--{{errorMessage}}-->
-                <!--</div>-->
-                <!--<div class="ui divider"></div>-->
-            <!--</div>-->
-            <!--<div class="field">-->
-                <!--<label for="email">-->
-                    <!--Email<span style="color: Red">*</span>-->
-                <!--</label>-->
-                <!--<input type="email" id="email" class="error" name="email" placeholder="Email" required data-ng-model="userLogin.Email" />-->
-            <!--</div><div class="ui divider"></div>-->
-            <!--<div class="field">-->
-                <!--<label for="password">-->
-                    <!--Пароль<span style="color: Red">*</span>-->
-                <!--</label>-->
-                <!--<input type="password" id="password" name="password" placeholder="Password" required data-ng-model="userLogin.Password" />-->
-            <!--</div><div class="ui divider"></div>-->
-            <!--<div class="inline field">-->
-                <!--<button data-ng-click="login(userLogin)" data-ng-disabled="loginform.$invalid" class="ui blue mini button">-->
-                    <!--Войти-->
-                <!--</button>-->
-                <!--<a href="#/Register">Зарегистрироваться</a>-->
-            <!--</div>-->
-        <!--</form>-->
-    <!--</div>-->
-<!--</div>-->
+﻿<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
 
-<section id="passport" class="social-login-disabled">
-    <form name="loginform" role="form">
-        <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input
-                name="authenticity_token" type="hidden" value=""></div>
-        <div class="passport-left">
+
+        <form name="loginform" role="form">
+            <input name="utf8" type="hidden" value="✓">
+            <input name="authenticity_token" type="hidden" value="">
+
+
             <h3><strong>CrashTrade.com</strong></h3>
 
             <div ng-show="errorMessage">
                 <div class="error-message">
                     {{errorMessage}}
                 </div>
-                <div class="ui divider"></div>
             </div>
-        </div>
-        <div class="passport-right">
+
+
             <div id="emailLogin">
-                <h5 class="hide-for-small"><strong>Вход</strong></h5>
-                <input autocapitalize="off" autocorrect="off" type="email" id="email" name="email" placeholder="Email" required data-ng-model="userLogin.Email">
-                <input type="password" id="password" name="password" placeholder="Password" required data-ng-model="userLogin.Password" />
+                <h5><strong>Вход</strong></h5>
+
+                <div class="form-group">
+                    <input class="form-control" type="email" id="email" name="email" placeholder="Email"
+                           required data-ng-model="userLogin.Email">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" name="password" placeholder="Password" required
+                           class="form-control" data-ng-model="userLogin.Password"/>
+                </div>
+
+                <button data-ng-click="login(userLogin)" data-ng-disabled="loginform.$invalid" class="btn btn-default">
+                    Войти
+                </button>
                 <label>
                     <input checked="checked" id="remember_me" name="remember_me" type="checkbox" value="remember_me">
                     Запомнить меня
                 </label>
-                <button data-ng-click="login(userLogin)" data-ng-disabled="loginform.$invalid">
-                    Войти
-                </button>
                 <a href="#/Register">Зарегистрироваться</a>
+
                 <p><a href="">Забыли пароль?</a></p>
             </div>
-        </div>
-    </form>
 
-    <script type="text/ng-template" id="userRegistrationModal.html">
-        <div id="{{id}}">
-            <div class="header">
-                {{title}}
-            </div>
-            <div class="content">
-                Ваш аккаунт подтвержден .
-            </div>
-            <div class="actions">
-                <div class="ui small positive right labeled icon button" ng-click="closeModal()">
-                    закрыть <i class="checkmark icon"></i>
-                </div>
-            </div>
+        </form>
+
+
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+
+
+<script type="text/ng-template" id="userRegistrationModal.html">
+    <div id="{{id}}">
+        <div class="modal-body">
+            Ваш аккаунт подтвержден .
         </div>
-    </script>
-</section>
+        <div class="modal-footer">
+            <div class="btn btn-default" ng-click="closeModal()">закрыть</div>
+        </div>
+    </div>
+</script>

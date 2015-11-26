@@ -1,56 +1,76 @@
-<adverts-sort-options-directive sort-options="sortOptions"></adverts-sort-options-directive>
-<adverts-filter-options get-filter-options="getFilterOptions" should-be-filtered="shouldBeFiltered"></adverts-filter-options>
-<div style="width: 320px; display: block; float: left; margin-left: -198px;">
-	<a class="btn btn-success" style=" width: 150px" ng-click="filter()">Отфильтровать</a>
-	<a class="btn btn-success" style=" width: 150px" ng-click="clearFilter()">Сбросить фильтр</a>
-</div>
-<div style="display:block;float:right;width:80%;">
-    <div class="row site-listing home" ng-repeat="advert in adverts">
-        <div class="eight columns">
-            <a href="">
-                <ul class="site-display">
-                    <li ng-if="advert.ImageInfos.length == 0">Нет изображения</li>
-                    <li ng-if="advert.ImageInfos.length > 0" class="desktop-screenshot"><img alt="" class="site" src="{{advert.ImageInfos[0].FullName}}"></li>
-                    <!--<li class="mobile-screenshot"><img alt="" class="site" src="../images/index/6d.jpg"></li>-->
-                </ul>
-            </a></div>
-        <div class="four mobile-four columns end" style="margin-bottom:25px;">
-            <div class="first-section">
-                <h3 class="regular foundation-build"><a href="#/Adverts/{{advert.Id}}">{{advert.ManufactureName}}</a></h3>
-                <hr>
-                <div class="text-new-line">{{advert.Description}}</div>
-            </div>
-            <div class="second-section">
-                <hr>
-                <br/>
-                <a ng-show="isAuthenticated && advertType == 'My'" href="#/Adverts/Edit/{{advert.Id}}">Редактировать</a>
+<div class="row">
+    <div class="col-sm-2">
+        <div class="thumbnail">
+            <adverts-sort-options-directive sort-options="sortOptions"></adverts-sort-options-directive>
+        </div>
+        <div class="thumbnail">
+            <div>
+                <adverts-filter-options get-filter-options="getFilterOptions" should-be-filtered="shouldBeFiltered">
+                </adverts-filter-options>
 
-                <i ng-show="isAuthenticated && advertType == 'My'" class="trash icon" style="float: right;" title="Удалить"
-                   message="Вы хотите удалить данный элемент?"
-                   modal-id="{{advert.Id}}" on-approve="deleteAdvert(advert.Id);"
-                   on-deny="closeModal();" cst-confirm-modal></i>
-
+                <a class="btn btn-default" ng-click="filter()">Ок</a>
+                <a class="btn btn-default" ng-click="clearFilter()">Сброс</a>
             </div>
         </div>
-        <hr class="solid">
     </div>
-</div>
-<div style="clear:both;"></div>
-<!--ui-select2-->
-<div>
-    <select ng-model="pageSize" convert-to-number data-placeholder="Объявлений на странице"
-            style="float: right; width: 60px; margin-right: 10%; margin-bottom: 0">
-        <option value="1">1</option>
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="50">50</option>
-    </select>
 
-    <div style="clear: both"></div>
+    <div class="col-sm-10">
 
-    <pagination boundary-links="true" items-per-page="pageSize" on-select-page="pageChangeHandler(page)"
-                total-items="count"
-                page="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;"
-                first-text="&laquo;"
-                last-text="&raquo;"></pagination>
+        <div class="row" ng-repeat="advert in adverts">
+            <div class="col-sm-6">
+                <h5 ng-if="advert.ImageInfos.length == 0">Нет изображения</h5>
+
+                <div ng-if="advert.ImageInfos.length > 0">
+                    <img class="img-responsive img-rounded" alt="" style="max-height: 250px"
+                         ng-src="{{advert.ImageInfos[0].FullName}}">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div>
+                    <h3><a href="#/Adverts/{{advert.Id}}">{{advert.ManufactureName}}</a></h3>
+                    <hr>
+                    <div>{{advert.Description}}</div>
+                </div>
+                <div>
+                    <hr>
+                    <br/>
+                    <a ng-show="isAuthenticated && advertType == 'My'"
+                       href="#/Adverts/Edit/{{advert.Id}}">Редактировать</a>
+
+                    <i ng-show="isAuthenticated && advertType == 'My'" style="float: right;" title="Удалить"
+                       message="Вы хотите удалить данный элемент?" modal-id="{{advert.Id}}"
+                       on-approve="deleteAdvert(advert.Id);" cst-confirm-modal>Удалить</i>
+
+                </div>
+            </div>
+            <hr class="col-sm-12">
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+
+                <uib-pagination boundary-links="true" total-items="count" items-per-page="pageSize"
+                                ng-model="currentPage"
+                                class="pagination-sm" ng-change="pageChanged()" previous-text="&lsaquo;"
+                                next-text="&rsaquo;" first-text="&laquo;"
+                                last-text="&raquo;"></uib-pagination>
+            </div>
+
+            <div class="col-sm-3">
+                <label>Объявлений на странице:</label>
+                <select convert-to-number class="form-control" ng-model="pageSize">
+                    <option value="1">1</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                </select>
+            </div>
+
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+
 </div>
+
+
+

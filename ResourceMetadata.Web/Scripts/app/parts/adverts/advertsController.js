@@ -80,12 +80,16 @@
             /**
              * getAndValidateAdvertType
              */
-            function getAndValidateAdvertType(){
+            function getAndValidateAdvertType() {
                 $scope.advertType = $routeParams.advertType;
                 if (advertService.validateAdvertType($scope.advertType) == false && $scope.advertType != undefined && $scope.advertType != "My") {
                     $location.url('/Home');
                 }
             }
+
+            $scope.pageChanged = function() {
+                $scope.pageChangeHandler($scope.currentPage);
+            };
 
             $scope.adverts = {};
             $scope.sortOptions = 'CreatedOn descending';
@@ -93,7 +97,6 @@
             $scope.totalAdverts = 0;
             $scope.$watch('pageSize', pageSizeWasChanged);
             $scope.pageChangeHandler(1);
-
         }]);
 
 }(window));

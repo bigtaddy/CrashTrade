@@ -1,29 +1,38 @@
-<div class="ui divider"></div>
-<form name="advertForm" role="form" class="ui secondary small form segment">
-    <adverts-form></adverts-form>
-    <hr>
-    <div class="field" style="margin-bottom:10px;">
-        <label>
-            Загруженные изображения
-        </label>
-        <manage-images advert-id="advert.Id" images="images"></manage-images>
-    </div>
-    <hr>
-    <load-images></load-images>
-    <div class="inline field">
+<div class="col-sm-4"></div>
 
-        <button data-ng-disabled="advertForm.$invalid || isSubmitDisabled()" data-ng-click="editAdvert(advert)"
-                class="ui blue mini button">
-            Подтвердить
-        </button>
-        <a class="ui black mini button" href="#/Adverts/List/My">Отменить</a>
-
-    </div>
-
-</form>
+<div class="col-sm-4">
+    <form name="advertForm" role="form">
+        <adverts-form></adverts-form>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12"><label>
+                Загруженные изображения
+            </label>
+                <manage-images advert-id="advert.Id" images="images"></manage-images>
+            </div>
+        </div>
+        <hr>
 
 
+        <biv class="row">
+            <div class="col-sm-12">
+                <load-images></load-images>
+            </div>
+        </biv>
 
+        <biv class="row">
+            <div class="col-sm-12">
+                <button data-ng-disabled="advertForm.$invalid || isSubmitDisabled()" data-ng-click="editAdvert(advert)"
+                        class="btn btn-default">Подтвердить
+                </button>
+                <a href="#/Adverts/List/My">Отменить</a>
+            </div>
+        </biv>
+    </form>
+    <div class="col-sm-12"><br></div>
+</div>
+
+<div class="col-sm-4"></div>
 
 
 

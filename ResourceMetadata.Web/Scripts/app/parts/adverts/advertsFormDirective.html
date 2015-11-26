@@ -1,32 +1,31 @@
-﻿<div class="field">
+﻿<div class="form-group">
     <label for="title">Заголовок<span style="color:Red">*</span></label>
-    <input type="text" id="title" placeholder="Заголовок объявления" required data-ng-model="advert.Title">
+    <input type="text" id="title" placeholder="Заголовок объявления" required data-ng-model="advert.Title" class="form-control">
 </div>
-<hr>
 
-<div class="field" style="margin-bottom:10px;">
-    <label for="FuelType">
+
+<div class="form-group" style="margin-bottom:10px;">
+    <label style="display: block">
         Тип объявления<span style="color: Red">*</span>
     </label>
 
-    <label>Продажа:
+    <span>Продажа:
         <input type="checkbox" ng-model="advert.SaleType">
-    </label>
-    <label>Кузовной ремонт:
+    </span>
+    <span>Кузовной ремонт:
         <input type="checkbox" ng-model="advert.CoachworkRepairType">
-    </label>
-    <label>Механический ремонт:
+    </span>
+    <span>Механический ремонт:
         <input type="checkbox" ng-model="advert.MechanicalRepairType">
-    </label>
+    </span>
 </div>
 
-<div class="field">
+<div class="form-group">
     <label for="description">Описание<span style="color:Red">*</span></label>
-    <textarea id="description" placeholder="Описание" required data-ng-model="advert.Description"/>
+    <textarea id="description" placeholder="Описание" required data-ng-model="advert.Description" class="form-control"/>
 </div>
-<hr>
 
-<div class="field" style="margin-bottom:10px;">
+<div class="form-group" style="margin-bottom:10px;">
     <label for="manufacture">
         Производитель<span style="color: Red">*</span>
     </label>
@@ -39,12 +38,9 @@
             <span ng-bind-html="manufacture.Name | highlight: $select.search"></span>
         </ui-select-choices>
     </ui-select>
-
-
 </div>
-<hr>
 
-<div class="field" style="margin-bottom:10px;">
+<div class="form-group">
     <label for="carModel">
         Модель<span style="color: Red">*</span>
     </label>
@@ -57,27 +53,27 @@
         </ui-select-choices>
     </ui-select>
 </div>
-<hr>
 
-<div class="field">
+
+<div class="form-group">
     <label for="Year">Год выпуска<span style="color:Red">*</span></label>
-    <input type="number" id="Year" min="1900" max="2020" placeholder="Год выпуска" required data-ng-model="advert.Year">
+    <input type="number" id="Year" min="1900" max="2020" placeholder="Год выпуска" required data-ng-model="advert.Year" class="form-control">
 </div>
-<hr>
 
-<div class="field">
+
+<div class="form-group">
     <label for="title">Объем двигателя<span style="color:Red">*</span></label>
-    <input type="text" id="swepVolume" placeholder="Объем двигателя" required data-ng-model="advert.SweptVolume">
+    <input type="text" id="swepVolume" placeholder="Объем двигателя" required data-ng-model="advert.SweptVolume" class="form-control">
 </div>
-<hr>
 
-<div class="field">
-    <label for="title">Объем двигателя<span style="color:Red">*</span></label>
-    <input type="text" id="Price" placeholder="Цена" required data-ng-model="advert.Price">
+
+<div class="form-group">
+    <label for="title">Цена<span style="color:Red">*</span></label>
+    <input type="text" id="Price" placeholder="Цена" required data-ng-model="advert.Price" class="form-control">
 </div>
-<hr>
 
-<div class="field" style="margin-bottom:10px;">
+
+<div class="form-group">
     <label for="FuelType">
         Тип топлива<span style="color: Red">*</span>
     </label>
@@ -90,10 +86,8 @@
         </ui-select-choices>
     </ui-select>
 </div>
-<hr>
 
-
-<div class="field">
+<div class="form-group">
     <label for="contacts">Контактные данные продавца<span style="color:Red">*</span></label>
-    <textarea id="contacts" placeholder="Контакты" required data-ng-model="advert.Contacts"/>
+    <textarea id="contacts" placeholder="Контакты" required data-ng-model="advert.Contacts" class="form-control"/>
 </div>

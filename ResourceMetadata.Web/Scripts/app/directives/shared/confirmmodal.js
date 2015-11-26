@@ -2,41 +2,48 @@
 
     'use strict';
 
-    utilities.directive("cstConfirmModal", ['$modal','$rootScope', function ($modal, $rootScope) {
+    utilities.directive("cstConfirmModal", ['$rootScope', '$uibModal', function ($rootScope, $uibModal) {
         return {
             restrict: "A",
             scope: {
                 approve: '&onApprove',
-                deny: '&onDeny',
+                onDeny: '&onDeny',
                 closable: '=closable',
                 id: '@modalId',
                 title: '@title',
                 message: '@message'
             },
             templateUrl: "/Scripts/app/partials/confirm-modal.html",
-            link: function (scope, element, attrs, ngModelCtrl) {
+            link: function (scope, element) {
 
-
-                function showModal () {
-                    scope.modalInstance = $modal.open({
+                function showModal() {
+                    scope.modalInstance = $uibModal.open({
                         templateUrl: 'myModalContent.html',
-                        scope: scope
+                        scope: scope,
+                        controller: function () {
+                        }
                     });
                 }
+
                 scope.closeModal = function () {
                     scope.modalInstance.close();
                 };
 
-                var removeShowModalListener =  $rootScope.$on('Modal.Show', showModal);
+                scope.deny = function () {
+                    if (scope.onDeny) {
+                        scope.onDeny();
+                    }
+                }
 
-                element.on('click',showModal);
+                element.on('click', showModal);
 
-                scope.$on('$destroy', function() {
-                    removeShowModalListener();
-                });
             }
         };
     }]);
 
+    utilities.controller('ModalCtrl', function ($scope, $uibModalInstance) {
+
+
+    });
 }(window));
 

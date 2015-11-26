@@ -15,7 +15,7 @@
             template: '<div>' +
             '  <div ng-repeat="image in images" class="gallery-box ng-scope">' +
             '    <div class="thumbnail">' +
-            '      <img src="{{image.FullName}}">' +
+            '      <img ng-src="{{image.FullName}}">' +
             '    </div>' +
 
             '    <div class="btn-group">' +

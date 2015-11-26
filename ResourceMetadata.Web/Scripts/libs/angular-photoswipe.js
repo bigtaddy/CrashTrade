@@ -5,25 +5,23 @@ var ngPhotoSwipe = angular.module('ngPhotoSwipe', []);
  */
 ngPhotoSwipe.directive('photoSwipe', [ function () {
 	var template =
-		'<div>' +
-		'<div class="eight columns">' +
-		'<a href="">' +
-		'<ul class="">' +
-		'<li class=""><img alt="" data-ng-click="openPhotoSwipe(0)" class="site" src="{{images[0].FullName}}"></li>' +
-		'</ul>' +
+		'<div class="row">' +
+
+		'<div class="col-sm-6">' +
+		'<a class="thumbnail" href="">' +
+		'<img  class="img-rounded" alt="" data-ng-click="openPhotoSwipe(0)" ng-src="{{images[0].FullName}}">' +
+		'</a>' +
+		'</div>' +
+
+		'<div ng-repeat="image in images" class="col-sm-6">' +
+		'<a class="" href="">' +
+		'<img class="img-rounded" height="100" alt="" data-ng-click="openPhotoSwipe($index)" class="site" ng-src="{{image.FullName}}">' +
 		'</a>' +
 
-		'<div class="twelve columns">' +
-		'<div ng-repeat="image in images" class="three columns">' +
-		'<a href="">' +
-		'<ul class="">' +
-		'<div><img alt="" data-ng-click="openPhotoSwipe($index)" class="site" src="{{image.FullName}}"></div>' +
-		'</ul>' +
-		'</a>' +
 		'</div>' +
-		'</div>' +
-		'</div>' +
-		'<photo-slider />';
+
+		'<photo-slider />' +
+		'</div>';
 
 	var initPhotoSwipeFromDOM = function(gallerySelector, $scope) {
 

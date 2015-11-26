@@ -1,16 +1,22 @@
-<form name="advertForm" role="form" class="ui secondary small form segment">
-    <adverts-form></adverts-form>
+<div class="col-sm-4"></div>
 
-    <hr>
-    <load-images></load-images>
-    <hr>
+<div class="col-sm-4">
+    <form name="advertForm" role="form">
+        <adverts-form></adverts-form>
 
+        <biv class="row">
+            <div class="col-sm-12">
+                <load-images></load-images>
+            </div>
+        </biv>
 
-
-        <button data-ng-disabled="advertForm.$invalid" data-ng-click="addAdvert(advert)" class="button">
+        <button data-ng-disabled="advertForm.$invalid" data-ng-click="addAdvert(advert)" class="btn btn-default">
             Подтвердить
         </button>
-        <a class="button" href="#/Adverts/{{advertType}}">Отменить</a>
+        <a href="#/Adverts/{{advertType}}">Отменить</a>
+    </form>
 
+    <div class="col-sm-12"><br></div>
+</div>
 
-</form>
+<div class="col-sm-4"></div>

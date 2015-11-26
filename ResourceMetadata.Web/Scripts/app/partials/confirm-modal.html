@@ -1,19 +1,19 @@
-﻿<i><b>Удалить</b></i>
-<script type="text/ng-template" id="myModalContent.html">
-    <div id="{{id}}">
-    <div class="header">
-        {{title}}
-    </div>
-    <div class="content">
-        {{message}}
-    </div>
-    <div class="actions">
-        <div class="ui small negative button" ng-click="deny();closeModal();">
-            Нет
+﻿<i style="cursor: pointer"><b>Удалить</b></i>
+<!--<div ng-controller="ModalCtrl">-->
+    <script type="text/ng-template" id="myModalContent.html">
+        <div id="{{id}}">
+            <div class="modal-header">
+                <h3 class="modal-title">{{title}}</h3>
+            </div>
+            <div class="modal-body">
+                {{message}}
+            </div>
+            <div class="modal-footer">
+                <div class="btn btn-default" ng-click="deny();closeModal();">
+                    Нет
+                </div>
+                <div class="btn btn-default" ng-click="approve();closeModal()">Да</div>
+            </div>
         </div>
-        <div class="ui small positive right labeled icon button" ng-click="approve();closeModal()">
-            Да <i class="checkmark icon"></i>
-        </div>
-    </div>
-</div>
-</script>
+    </script>
+<!--</div>-->

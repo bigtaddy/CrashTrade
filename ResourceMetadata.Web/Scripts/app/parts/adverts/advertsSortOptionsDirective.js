@@ -12,16 +12,17 @@
             scope: {
                 sortOptions: "="
             },
-            template: '<span class="sort-block">Сортировать по:<span/>' +
-            '<select ng-model="sortProperty" data-placeholder="Сортировать по" style=" width: 160px; margin-bottom: 0; display: block;">' +
+            template: '<span>Сортировать по:<span/>' +
+            '<select class="form-control input-sm"  ng-model="sortProperty" data-placeholder="Сортировать по"">' +
             '<option value="CreatedOn">Дате Создания</option>' +
             '<option value="Year">Году выпуска</option>' +
             '</select>' +
             '<br />' +
-            '<select ng-model="sortOrder" data-placeholder="Порядок сортировки" style="width: 160px; margin-bottom: 0; display: block;">' +
+            '<select class="form-control input-sm"  ng-model="sortOrder" data-placeholder="Порядок сортировки">' +
             '<option value="ascending">По возрастанию</option>' +
             '<option value="descending">По убывавнию</option>' +
             '</select>',
+
             link: function (scope, element, attrs) {
                 scope.sortProperty = 'CreatedOn';
                 scope.sortOrder = 'descending';
