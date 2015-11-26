@@ -22,7 +22,7 @@
 
             $scope.closeModal = function () {
                 modalInstance.close();
-                $location.url('/Home');
+                $location.url('/Adverts/List/Sale');
             };
 
 
