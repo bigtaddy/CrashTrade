@@ -1,0 +1,29 @@
+<h5 class="ui header">Производители</h5>
+<div class="ui divider"></div>
+<div>
+    <table show-filter="true" ng-table="tableParams" class="table table-bordered table-striped">
+        <tr ng-repeat="manufacture in $data track by manufacture.Id">
+            <td sortable="'Name'" filter="{Name: 'text'}" title="'Имя'">
+                <a href="#/Admin/Manufactures/{{manufacture.Id}}">{{manufacture.Name}} </a>
+            </td>
+            <td sortable="'Description'" filter="{Description: 'text'}" title="'Описание'">
+                <a href="#/Admin/Manufactures/{{manufacture.Id}}">{{manufacture.Description}} </a>
+            </td>
+            <td style="width: 4%;">
+                <a href="#/Admin/Manufactures/Edit/{{manufacture.Id}}">Редактировать</a>
+            </td>
+            <td style="width: 4%;">
+                <i style="float: right;" title="Удалить {{manufacture.Name}}" message="Вы хотите удалить данный элемент?"
+                   modal-id="{{manufacture.Id}}" on-approve="deleteManufacture(manufacture.Id);"
+                   cst-confirm-modal></i>
+            </td>
+        </tr>
+        <tr ng-hide="$data">
+            <td colspan="4" class="danger">Список пуст</td>
+        </tr>
+    </table>
+
+        <a class="btn btn-danger"  style="float: right;" href="#/Admin/Manufactures/Add">Добавить производителя</a>
+</div>
+
+

@@ -2,7 +2,7 @@
 
     'use strict';
 
-    app.factory('accountService', ['$http', 'serviceHelperSvc', function ($http, serviceHelper) {
+    app.factory('accountService', ['$http', 'UserService', function ($http, UserService) {
 
         var tokenUrl = global.CrashTradeSettings.tokenUrl;
 
@@ -39,6 +39,13 @@
             logOffUser: function () {
                 global.sessionStorage.removeItem(global.CrashTradeSettings.tokenKey);
                 $http.defaults.headers.common.Authorization = null;
+                UserService.clearUserData();
+            },
+            getCurrentUser: function () {
+                return $http({
+                    method: 'POST',
+                    url: global.CrashTradeSettings.baseUrl + 'Account/GetCurrentUser/'
+                })
             }
         };
     }]);

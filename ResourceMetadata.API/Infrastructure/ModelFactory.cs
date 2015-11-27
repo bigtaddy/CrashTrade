@@ -1,4 +1,5 @@
-﻿using ResourceMetadata.Models;
+﻿using Microsoft.AspNet.Identity;
+using ResourceMetadata.Models;
 using ResourceMetadata.Service;
 using System;
 using System.Collections.Generic;
@@ -24,14 +25,14 @@ namespace ResourceMetadata.API.Infrastructure
         {
             return new UserReturnModel
             {
-                Url = _UrlHelper.Link("GetUserById", new { id = appUser.Id }),
+               // Url = _UrlHelper.Link("GetUserById", new { id = appUser.Id }),
                 Id = appUser.Id,
                 UserName = appUser.UserName,
                 FullName = string.Format("{0} {1}", appUser.FirstName, appUser.LastName),
                 Email = appUser.Email,
                 EmailConfirmed = appUser.EmailConfirmed,
-                Roles = _AppUserManager.GetRolesAsync(appUser.Id).Result,
-                Claims = _AppUserManager.GetClaimsAsync(appUser.Id).Result
+                Roles = _AppUserManager.GetRoles(appUser.Id),
+                Claims = _AppUserManager.GetClaims(appUser.Id)
             };
         }
     }

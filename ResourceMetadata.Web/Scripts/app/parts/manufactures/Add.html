@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+
+        <h4>Добавить производителя</h4>
+
+        <form name="manufactureForm" role="form">
+
+
+            <div class="form-group">
+                <label for="name">Название<span style="color:Red">*</span></label>
+                <input type="text" class="form-control" id="name" placeholder="Name" required data-ng-model="manufacture.Name">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Описание<span style="color:Red">*</span></label>
+            <textarea class="form-control" id="description" placeholder="Description" required
+                  data-ng-model="manufacture.Description"></textarea>
+            </div>
+
+            <div class="form-group">
+                <button data-ng-disabled=" manufactureForm.$invalid" data-ng-click="addManufacture(manufacture)"
+                        class="btn btn-danger">Подтвердить
+                </button>
+                <a href="#/Admin/Manufactures">Отменить</a>
+
+            </div>
+        </form>
+
+
+    </div>
+    <div class="col-sm-4"></div>
+</div>

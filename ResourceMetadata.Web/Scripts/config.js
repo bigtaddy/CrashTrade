@@ -6,8 +6,8 @@
         'baseUrl': '/api/',
         'tokenUrl': '/Token',
         'webUrl': 'http://localhost:9043/',
-        'tokenKey': 'CRASH_TRADE.ACCESS_TOKEN'
-
+        'tokenKey': 'CRASH_TRADE.ACCESS_TOKEN',
+        'userDataKey': 'CRASH_TRADE.USER_DATA'
     }
 } (window));
 

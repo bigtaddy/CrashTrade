@@ -1,8 +1,8 @@
-﻿(function(global) {
+﻿(function (global) {
 
     'use strict';
 
-    global.app = angular.module('resourceManagerApp', ['ngSanitize', 'ui.select', 'ngTable', 'ngRoute', 'ngResource', 'ngAnimate', 'custom-utilities', 'flow', 'ngPhotoSwipe','angular-loading-bar', 'ui.bootstrap']);
+    global.app = angular.module('resourceManagerApp', ['ngSanitize', 'ui.select', 'ngTable', 'ngRoute', 'ngResource', 'ngAnimate', 'custom-utilities', 'flow', 'ngPhotoSwipe', 'angular-loading-bar', 'ui.bootstrap', 'LocalStorageModule']);
 
     app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
         $httpProvider.defaults.useXDomain = true;
@@ -12,6 +12,42 @@
         $locationProvider.html5Mode(false);
 
         $routeProvider
+
+            .when('/Admin/Manufactures', {
+                templateUrl: '/Scripts/app/parts/manufactures/Listing.html',
+                controller: 'ManufacturesCtrl'
+            })
+            .when('/Admin/Manufactures/Add', {
+                templateUrl: '/Scripts/app/parts/manufactures/Add.html',
+                controller: 'ManufactureCtrl'
+            })
+            .when('/Admin/Manufactures/Edit/:manufactureId', {
+                templateUrl: '/Scripts/app/parts/manufactures/Edit.html',
+                controller: 'ManufactureCtrl'
+            })
+            .when('/Admin/Manufactures/:manufactureId', {
+                templateUrl: '/Scripts/app/parts/manufactures/Details.html',
+                controller: 'ManufactureCtrl'
+            })
+
+            .when('/Admin/CarModels', {
+                templateUrl: '/Scripts/app/parts/carModels/Listing.html',
+                controller: 'CarModelsCtrl'
+            })
+            .when('/Admin/CarModels/Add', {
+                templateUrl: '/Scripts/app/parts/carModels/Add.html',
+                controller: 'CarModelCtrl'
+            })
+            .when('/Admin/CarModels/Edit/:carModelId', {
+                templateUrl: '/Scripts/app/parts/carModels/Edit.html',
+                controller: 'CarModelCtrl'
+            })
+            .when('/Admin/CarModels/:carModelId', {
+                templateUrl: '/Scripts/app/parts/carModels/Details.html',
+                controller: 'CarModelCtrl'
+            })
+
+
             .when('/Login', {
                 templateUrl: '/Scripts/app/parts/shared/Login.html'
             })
@@ -57,15 +93,21 @@
             });
 
         $httpProvider.interceptors.push('authorizationInterceptor');
+
+
 //        $httpProvider.interceptors.push('httpInterceptor');
 
     }]).factory('userProfileSvc', function () {
 
         return {};
 
-    }).run(['$rootScope', function ($rootScope) {
-
-
+    }).run(['$rootScope', 'UserService', 'accountService', '$location', function ($rootScope, UserService, accountService, $location) {
+        var userData = UserService.getUserData();
+        if (userData && userData.rememberMe) {
+            $rootScope.userData = userData;
+        } else {
+            accountService.logOffUser();
+        }
     }]);
     global.utilities = angular.module("custom-utilities", []);
 

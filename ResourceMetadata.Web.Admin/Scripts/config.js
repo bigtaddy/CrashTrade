@@ -3,8 +3,8 @@
     'use strict';
 
     global.CrashTradeSettings = {
-        'baseUrl': 'http://c-tr.by/api/',
-        'tokenUrl': 'http://c-tr.by/Token',
+        'baseUrl': '/api/',
+        'tokenUrl': '/Token',
         'webUrl': 'http://localhost:9043/',
         'tokenKey': 'CRASH_TRADE.ACCESS_TOKEN'
 

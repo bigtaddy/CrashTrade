@@ -8,16 +8,17 @@ ngPhotoSwipe.directive('photoSwipe', [ function () {
 		'<div class="row">' +
 
 		'<div class="col-sm-6">' +
-		'<a class="thumbnail" href="">' +
-		'<img  class="img-rounded" alt="" data-ng-click="openPhotoSwipe(0)" ng-src="{{images[0].FullName}}">' +
+		'<a class="thumbnail" href="" data-ng-click="openPhotoSwipe(0)">' +
+		'<img  class="img-rounded" alt="" ng-src="{{images[0].FullName}}">' +
 		'</a>' +
 		'</div>' +
 
 		'<div ng-repeat="image in images" class="col-sm-6">' +
-		'<a class="" href="">' +
-		'<img class="img-rounded" height="100" alt="" data-ng-click="openPhotoSwipe($index)" class="site" ng-src="{{image.FullName}}">' +
+		'<div class="col-sm-3">'+
+		'<a class="thumbnail" data-ng-click="openPhotoSwipe($index)" href="">' +
+		'<img class="img-rounded img-responsive" style="max-height: 100px" ng-src="{{image.FullName}}">' +
 		'</a>' +
-
+		'</div>' +
 		'</div>' +
 
 		'<photo-slider />' +

@@ -42,6 +42,22 @@ namespace ResourceMetadata.API.Controllers
 
         }
 
+        [HttpPost]
+        [Route("api/Account/GetCurrentUser")]
+        public async Task<IHttpActionResult> GetCurrentUser()
+        {
+           var currentUserId = User.Identity.GetUserId();
+
+           var user = await this.AppUserManager.FindByIdAsync(currentUserId);
+
+           if (user != null)
+           {
+               return Ok(this.TheModelFactory.Create(user));
+           }
+
+           return NotFound();
+        }
+
         [Route("api/Account/GetUserByName")]
         public async Task<IHttpActionResult> GetUserByName(string username)
         {

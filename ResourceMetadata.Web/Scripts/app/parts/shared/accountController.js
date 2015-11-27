@@ -2,8 +2,8 @@
 
     'use strict';
 
-    app.controller('AccountCtrl', ['$scope', '$location', '$http', '$rootScope', '$routeParams', 'accountService', 'userProfileSvc', '$uibModal',
-        function ($scope, $location, $http, $rootScope, $routeParams, accountService, userProfileSvc, $modal) {
+    app.controller('AccountCtrl', ['$scope', '$location', '$http', '$rootScope', '$routeParams', 'accountService', 'UserService', '$uibModal',
+        function ($scope, $location, $http, $rootScope, $routeParams, accountService, UserService, $modal) {
 
             $scope.isRegistrationInProcess = false;
             /*
@@ -11,12 +11,13 @@
              */
 
             var modalInstance;
-            function showModal () {
-               modalInstance = $modal.open({
-                    animation:true,
+
+            function showModal() {
+                modalInstance = $modal.open({
+                    animation: true,
                     templateUrl: 'userRegistrationModal.html',
                     scope: $scope
-                //     size: 'sm'
+                    //     size: 'sm'
                 });
             }
 
@@ -75,11 +76,15 @@
                 var formData = {username: userLogin.Email, password: userLogin.Password, grant_type: 'password'};
                 accountService.login(buildFormData(formData))
                     .then(function (response) {
+
                         $http.defaults.headers.common.Authorization = "Bearer " + response.data.access_token;
                         global.sessionStorage.setItem(global.CrashTradeSettings.tokenKey, response.data.access_token);
-                        userProfileSvc.role = response.data.role;
-                        $scope.$emit('logOn');
-                        $location.url('/Adverts/List/Sale');
+                        accountService.getCurrentUser().then(function (userData, qwer) {
+                            userData.data.rememberMe = userLogin.rememberMe;
+                            UserService.setUserData(userData.data);
+                            $scope.$emit('logOn');
+                            $location.url('/Adverts/List/Sale');
+                        })
                     }).catch(function (response) {
                         if (response.status === 400) {
                             $scope.errorMessage = response.data.error_description;
@@ -124,6 +129,18 @@
                 $scope.$emit('logOff');
                 $location.url('/Login');
             };
+
+
+            $rootScope.$on("$routeChangeStart", function (event, next, current) {
+                if (next.$$route && next.$$route.originalPath.startsWith('/Admin')) {
+                    if (!($rootScope.userData && $rootScope.userData.isAdmin)) {
+                        $scope.showAdministrativeTools = false;
+                        $location.url('/');
+                    } else {
+                        $scope.showAdministrativeTools = true;
+                    }
+                }
+            });
         }]);
 
 }(window));

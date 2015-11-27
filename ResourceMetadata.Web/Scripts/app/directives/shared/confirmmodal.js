@@ -40,10 +40,5 @@
             }
         };
     }]);
-
-    utilities.controller('ModalCtrl', function ($scope, $uibModalInstance) {
-
-
-    });
 }(window));
 

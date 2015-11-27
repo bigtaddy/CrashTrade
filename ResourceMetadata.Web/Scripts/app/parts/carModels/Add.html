@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+
+        <form name="carModelForm" role="form">
+            <h4>Добавить модель</h4>
+
+            <div class="form-group">
+                <label for="name">Название<span style="color:Red">*</span></label>
+                <input class="form-control" type="text" id="name" placeholder="Name" required
+                       data-ng-model="carModel.Name">
+            </div>
+            <div class="form-group">
+                <label for="manufacture">Производитель<span style="color: Red">*</span>
+                </label>
+
+                <ui-select ng-model="carModel.ManufactureId" ntheme="selectize" ng-required="true" style="width:100%;"
+                           id="manufacture">
+                    <ui-select-match placeholder="Выберите марку">{{$select.selected.Name}}
+                    </ui-select-match>
+                    <ui-select-choices repeat="manufacture.Id as manufacture in manufactures | filter: $select.search">
+                        <span ng-bind-html="manufacture.Name | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+
+            </div>
+
+            <div class="form-group">
+                <button data-ng-disabled=" carModelForm.$invalid" data-ng-click="addCarModel(carModel)"
+                        class="btn btn-danger">Подтвердить
+                </button>
+                <a href="#/Admin/CarModels">Отменить</a>
+            </div>
+        </form>
+
+
+    </div>
+    <div class="col-sm-4"></div>
+</div>
