@@ -1,30 +1,41 @@
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
 
-<h5 class="ui header">Редактировать модель</h5>
-<div class="ui divider"></div>
-<form name="manufactureForm" role="form" class="ui secondary small form segment">
-    <h5 class="ui header">Редактировать модель</h5>
-    <div class="ui divider"></div>
-    <div class="field">
-        <label for="name">Имя<span style="color:Red">*</span></label>
-        <input type="text" id="name" placeholder="Name" required data-ng-model="carModel.Name">
-    </div>
-    <div class="ui divider"></div>
-    <div class="field" style="margin-bottom:10px;">
-        <label for="manufacture">
-            Производитель<span style="color: Red">*</span>
-        </label>
 
-        <select ui-select2 ng-model="carModel.ManufactureId" ng-required="true" data-placeholder="Производитель" style="width:100%;">
-            <option value="">--Выбрать--</option>
-            <option ng-repeat="manufacture in manufactures" value="{{manufacture.Id}}">{{manufacture.Name}}</option>
-        </select>
+        <h5>Редактировать модель</h5>
+
+        <form name="manufactureForm" role="form">
+
+            <div class="form-group">
+                <label for="name">Имя<span style="color:Red">*</span></label>
+                <input type="text" id="name" placeholder="Name" required data-ng-model="carModel.Name"
+                       class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="manufacture">Производитель<span style="color: Red">*</span></label>
+
+                <ui-select ng-model="carModel.ManufactureId" ntheme="selectize" ng-required="true" style="width:100%;"
+                           id="manufacture">
+                    <ui-select-match placeholder="Выберите марку">{{$select.selected.Name}}
+                    </ui-select-match>
+                    <ui-select-choices repeat="manufacture.Id as manufacture in manufactures | filter: $select.search">
+                        <span ng-bind-html="manufacture.Name | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+
+            <div class="form-group">
+                <button data-ng-disabled="manufactureForm.$invalid" data-ng-click="editCarModel(carModel)"
+                        class="btn btn-danger">
+                    Подтвердить
+                </button>
+                <a href="#/Admin/CarModels">Отменить</a>
+            </div>
+        </form>
+
 
     </div>
-    <div class="ui divider"></div>
-    <div class="inline field">
-        <button data-ng-disabled="manufactureForm.$invalid" data-ng-click="editCarModel(carModel)" class="ui blue mini button">
-            Подтвердить
-        </button>
-        <a class="ui black mini button" href="#/Admin/CarModels">Отменить</a>
-    </div>
-</form> 
+    <div class="col-sm-4"></div>
+</div>

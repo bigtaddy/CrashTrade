@@ -1,25 +1,34 @@
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
 
 
-<h5 class="ui header">Редактировать производителя</h5>
-<div class="ui divider"></div>
-<form name="manufactureForm" role="form" class="ui secondary small form segment">
-    <h5 class="ui header">Редактировать производителя</h5>
-    <div class="ui divider"></div>
-    <div class="field">
-        <label for="name">Имя<span style="color:Red">*</span></label>
-        <input type="text" id="name" placeholder="Name" required data-ng-model="manufacture.Name">
+        <h5>Редактировать производителя</h5>
+
+
+        <form name="manufactureForm" role="form">
+
+            <div class="form-group">
+                <label for="name">Имя<span style="color:Red">*</span></label>
+                <input type="text" id="name" placeholder="Name" required data-ng-model="manufacture.Name"
+                       class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Описание<span style="color:Red">*</span></label>
+                <textarea id="description" placeholder="Description" required
+                          data-ng-model="manufacture.Description" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <button data-ng-disabled="manufactureForm.$invalid" data-ng-click="editManufacture(manufacture)"
+                        class="btn btn-danger">
+                    Подтвердить
+                </button>
+                <a href="#/Admin/Manufactures">Отменить</a>
+            </div>
+        </form>
+
+
     </div>
-    <div class="ui divider"></div>
-    <div class="field">
-        <label for="description">
-            Описание<span style="color:Red">*</span>
-        </label>
-        <textarea id="description" placeholder="Description" required data-ng-model="manufacture.Description"></textarea>
-    </div><div class="ui divider"></div>
-    <div class="inline field">
-        <button data-ng-disabled="manufactureForm.$invalid" data-ng-click="editManufacture(manufacture)" class="ui blue mini button">
-            Подтвердить
-        </button>
-        <a class="ui black mini button" href="#/Admin/Manufactures">Отменить</a>
-    </div>
-</form> 
+    <div class="col-sm-4"></div>
+</div>

@@ -1,5 +1,5 @@
  <span>Производитель:</span>
-    <ui-select ng-model="car.manufactureId" theme="selectize" id="manufacture">
+    <ui-select ng-model="car.manufactureId" id="manufacture">
         <ui-select-match placeholder="Выберите марку">{{$select.selected.Name}}
         </ui-select-match>
         <ui-select-choices repeat="manufacture.Id as manufacture in manufactures | filter: $select.search">
@@ -9,7 +9,7 @@
     <div></div>
 
     <span>Модель:</span>
-    <ui-select ng-model="car.carModelId" theme="selectize" id="carModel">
+    <ui-select ng-model="car.carModelId" id="carModel">
         <ui-select-match placeholder="Выберите модель">{{$select.selected.Name}}
         </ui-select-match>
         <ui-select-choices repeat="carModel.Id as carModel in carModels | filter: $select.search">
