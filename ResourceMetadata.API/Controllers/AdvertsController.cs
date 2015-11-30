@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
@@ -44,6 +45,8 @@ namespace ResourceMetadata.API.Controllers
             return GetAll(pageNumber, itemsPerPage, sortOptions, filterOptions);
         }
 
+        [HttpGet]
+        [Route("api/Adverts/GetById")]
         [AllowAnonymous]
         public IHttpActionResult Get(int id)
         {
@@ -54,7 +57,8 @@ namespace ResourceMetadata.API.Controllers
             return Ok(viewModel);
         }
 
-
+        [HttpPost]
+        [Route("api/Adverts/Save")]
         [Authorize(Roles = "Admin, Member")]
         public IHttpActionResult Post(AdvertViewModel advertModelViewModel)
         {

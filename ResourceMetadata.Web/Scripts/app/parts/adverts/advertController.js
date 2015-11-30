@@ -50,6 +50,8 @@
                             callback();
                         }
                     });
+                } else {
+                    callback();
                 }
             }
 
@@ -58,7 +60,7 @@
              * @param advert
              */
             $scope.addAdvert = function (advert) {
-                entityService.add(advert, "Adverts")
+                entityService.add(advert, "Adverts/Save")
                     .then(function (response) {
                         uploadImages(response.data.Id, function () {
                             $location.path('/Adverts/List/My');
@@ -87,7 +89,7 @@
                 if ($routeParams.advertId > 0) {
                     $scope.imagesPromise = $q.defer();
 
-                    entityService.getById($routeParams.advertId, "Adverts").then(function (response) {
+                    entityService.getById($routeParams.advertId, "Adverts/GetById").then(function (response) {
                         $scope.advert = response.data;
                         getDropDownDataData();
                         $scope.imagesPromise.resolve($scope.advert.ImageInfos);
