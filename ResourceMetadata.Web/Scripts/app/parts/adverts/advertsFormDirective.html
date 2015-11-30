@@ -30,7 +30,7 @@
         Производитель<span style="color: Red">*</span>
     </label>
 
-    <ui-select ng-model="advert.ManufactureId" ng-required="true" theme="selectize" style="width:100%;"
+    <ui-select ng-model="advert.ManufactureId" ng-required="true" style="width:100%;"
                id="manufacture">
         <ui-select-match placeholder="Выберите марку">{{$select.selected.Name}}
         </ui-select-match>
@@ -45,7 +45,7 @@
         Модель<span style="color: Red">*</span>
     </label>
 
-    <ui-select ng-model="advert.CarModelId" theme="selectize" ng-required="true" style="width:100%;" id="carModel">
+    <ui-select ng-model="advert.CarModelId" ng-required="true" style="width:100%;" id="carModel">
         <ui-select-match placeholder="Выберите модель">{{$select.selected.Name}}
         </ui-select-match>
         <ui-select-choices repeat="carModel.Id as carModel in carModels | filter: $select.search">
@@ -78,7 +78,7 @@
         Тип топлива<span style="color: Red">*</span>
     </label>
 
-    <ui-select ng-model="advert.FuelType" theme="selectize" ng-required="true" style="width:100%;" id="FuelType">
+    <ui-select ng-model="advert.FuelType" ng-required="true" style="width:100%;" id="FuelType">
         <ui-select-match placeholder="Тип двигателя">{{$select.selected.Name}}
         </ui-select-match>
         <ui-select-choices repeat="fuelType.Id as fuelType in fuelTypes | filter: $select.search">
