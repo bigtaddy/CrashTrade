@@ -32,6 +32,19 @@
                 scope.goToLogin = function () {
                     $location.url('/Login');
                 };
+
+                $rootScope.$on("$routeChangeSuccess", function (event, next, current) {
+                    if (next.$$route && next.$$route.originalPath.startsWith('/Admin')) {
+                        if (!($rootScope.userData && $rootScope.userData.isAdmin)) {
+                            scope.showAdministrativeTools = false;
+                            $location.url('/');
+                        } else {
+                            scope.showAdministrativeTools = true;
+                        }
+                    } else {
+                        scope.showAdministrativeTools = false;
+                    }
+                });
             }
         };
     });

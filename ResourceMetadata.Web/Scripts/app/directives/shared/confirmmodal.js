@@ -11,10 +11,14 @@
                 closable: '=closable',
                 id: '@modalId',
                 title: '@title',
-                message: '@message'
+                message: '@message',
+                linkText: '@linkText'
             },
             templateUrl: "/Scripts/app/partials/confirm-modal.html",
             link: function (scope, element) {
+                if(!scope.linkText){
+                    scope.linkText = 'Удалить'
+                }
 
                 function showModal() {
                     scope.modalInstance = $uibModal.open({

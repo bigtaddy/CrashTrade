@@ -9,11 +9,12 @@
 
         <li ng-show="showAdministrativeTools && userData" role="presentation"><a href="#/Admin/Manufactures">Производители</a></li>
         <li ng-show="showAdministrativeTools && userData" role="presentation"><a href="#/Admin/CarModels">Модели</a></li>
+        <li ng-show="showAdministrativeTools && userData" role="presentation"><a href="#/Admin/Users">Пользователи</a></li>
 
 
         <div style="float:right;">
-            <a class="btn btn-default"  ng-click="showAdministrativeTools = true" ng-show="userData.isAdmin && !showAdministrativeTools">Админка</a>
-            <a class="btn btn-default"  ng-click="showAdministrativeTools = false" ng-show="userData.isAdmin && showAdministrativeTools">Сайт</a>
+            <a class="btn btn-danger"  ng-click="showAdministrativeTools = true" ng-show="userData.isAdmin && !showAdministrativeTools">Админка</a>
+            <a class="btn btn-danger"  ng-click="showAdministrativeTools = false" ng-show="userData.isAdmin && showAdministrativeTools">Сайт</a>
             <a class="btn btn-default"  href="#/Adverts/Add" ng-show="userData">Добавить объявление</a>
             <a class="btn btn-default"  href="#/Adverts/List/My" ng-show="userData">Мои объявления</a>
             <a class="btn btn-success" href="javascript:;" ng-show="userData" ng-click="logOff();">Выйти</a>

@@ -29,7 +29,6 @@
                 templateUrl: '/Scripts/app/parts/manufactures/Details.html',
                 controller: 'ManufactureCtrl'
             })
-
             .when('/Admin/CarModels', {
                 templateUrl: '/Scripts/app/parts/carModels/Listing.html',
                 controller: 'CarModelsCtrl'
@@ -46,8 +45,10 @@
                 templateUrl: '/Scripts/app/parts/carModels/Details.html',
                 controller: 'CarModelCtrl'
             })
-
-
+            .when('/Admin/Users', {
+                templateUrl: '/Scripts/app/parts/userManagement/Listing.html',
+                controller: 'UserManagementCtrl'
+            })
             .when('/Login', {
                 templateUrl: '/Scripts/app/parts/shared/Login.html'
             })
@@ -57,21 +58,17 @@
             .when('/Register', {
                 templateUrl: '/Scripts/app/parts/shared/Register.html'
             })
-
             .when('/About', {
                 templateUrl: '/Scripts/app/parts/about/About.html'
             })
-
             .when('/Adverts/Add', {
                 templateUrl: '/Scripts/app/parts/adverts/Add.html',
                 controller: 'AdvertCtrl'
             })
-
             .when('/Adverts/List/:advertType', {
                 templateUrl: '/Scripts/app/parts/adverts/Listing.html',
                 controller: 'AdvertsCtrl'
             })
-
             .when('/Adverts/Edit/:advertId', {
                 templateUrl: '/Scripts/app/parts/adverts/Edit.html',
                 controller: 'AdvertCtrl'
@@ -80,7 +77,6 @@
                 templateUrl: '/Scripts/app/parts/adverts/Details.html',
                 controller: 'AdvertCtrl'
             })
-
             .when('/Home', {
                 templateUrl: '/Scripts/app/parts/adverts/Listing.html',
                 controller: 'AdvertsCtrl'
@@ -101,12 +97,21 @@
 
         return {};
 
-    }).run(['$rootScope', 'UserService', 'accountService', '$location', function ($rootScope, UserService, accountService, $location) {
+    }).run(['$rootScope', 'UserService', '$location', 'localStorageService', '$http', function ($rootScope, UserService, $location, localStorageService, $http) {
         var userData = UserService.getUserData();
         if (userData && userData.rememberMe) {
             $rootScope.userData = userData;
+            global.sessionStorage.setItem(
+                global.CrashTradeSettings.tokenKey,
+                localStorageService.get(global.CrashTradeSettings.tokenKey)
+            );
+            $http.defaults.headers.common.Authorization = 'Bearer ' + global.sessionStorage[global.CrashTradeSettings.tokenKey];
         } else {
-            accountService.logOffUser();
+            if (!global.sessionStorage[global.CrashTradeSettings.tokenKey]) {
+                $rootScope.$broadcast('logOff');
+            } else {
+                $rootScope.userData = userData;
+            }
         }
     }]);
     global.utilities = angular.module("custom-utilities", []);

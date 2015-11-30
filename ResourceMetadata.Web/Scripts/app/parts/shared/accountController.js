@@ -2,8 +2,8 @@
 
     'use strict';
 
-    app.controller('AccountCtrl', ['$scope', '$location', '$http', '$rootScope', '$routeParams', 'accountService', 'UserService', '$uibModal',
-        function ($scope, $location, $http, $rootScope, $routeParams, accountService, UserService, $modal) {
+    app.controller('AccountCtrl', ['$scope', '$location', '$http', '$rootScope', '$routeParams', 'accountService', 'UserService', '$uibModal', 'localStorageService',
+        function ($scope, $location, $http, $rootScope, $routeParams, accountService, UserService, $modal, localStorageService) {
 
             $scope.isRegistrationInProcess = false;
             /*
@@ -79,6 +79,9 @@
 
                         $http.defaults.headers.common.Authorization = "Bearer " + response.data.access_token;
                         global.sessionStorage.setItem(global.CrashTradeSettings.tokenKey, response.data.access_token);
+                        if(userLogin.rememberMe){
+                            localStorageService.set(global.CrashTradeSettings.tokenKey, response.data.access_token);
+                        }
                         accountService.getCurrentUser().then(function (userData, qwer) {
                             userData.data.rememberMe = userLogin.rememberMe;
                             UserService.setUserData(userData.data);
@@ -129,18 +132,6 @@
                 $scope.$emit('logOff');
                 $location.url('/Login');
             };
-
-
-            $rootScope.$on("$routeChangeStart", function (event, next, current) {
-                if (next.$$route && next.$$route.originalPath.startsWith('/Admin')) {
-                    if (!($rootScope.userData && $rootScope.userData.isAdmin)) {
-                        $scope.showAdministrativeTools = false;
-                        $location.url('/');
-                    } else {
-                        $scope.showAdministrativeTools = true;
-                    }
-                }
-            });
         }]);
 
 }(window));

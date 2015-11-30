@@ -25,6 +25,10 @@
             enumerable: true
         });
 
+        $rootScope.$on('logOff', function () {
+            clearUserData();
+        })
+
         /**
          * setUserData
          * @param userData

@@ -37,6 +37,11 @@ namespace ResourceMetadata.Data.Migrations
                     roleManager.Create(new IdentityRole("Member"));
                 }
 
+                if (!roleManager.RoleExists("PremiumMember"))
+                {
+                    roleManager.Create(new IdentityRole("PremiumMember"));
+                }
+
                 var user = new ApplicationUser();
                 user.FirstName = "Admin";
                 user.LastName = "Admin";

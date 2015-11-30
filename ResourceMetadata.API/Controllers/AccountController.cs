@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Web.Security;
+using AutoMapper;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
@@ -22,6 +23,7 @@ namespace ResourceMetadata.API.Controllers
     public class AccountController : BaseApiController
     {
 
+        [Authorize(Roles = "Admin")]
         [Route("api/Account/GetUsers")]
         public IHttpActionResult GetUsers()
         {
@@ -43,6 +45,40 @@ namespace ResourceMetadata.API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [Route("api/Account/ChangePremiumStatus/{id:guid}")]
+        public async Task<IHttpActionResult> ChangePremiumStatus(string id)
+        {
+            var appUser = await this.AppUserManager.FindByIdAsync(id);
+
+            if (appUser != null)
+            {
+                var roles = new List<string>();
+                roles.Add("PremiumMember");
+                IdentityResult result;
+
+                if (await AppUserManager.IsInRoleAsync(id, "PremiumMember"))
+                {
+                    result = await this.AppUserManager.RemoveFromRoleAsync(id, "PremiumMember");
+                }
+                else
+                {
+                    result = await this.AppUserManager.AddUserToRolesAsync(id, roles);
+                }
+
+                if (!result.Succeeded)
+                {
+                    return GetErrorResult(result);
+                }
+
+                return Ok();
+            }
+
+            return NotFound();
+
+        }
+
+        [HttpGet]
         [Route("api/Account/GetCurrentUser")]
         public async Task<IHttpActionResult> GetCurrentUser()
         {
@@ -177,6 +213,12 @@ namespace ResourceMetadata.API.Controllers
         {
 
             //Only SuperAdmin or Admin can delete users (Later when implement roles)
+
+            var currentUserId = User.Identity.GetUserId();
+            if (currentUserId == id)
+            {
+                return Conflict();
+            }
 
             var appUser = await this.AppUserManager.FindByIdAsync(id);
 

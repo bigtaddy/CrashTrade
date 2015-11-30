@@ -1,0 +1,36 @@
+<h5>Производители</h5>
+
+<div>
+    <table show-filter="true" ng-table="tableParams" class="table table-bordered table-striped">
+        <tr ng-repeat="user in $data">
+            <td sortable="'Email'" filter="{Email: 'text'}" title="'Email'">
+                {{user.Email}}
+            </td>
+            <td sortable="'EmailConfirmed'" style="width: 4%;" filter="{EmailConfirmed: 'text'}" title="'Подтвержден'">
+                {{user.EmailConfirmed}}
+            </td>
+            <td sortable="'FullName'" filter="{FullName: 'text'}" title="'Полное имя'">
+                {{user.FullName}}
+            </td>
+            <td sortable="'Roles'" filter="{Roles: 'text'}" title="'Роли'">
+                {{user.Roles}}
+            </td>
+            <td>
+                <i style="float: right;" title="Изменить {{user.UserName}}" message="Вы хотите изменить премиум статус пользователя?"
+                   modal-id="{{user.Id}}" on-approve="changePremiumStatus(user.Id);" link-text="Изменить премиум статус"
+                   cst-confirm-modal></i>
+            </td>
+            <td style="width: 4%;">
+                <i style="float: right;" title="Удалить {{user.UserName}}" message="Вы хотите удалить пользователя?"
+                   modal-id="{{user.Id}}" on-approve="deleteUser(user.Id);"
+                   cst-confirm-modal></i>
+            </td>
+        </tr>
+        <tr ng-hide="$data">
+            <td colspan="4" class="danger">Список пуст</td>
+        </tr>
+    </table>
+
+</div>
+
+

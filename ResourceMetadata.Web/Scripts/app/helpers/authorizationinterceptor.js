@@ -2,7 +2,7 @@
 
     'use strict';
 
-    app.factory('authorizationInterceptor', ['$rootScope', '$q', '$location', function ($rootScope, $q, $location) {
+    app.factory('authorizationInterceptor', ['$rootScope', '$q', '$location', function ($rootScope, $q, $location, $http) {
         return {
             response: function (response) {
                 /*if (!global.sessionStorage[global.CrashTradeSettings.tokenKey]) {
@@ -17,16 +17,15 @@
                 switch (rejection.status) {
                     case 401:
                     {
-                        global.sessionStorage.removeItem(global.CrashTradeSettings.tokenKey);
-                        $http.defaults.headers.common.Authorization = null;
                         $rootScope.$broadcast('logOff');
                         $location.url('/Login');
                         break;
                     }
+                    case 405:
                     case 403:
                     {
-                        $rootScope.$broadcast('logOff');
-                        $location.url('/Login');
+                        alert('Permission Denied')
+                        $location.url('/');
                         break;
                     }
                     default:
