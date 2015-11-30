@@ -15,6 +15,10 @@
 
             init();
 
+            /**
+             * isSubmitDisabled
+             * @returns {boolean}
+             */
             $scope.isSubmitDisabled = function () {
                 var isDisabled = false;
                 if ($scope.flowObject.files.length) {
@@ -28,7 +32,11 @@
                 return isDisabled;
             };
 
-
+            /**
+             * uploadImages
+             * @param advertId
+             * @param callback
+             */
             function uploadImages(advertId, callback) {
                 if ($scope.flowObject.files.length) {
                     var fd = new FormData();

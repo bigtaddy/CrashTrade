@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web;
@@ -22,16 +23,53 @@ namespace ResourceMetadata.API.Controllers
             this.advertService = advertService;
         }
 
-        [HttpGet]
-        [Route("api/Adverts/All")]
-        [AllowAnonymous]
         public HttpResponseMessage GetAll(int pageNumber, int itemsPerPage, string sortOptions, string filterOptions)
         {
             var advertModels = advertService.GetAdverts(pageNumber, itemsPerPage, sortOptions, filterOptions);
+
             var advertModelViewModels = new List<AdvertViewModel>();
             var count = advertService.GetCount(filterOptions);
             Mapper.Map(advertModels, advertModelViewModels);
             SetCorrectImagesPaths(advertModelViewModels);
+            return Request.CreateResponse(HttpStatusCode.OK, new { adverts = advertModelViewModels, count });
+        }
+
+        [HttpGet]
+        [Route("api/Adverts/GetAllSale")]
+        [AllowAnonymous]
+        public HttpResponseMessage GetAllSale(int pageNumber, int itemsPerPage, string sortOptions, string filterOptions)
+        {
+            filterOptions = "(" + filterOptions + (") And SaleType = true");
+
+            return GetAll(pageNumber, itemsPerPage, sortOptions, filterOptions);
+        }
+
+        [HttpGet]
+        [Route("api/Adverts/GetAllMechanicalRepair")]
+        [AllowAnonymous]
+        public HttpResponseMessage GetAllMechanicalRepair(int pageNumber, int itemsPerPage, string sortOptions, string filterOptions)
+        {
+            filterOptions = "(" + filterOptions + (") And MechanicalRepairType = true");
+
+            return GetAll(pageNumber, itemsPerPage, sortOptions, filterOptions);
+        }
+
+        [HttpGet]
+        [Route("api/Adverts/GetAllCoachworkRepair")]
+        [AllowAnonymous]
+        public HttpResponseMessage GetAllCoachworkRepair(int pageNumber, int itemsPerPage, string sortOptions, string filterOptions)
+        {
+            filterOptions = "(" + filterOptions + (") And CoachworkRepairType = true");
+
+            if (IsUserHasAccessToCoachworkRepairAdverts())
+            {
+                return GetAll(pageNumber, itemsPerPage, sortOptions, filterOptions);
+            }
+
+            var advertModels = advertService.GetAdverts(pageNumber, itemsPerPage, sortOptions, filterOptions);
+            var advertModelViewModels = new List<LimitedAdvertViewModel>();
+            var count = advertService.GetCount(filterOptions);
+            Mapper.Map(advertModels, advertModelViewModels);
             return Request.CreateResponse(HttpStatusCode.OK, new { adverts = advertModelViewModels, count });
         }
 
@@ -76,7 +114,7 @@ namespace ResourceMetadata.API.Controllers
         {
             advertModelViewModel.Id = id;
             var advert = advertService.GetAdvertById(id);
-            if (advert.UserId != User.Identity.GetUserId())
+            if (advert.UserId != User.Identity.GetUserId() && !User.IsInRole("Admin"))
             {
                 return ResponseMessage(Request.CreateResponse(HttpStatusCode.Forbidden, "Permission denied"));
             }
@@ -91,7 +129,7 @@ namespace ResourceMetadata.API.Controllers
         public IHttpActionResult Delete(int id)
         {
             var advert = advertService.GetAdvertById(id);
-            if (advert.UserId != User.Identity.GetUserId())
+            if (advert.UserId != User.Identity.GetUserId() && !User.IsInRole("Admin"))
             {
                 return ResponseMessage(Request.CreateResponse(HttpStatusCode.Forbidden, "Permission denied"));
             }
@@ -100,6 +138,15 @@ namespace ResourceMetadata.API.Controllers
             return Ok();
         }
 
+        private bool IsUserHasAccessToCoachworkRepairAdverts()
+        {
+            if (User.IsInRole("Admin") || User.IsInRole("PremiumMember"))
+            {
+                return true;
+            }
+
+            return false;
+        }
 
         private void SetCorrectImagesPaths(List<AdvertViewModel> adverts)
         {

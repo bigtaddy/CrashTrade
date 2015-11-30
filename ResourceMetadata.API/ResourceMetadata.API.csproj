@@ -267,6 +267,7 @@
     <Compile Include="ViewModels\AdvertViewModel.cs" />
     <Compile Include="ViewModels\CarModelViewModel.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
+    <Compile Include="ViewModels\LimitedAdvertViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ManufactureViewModel.cs" />
     <Compile Include="ViewModels\PagedCollectionViewModel.cs" />

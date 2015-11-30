@@ -17,6 +17,7 @@ namespace ResourceMetadata.API.Mappers
             Mapper.CreateMap<Manufacture, ManufactureViewModel>();
             Mapper.CreateMap<CarModel, CarModelViewModel>().ForMember(c => c.Manufacture, c=> c.MapFrom((carModel => carModel.Manufacture.Name)));
             Mapper.CreateMap<Advert, AdvertViewModel>();
+            Mapper.CreateMap<Advert, LimitedAdvertViewModel>();
             Mapper.CreateMap<ImageInfo, ImageViewModel>();
 
 

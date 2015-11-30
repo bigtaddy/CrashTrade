@@ -14,8 +14,7 @@
                 var url = baseUrl + "Adverts/My/?pageNumber=" + currentPage + "&itemsPerPage="
                     + pageSize + "&sortOptions=" + sortOptions + "&filterOptions=" + filterOptions;
             } else {
-                filterOptions = "(" + filterOptions + (") And " + advertTypeName + "Type = true" );
-                var url = baseUrl + "Adverts/All/?pageNumber=" + currentPage + "&itemsPerPage="
+                var url = baseUrl + "Adverts/GetAll" + advertTypeName + "/?pageNumber=" + currentPage + "&itemsPerPage="
                     + pageSize + "&sortOptions=" + sortOptions + "&filterOptions=" + filterOptions;
             }
 

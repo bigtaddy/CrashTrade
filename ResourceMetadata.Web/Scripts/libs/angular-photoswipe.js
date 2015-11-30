@@ -13,8 +13,8 @@ ngPhotoSwipe.directive('photoSwipe', [ function () {
 		'</a>' +
 		'</div>' +
 
-		'<div ng-repeat="image in images" class="col-sm-6">' +
-		'<div class="col-sm-3">'+
+		'<div ng-repeat="image in images" class="col-sm-1">' +
+		'<div>'+
 		'<a class="thumbnail" data-ng-click="openPhotoSwipe($index)" href="">' +
 		'<img class="img-rounded img-responsive" style="max-height: 100px" ng-src="{{image.FullName}}">' +
 		'</a>' +
