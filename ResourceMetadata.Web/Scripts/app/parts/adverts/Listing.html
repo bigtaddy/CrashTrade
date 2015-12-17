@@ -28,9 +28,9 @@
                 </div>
                 <div class="col-sm-6">
                     <div>
-                        <h3><a href="#/Adverts/{{advert.Id}}">{{advert.ManufactureName}}</a></h3>
+                        <h3><a href="#/Adverts/{{advert.Id}}">{{advert.ManufactureName}} {{advert.CarModelName}}</a></h3>
                         <hr>
-                        <div>{{advert.Description}}</div>
+                        <div>{{advert.Description | words:20}}</div>
                     </div>
                     <div>
                         <hr>

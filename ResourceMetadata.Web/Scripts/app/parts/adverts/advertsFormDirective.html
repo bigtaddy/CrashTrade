@@ -1,31 +1,4 @@
-﻿<div class="form-group">
-    <label for="title">Заголовок<span style="color:Red">*</span></label>
-    <input type="text" id="title" placeholder="Заголовок объявления" required data-ng-model="advert.Title" class="form-control">
-</div>
-
-
-<div class="form-group" style="margin-bottom:10px;">
-    <label style="display: block">
-        Тип объявления<span style="color: Red">*</span>
-    </label>
-
-    <span>Продажа:
-        <input type="checkbox" ng-model="advert.SaleType">
-    </span>
-    <span>Кузовной ремонт:
-        <input type="checkbox" ng-model="advert.CoachworkRepairType">
-    </span>
-    <span>Механический ремонт:
-        <input type="checkbox" ng-model="advert.MechanicalRepairType">
-    </span>
-</div>
-
-<div class="form-group">
-    <label for="description">Описание<span style="color:Red">*</span></label>
-    <textarea id="description" placeholder="Описание" required data-ng-model="advert.Description" class="form-control"/>
-</div>
-
-<div class="form-group" style="margin-bottom:10px;">
+﻿<div class="form-group" style="margin-bottom:10px;">
     <label for="manufacture">
         Производитель<span style="color: Red">*</span>
     </label>
@@ -87,7 +60,28 @@
     </ui-select>
 </div>
 
+<div class="form-group" style="margin-bottom:10px;">
+    <label style="display: block">
+        Тип объявления<span style="color: Red">*</span>
+    </label>
+
+    <span>Продажа:
+        <input type="checkbox" ng-model="advert.SaleType">
+    </span>
+    <span>Кузовной ремонт:
+        <input type="checkbox" ng-model="advert.CoachworkRepairType">
+    </span>
+    <span>Механический ремонт:
+        <input type="checkbox" ng-model="advert.MechanicalRepairType">
+    </span>
+</div>
+
 <div class="form-group">
     <label for="contacts">Контактные данные продавца<span style="color:Red">*</span></label>
     <textarea id="contacts" placeholder="Контакты" required data-ng-model="advert.Contacts" class="form-control"/>
+</div>
+
+<div class="form-group">
+    <label for="description">Описание<span style="color:Red">*</span></label>
+    <textarea id="description" placeholder="Описание" required data-ng-model="advert.Description" class="form-control"/>
 </div>

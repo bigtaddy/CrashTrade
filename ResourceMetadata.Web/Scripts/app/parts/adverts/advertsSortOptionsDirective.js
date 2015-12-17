@@ -16,6 +16,7 @@
             '<select class="form-control input-sm"  ng-model="sortProperty" data-placeholder="Сортировать по"">' +
             '<option value="CreatedOn">Дате Создания</option>' +
             '<option value="Year">Году выпуска</option>' +
+            '<option value="Price">Стоимости</option>' +
             '</select>' +
             '<br />' +
             '<select class="form-control input-sm"  ng-model="sortOrder" data-placeholder="Порядок сортировки">' +
