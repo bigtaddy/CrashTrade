@@ -39,7 +39,9 @@ namespace ResourceMetadata.Models
 
         public string Contacts { get; set; }
 
-        public FuelType FuelType { get; set; }
+        public int FuelType { get; set; }
+
+        public int TransmissionType { get; set; }
 
         public string UserId { get; set; }
 
@@ -53,6 +55,12 @@ namespace ResourceMetadata.Models
     {
         Petrol = 1,
         Diesel = 2
+    }
+
+    public enum TransmissionType : int
+    {
+        Manual = 1,
+        Automatic = 2
     }
 
     public enum AdvertType : int

@@ -107,7 +107,7 @@
                     getDropDownDataData();
                 }
 
-                $scope.fuelTypes = [{Id: 1, Name: "Бензин"}, {Id: 2, Name: "Дизель"}];
+                $scope.CrashTradeSettings = CrashTradeSettings;
             }
 
             /**

@@ -51,7 +51,16 @@ namespace ResourceMetadata.API.Controllers
         {
             filterOptions = "(" + filterOptions + (") And MechanicalRepairType = true");
 
-            return GetAll(pageNumber, itemsPerPage, sortOptions, filterOptions);
+            if (IsUserHasAccessToRepairAdverts())
+            {
+                return GetAll(pageNumber, itemsPerPage, sortOptions, filterOptions);
+            }
+
+            var advertModels = advertService.GetAdverts(pageNumber, itemsPerPage, sortOptions, filterOptions);
+            var advertModelViewModels = new List<LimitedAdvertViewModel>();
+            var count = advertService.GetCount(filterOptions);
+            Mapper.Map(advertModels, advertModelViewModels);
+            return Request.CreateResponse(HttpStatusCode.OK, new { adverts = advertModelViewModels, count });
         }
 
         [HttpGet]
@@ -61,7 +70,7 @@ namespace ResourceMetadata.API.Controllers
         {
             filterOptions = "(" + filterOptions + (") And CoachworkRepairType = true");
 
-            if (IsUserHasAccessToCoachworkRepairAdverts())
+            if (IsUserHasAccessToRepairAdverts())
             {
                 return GetAll(pageNumber, itemsPerPage, sortOptions, filterOptions);
             }
@@ -138,7 +147,7 @@ namespace ResourceMetadata.API.Controllers
             return Ok();
         }
 
-        private bool IsUserHasAccessToCoachworkRepairAdverts()
+        private bool IsUserHasAccessToRepairAdverts()
         {
             if (User.IsInRole("Admin") || User.IsInRole("PremiumMember"))
             {

@@ -28,9 +28,13 @@
                 </div>
                 <div class="col-sm-6">
                     <div>
-                        <h3><a href="#/Adverts/{{advert.Id}}">{{advert.ManufactureName}} {{advert.CarModelName}}</a></h3>
+                        <h3><a href="#/Adverts/{{advert.Id}}">{{advert.ManufactureName}}</a></h3>
                         <hr>
                         <div>{{advert.Description | words:20}}</div>
+                        <div ng-show="advertType == 'Sale'">
+                            <hr>
+                            <div>Цена: {{advert.Price}}</div>
+                        </div>
                     </div>
                     <div>
                         <hr>
@@ -38,7 +42,8 @@
                         <a ng-show="(isAuthenticated && advertType == 'My') || userData.isAdmin"
                            href="#/Adverts/Edit/{{advert.Id}}">Редактировать</a>
 
-                        <i ng-show="(isAuthenticated && advertType == 'My') || userData.isAdmin" style="float: right;" title="Удалить"
+                        <i ng-show="(isAuthenticated && advertType == 'My') || userData.isAdmin" style="float: right;"
+                           title="Удалить"
                            message="Вы хотите удалить данный элемент?" modal-id="{{advert.Id}}"
                            on-approve="deleteAdvert(advert.Id);" cst-confirm-modal>Удалить</i>
 

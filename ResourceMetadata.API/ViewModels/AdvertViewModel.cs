@@ -32,6 +32,8 @@ namespace ResourceMetadata.API.ViewModels
 
         public FuelType FuelType { get; set; }
 
+        public TransmissionType TransmissionType { get; set; }
+
         public bool SaleType { get; set; }
 
         public bool CoachworkRepairType { get; set; }

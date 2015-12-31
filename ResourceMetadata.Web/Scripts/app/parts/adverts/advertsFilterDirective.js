@@ -6,7 +6,7 @@
 
     'use strict';
 
-    utilities.directive('advertsFilterOptions', ['entityService', 'manufactureService', function (entityService, manufactureService) {
+    utilities.directive('advertsFilterOptions', ['entityService', 'manufactureService', '$route', function (entityService, manufactureService, $routeParams) {
         return {
             restrict: 'E',
             templateUrl: "/Scripts/app/parts/adverts/advertsFilterOptionsDirective.html",
@@ -21,6 +21,12 @@
                 scope.car = {};
 
                 addHandlersAndWatchers(scope);
+                scope.advertType = $routeParams.current.params.advertType;
+
+
+                scope.$on('ClearFilter', function(){
+                    scope.car = {};
+                });
 
                 /**
                  * getFilterOptions
@@ -45,11 +51,13 @@
             scope.$on('UpdateFilterOptions', function (event, args) {
                 var filterOptions = "";
 
-                filterOptions += getOption(filterOptions,generateFromToFilterOptions(scope.yearFrom, scope.yearTo, "Year"));
-                filterOptions += getOption(filterOptions,generateFromToFilterOptions(scope.priceFrom, scope.priceTo, "Price"));
+                filterOptions += getOption(filterOptions,generateFromToFilterOptions(scope.car.yearFrom, scope.car.yearTo, "Year"));
+                filterOptions += getOption(filterOptions,generateFromToFilterOptions(scope.car.priceFrom, scope.car.priceTo, "Price"));
 
                 filterOptions += getOption(filterOptions,generateSimpleOption(scope.car.manufactureId, "ManufactureId"));
                 filterOptions += getOption(filterOptions,generateSimpleOption(scope.car.carModelId, "CarModelId"));
+                filterOptions += getOption(filterOptions,generateSimpleOption(scope.car.transmissionType, "TransmissionType"));
+                filterOptions += getOption(filterOptions,generateSimpleOption(scope.car.fuelType, "FuelType"));
 
                 if (filterOptions == "") {
                     scope.filterOptions = "true";
@@ -135,6 +143,15 @@
                     setCarModelsArrayByManufactureId(newValue, $scope);
                 }
             });
+
+            $scope.years = [];
+            var year = new Date().getFullYear();
+            while(year > 1960){
+                $scope.years[$scope.years.length] = year;
+                year --;
+            }
+
+            $scope.CrashTradeSettings = CrashTradeSettings;
         }
 
         /**
