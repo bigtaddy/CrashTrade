@@ -22,7 +22,7 @@
                     <h5 ng-if="advert.ImageInfos.length == 0">Нет изображения</h5>
 
                     <div ng-if="advert.ImageInfos.length > 0">
-                        <img class="img-responsive img-rounded" alt="" style="max-height: 250px"
+                        <img class="img-responsive img-rounded" alt="" style="max-height: 250px; max-width: 250px"
                              ng-src="{{advert.ImageInfos[0].FullName}}">
                     </div>
                 </div>
