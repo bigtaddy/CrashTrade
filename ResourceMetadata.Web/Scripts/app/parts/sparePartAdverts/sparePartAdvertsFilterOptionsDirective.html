@@ -1,0 +1,39 @@
+<span>Производитель:</span>
+<ui-select ng-model="car.manufactureId" id="manufacture">
+    <ui-select-match allow-clear="true" placeholder="Выберите марку">{{$select.selected.Name}}
+    </ui-select-match>
+    <ui-select-choices repeat="manufacture.Id as manufacture in manufactures | filter: $select.search">
+        <span ng-bind-html="manufacture.Name | highlight: $select.search"></span>
+    </ui-select-choices>
+</ui-select>
+<div></div>
+
+<span>Модель:</span>
+<ui-select ng-model="car.carModelId" id="carModel">
+    <ui-select-match allow-clear="true" placeholder="Выберите модель">{{$select.selected.Name}}
+    </ui-select-match>
+    <ui-select-choices repeat="carModel.Id as carModel in carModels | filter: $select.search">
+        <span ng-bind-html="carModel.Name | highlight: $select.search"></span>
+    </ui-select-choices>
+</ui-select>
+
+<div class="form-group">
+    <span>Год:</span>
+    <ui-select ng-model="car.yearFrom" id="yearFrom">
+        <ui-select-match allow-clear="true" placeholder="От">{{$select.selected}}
+        </ui-select-match>
+        <ui-select-choices repeat="year in years | filter: $select.search">
+            <span ng-bind-html="year | highlight: $select.search"></span>
+        </ui-select-choices>
+    </ui-select>
+</div>
+
+<div class="form-group">
+    <ui-select ng-model="car.yearTo" id="yearTo">
+        <ui-select-match allow-clear="true" placeholder="До">{{$select.selected}}
+        </ui-select-match>
+        <ui-select-choices repeat="year in years | filter: $select.search">
+            <span ng-bind-html="year | highlight: $select.search"></span>
+        </ui-select-choices>
+    </ui-select>
+</div>

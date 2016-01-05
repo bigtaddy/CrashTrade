@@ -1,0 +1,22 @@
+<div class="col-sm-4"></div>
+
+<div class="col-sm-4">
+    <form name="advertForm" role="form">
+        <adverts-form></adverts-form>
+
+        <biv class="row">
+            <div class="col-sm-12">
+                <load-images></load-images>
+            </div>
+        </biv>
+
+        <button data-ng-disabled="advertForm.$invalid" data-ng-click="addAdvert(advert)" class="btn btn-default">
+            Подтвердить
+        </button>
+        <a href="#/Adverts/{{advertType}}">Отменить</a>
+    </form>
+
+    <div class="col-sm-12"><br></div>
+</div>
+
+<div class="col-sm-4"></div>

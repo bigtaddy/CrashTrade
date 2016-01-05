@@ -77,6 +77,37 @@
                 templateUrl: '/Scripts/app/parts/adverts/Details.html',
                 controller: 'AdvertCtrl'
             })
+
+
+
+
+
+
+
+            .when('/SparePartAdverts/Add', {
+                templateUrl: '/Scripts/app/parts/SparePartAdverts/Add.html',
+                controller: 'SparePartAdvertsCtrl'
+            })
+            .when('/SparePartAdverts/List', {
+                templateUrl: '/Scripts/app/parts/SparePartAdverts/Listing.html',
+                controller: 'SparePartAdvertsCtrl'
+            })
+            .when('/SparePartAdverts/Edit/:advertId', {
+                templateUrl: '/Scripts/app/parts/SparePartAdverts/Edit.html',
+                controller: 'SparePartAdvertCtrl'
+            })
+            .when('/SparePartAdverts/:advertId', {
+                templateUrl: '/Scripts/app/parts/SparePartAdverts/Details.html',
+                controller: 'SparePartAdvertCtrl'
+            })
+
+
+
+
+
+
+
+
             .when('/Home', {
                 templateUrl: '/Scripts/app/parts/adverts/Listing.html',
                 controller: 'AdvertsCtrl'

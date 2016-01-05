@@ -32,10 +32,11 @@
             });
         };
 
-        var getAll = function (modelName) {
+        var getAll = function (modelName, params) {
             return $http({
                 method: 'GET',
-                url: baseUrl + modelName
+                url: baseUrl + modelName + '/GetAll/',
+                params: params
             });
         };
 

@@ -1,0 +1,101 @@
+﻿<div class="form-group" style="margin-bottom:10px;">
+    <label for="manufacture">
+        Производитель<span style="color: Red">*</span>
+    </label>
+
+    <ui-select ng-model="advert.ManufactureId" ng-required="true" style="width:100%;"
+               id="manufacture">
+        <ui-select-match placeholder="Выберите марку">{{$select.selected.Name}}
+        </ui-select-match>
+        <ui-select-choices repeat="manufacture.Id as manufacture in manufactures | filter: $select.search">
+            <span ng-bind-html="manufacture.Name | highlight: $select.search"></span>
+        </ui-select-choices>
+    </ui-select>
+</div>
+
+<div class="form-group">
+    <label for="carModel">
+        Модель<span style="color: Red">*</span>
+    </label>
+
+    <ui-select ng-model="advert.CarModelId" ng-required="true" style="width:100%;" id="carModel">
+        <ui-select-match placeholder="Выберите модель">{{$select.selected.Name}}
+        </ui-select-match>
+        <ui-select-choices repeat="carModel.Id as carModel in carModels | filter: $select.search">
+            <span ng-bind-html="carModel.Name | highlight: $select.search"></span>
+        </ui-select-choices>
+    </ui-select>
+</div>
+
+
+<div class="form-group">
+    <label for="Year">Год выпуска<span style="color:Red">*</span></label>
+    <input type="number" id="Year" min="1900" max="2020" placeholder="Год выпуска" required data-ng-model="advert.Year" class="form-control">
+</div>
+
+
+<div class="form-group">
+    <label for="title">Объем двигателя<span style="color:Red">*</span></label>
+    <input type="number" id="swepVolume" placeholder="Объем двигателя" required data-ng-model="advert.SweptVolume" class="form-control">
+</div>
+
+
+<div class="form-group">
+    <label for="title">Цена<span style="color:Red">*</span></label>
+    <input type="number" id="Price" placeholder="Цена" required data-ng-model="advert.Price" class="form-control">
+</div>
+
+
+<div class="form-group">
+    <label for="FuelType">
+        Тип топлива<span style="color: Red">*</span>
+    </label>
+
+    <ui-select ng-model="advert.FuelType" ng-required="true" style="width:100%;" id="FuelType">
+        <ui-select-match placeholder="Тип двигателя">{{$select.selected.Name}}
+        </ui-select-match>
+        <ui-select-choices repeat="fuelType.Id as fuelType in CrashTradeSettings.fuelTypes | filter: $select.search">
+            <span ng-bind-html="fuelType.Name | highlight: $select.search"></span>
+        </ui-select-choices>
+    </ui-select>
+</div>
+
+<div class="form-group">
+    <label for="FuelType">
+        Коробка передач<span style="color: Red">*</span>
+    </label>
+
+    <ui-select ng-model="advert.TransmissionType" ng-required="true" style="width:100%;" id="TransmissionType">
+        <ui-select-match placeholder="Коробка передач">{{$select.selected.Name}}
+        </ui-select-match>
+        <ui-select-choices repeat="transmissionType.Id as transmissionType in CrashTradeSettings.transmissionTypes | filter: $select.search">
+            <span ng-bind-html="transmissionType.Name | highlight: $select.search"></span>
+        </ui-select-choices>
+    </ui-select>
+</div>
+
+<div class="form-group" style="margin-bottom:10px;">
+    <label style="display: block">
+        Тип объявления<span style="color: Red">*</span>
+    </label>
+
+    <span>Продажа:
+        <input type="checkbox" ng-model="advert.SaleType">
+    </span>
+    <span>Кузовной ремонт:
+        <input type="checkbox" ng-model="advert.CoachworkRepairType">
+    </span>
+    <span>Механический ремонт:
+        <input type="checkbox" ng-model="advert.MechanicalRepairType">
+    </span>
+</div>
+
+<div class="form-group">
+    <label for="contacts">Контактные данные продавца<span style="color:Red">*</span></label>
+    <textarea id="contacts" placeholder="Контакты" required data-ng-model="advert.Contacts" class="form-control"/>
+</div>
+
+<div class="form-group">
+    <label for="description">Описание<span style="color:Red">*</span></label>
+    <textarea id="description" placeholder="Описание" required data-ng-model="advert.Description" class="form-control"/>
+</div>

@@ -20,6 +20,8 @@ namespace ResourceMetadata.API.Mappers
             Mapper.CreateMap<Advert, LimitedAdvertViewModel>();
             Mapper.CreateMap<ImageInfo, ImageViewModel>();
 
+            Mapper.CreateMap<SparePartAdvert, SparePartAdvertViewModel>();
+
 
         }
     }

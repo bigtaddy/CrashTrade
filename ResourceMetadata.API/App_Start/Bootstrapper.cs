@@ -42,6 +42,9 @@ namespace ResourceMetadata.API
             containerBuilder.RegisterType<UserService>().As<IUserService>().InstancePerApiRequest();
             containerBuilder.RegisterType<ImageInfoService>().As<IImageInfoService>().InstancePerApiRequest();
 
+            containerBuilder.RegisterType<SparePartAdvertRepository>().As<ISparePartAdvertRepository>().InstancePerApiRequest();
+            containerBuilder.RegisterType<SparePartAdvertService>().As<ISparePartAdvertService>().InstancePerApiRequest();
+
             containerBuilder.Register(c => new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())
             {
                 /*Avoids UserStore invoking SaveChanges on every actions.*/

@@ -1,12 +1,14 @@
 <div class="row">
     <div class="col-sm-2">
         <div class="thumbnail">
-            <adverts-sort-options-directive sort-options="sortOptions"></adverts-sort-options-directive>
+            <spare-part-adverts-sort-options-directive sort-options="sortOptions">
+            </spare-part-adverts-sort-options-directive>
         </div>
         <div class="thumbnail">
             <div>
-                <adverts-filter-options get-filter-options="getFilterOptions" should-be-filtered="shouldBeFiltered">
-                </adverts-filter-options>
+                <spare-part-adverts-filter-options get-filter-options="getFilterOptions"
+                                                   should-be-filtered="shouldBeFiltered">
+                </spare-part-adverts-filter-options>
 
                 <a class="btn btn-default" ng-click="filter()">Ок</a>
                 <a class="btn btn-default" ng-click="clearFilter()">Сброс</a>
@@ -30,21 +32,16 @@
                     <div>
                         <h3><a href="#/Adverts/{{advert.Id}}">{{advert.ManufactureName}} {{advert.CarModelName}}</a>
                         </h3>
-                        <div>{{::advert.SweptVolume}} {{::advert.FuelType | fuelTypeName}}
-                            {{::advert.TransmissionType | transmissionTypeName}} {{::advert.Year}}г.в.
-                        </div>
+
+                        <div>{{::advert.Year}}г.в.</div>
                         <br/>
 
                         <div>{{advert.Description | words:20}}</div>
-                        <div ng-show="advertType == 'Sale'">
-                            <br/>
 
-                            <div>Цена: {{advert.Price}}</div>
-                        </div>
                     </div>
-                    <div ng-show="(isAuthenticated && advertType == 'My') || userData.isAdmin">
+                    <div ng-show="userData.isAdmin">
                         <br/>
-                        <a href="#/Adverts/Edit/{{advert.Id}}">Редактировать</a>
+                        <a href="#/SparePartAdverts/Edit/{{advert.Id}}">Редактировать</a>
                         <i style="float: right;" title="Удалить"
                            message="Вы хотите удалить данный элемент?" modal-id="{{advert.Id}}"
                            on-approve="deleteAdvert(advert.Id);" cst-confirm-modal>Удалить</i>
