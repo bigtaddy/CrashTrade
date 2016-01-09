@@ -45,6 +45,22 @@ namespace ResourceMetadata.API.Controllers
         }
 
         [HttpGet]
+        [Route("api/Adverts/GetAllSparePart")]
+        [AllowAnonymous]
+        public HttpResponseMessage GetAllSparePart(int pageNumber, int itemsPerPage, string sortOptions, string filterOptions)
+        {
+            filterOptions = "(" + filterOptions + (") And SparePartType = true");
+
+            var advertModels = advertService.GetAdverts(pageNumber, itemsPerPage, sortOptions, filterOptions);
+
+            var advertModelViewModels = new List<SparePartAdvertViewModel>();
+            var count = advertService.GetCount(filterOptions);
+            Mapper.Map(advertModels, advertModelViewModels);
+            SetCorrectImagesPaths(advertModelViewModels);
+            return Request.CreateResponse(HttpStatusCode.OK, new { adverts = advertModelViewModels, count });
+        }
+
+        [HttpGet]
         [Route("api/Adverts/GetAllMechanicalRepair")]
         [AllowAnonymous]
         public HttpResponseMessage GetAllMechanicalRepair(int pageNumber, int itemsPerPage, string sortOptions, string filterOptions)
@@ -87,9 +103,16 @@ namespace ResourceMetadata.API.Controllers
         [Authorize(Roles = "Admin, Member")]
         public HttpResponseMessage GetForUser(int pageNumber, int itemsPerPage, string sortOptions, string filterOptions)
         {
+            
             filterOptions = "(" + filterOptions + (") And UserId=\"" + User.Identity.GetUserId() + "\"");
 
-            return GetAll(pageNumber, itemsPerPage, sortOptions, filterOptions);
+            var advertModels = advertService.GetAdverts(pageNumber, itemsPerPage, sortOptions, filterOptions);
+
+            var advertModelViewModels = new List<UniversalAdvertViewModel>();
+            var count = advertService.GetCount(filterOptions);
+            Mapper.Map(advertModels, advertModelViewModels);
+            SetCorrectImagesPaths(advertModelViewModels);
+            return Request.CreateResponse(HttpStatusCode.OK, new { adverts = advertModelViewModels, count });
         }
 
         [HttpGet]
@@ -105,9 +128,9 @@ namespace ResourceMetadata.API.Controllers
         }
 
         [HttpPost]
-        [Route("api/Adverts/Save")]
+        [Route("api/Adverts/Create")]
         [Authorize(Roles = "Admin, Member")]
-        public IHttpActionResult Post(AdvertViewModel advertModelViewModel)
+        public IHttpActionResult PostAdvert(AdvertViewModel advertModelViewModel)
         {
             var entity = new Advert();
             Mapper.Map(advertModelViewModel, entity);
@@ -118,8 +141,25 @@ namespace ResourceMetadata.API.Controllers
                 advertModelViewModel);
         }
 
+        [HttpPost]
+        [Route("api/SparePartAdverts/Create")]
         [Authorize(Roles = "Admin, Member")]
-        public IHttpActionResult Put(int id, AdvertViewModel advertModelViewModel)
+        public IHttpActionResult PostSparePartAdvert(SparePartAdvertViewModel advertModelViewModel)
+        {
+            var entity = new Advert();
+            advertModelViewModel.SparePartType = true;
+            Mapper.Map(advertModelViewModel, entity);
+            entity.UserId = User.Identity.GetUserId();
+            advertService.AddAdvert(entity);
+            Mapper.Map(entity, advertModelViewModel);
+            return Created(Url.Link("DefaultApi", new { controller = "Adverts", id = advertModelViewModel.Id }),
+                advertModelViewModel);
+        }
+
+        [HttpPut]
+        [Route("api/Adverts/Edit/{id}")]
+        [Authorize(Roles = "Admin, Member")]
+        public IHttpActionResult PutAdvert(int id, AdvertViewModel advertModelViewModel)
         {
             advertModelViewModel.Id = id;
             var advert = advertService.GetAdvertById(id);
@@ -134,6 +174,26 @@ namespace ResourceMetadata.API.Controllers
             return Ok(advertModelViewModel);
         }
 
+        [HttpPut]
+        [Route("api/SparePartAdverts/Edit/{id}")]
+        [Authorize(Roles = "Admin, Member")]
+        public IHttpActionResult PutSparePartAdvert(int id, SparePartAdvertViewModel advertModelViewModel)
+        {
+            advertModelViewModel.Id = id;
+            var advert = advertService.GetAdvertById(id);
+            if (advert.UserId != User.Identity.GetUserId() && !User.IsInRole("Admin"))
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.Forbidden, "Permission denied"));
+            }
+
+
+            Mapper.Map(advertModelViewModel, advert);
+            advertService.UpdateAdvert(advert);
+            return Ok(advertModelViewModel);
+        }
+
+        [HttpDelete]
+        [Route("api/Adverts/Delete")]
         [Authorize(Roles = "Admin, Member")]
         public IHttpActionResult Delete(int id)
         {
@@ -157,7 +217,7 @@ namespace ResourceMetadata.API.Controllers
             return false;
         }
 
-        private void SetCorrectImagesPaths(List<AdvertViewModel> adverts)
+        private void SetCorrectImagesPaths<T>(List<T> adverts) where T : UniversalAdvertViewModel
         {
             foreach (var advert in adverts)
             {
@@ -168,7 +228,7 @@ namespace ResourceMetadata.API.Controllers
             }
         }
 
-        private void SetCorrectImagesPaths(AdvertViewModel advert)
+        private void SetCorrectImagesPaths(UniversalAdvertViewModel advert)
         {
             foreach (var image in advert.ImageInfos)
             {

@@ -8,6 +8,6 @@
 app.directive("sparePartAdvertForm", function () {
     return {
         restrict: "E",
-        templateUrl: "/Scripts/app/parts/sparePartAdverts/advertsFormDirective.html"
+        templateUrl: "/Scripts/app/parts/sparePartAdverts/sparePartAdvertFormDirective.html"
     }
 });

@@ -19,7 +19,7 @@ namespace ResourceMetadata.API.Mappers
             Mapper.CreateMap<CarModelViewModel, CarModel>().ForMember(carModel => carModel.Manufacture, vm => vm.Ignore());
             Mapper.CreateMap<AdvertViewModel, Advert>().ForMember(advertModel => advertModel.ImageInfos, vm =>vm.Ignore());
 
-            Mapper.CreateMap<SparePartAdvertViewModel, SparePartAdvert>();
+            Mapper.CreateMap<SparePartAdvertViewModel, Advert>().ForMember(advertModel => advertModel.ImageInfos, vm => vm.Ignore());
         }
     }
 }

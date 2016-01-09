@@ -19,8 +19,6 @@ namespace ResourceMetadata.Models
 
         public virtual ICollection<Advert> Adverts { get; set; }
 
-        public virtual ICollection<SparePartAdvert> SparePartAdverts { get; set; }
-
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
             var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);

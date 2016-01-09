@@ -65,10 +65,35 @@
                 templateUrl: '/Scripts/app/parts/adverts/Add.html',
                 controller: 'AdvertCtrl'
             })
-            .when('/Adverts/List/:advertType', {
+            .when('/Adverts/List/Sale', {
                 templateUrl: '/Scripts/app/parts/adverts/Listing.html',
-                controller: 'AdvertsCtrl'
+                controller: 'AdvertsCtrl',
+                data: {
+                    advertType: 'Sale'
+                }
             })
+            .when('/Adverts/List/MechanicalRepair', {
+                templateUrl: '/Scripts/app/parts/adverts/Listing.html',
+                controller: 'AdvertsCtrl',
+                data: {
+                    advertType: 'MechanicalRepair'
+                }
+            })
+            .when('/Adverts/List/CoachworkRepair', {
+                templateUrl: '/Scripts/app/parts/adverts/Listing.html',
+                controller: 'AdvertsCtrl',
+                data: {
+                    advertType: 'CoachworkRepair'
+                }
+            })
+            .when('/Adverts/List/My', {
+                templateUrl: '/Scripts/app/parts/adverts/ListingOfMyAdverts.html',
+                controller: 'AdvertsCtrl',
+                data: {
+                    advertType: 'My'
+                }
+            })
+
             .when('/Adverts/Edit/:advertId', {
                 templateUrl: '/Scripts/app/parts/adverts/Edit.html',
                 controller: 'AdvertCtrl'
@@ -80,32 +105,27 @@
 
 
 
-
-
-
+            .when('/Adverts/List/SparePart', {
+                templateUrl: '/Scripts/app/parts/SparePartAdverts/Listing.html',
+                controller: 'AdvertsCtrl',
+                data: {
+                    advertType: 'SparePart'
+                }
+            })
 
             .when('/SparePartAdverts/Add', {
                 templateUrl: '/Scripts/app/parts/SparePartAdverts/Add.html',
-                controller: 'SparePartAdvertsCtrl'
+                controller: 'AdvertCtrl'
             })
-            .when('/SparePartAdverts/List', {
-                templateUrl: '/Scripts/app/parts/SparePartAdverts/Listing.html',
-                controller: 'SparePartAdvertsCtrl'
-            })
+
             .when('/SparePartAdverts/Edit/:advertId', {
                 templateUrl: '/Scripts/app/parts/SparePartAdverts/Edit.html',
-                controller: 'SparePartAdvertCtrl'
+                controller: 'AdvertCtrl'
             })
             .when('/SparePartAdverts/:advertId', {
                 templateUrl: '/Scripts/app/parts/SparePartAdverts/Details.html',
-                controller: 'SparePartAdvertCtrl'
+                controller: 'AdvertCtrl'
             })
-
-
-
-
-
-
 
 
             .when('/Home', {

@@ -247,7 +247,6 @@
     <Compile Include="Controllers\CarModelsController.cs" />
     <Compile Include="Controllers\ImageInfosController.cs" />
     <Compile Include="Controllers\ManufacturesController.cs" />
-    <Compile Include="Controllers\SparePartAdvertsController.cs" />
     <Compile Include="Enums\Enum.cs" />
     <Compile Include="Infrastructure\DbExceptionFilter.cs" />
     <Compile Include="Infrastructure\ExceptionFilter.cs" />
@@ -274,6 +273,7 @@
     <Compile Include="ViewModels\PagedCollectionViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\SparePartAdvertViewModel.cs" />
+    <Compile Include="ViewModels\UniversalAdvertViewModel.cs" />
     <Compile Include="ViewModels\UserProfileViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

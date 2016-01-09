@@ -2,17 +2,17 @@
 
     'use strict';
 
-    app.controller('AdvertsCtrl', ['$scope', 'ngTableParams', 'entityService', 'advertService', '$routeParams', '$location', '$timeout', '$rootScope',
-        function ($scope, ngTableParams, entityService, advertService, $routeParams, $location, $timeout, $rootScope) {
+    app.controller('AdvertsCtrl', ['$scope', 'ngTableParams', 'entityService', 'advertService', '$location', '$timeout', '$rootScope', '$route',
+        function ($scope, ngTableParams, entityService, advertService, $location, $timeout, $rootScope,$route) {
 
-            getAndValidateAdvertType();
+            $scope.advertType = $route.current.data.advertType;
 
             /**
              * deleteAdvert
              * @param advertId
              */
             $scope.deleteAdvert = function (advertId) {
-                entityService.deleteById(advertId, "Adverts").then(function (response) {
+                entityService.deleteById(advertId, "Adverts/Delete").then(function (response) {
                     $scope.pageChangeHandler($scope.currentPage);
                 });
             };
@@ -71,16 +71,6 @@
                 $rootScope.$broadcast('ClearFilter');
                 $scope.pageChangeHandler(1);
             };
-
-            /**
-             * getAndValidateAdvertType
-             */
-            function getAndValidateAdvertType() {
-                $scope.advertType = $routeParams.advertType;
-                if (advertService.validateAdvertType($scope.advertType) == false && $scope.advertType != undefined && $scope.advertType != "My") {
-                    $location.url('/Home');
-                }
-            }
 
             $scope.pageChanged = function() {
                 $scope.pageChangeHandler($scope.currentPage);

@@ -1,0 +1,54 @@
+﻿<div ng-init="advert.SparePartType = true">
+    <div class="form-group" style="margin-bottom:10px;">
+        <label for="manufacture">
+            Производитель<span style="color: Red">*</span>
+        </label>
+
+        <ui-select ng-model="advert.ManufactureId" ng-required="true" style="width:100%;"
+                   id="manufacture">
+            <ui-select-match placeholder="Выберите марку">{{$select.selected.Name}}
+            </ui-select-match>
+            <ui-select-choices repeat="manufacture.Id as manufacture in manufactures | filter: $select.search">
+                <span ng-bind-html="manufacture.Name | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+
+    <div class="form-group">
+        <label for="carModel">
+            Модель<span style="color: Red">*</span>
+        </label>
+
+        <ui-select ng-model="advert.CarModelId" ng-required="true" style="width:100%;" id="carModel">
+            <ui-select-match placeholder="Выберите модель">{{$select.selected.Name}}
+            </ui-select-match>
+            <ui-select-choices repeat="carModel.Id as carModel in carModels | filter: $select.search">
+                <span ng-bind-html="carModel.Name | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+
+
+    <div class="form-group">
+        <label for="Year">Год выпуска<span style="color:Red">*</span></label>
+        <input type="number" id="Year" min="1900" max="2020" placeholder="Год выпуска" required
+               data-ng-model="advert.Year" class="form-control">
+    </div>
+
+
+    <div class="form-group">
+        <label for="VIN">VIN<span style="color:Red">*</span></label>
+        <input type="text" id="VIN" placeholder="VIN" required data-ng-model="advert.VIN" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="contacts">Контактные данные продавца<span style="color:Red">*</span></label>
+        <textarea id="contacts" placeholder="Контакты" required data-ng-model="advert.Contacts" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Описание<span style="color:Red">*</span></label>
+        <textarea id="description" placeholder="Описание" required data-ng-model="advert.Description"
+                  class="form-control"/>
+    </div>
+</div>

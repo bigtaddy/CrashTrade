@@ -28,17 +28,8 @@
             return (type == 'Sale' || type == 'Repair');
         };
 
-        var validateAdvertType = function (type) {
-            if (type == 'Sale' || type == 'MechanicalRepair' || type == 'CoachworkRepair') {
-                return true
-            }
-
-            return false;
-        };
-
         return {
             getAll: getAll,
-            validateAdvertType: validateAdvertType,
             verifyAdvertType: verifyAdvertType
         };
     }]);

@@ -19,7 +19,6 @@ namespace ResourceMetadata.Data
         public DbSet<CarModel> CarModels { get; set; }
         public DbSet<Manufacture> Manufactures { get; set; }
         public DbSet<Advert> Adverts { get; set; }
-        public DbSet<SparePartAdvert> SparePartAdverts { get; set; }
         public DbSet<ImageInfo> ImageInfos { get; set; }
 
         public static ApplicationDbContext Create()
@@ -33,7 +32,6 @@ namespace ResourceMetadata.Data
             modelBuilder.Configurations.Add(new CarModelConfiguration());
             modelBuilder.Configurations.Add(new ManufactureConfiguration());
             modelBuilder.Configurations.Add(new AdvertConfiguration());
-            modelBuilder.Configurations.Add(new SparePartAdvertConfiguration());
 
             //Configurations Auto generated tables for IdentityDbContext.
             modelBuilder.Configurations.Add(new IdentityUserRoleConfiguration());

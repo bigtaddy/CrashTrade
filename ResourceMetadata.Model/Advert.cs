@@ -17,6 +17,8 @@ namespace ResourceMetadata.Models
 
         public bool MechanicalRepairType { get; set; }
 
+        public bool SparePartType { get; set; }
+
         public string Title { get; set; }
 
         public string Description { get; set; }
@@ -42,6 +44,8 @@ namespace ResourceMetadata.Models
         public int FuelType { get; set; }
 
         public int TransmissionType { get; set; }
+
+        public string VIN { get; set; }
 
         public string UserId { get; set; }
 

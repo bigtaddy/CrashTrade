@@ -68,7 +68,12 @@
              * @param advert
              */
             $scope.addAdvert = function (advert) {
-                entityService.add(advert, "Adverts/Save")
+                if (advert.SparePartType) {
+                    var url = "SparePartAdverts/Create";
+                } else {
+                    var url = "Adverts/Create";
+                }
+                entityService.add(advert, url)
                     .then(function (response) {
                         uploadImages(response.data.Id, function () {
                             $location.path('/Adverts/List/My');
@@ -81,7 +86,12 @@
              * @param advert
              */
             $scope.editAdvert = function (advert) {
-                entityService.edit(advert, "Adverts")
+                if (advert.SparePartType) {
+                    var url = "SparePartAdverts/Edit";
+                } else {
+                    var url = "Adverts/Edit";
+                }
+                entityService.edit(advert, url)
                     .then(function (response) {
                         uploadImages(advert.Id, function () {
                             $location.path('/Adverts/List/My');
