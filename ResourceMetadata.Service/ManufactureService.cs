@@ -51,6 +51,14 @@ namespace ResourceMetadata.Service
             SaveChanges();
         }
 
+        public void AddManufactures(IEnumerable<Manufacture> manufactures)
+        {
+            foreach (var manufacture in manufactures) {
+                repository.Add(manufacture);
+            }
+            SaveChanges();
+        }
+
         public void SaveChanges()
         {
             unitOfWork.SaveChanges();
@@ -64,6 +72,7 @@ namespace ResourceMetadata.Service
         Manufacture AddManufacture(Manufacture location);
         Manufacture UpdateManufacture(Manufacture location);
         void DeleteManufacture(int manufactureId);
+        void AddManufactures(IEnumerable<Manufacture> manufactures);
 
     }
 
