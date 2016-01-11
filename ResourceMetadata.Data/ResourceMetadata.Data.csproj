@@ -76,34 +76,6 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201512311120456_addTransmissionToAdverts.cs" />
-    <Compile Include="Migrations\201512311120456_addTransmissionToAdverts.Designer.cs">
-      <DependentUpon>201512311120456_addTransmissionToAdverts.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601051616169_createSparePartAdverts.cs" />
-    <Compile Include="Migrations\201601051616169_createSparePartAdverts.Designer.cs">
-      <DependentUpon>201601051616169_createSparePartAdverts.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601091425195_SparePartImages.cs" />
-    <Compile Include="Migrations\201601091425195_SparePartImages.Designer.cs">
-      <DependentUpon>201601091425195_SparePartImages.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601091434288_removeSparePartImages.cs" />
-    <Compile Include="Migrations\201601091434288_removeSparePartImages.Designer.cs">
-      <DependentUpon>201601091434288_removeSparePartImages.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601091444223_addVinToAdverts.cs" />
-    <Compile Include="Migrations\201601091444223_addVinToAdverts.Designer.cs">
-      <DependentUpon>201601091444223_addVinToAdverts.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601091455146_SparePartType.cs" />
-    <Compile Include="Migrations\201601091455146_SparePartType.Designer.cs">
-      <DependentUpon>201601091455146_SparePartType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601091710519_RemoveSparePartAdverts.cs" />
-    <Compile Include="Migrations\201601091710519_RemoveSparePartAdverts.Designer.cs">
-      <DependentUpon>201601091710519_RemoveSparePartAdverts.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AdvertRepository.cs" />
@@ -125,29 +97,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Migrations\ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512311120456_addTransmissionToAdverts.resx">
-      <DependentUpon>201512311120456_addTransmissionToAdverts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601051616169_createSparePartAdverts.resx">
-      <DependentUpon>201601051616169_createSparePartAdverts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601091425195_SparePartImages.resx">
-      <DependentUpon>201601091425195_SparePartImages.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601091434288_removeSparePartImages.resx">
-      <DependentUpon>201601091434288_removeSparePartImages.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601091444223_addVinToAdverts.resx">
-      <DependentUpon>201601091444223_addVinToAdverts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601091455146_SparePartType.resx">
-      <DependentUpon>201601091455146_SparePartType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601091710519_RemoveSparePartAdverts.resx">
-      <DependentUpon>201601091710519_RemoveSparePartAdverts.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

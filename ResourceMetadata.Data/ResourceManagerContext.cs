@@ -57,7 +57,7 @@ namespace ResourceMetadata.Data
 
     }
 
-    public class ResourceManagerDbInitializer : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
+    public class ResourceManagerDbInitializer : CreateDatabaseIfNotExists<ApplicationDbContext>
     {
         protected override void Seed(ApplicationDbContext context)
         {
