@@ -2,8 +2,8 @@
 
     'use strict';
 
-    app.controller('AdvertCtrl', ['$scope', '$location', '$routeParams', 'entityService', 'manufactureService', 'carModelService', 'advertService', '$http', 'flowFactory', '$q',
-        function ($scope, $location, $routeParams, entityService, manufactureService, carModelService, advertService, $http, flowFactory, $q) {
+    app.controller('AdvertCtrl', ['$scope', '$location', '$routeParams', 'entityService', 'manufactureService', 'carModelService', 'advertService', '$http', 'flowFactory', '$q', '$route',
+        function ($scope, $location, $routeParams, entityService, manufactureService, carModelService, advertService, $http, flowFactory, $q, $route) {
 
             $scope.flowObject = flowFactory.create({
                 chunkSize: 1024 * 1024
@@ -68,7 +68,7 @@
              * @param advert
              */
             $scope.addAdvert = function (advert) {
-                if (advert.SparePartType) {
+                if ($route.current.data.advertType == 'SparePartAdvert') {
                     var url = "SparePartAdverts/Create";
                 } else {
                     var url = "Adverts/Create";
@@ -86,7 +86,7 @@
              * @param advert
              */
             $scope.editAdvert = function (advert) {
-                if (advert.SparePartType) {
+                if ($route.current.data.advertType == 'SparePartAdvert') {
                     var url = "SparePartAdverts/Edit";
                 } else {
                     var url = "Adverts/Edit";
@@ -106,8 +106,12 @@
             function init() {
                 if ($routeParams.advertId > 0) {
                     $scope.imagesPromise = $q.defer();
-
-                    entityService.getById($routeParams.advertId, "Adverts/GetById").then(function (response) {
+                    if ($route.current.data.advertType == 'SparePartAdvert') {
+                        var url = "SparePartAdverts/GetById";
+                    } else {
+                        var url = "Adverts/GetById";
+                    }
+                    entityService.getById($routeParams.advertId, url).then(function (response) {
                         $scope.advert = response.data;
                         getDropDownDataData();
                         $scope.imagesPromise.resolve($scope.advert.ImageInfos);

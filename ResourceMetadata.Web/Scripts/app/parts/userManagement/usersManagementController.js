@@ -4,13 +4,13 @@
 
     app.controller('UserManagementCtrl', ['$scope', 'ngTableParams', 'entityService', 'accountService',
         function ($scope, ngTableParams, entityService, accountService) {
-            entityService.getAll('Account/GetUsers').then(function (response) {
+            entityService.get('Account/GetUsers').then(function (response) {
                 createTableParams(response.data);
             });
 
             $scope.deleteUser = function (id) {
                 accountService.deleteUser(id).then(function (data, responseHeaders) {
-                    entityService.getAll('Account/GetUsers').then(function (response) {
+                    entityService.get('Account/GetUsers').then(function (response) {
                         createTableParams(response.data);
                     });
                 });
@@ -18,7 +18,7 @@
 
             $scope.changePremiumStatus = function (id) {
                 accountService.changePremiumStatus(id).then(function (data, responseHeaders) {
-                    entityService.getAll('Account/GetUsers').then(function (response) {
+                    entityService.get('Account/GetUsers').then(function (response) {
                         createTableParams(response.data);
                     });
                 });

@@ -118,10 +118,22 @@ namespace ResourceMetadata.API.Controllers
         [HttpGet]
         [Route("api/Adverts/GetById")]
         [AllowAnonymous]
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult GetAdvert(int id)
         {
             var advertModel = advertService.GetAdvertById(id);
             var viewModel = new AdvertViewModel();
+            Mapper.Map(advertModel, viewModel);
+            SetCorrectImagesPaths(viewModel);
+            return Ok(viewModel);
+        }
+
+        [HttpGet]
+        [Route("api/SparePartAdverts/GetById")]
+        [AllowAnonymous]
+        public IHttpActionResult GetSparePartAdvert(int id)
+        {
+            var advertModel = advertService.GetAdvertById(id);
+            var viewModel = new SparePartAdvertViewModel();
             Mapper.Map(advertModel, viewModel);
             SetCorrectImagesPaths(viewModel);
             return Ok(viewModel);
@@ -147,9 +159,9 @@ namespace ResourceMetadata.API.Controllers
         public IHttpActionResult PostSparePartAdvert(SparePartAdvertViewModel advertModelViewModel)
         {
             var entity = new Advert();
-            advertModelViewModel.SparePartType = true;
             Mapper.Map(advertModelViewModel, entity);
             entity.UserId = User.Identity.GetUserId();
+            entity.SparePartType = true;
             advertService.AddAdvert(entity);
             Mapper.Map(entity, advertModelViewModel);
             return Created(Url.Link("DefaultApi", new { controller = "Adverts", id = advertModelViewModel.Id }),

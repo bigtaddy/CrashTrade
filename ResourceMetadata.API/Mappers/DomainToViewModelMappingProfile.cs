@@ -15,14 +15,15 @@ namespace ResourceMetadata.API.Mappers
         {
             Mapper.CreateMap<ApplicationUser, RegisterViewModel>();
             Mapper.CreateMap<Manufacture, ManufactureViewModel>();
-            Mapper.CreateMap<CarModel, CarModelViewModel>().ForMember(c => c.Manufacture, c=> c.MapFrom((carModel => carModel.Manufacture.Name)));
+            Mapper.CreateMap<CarModel, CarModelViewModel>().ForMember(c => c.Manufacture, c => c.MapFrom((carModel => carModel.Manufacture.Name)));
             Mapper.CreateMap<Advert, AdvertViewModel>();
             Mapper.CreateMap<Advert, LimitedAdvertViewModel>();
             Mapper.CreateMap<ImageInfo, ImageViewModel>();
 
             Mapper.CreateMap<Advert, SparePartAdvertViewModel>();
             Mapper.CreateMap<Advert, UniversalAdvertViewModel>();
-
+            Mapper.CreateMap<Advert, UniversalAdvertViewModel>()
+       .ForMember(dest => dest.IsSparePart, opt => opt.MapFrom((Advert => Advert.SparePartType)));
 
         }
     }

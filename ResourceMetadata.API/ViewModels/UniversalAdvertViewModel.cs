@@ -25,8 +25,10 @@ namespace ResourceMetadata.API.ViewModels
 
         public DateTime CreatedOn { get; set; }
 
-        public bool SparePartType { get; set; }
-
         public ICollection<ImageViewModel> ImageInfos { get; set; }
+
+
+
+        public bool IsSparePart { get; set; }
     }
 }

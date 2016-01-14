@@ -63,7 +63,10 @@
             })
             .when('/Adverts/Add', {
                 templateUrl: '/Scripts/app/parts/adverts/Add.html',
-                controller: 'AdvertCtrl'
+                controller: 'AdvertCtrl',
+                data: {
+                    advertType: 'Advert'
+                }
             })
             .when('/Adverts/List/Sale', {
                 templateUrl: '/Scripts/app/parts/adverts/Listing.html',
@@ -96,11 +99,17 @@
 
             .when('/Adverts/Edit/:advertId', {
                 templateUrl: '/Scripts/app/parts/adverts/Edit.html',
-                controller: 'AdvertCtrl'
+                controller: 'AdvertCtrl',
+                data: {
+                    advertType: 'Advert'
+                }
             })
             .when('/Adverts/:advertId', {
                 templateUrl: '/Scripts/app/parts/adverts/Details.html',
-                controller: 'AdvertCtrl'
+                controller: 'AdvertCtrl',
+                data: {
+                    advertType: 'Advert'
+                }
             })
 
 
@@ -115,16 +124,25 @@
 
             .when('/SparePartAdverts/Add', {
                 templateUrl: '/Scripts/app/parts/SparePartAdverts/Add.html',
-                controller: 'AdvertCtrl'
+                controller: 'AdvertCtrl',
+                data: {
+                    advertType: 'SparePartAdvert'
+                }
             })
 
             .when('/SparePartAdverts/Edit/:advertId', {
                 templateUrl: '/Scripts/app/parts/SparePartAdverts/Edit.html',
-                controller: 'AdvertCtrl'
+                controller: 'AdvertCtrl',
+                data: {
+                    advertType: 'SparePartAdvert'
+                }
             })
             .when('/SparePartAdverts/:advertId', {
                 templateUrl: '/Scripts/app/parts/SparePartAdverts/Details.html',
-                controller: 'AdvertCtrl'
+                controller: 'AdvertCtrl',
+                data: {
+                    advertType: 'SparePartAdvert'
+                }
             })
 
 

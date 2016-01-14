@@ -9,6 +9,14 @@
 
         var baseUrl = global.CrashTradeSettings.baseUrl;
 
+        var httpGet = function (url, params) {
+            return $http({
+                method: 'GET',
+                url: baseUrl + url,
+                params: params
+            });
+        };
+
         var add = function (model, modelName) {
             return $http({
                 method: 'POST',
@@ -64,7 +72,8 @@
             getById: getById,
             getAll: getAll,
             deleteById: deleteById,
-            deleteByIds: deleteByIds
+            deleteByIds: deleteByIds,
+            get: httpGet
         };
     }]);
 

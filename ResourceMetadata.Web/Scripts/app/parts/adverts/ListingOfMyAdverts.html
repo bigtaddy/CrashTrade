@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div>
-                        <h3><a href="#/{{advert.SparePartType == true ? 'SparePartAdverts' : 'Adverts'}}/{{advert.Id}}">{{advert.ManufactureName}} {{advert.CarModelName}}</a>
+                        <h3><a href="#/{{advert.IsSparePart == true ? 'SparePartAdverts' : 'Adverts'}}/{{advert.Id}}">{{advert.ManufactureName}} {{advert.CarModelName}}</a>
                         </h3>
                         <div>{{::advert.Year}}г.в.
                         </div>
@@ -29,7 +29,7 @@
                     </div>
                     <div>
                         <br/>
-                        <a href="#/{{advert.SparePartType == true ? 'SparePartAdverts' : 'Adverts'}}/Edit/{{advert.Id}}">Редактировать</a>
+                        <a href="#/{{advert.IsSparePart == true ? 'SparePartAdverts' : 'Adverts'}}/Edit/{{advert.Id}}">Редактировать</a>
                         <i style="float: right;" title="Удалить"
                            message="Вы хотите удалить данный элемент?" modal-id="{{advert.Id}}"
                            on-approve="deleteAdvert(advert.Id);" cst-confirm-modal>Удалить</i>
