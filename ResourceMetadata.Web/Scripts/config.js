@@ -9,7 +9,23 @@
         'tokenKey': 'CRASH_TRADE.ACCESS_TOKEN',
         'userDataKey': 'CRASH_TRADE.USER_DATA',
         fuelTypes: [{ Id: 1, Name: "Бензин" }, { Id: 2, Name: "Дизель" }],
-        transmissionTypes: [{ Id: 1, Name: "Ручная" }, { Id: 2, Name: "Автоматическая" }]
+        transmissionTypes: [{ Id: 1, Name: "Ручная" }, { Id: 2, Name: "Автоматическая" }],
+        years: fetYears()
+    }
+
+    /**
+     * fetYears
+     * @returns {Array}
+     */
+    function fetYears(){
+        var years = [];
+        var year = new Date().getFullYear();
+        while(year > 1960){
+            years[years.length] = year;
+            year --;
+        }
+
+        return years;
     }
 }(window));
 

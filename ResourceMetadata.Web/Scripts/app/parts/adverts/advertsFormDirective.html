@@ -30,7 +30,14 @@
 
 <div class="form-group">
     <label for="Year">Год выпуска<span style="color:Red">*</span></label>
-    <input type="number" id="Year" min="1900" max="2020" placeholder="Год выпуска" required data-ng-model="advert.Year" class="form-control">
+
+    <ui-select ng-model="advert.Year" id="Year" required>
+        <ui-select-match placeholder="Год выпуска">{{$select.selected}}
+        </ui-select-match>
+        <ui-select-choices repeat="year in CrashTradeSettings.years | filter: $select.search">
+            <span ng-bind-html="year | highlight: $select.search"></span>
+        </ui-select-choices>
+    </ui-select>
 </div>
 
 

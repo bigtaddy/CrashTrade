@@ -21,7 +21,7 @@
                 scope.car = {};
 
                 addHandlersAndWatchers(scope);
-                scope.advertType = $routeParams.current.params.advertType;
+                scope.advertType = $routeParams.current.data.advertType;
 
 
                 scope.$on('ClearFilter', function(){
@@ -143,13 +143,6 @@
                     setCarModelsArrayByManufactureId(newValue, $scope);
                 }
             });
-
-            $scope.years = [];
-            var year = new Date().getFullYear();
-            while(year > 1960){
-                $scope.years[$scope.years.length] = year;
-                year --;
-            }
 
             $scope.CrashTradeSettings = CrashTradeSettings;
         }
