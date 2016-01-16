@@ -40,7 +40,7 @@
     <ui-select ng-model="car.yearFrom" id="yearFrom">
         <ui-select-match allow-clear="true" placeholder="От">{{$select.selected}}
         </ui-select-match>
-        <ui-select-choices repeat="year in years | filter: $select.search">
+        <ui-select-choices repeat="year in CrashTradeSettings.years | filter: $select.search">
             <span ng-bind-html="year | highlight: $select.search"></span>
         </ui-select-choices>
     </ui-select>
