@@ -17,7 +17,7 @@
             },
             set: function (user) {
                 if (user) {
-                    user.isAdmin = ($.inArray('Admin', user.Roles) > -1);
+                    user.isAdmin = (user.Roles.indexOf('Admin') > -1);
                 }
                 localStorageService.set(global.CrashTradeSettings.userDataKey, user);
                 $rootScope.userData = user;
