@@ -26,65 +26,6 @@
 .ui.form textarea {
 }
 
-/*.ui.small.form select {
-    font-size: 1em;
-}*/
-
-/*.ui.form select {
-    width: 100%;
-    margin: 0em;
-    padding: 0.85em 1.2em;
-    font-size: 0.875em;
-    background-color: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    outline: none;
-    color: rgba(0, 0, 0, 0.7);
-    -webkit-border-radius: 0.3125em;
-    -moz-border-radius: 0.3125em;
-    border-radius: 0.3125em;
-    -webkit-transition: background-color 0.3s ease-out, box-shadow 0.2s ease, border-color 0.2s ease;
-    -moz-transition: background-color 0.3s ease-out, box-shadow 0.2s ease, border-color 0.2s ease;
-    -o-transition: background-color 0.3s ease-out, box-shadow 0.2s ease, border-color 0.2s ease;
-    -ms-transition: background-color 0.3s ease-out, box-shadow 0.2s ease, border-color 0.2s ease;
-    transition: background-color 0.3s ease-out, box-shadow 0.2s ease, border-color 0.2s ease;
-    -webkit-box-shadow: 0em 0em 0em 0em rgba(0, 0, 0, 0.3) inset;
-    -moz-box-shadow: 0em 0em 0em 0em rgba(0, 0, 0, 0.3) inset;
-    box-shadow: 0em 0em 0em 0em rgba(0, 0, 0, 0.3) inset;
-    -webkit-appearance: none;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-}*/
-
-/*option {
-    margin: 0em;
-    padding: 0.85em 1.2em;
-    font-size: 0.875em;
-    background-color: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    outline: none;
-    color: rgba(0, 0, 0, 0.7);
-    -webkit-border-radius: 0.3125em;
-    -moz-border-radius: 0.3125em;
-    border-radius: 0.3125em;
-    -webkit-transition: background-color 0.3s ease-out, box-shadow 0.2s ease, border-color 0.2s ease;
-    -moz-transition: background-color 0.3s ease-out, box-shadow 0.2s ease, border-color 0.2s ease;
-    -o-transition: background-color 0.3s ease-out, box-shadow 0.2s ease, border-color 0.2s ease;
-    -ms-transition: background-color 0.3s ease-out, box-shadow 0.2s ease, border-color 0.2s ease;
-    transition: background-color 0.3s ease-out, box-shadow 0.2s ease, border-color 0.2s ease;
-    -webkit-box-shadow: 0em 0em 0em 0em rgba(0, 0, 0, 0.3) inset;
-    -moz-box-shadow: 0em 0em 0em 0em rgba(0, 0, 0, 0.3) inset;
-    box-shadow: 0em 0em 0em 0em rgba(0, 0, 0, 0.3) inset;
-    -webkit-appearance: none;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-}*/
-
 body {
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     overflow-y:scroll;
@@ -203,65 +144,6 @@ textarea {
 
 .field-error {
     color: #e80c4d;
-}
-
-.ui.modal {
-    width: 58%;
-    margin-left: -29%;
-}
-
-.ui.modal > .header {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    margin: 0em;
-    padding: 1em 1em;
-    font-size: 1em;
-    font-weight: bold;
-    -webkit-border-radius: 0.325em 0.325em 0px 0px;
-    -moz-border-radius: 0.325em 0.325em 0px 0px;
-    border-radius: 0.325em 0.325em 0px 0px;
-}
-
-.ui.modal > .content {
-    font-size: .9em;
-    display: table;
-    width: 100%;
-    position: relative;
-    padding: 1em;
-    background-color: #F4F4F4;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-.pagination {
-    display: inline-block;
-    padding-left: 0;
-    margin: 20px 0;
-    border-radius: 4px;
-}
-
-.pagination > li {
-    display: inline;
-}
-
-.pagination > li > a, .pagination > li > span {
-    position: relative;
-    float: left;
-    padding: 6px 12px;
-    margin-left: -1px;
-    line-height: 1.428571429;
-    text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    color: #428bca;
-}
-
-.pagination > .disabled > span, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus {
-    color: #999;
-    cursor: not-allowed;
-    background-color: #fff;
-    border-color: #ddd;
 }
 
 /* Smooth Load
