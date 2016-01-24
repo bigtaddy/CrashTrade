@@ -1,23 +1,46 @@
 <div class="row">
-    <div photo-swipe images-promise="imagesPromise.promise"></div>
-</div>
 
-<div class="row">
-    <div class="col-sm-12"><h3>{{advert.ManufactureName}} {{advert.CarModelName}} {{advert.Year}} г.в.</h3></div>
-    <div class="col-sm-8">
-        <div>
-            <h4>Детальное описание:</h4>
-            <hr>
-            <div class="advertDescription">{{advert.Description}}</p>
-            </div>
+
+    <div class="col-sm-6">
+        <div class="col-sm-12" ><h3>{{advert.ManufactureName}} {{advert.CarModelName}}</h3>
         </div>
-        <hr class="solid">
+
+        <div class="col-sm-12">
+            <table class="table">
+                <tr>
+                    <th>Год выпуска:</th>
+                    <th>{{advert.Year}}</th>
+                </tr>
+                <tr>
+                    <th>VIN:</th>
+                    <th>{{::advert.VIN}}</th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-sm-12">
+            <div>
+                <h4>Детальное описание:</h4>
+                <hr>
+                <div class="advertDescription">{{advert.Description}}</p>
+                </div>
+            </div>
+            <hr class="solid">
+        </div>
+
+        <div class="col-sm-12">
+            <h4>Контакты:</h4>
+            <hr>
+            <h5>{{advert.Contacts}}</h5>
+        </div>
     </div>
 
-    <div class="col-sm-4">
-        <h4>Контакты:</h4>
-        <hr>
-        <h5>{{advert.Contacts}}</h5>
+
+    <div class="col-sm-6">
+        <div photo-swipe images-promise="imagesPromise.promise"></div>
     </div>
+
+
+
 </div>
 

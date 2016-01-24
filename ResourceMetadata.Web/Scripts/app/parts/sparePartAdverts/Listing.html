@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-sm-2">
-        <div class="thumbnail">
-            <adverts-sort-options-directive sort-options="sortOptions">
+        <div>
+            <adverts-sort-options-directive without-price="true" sort-options="sortOptions">
             </adverts-sort-options-directive>
         </div>
-        <div class="thumbnail">
+        <div >
             <div>
                 <spare-part-adverts-filter-options get-filter-options="getFilterOptions"
                                                    should-be-filtered="shouldBeFiltered">
@@ -24,7 +24,7 @@
                     <h5 ng-if="advert.ImageInfos.length == 0">Нет изображения</h5>
 
                     <div ng-if="advert.ImageInfos.length > 0">
-                        <img class="img-responsive img-rounded" alt="" style="max-height: 250px; max-width: 250px"
+                        <img class="img-responsive img-rounded shadow" alt="" style="max-height: 250px; max-width: 250px"
                              ng-src="{{advert.ImageInfos[0].FullName}}">
                     </div>
                 </div>
@@ -69,7 +69,7 @@
             <div class="col-sm-3">
                 <label>Объявлений на странице:</label>
                 <select convert-to-number class="form-control" ng-model="pageSize">
-                    <option value="1">1</option>
+                    <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="20">20</option>
                     <option value="50">50</option>

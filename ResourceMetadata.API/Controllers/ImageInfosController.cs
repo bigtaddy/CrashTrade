@@ -64,7 +64,6 @@ namespace ResourceMetadata.API.Controllers
 
                 await Request.Content.ReadAsMultipartAsync(streamProvider);
 
-
                 foreach (var file in streamProvider.FileData)
                 {
                     if (string.IsNullOrEmpty(file.Headers.ContentDisposition.FileName))

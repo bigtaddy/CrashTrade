@@ -5,20 +5,28 @@ var ngPhotoSwipe = angular.module('ngPhotoSwipe', []);
  */
 ngPhotoSwipe.directive('photoSwipe', [ function () {
 	var template =
-		'<div class="row">' +
+		'<div class="row"">' +
 
-		'<div class="col-sm-6">' +
-		'<a class="thumbnail" href="" data-ng-click="openPhotoSwipe(0)">' +
-		'<img  class="img-rounded" alt="" ng-src="{{images[0].FullName}}">' +
+
+
+		'<div class="col-lg-12">' +
+		'<a class="" href="" data-ng-click="openPhotoSwipe(0)">' +
+		'<img style="box-shadow:0 0 10px #000;" class="img-rounded img-responsive shadow" alt="" ng-src="{{images[0].FullName}}">' +
 		'</a>' +
 		'</div>' +
 
-		'<div ng-repeat="image in images" class="col-sm-1">' +
+		'<div class="img_scrollbar col-lg-12">' +
+
+
+
+		'<div ng-repeat="image in images" style="display: inline-block">' +
 		'<div>'+
-		'<a class="thumbnail" data-ng-click="openPhotoSwipe($index)" href="">' +
-		'<img class="img-rounded img-responsive" style="max-height: 100px" ng-src="{{image.FullName}}">' +
+		'<a class="" data-ng-click="openPhotoSwipe($index)" href="">' +
+		'<img class="img-rounded img-responsive shadow" style="max-height: 100px" ng-src="{{image.FullName}}">' +
 		'</a>' +
 		'</div>' +
+		'</div>' +
+
 		'</div>' +
 
 		'<photo-slider />' +
