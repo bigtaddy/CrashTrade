@@ -11,7 +11,7 @@
                 var menuItems = element.find("a");
                 menuItems.on('click', function () {
                     menuItems.removeClass('active');
-                    $(this).addClass('active');
+                    angular.element(this).addClass('active');
                 });
 
                 if (global.sessionStorage[global.CrashTradeSettings.tokenKey]) {
