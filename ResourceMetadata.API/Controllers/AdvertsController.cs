@@ -81,12 +81,12 @@ namespace ResourceMetadata.API.Controllers
         /// </summary>
         /// <param name="advertModelViewModel">The advert model view model.</param>
         /// <returns></returns>
-        private IHttpActionResult Post(UniversalAdvertViewModel advertModelViewModel)
+        private IHttpActionResult Post(UniversalAdvertViewModel advertModelViewModel, bool isSparePart)
         {
             var entity = new Advert();
             Mapper.Map(advertModelViewModel, entity);
             entity.UserId = User.Identity.GetUserId();
-            entity.SparePartType = true;
+            entity.SparePartType = isSparePart;
             advertService.AddAdvert(entity);
             Mapper.Map(entity, advertModelViewModel);
             return Created(Url.Link("DefaultApi", new { controller = "Adverts", id = advertModelViewModel.Id }),
@@ -203,7 +203,7 @@ namespace ResourceMetadata.API.Controllers
         [Authorize(Roles = "Admin, Member")]
         public IHttpActionResult PostAdvert(AdvertViewModel advertModelViewModel)
         {
-            return Post(advertModelViewModel);
+            return Post(advertModelViewModel, false);
         }
 
         [HttpPost]
@@ -211,7 +211,7 @@ namespace ResourceMetadata.API.Controllers
         [Authorize(Roles = "Admin, Member")]
         public IHttpActionResult PostSparePartAdvert(SparePartAdvertViewModel advertModelViewModel)
         {
-            return Post(advertModelViewModel);
+            return Post(advertModelViewModel, true);
         }
 
         [HttpPut]
