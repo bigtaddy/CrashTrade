@@ -131,7 +131,7 @@ namespace ResourceMetadata.API.Controllers
 
                 if (identityResult.Succeeded)
                 {
-                    this.AppUserManager.AddToRole(user.Id, "Member");
+                    this.AppUserManager.AddToRole(user.Id, "PremiumMember");
 
                     string code = await this.AppUserManager.GenerateEmailConfirmationTokenAsync(user.Id);
 
@@ -145,9 +145,6 @@ namespace ResourceMetadata.API.Controllers
 
                     return Ok();
 
-                   // Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = user.Id }));
-
-                   // return Created(locationHeader, TheModelFactory.Create(user));
                 }
                 else
                 {

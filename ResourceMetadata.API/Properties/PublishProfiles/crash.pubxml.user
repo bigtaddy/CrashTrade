@@ -148,7 +148,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/08/2015 10:46:05</publishTime>
     </File>
     <File Include="bin/ResourceMetadata.API.dll">
-      <publishTime>01/11/2016 20:50:41</publishTime>
+      <publishTime>01/24/2016 16:41:26</publishTime>
     </File>
     <File Include="bin/ResourceMetadata.Data.dll">
       <publishTime>01/11/2016 20:41:05</publishTime>
@@ -157,7 +157,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/11/2016 01:09:06</publishTime>
     </File>
     <File Include="bin/ResourceMetadata.Service.dll">
-      <publishTime>01/11/2016 20:41:05</publishTime>
+      <publishTime>01/24/2016 16:41:24</publishTime>
     </File>
     <File Include="bin/System.Linq.Dynamic.dll">
       <publishTime>09/24/2015 22:56:37</publishTime>

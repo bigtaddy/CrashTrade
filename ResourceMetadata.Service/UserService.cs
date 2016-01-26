@@ -22,7 +22,7 @@ namespace ResourceMetadata.Service
 
         public ApplicationUser RegisterUser(ApplicationUser user)
         {
-            user =userRepository.Add(user);
+            user = userRepository.Add(user);
             SaveChanges();
             return user;
         }
