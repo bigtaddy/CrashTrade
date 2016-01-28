@@ -131,6 +131,7 @@ namespace ResourceMetadata.API.Controllers
 
                 if (identityResult.Succeeded)
                 {
+                    this.AppUserManager.AddToRole(user.Id, "Member");
                     this.AppUserManager.AddToRole(user.Id, "PremiumMember");
 
                     string code = await this.AppUserManager.GenerateEmailConfirmationTokenAsync(user.Id);
