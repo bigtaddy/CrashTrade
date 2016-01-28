@@ -54,7 +54,7 @@ namespace ResourceMetadata.Data.Migrations
 
                 if (userResult.Succeeded)
                 {
-                    var userAdmin = userManager.FindByName("admin@admin.com");
+                    var userAdmin = userManager.FindByName("Crach.trade@yandex.ru");
                     userManager.SetLockoutEnabled(userAdmin.Id, false);
                     userAdmin.EmailConfirmed = true;
                     userManager.Update(userAdmin);
