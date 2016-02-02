@@ -8,6 +8,9 @@
             replace: true,
             templateUrl: 'Scripts/app/partials/TopMenu.html',
             link: function (scope, element, attrs) {
+                if($route.current && $route.current.data){
+                    scope.currentMenuSection = $route.current.data.menuSection;
+                }
 
                 if (global.sessionStorage[global.CrashTradeSettings.tokenKey]) {
                     scope.isAuthenticated = true;
