@@ -43,13 +43,14 @@
 
 <div class="form-group">
     <label for="title">Объем двигателя<span style="color:Red">*</span></label>
-    <input type="number" id="swepVolume" placeholder="Объем двигателя" required data-ng-model="advert.SweptVolume" class="form-control">
+    <input min="0" type="number" id="swepVolume" placeholder="Объем двигателя" required data-ng-model="advert.SweptVolume"
+           class="form-control">
 </div>
 
 
 <div class="form-group">
     <label for="title">Цена<span style="color:Red">*</span></label>
-    <input type="number" id="Price" placeholder="Цена" required data-ng-model="advert.Price" class="form-control">
+    <input type="number" min="0" id="Price" placeholder="Цена" required data-ng-model="advert.Price" class="form-control">
 </div>
 
 
@@ -75,7 +76,8 @@
     <ui-select ng-model="advert.TransmissionType" ng-required="true" style="width:100%;" id="TransmissionType">
         <ui-select-match placeholder="Коробка передач">{{$select.selected.Name}}
         </ui-select-match>
-        <ui-select-choices repeat="transmissionType.Id as transmissionType in CrashTradeSettings.transmissionTypes | filter: $select.search">
+        <ui-select-choices
+                repeat="transmissionType.Id as transmissionType in CrashTradeSettings.transmissionTypes | filter: $select.search">
             <span ng-bind-html="transmissionType.Name | highlight: $select.search"></span>
         </ui-select-choices>
     </ui-select>
@@ -86,23 +88,25 @@
         Тип объявления<span style="color: Red">*</span>
     </label>
 
-    <span>Продажа:
+    <div>Продажа:
         <input type="checkbox" ng-model="advert.SaleType">
-    </span>
-    <span>Кузовной ремонт:
+    </div>
+    <div>Кузовной ремонт:
         <input type="checkbox" ng-model="advert.CoachworkRepairType">
-    </span>
-    <span>Механический ремонт:
+    </div>
+    <div>Механический ремонт:
         <input type="checkbox" ng-model="advert.MechanicalRepairType">
-    </span>
+    </div>
 </div>
 
 <div class="form-group">
     <label for="contacts">Контактные данные продавца<span style="color:Red">*</span></label>
-    <textarea id="contacts" placeholder="Контакты" required data-ng-model="advert.Contacts" class="form-control"/>
+    <textarea id="contacts" placeholder="Контакты" required data-ng-model="advert.Contacts"
+              class="form-control"></textarea>
 </div>
 
 <div class="form-group">
     <label for="description">Описание<span style="color:Red">*</span></label>
-    <textarea id="description" placeholder="Описание" required data-ng-model="advert.Description" class="form-control"/>
+    <textarea id="description" placeholder="Описание" required data-ng-model="advert.Description" class="form-control"
+              style="min-height: 100px"></textarea>
 </div>

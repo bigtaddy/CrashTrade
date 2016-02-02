@@ -8,7 +8,7 @@
             replace: true,
             templateUrl: 'Scripts/app/partials/TopMenu.html',
             link: function (scope, element, attrs) {
-                var menuItems = element.find("a");
+                var menuItems = element.find("li");
                 menuItems.on('click', function () {
                     menuItems.removeClass('active');
                     angular.element(this).addClass('active');

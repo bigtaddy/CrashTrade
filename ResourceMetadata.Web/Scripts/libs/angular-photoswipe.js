@@ -15,7 +15,7 @@ ngPhotoSwipe.directive('photoSwipe', [ function () {
 		'</a>' +
 		'</div>' +
 
-		'<div class="img_scrollbar col-lg-12">' +
+		'<div class="img_scrollbar details_img_scrollbar col-lg-12">' +
 
 
 

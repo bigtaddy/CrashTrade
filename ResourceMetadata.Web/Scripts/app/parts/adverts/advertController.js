@@ -68,6 +68,9 @@
              * @param advert
              */
             $scope.addAdvert = function (advert) {
+                if(!verifyAdvertTypes(advert)){
+                    return;
+                }
                 if ($route.current.data.advertType == 'SparePartAdvert') {
                     var url = "SparePartAdverts/Create";
                 } else {
@@ -86,6 +89,9 @@
              * @param advert
              */
             $scope.editAdvert = function (advert) {
+                if(!verifyAdvertTypes(advert)){
+                    return;
+                }
                 if ($route.current.data.advertType == 'SparePartAdvert') {
                     var url = "SparePartAdverts/Edit";
                 } else {
@@ -135,6 +141,22 @@
                         break;
                     }
                 }
+            }
+
+            /**
+             * verifyAdvertTypes
+             * @param advert
+             * @returns {boolean}
+             */
+            function verifyAdvertTypes(advert) {
+                if ($route.current.data.advertType != 'SparePartAdvert') {
+                    if (!(advert.SaleType || advert.CoachworkRepairType || advert.MechanicalRepairType)) {
+                        alert('Пожалуйста, выберите тип объявления.');
+
+                        return false;
+                    }
+                }
+                return true;
             }
 
             /**

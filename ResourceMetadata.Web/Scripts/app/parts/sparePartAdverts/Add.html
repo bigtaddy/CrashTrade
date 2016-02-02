@@ -11,11 +11,9 @@
     <form name="advertForm" role="form">
         <spare-part-advert-form></spare-part-advert-form>
 
-        <biv class="row">
-            <div class="col-sm-12">
-                <load-images></load-images>
-            </div>
-        </biv>
+        <div class="form-group">
+            <load-images></load-images>
+        </div>
 
         <button data-ng-disabled="advertForm.$invalid" data-ng-click="addAdvert(advert)" class="btn btn-default">
             Подтвердить

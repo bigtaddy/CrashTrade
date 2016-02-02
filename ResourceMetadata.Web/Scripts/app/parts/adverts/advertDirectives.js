@@ -12,7 +12,17 @@
     app.directive("loadImages", function () {
         return {
             restrict: "E",
-            templateUrl: "/Scripts/app/parts/adverts/loadImagesDirective.html"
+            templateUrl: "/Scripts/app/parts/adverts/loadImagesDirective.html",
+            link: function (scope) {
+                scope.handleAdd = function ($file) {
+                    if ($file.size > 2048000) {
+                        alert('Масимальный размер файла 2 бм');
+
+                        return false;
+                    }
+                    return true;
+                }
+            }
         }
     });
 
