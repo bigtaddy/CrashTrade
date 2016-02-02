@@ -46,15 +46,15 @@ namespace ResourceMetadata.Data.Migrations
                 var user = new ApplicationUser();
                 user.FirstName = "Admin";
                 user.LastName = "Admin";
-                user.Email = "admin@admin.com";
-                user.UserName = "admin@admin.com";
+                user.Email = "Crach.trade@yandex.ru";
+                user.UserName = "Crach.trade@yandex.ru";
                 user.JoinDate = DateTime.Now.Date;
 
-                var userResult = userManager.Create(user, "Admin123456");
+                var userResult = userManager.Create(user, "Adminqqqqq13");
 
                 if (userResult.Succeeded)
                 {
-                    var userAdmin = userManager.FindByName("admin@admin.com");
+                    var userAdmin = userManager.FindByName("Crach.trade@yandex.ru");
                     userManager.SetLockoutEnabled(userAdmin.Id, false);
                     userAdmin.EmailConfirmed = true;
                     userManager.Update(userAdmin);

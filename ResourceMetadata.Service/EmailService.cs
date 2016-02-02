@@ -12,9 +12,9 @@ namespace ResourceMetadata.Service
         public Task SendAsync(IdentityMessage message)
         {
             // Credentials:
-            var credentialUserName = "bigtaddy@yandex.ru";         //admin@c-tr.by  jH4QGBWV6V
-            var sentFrom = "bigtaddy@yandex.ru";
-            var pwd = "password!!!!!";
+            var credentialUserName = "Crach.trade@yandex.ru";         //admin@c-tr.by  jH4QGBWV6V
+            var sentFrom = "Crach.trade@yandex.ru";
+            var pwd = "qqqqq13";
 
             // Configure the client:
             System.Net.Mail.SmtpClient client =
