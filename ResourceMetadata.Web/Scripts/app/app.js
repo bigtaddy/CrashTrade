@@ -15,39 +15,66 @@
 
             .when('/Admin/Manufactures', {
                 templateUrl: '/Scripts/app/parts/manufactures/Listing.html',
-                controller: 'ManufacturesCtrl'
+                controller: 'ManufacturesCtrl',
+                data: {
+                    menuSection: 'Manufactures'
+                }
             })
             .when('/Admin/Manufactures/Add', {
                 templateUrl: '/Scripts/app/parts/manufactures/Add.html',
-                controller: 'ManufactureCtrl'
+                controller: 'ManufactureCtrl',
+                data: {
+                    menuSection: 'Manufactures'
+                }
             })
             .when('/Admin/Manufactures/Edit/:manufactureId', {
                 templateUrl: '/Scripts/app/parts/manufactures/Edit.html',
-                controller: 'ManufactureCtrl'
+                controller: 'ManufactureCtrl',
+                data: {
+                    menuSection: 'Manufactures'
+                }
             })
             .when('/Admin/Manufactures/:manufactureId', {
                 templateUrl: '/Scripts/app/parts/manufactures/Details.html',
-                controller: 'ManufactureCtrl'
+                controller: 'ManufactureCtrl',
+                data: {
+                    menuSection: 'Manufactures'
+                }
             })
             .when('/Admin/CarModels', {
                 templateUrl: '/Scripts/app/parts/carModels/Listing.html',
-                controller: 'CarModelsCtrl'
+                controller: 'CarModelsCtrl',
+                data: {
+                    menuSection: 'CarModels'
+                }
             })
             .when('/Admin/CarModels/Add', {
                 templateUrl: '/Scripts/app/parts/carModels/Add.html',
-                controller: 'CarModelCtrl'
+                controller: 'CarModelCtrl',
+                data: {
+                    menuSection: 'CarModels'
+                }
             })
             .when('/Admin/CarModels/Edit/:carModelId', {
                 templateUrl: '/Scripts/app/parts/carModels/Edit.html',
-                controller: 'CarModelCtrl'
+                controller: 'CarModelCtrl',
+                data: {
+                    menuSection: 'CarModels'
+                }
             })
             .when('/Admin/CarModels/:carModelId', {
                 templateUrl: '/Scripts/app/parts/carModels/Details.html',
-                controller: 'CarModelCtrl'
+                controller: 'CarModelCtrl',
+                data: {
+                    menuSection: 'CarModels'
+                }
             })
             .when('/Admin/Users', {
                 templateUrl: '/Scripts/app/parts/userManagement/Listing.html',
-                controller: 'UserManagementCtrl'
+                controller: 'UserManagementCtrl',
+                data: {
+                    menuSection: 'Users'
+                }
             })
             .when('/Login', {
                 templateUrl: '/Scripts/app/parts/shared/Login.html'
@@ -59,41 +86,49 @@
                 templateUrl: '/Scripts/app/parts/shared/Register.html'
             })
             .when('/About', {
-                templateUrl: '/Scripts/app/parts/about/About.html'
+                templateUrl: '/Scripts/app/parts/about/About.html',
+                data: {
+                    menuSection: 'About'
+                }
             })
             .when('/Adverts/Add', {
                 templateUrl: '/Scripts/app/parts/adverts/Add.html',
                 controller: 'AdvertCtrl',
                 data: {
-                    advertType: 'Advert'
+                    advertType: 'Advert',
+                    menuSection: 'AddAdvert'
                 }
             })
             .when('/Adverts/List/Sale', {
                 templateUrl: '/Scripts/app/parts/adverts/Listing.html',
                 controller: 'AdvertsCtrl',
                 data: {
-                    advertType: 'Sale'
+                    advertType: 'Sale',
+                    menuSection: 'SaleAdverts'
                 }
             })
             .when('/Adverts/List/MechanicalRepair', {
                 templateUrl: '/Scripts/app/parts/adverts/Listing.html',
                 controller: 'AdvertsCtrl',
                 data: {
-                    advertType: 'MechanicalRepair'
+                    advertType: 'MechanicalRepair',
+                    menuSection: 'MechanicalRepairAdverts'
                 }
             })
             .when('/Adverts/List/CoachworkRepair', {
                 templateUrl: '/Scripts/app/parts/adverts/Listing.html',
                 controller: 'AdvertsCtrl',
                 data: {
-                    advertType: 'CoachworkRepair'
+                    advertType: 'CoachworkRepair',
+                    menuSection: 'CoachworkRepairAdverts'
                 }
             })
             .when('/Adverts/List/My', {
                 templateUrl: '/Scripts/app/parts/adverts/ListingOfMyAdverts.html',
                 controller: 'AdvertsCtrl',
                 data: {
-                    advertType: 'My'
+                    advertType: 'My',
+                    menuSection: 'MyAdverts'
                 }
             })
 
@@ -118,7 +153,8 @@
                 templateUrl: '/Scripts/app/parts/SparePartAdverts/Listing.html',
                 controller: 'AdvertsCtrl',
                 data: {
-                    advertType: 'SparePart'
+                    advertType: 'SparePart',
+                    menuSection: 'SparePartAdverts'
                 }
             })
 
@@ -126,7 +162,8 @@
                 templateUrl: '/Scripts/app/parts/SparePartAdverts/Add.html',
                 controller: 'AdvertCtrl',
                 data: {
-                    advertType: 'SparePartAdvert'
+                    advertType: 'SparePartAdvert',
+                    menuSection: 'AddAdvert'
                 }
             })
 

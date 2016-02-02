@@ -2,17 +2,12 @@
 
     'use strict';
 
-    app.directive('cstTopMenu', function ($location, $rootScope) {
+    app.directive('cstTopMenu', function ($location, $rootScope, $route) {
         return {
             restrict: 'E',
             replace: true,
             templateUrl: 'Scripts/app/partials/TopMenu.html',
             link: function (scope, element, attrs) {
-                var menuItems = element.find("li");
-                menuItems.on('click', function () {
-                    menuItems.removeClass('active');
-                    angular.element(this).addClass('active');
-                });
 
                 if (global.sessionStorage[global.CrashTradeSettings.tokenKey]) {
                     scope.isAuthenticated = true;
@@ -43,6 +38,10 @@
                         }
                     } else {
                         scope.showAdministrativeTools = false;
+                    }
+
+                    if($route.current.data){
+                        scope.currentMenuSection = $route.current.data.menuSection;
                     }
                 });
             }
