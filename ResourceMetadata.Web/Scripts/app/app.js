@@ -1,7 +1,7 @@
 ﻿(function (global) {
 
     'use strict';
-
+    
     global.app = angular.module('resourceManagerApp', ['ngSanitize', 'ui.select', 'ngTable', 'ngRoute', 'ngResource', 'ngAnimate', 'custom-utilities', 'flow', 'ngPhotoSwipe', 'angular-loading-bar', 'ui.bootstrap', 'LocalStorageModule', 'truncate']);
 
     app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
