@@ -7,6 +7,6 @@ namespace ResourceMetadata.API.ViewModels
 {
     public class SparePartAdvertViewModel : UniversalAdvertViewModel
     {
-        public string VIN { get; set; }
+        
     }
 }

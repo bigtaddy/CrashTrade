@@ -27,7 +27,7 @@ namespace ResourceMetadata.API.ViewModels
 
         public ICollection<ImageViewModel> ImageInfos { get; set; }
 
-
+        public string VIN { get; set; }
 
         public bool IsSparePart { get; set; }
     }
