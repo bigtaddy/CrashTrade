@@ -27,7 +27,7 @@
                 <th>Цена:</th>
                 <th>{{::advert.Price}}</th>
             </tr>
-            <tr ng-show="advert.CoachworkRepairType || advert.MechanicalRepairType">
+            <tr ng-show="(advert.CoachworkRepairType || advert.MechanicalRepairType) && advert.VIN">
                 <th>VIN:</th>
                 <th>{{::advert.VIN}}</th>
             </tr>
