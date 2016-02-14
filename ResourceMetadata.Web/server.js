@@ -3,7 +3,7 @@
     'use strict';
 
     var PORT = 7777,
-        PROXY_URL = 'http://localhost:7888';
+        PROXY_URL = 'http://c-tr.by';
 
     var http = require('http'),
         url = require('url'),

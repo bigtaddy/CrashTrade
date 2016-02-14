@@ -1,7 +1,7 @@
-﻿(function (global) {
+(function (global) {
 
     'use strict';
-    
+
     global.app = angular.module('resourceManagerApp', ['ngSanitize', 'ui.select', 'ngTable', 'ngRoute', 'ngResource', 'ngAnimate', 'custom-utilities', 'flow', 'ngPhotoSwipe', 'angular-loading-bar', 'ui.bootstrap', 'LocalStorageModule', 'truncate']);
 
     app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
@@ -11,9 +11,7 @@
 
         $locationProvider.html5Mode(false);
 
-        $routeProvider
-
-            .when('/Admin/Manufactures', {
+        $routeProvider.when('/Admin/Manufactures', {
                 templateUrl: '/Scripts/app/parts/manufactures/Listing.html',
                 controller: 'ManufacturesCtrl',
                 data: {
@@ -131,7 +129,6 @@
                     menuSection: 'MyAdverts'
                 }
             })
-
             .when('/Adverts/Edit/:advertId', {
                 templateUrl: '/Scripts/app/parts/adverts/Edit.html',
                 controller: 'AdvertCtrl',
@@ -146,9 +143,6 @@
                     advertType: 'Advert'
                 }
             })
-
-
-
             .when('/Adverts/List/SparePart', {
                 templateUrl: '/Scripts/app/parts/SparePartAdverts/Listing.html',
                 controller: 'AdvertsCtrl',
@@ -166,7 +160,6 @@
                     menuSection: 'AddAdvert'
                 }
             })
-
             .when('/SparePartAdverts/Edit/:advertId', {
                 templateUrl: '/Scripts/app/parts/SparePartAdverts/Edit.html',
                 controller: 'AdvertCtrl',
@@ -181,8 +174,6 @@
                     advertType: 'SparePartAdvert'
                 }
             })
-
-
             .when('/Home', {
                 templateUrl: '/Scripts/app/parts/adverts/Listing.html',
                 controller: 'AdvertsCtrl'
@@ -200,9 +191,7 @@
 //        $httpProvider.interceptors.push('httpInterceptor');
 
     }]).factory('userProfileSvc', function () {
-
         return {};
-
     }).run(['$rootScope', 'UserService', '$location', 'localStorageService', '$http', function ($rootScope, UserService, $location, localStorageService, $http) {
         var userData = UserService.getUserData();
         if (userData && userData.rememberMe) {
@@ -220,8 +209,8 @@
             }
         }
     }]);
-    global.utilities = angular.module("custom-utilities", []);
 
+    global.utilities = angular.module("custom-utilities", []);
 
 }(window));
 
