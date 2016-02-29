@@ -64,7 +64,7 @@
 </div>
 
 
-<div class="form-group" ng-show="advert.SaleType">
+<div class="form-group" ng-show="advert.SaleType || advert.CoachworkRepairType || advert.MechanicalRepairType">
     <label for="title">Цена<span style="color:Red">*</span></label>
     <input type="number" min="0" id="Price" placeholder="Цена" required data-ng-model="advert.Price" class="form-control">
 </div>
