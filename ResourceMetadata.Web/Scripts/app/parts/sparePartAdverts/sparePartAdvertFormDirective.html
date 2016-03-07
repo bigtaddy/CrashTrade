@@ -42,8 +42,8 @@
 
 
     <div class="form-group">
-        <label for="VIN">VIN<span style="color:Red">*</span></label>
-        <input type="text" id="VIN" placeholder="VIN" required data-ng-model="advert.VIN" class="form-control">
+        <label for="VIN">VIN</label>
+        <input type="text" id="VIN" placeholder="VIN" ng-pattern="validPatternForVIN" data-ng-model="advert.VIN" class="form-control">
     </div>
 
     <div class="form-group">

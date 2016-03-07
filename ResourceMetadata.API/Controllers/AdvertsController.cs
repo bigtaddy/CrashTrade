@@ -144,14 +144,8 @@ namespace ResourceMetadata.API.Controllers
         public HttpResponseMessage GetAllMechanicalRepair(int pageNumber, int itemsPerPage, string sortOptions, string filterOptions)
         {
             filterOptions = "(" + filterOptions + (") And MechanicalRepairType = true");
-
-            if (IsUserHasAccessToRepairAdverts())
-            {
-                var list = new List<AdvertViewModel>();
-                return GetAll(pageNumber, itemsPerPage, sortOptions, filterOptions, list);
-            }
-
-            return GetAllLimited(pageNumber, itemsPerPage, sortOptions, filterOptions);
+            var list = new List<AdvertViewModel>();
+            return GetAll(pageNumber, itemsPerPage, sortOptions, filterOptions, list);
         }
 
         [HttpGet]
@@ -160,14 +154,8 @@ namespace ResourceMetadata.API.Controllers
         public HttpResponseMessage GetAllCoachworkRepair(int pageNumber, int itemsPerPage, string sortOptions, string filterOptions)
         {
             filterOptions = "(" + filterOptions + (") And CoachworkRepairType = true");
-
-            if (IsUserHasAccessToRepairAdverts())
-            {
-                var list = new List<AdvertViewModel>();
-                return GetAll(pageNumber, itemsPerPage, sortOptions, filterOptions, list);
-            }
-
-            return GetAllLimited(pageNumber, itemsPerPage, sortOptions, filterOptions);
+            var list = new List<AdvertViewModel>();
+            return GetAll(pageNumber, itemsPerPage, sortOptions, filterOptions, list);
         }
 
         [HttpGet]

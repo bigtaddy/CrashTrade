@@ -7,10 +7,10 @@
         var tokenUrl = global.CrashTradeSettings.tokenUrl;
 
         $rootScope.$on('logOff', function () {
-            global.sessionStorage.removeItem(global.CrashTradeSettings.tokenKey);
-            localStorageService.remove(global.CrashTradeSettings.tokenKey)
+            global.localStorage.removeItem(global.CrashTradeSettings.tokenKey);
+            localStorageService.remove(global.CrashTradeSettings.tokenKey);
             $http.defaults.headers.common.Authorization = null;
-        })
+        });
 
         return {
             login: function (formData) {

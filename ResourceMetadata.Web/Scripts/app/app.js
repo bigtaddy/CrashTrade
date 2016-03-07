@@ -7,7 +7,7 @@
     app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
-        $httpProvider.defaults.headers.common.Authorization = 'Bearer ' + global.sessionStorage[global.CrashTradeSettings.tokenKey];
+        $httpProvider.defaults.headers.common.Authorization = 'Bearer ' + global.localStorage[global.CrashTradeSettings.tokenKey];
 
         $locationProvider.html5Mode(false);
 
@@ -196,13 +196,13 @@
         var userData = UserService.getUserData();
         if (userData && userData.rememberMe) {
             $rootScope.userData = userData;
-            global.sessionStorage.setItem(
+            global.localStorage.setItem(
                 global.CrashTradeSettings.tokenKey,
                 localStorageService.get(global.CrashTradeSettings.tokenKey)
             );
-            $http.defaults.headers.common.Authorization = 'Bearer ' + global.sessionStorage[global.CrashTradeSettings.tokenKey];
+            $http.defaults.headers.common.Authorization = 'Bearer ' + global.localStorage[global.CrashTradeSettings.tokenKey];
         } else {
-            if (!global.sessionStorage[global.CrashTradeSettings.tokenKey]) {
+            if (!global.localStorage[global.CrashTradeSettings.tokenKey]) {
                 $rootScope.$broadcast('logOff');
             } else {
                 $rootScope.userData = userData;

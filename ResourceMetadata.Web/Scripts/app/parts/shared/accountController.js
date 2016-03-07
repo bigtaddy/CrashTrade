@@ -78,7 +78,7 @@
                     .then(function (response) {
 
                         $http.defaults.headers.common.Authorization = "Bearer " + response.data.access_token;
-                        global.sessionStorage.setItem(global.CrashTradeSettings.tokenKey, response.data.access_token);
+                        global.localStorage.setItem(global.CrashTradeSettings.tokenKey, response.data.access_token);
                         if(userLogin.rememberMe){
                             localStorageService.set(global.CrashTradeSettings.tokenKey, response.data.access_token);
                         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -45,6 +46,7 @@ namespace ResourceMetadata.Models
 
         public int TransmissionType { get; set; }
 
+        //[StringLength(17, MinimumLength=1, ErrorMessage = "VIN cannot be longer or less more than 17 characters.")]
         public string VIN { get; set; }
 
         public string UserId { get; set; }

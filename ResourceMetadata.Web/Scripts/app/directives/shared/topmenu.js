@@ -12,7 +12,7 @@
                     scope.currentMenuSection = $route.current.data.menuSection;
                 }
 
-                if (global.sessionStorage[global.CrashTradeSettings.tokenKey]) {
+                if (global.localStorage[global.CrashTradeSettings.tokenKey]) {
                     scope.isAuthenticated = true;
                 }
                 scope.$on('logOff', function () {
