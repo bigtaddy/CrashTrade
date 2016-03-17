@@ -243,3 +243,9 @@ textarea {
 .shadow{
     box-shadow:0 0 10px #000;
 }
+
+.logo-header {
+    height: 170px;
+    width: 1400px;
+    background: url("../images/logo/logo.jpg") no-repeat;
+}
