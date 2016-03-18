@@ -8,6 +8,8 @@
             replace: true,
             templateUrl: 'Scripts/app/partials/TopMenu.html',
             link: function (scope, element, attrs) {
+                scope.isCollapsed = true;
+
                 if($route.current && $route.current.data){
                     scope.currentMenuSection = $route.current.data.menuSection;
                 }

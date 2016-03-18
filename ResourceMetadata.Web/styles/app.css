@@ -249,3 +249,7 @@ textarea {
     width: 1400px;
     background: url("../images/logo/logo.jpg") no-repeat;
 }
+
+.pointerCursor{
+    cursor: pointer;
+}

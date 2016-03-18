@@ -75,13 +75,19 @@
                 }
             })
             .when('/Login', {
-                templateUrl: '/Scripts/app/parts/shared/Login.html'
+                templateUrl: '/Scripts/app/parts/shared/Login.html',
+                data: {
+                    menuSection: 'Login'
+                }
             })
             .when('/Login/userId/:userId/code/:code', {
                 templateUrl: '/Scripts/app/parts/shared/Login.html'
             })
             .when('/Register', {
-                templateUrl: '/Scripts/app/parts/shared/Register.html'
+                templateUrl: '/Scripts/app/parts/shared/Register.html',
+                data: {
+                    menuSection: 'Register'
+                }
             })
             .when('/About', {
                 templateUrl: '/Scripts/app/parts/about/About.html',
