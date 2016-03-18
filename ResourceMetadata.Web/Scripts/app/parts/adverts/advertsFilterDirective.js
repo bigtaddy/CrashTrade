@@ -12,7 +12,8 @@
             templateUrl: "/Scripts/app/parts/adverts/advertsFilterOptionsDirective.html",
             scope: {
                 getFilterOptions: "=",
-                shouldBeFiltered: "="
+                shouldBeFiltered: "=",
+                advertType: "=?"
             },
             link: function (scope, element, attrs) {
 

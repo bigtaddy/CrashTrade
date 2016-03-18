@@ -17,6 +17,24 @@
     </ui-select-choices>
 </ui-select>
 
+<span>Коробка передач:</span>
+<ui-select ng-model="car.transmissionType" id="TransmissionType">
+    <ui-select-match allow-clear="true" placeholder="Коробка передач">{{$select.selected.Name}}
+    </ui-select-match>
+    <ui-select-choices repeat="transmissionType.Id as transmissionType in CrashTradeSettings.transmissionTypes | filter: $select.search">
+        <span ng-bind-html="transmissionType.Name | highlight: $select.search"></span>
+    </ui-select-choices>
+</ui-select>
+
+<span>Тип топлива:</span>
+<ui-select ng-model="car.fuelType" id="FuelType">
+    <ui-select-match allow-clear="true" placeholder="Выберите тип">{{$select.selected.Name}}
+    </ui-select-match>
+    <ui-select-choices repeat="fuelType.Id as fuelType in CrashTradeSettings.fuelTypes | filter: $select.search">
+        <span ng-bind-html="fuelType.Name | highlight: $select.search"></span>
+    </ui-select-choices>
+</ui-select>
+
 <div class="form-group">
     <span>Год:</span>
     <ui-select ng-model="car.yearFrom" id="yearFrom">

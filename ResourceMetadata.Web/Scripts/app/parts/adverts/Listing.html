@@ -1,17 +1,18 @@
 <div class="row">
     <div class="col-sm-2">
         <div>
-            <adverts-sort-options-directive sort-options="sortOptions"></adverts-sort-options-directive>
+            <adverts-sort-options-directive without-price="::advertType != 'Sale'" sort-options="sortOptions"></adverts-sort-options-directive>
         </div>
         <div>
             <div>
-                <adverts-filter-options get-filter-options="getFilterOptions" should-be-filtered="shouldBeFiltered">
+                <adverts-filter-options get-filter-options="getFilterOptions" should-be-filtered="shouldBeFiltered" advert-type="advertType">
                 </adverts-filter-options>
 
                 <a class="btn btn-default" ng-click="filter()">Ок</a>
                 <a class="btn btn-default" ng-click="clearFilter()">Сброс</a>
             </div>
         </div>
+        <div style="min-height: 10px"></div>
     </div>
 
     <div class="col-sm-10">

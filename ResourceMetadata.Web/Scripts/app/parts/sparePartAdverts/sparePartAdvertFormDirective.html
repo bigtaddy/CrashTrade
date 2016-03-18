@@ -40,6 +40,34 @@
         </ui-select>
     </div>
 
+    <div class="form-group">
+        <label for="FuelType">
+            Тип топлива<span style="color: Red">*</span>
+        </label>
+
+        <ui-select ng-model="advert.FuelType" ng-required="true" style="width:100%;" id="FuelType">
+            <ui-select-match placeholder="Тип двигателя">{{$select.selected.Name}}
+            </ui-select-match>
+            <ui-select-choices repeat="fuelType.Id as fuelType in CrashTradeSettings.fuelTypes | filter: $select.search">
+                <span ng-bind-html="fuelType.Name | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+
+    <div class="form-group">
+        <label for="FuelType">
+            Коробка передач<span style="color: Red">*</span>
+        </label>
+
+        <ui-select ng-model="advert.TransmissionType" ng-required="true" style="width:100%;" id="TransmissionType">
+            <ui-select-match placeholder="Коробка передач">{{$select.selected.Name}}
+            </ui-select-match>
+            <ui-select-choices
+                    repeat="transmissionType.Id as transmissionType in CrashTradeSettings.transmissionTypes | filter: $select.search">
+                <span ng-bind-html="transmissionType.Name | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+    </div>
 
     <div class="form-group">
         <label for="VIN">VIN</label>
