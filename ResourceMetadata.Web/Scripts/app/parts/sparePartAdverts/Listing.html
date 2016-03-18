@@ -24,10 +24,11 @@
                 <div class="col-sm-6">
                     <h5 ng-if="advert.ImageInfos.length == 0">Нет изображения</h5>
 
-                    <a ng-if="advert.ImageInfos.length > 0" href="#/SparePartAdverts/{{::advert.Id}}">
-                        <img class="img-responsive img-rounded shadow" alt="" style="max-height: 250px; max-width: 250px"
-                             ng-src="{{advert.ImageInfos[0].FullName}}">
-                    </a>
+                    <div style="max-width: 250px; max-height: 250px">
+                        <a ng-if="advert.ImageInfos.length > 0" href="#/SparePartAdverts/{{advert.Id}}">
+                            <img class="img-responsive img-rounded shadow" alt="" ng-src="{{advert.ImageInfos[0].FullName}}">
+                        </a>
+                    </div>
                 </div>
                 <div class="col-sm-6">
                     <div>
