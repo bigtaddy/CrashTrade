@@ -22,10 +22,10 @@
                 <div class="col-sm-6">
                     <h5 ng-if="advert.ImageInfos.length == 0">Нет изображения</h5>
 
-                    <div ng-if="advert.ImageInfos.length > 0">
+                    <a ng-if="advert.ImageInfos.length > 0" href="#/Adverts/{{advert.Id}}">
                         <img class="img-responsive img-rounded shadow" alt="" style="max-height: 250px; max-width: 250px"
                              ng-src="{{advert.ImageInfos[0].FullName}}">
-                    </div>
+                    </a>
                 </div>
                 <div class="col-sm-6">
                     <div>
