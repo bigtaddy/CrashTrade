@@ -22,7 +22,7 @@
         <div class="row" ng-repeat="advert in adverts">
             <div ng-show="advert.Id">
                 <div class="col-sm-6">
-                    <h5 ng-if="advert.ImageInfos.length == 0">Нет изображения</h5>
+                    <h5 ng-if="advert.ImageInfos.length == 0"><i class="glyphicon glyphicon-picture"></i> Нет изображения</h5>
 
                     <div style="max-width: 250px; max-height: 250px">
                         <a ng-if="advert.ImageInfos.length > 0" href="#/SparePartAdverts/{{advert.Id}}">
@@ -43,7 +43,7 @@
                     </div>
                     <div ng-show="userData.isAdmin">
                         <br/>
-                        <a href="#/SparePartAdverts/Edit/{{advert.Id}}">Редактировать</a>
+                        <a href="#/SparePartAdverts/Edit/{{advert.Id}}"><i class="glyphicon glyphicon-pencil"></i> Редактировать</a>
                         <i style="float: right;" title="Удалить"
                            message="Вы хотите удалить данный элемент?" modal-id="{{advert.Id}}"
                            on-approve="deleteAdvert(advert.Id);" cst-confirm-modal>Удалить</i>
