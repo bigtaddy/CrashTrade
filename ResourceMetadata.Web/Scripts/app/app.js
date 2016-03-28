@@ -214,6 +214,10 @@
                 $rootScope.userData = userData;
             }
         }
+
+        $rootScope.$on("$routeChangeSuccess", function (event, next, current) {
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
+        });
     }]);
 
     global.utilities = angular.module("custom-utilities", []);

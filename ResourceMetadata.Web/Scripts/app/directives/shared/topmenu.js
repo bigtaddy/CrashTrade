@@ -48,6 +48,8 @@
                     if($route.current.data){
                         scope.currentMenuSection = $route.current.data.menuSection;
                     }
+
+                    scope.isCollapsed = true;
                 });
             }
         };
