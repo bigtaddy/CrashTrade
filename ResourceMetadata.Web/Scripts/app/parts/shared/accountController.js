@@ -87,7 +87,7 @@
                             UserService.setUserData(userData.data);
                             $scope.$emit('logOn');
                             $location.url('/Adverts/List/Sale');
-                        })
+                        });
                     }).catch(function (response) {
                         if (response.status === 400) {
                             $scope.errorMessage = response.data.error_description;
@@ -124,7 +124,7 @@
                     })
                     .finally(function () {
                         $scope.isRegistrationInProcess = false;
-                    })
+                    });
             };
 
             $scope.logOff = function () {

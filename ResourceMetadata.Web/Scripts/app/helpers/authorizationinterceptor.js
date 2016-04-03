@@ -24,7 +24,7 @@
                     case 405:
                     case 403:
                     {
-                        alert('Permission Denied')
+                        alert('Permission Denied');
                         $location.url('/');
                         break;
                     }

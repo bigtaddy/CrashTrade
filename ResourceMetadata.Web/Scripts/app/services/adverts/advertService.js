@@ -10,12 +10,10 @@
         var baseUrl = global.CrashTradeSettings.baseUrl;
 
         var getAll = function (advertTypeName, currentPage, pageSize, sortOptions, filterOptions) {
+            var url = baseUrl + "Adverts/GetAll" + advertTypeName + "/?pageNumber=" + currentPage + "&itemsPerPage=" + pageSize + "&sortOptions=" + sortOptions + "&filterOptions=" + filterOptions;
+
             if (advertTypeName == 'My') {
-                var url = baseUrl + "Adverts/My/?pageNumber=" + currentPage + "&itemsPerPage="
-                    + pageSize + "&sortOptions=" + sortOptions + "&filterOptions=" + filterOptions;
-            } else {
-                var url = baseUrl + "Adverts/GetAll" + advertTypeName + "/?pageNumber=" + currentPage + "&itemsPerPage="
-                    + pageSize + "&sortOptions=" + sortOptions + "&filterOptions=" + filterOptions;
+                url = baseUrl + "Adverts/My/?pageNumber=" + currentPage + "&itemsPerPage=" + pageSize + "&sortOptions=" + sortOptions + "&filterOptions=" + filterOptions;
             }
 
             return $http({

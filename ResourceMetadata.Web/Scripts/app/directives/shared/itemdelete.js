@@ -6,10 +6,10 @@
         return {
             replace: true,
 
-            link: function ($scope, element, attrs, controller) {
+            link: function ($scope, element) {
                 console.log(element);
-                element.on('click', function (ev) {
-                    return confirm('Delete item?');
+                element.on('click', function () {
+                    return global.confirm('Delete item?');
                 });
             }
         };

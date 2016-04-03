@@ -12,5 +12,5 @@ app.directive("sparePartAdvertForm", function () {
         link: function (scope, element) {
             scope.validPatternForVIN = new RegExp('^[A-Za-z0-9]{17}$');
         }
-    }
+    };
 });

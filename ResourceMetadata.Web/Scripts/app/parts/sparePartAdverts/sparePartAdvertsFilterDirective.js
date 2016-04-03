@@ -17,7 +17,7 @@
             link: function (scope, element, attrs) {
 
                 addDropDownLogicAndGetData(scope);
-                scope.filterOptions = "true";
+                scope.filterOptions = 'true';
                 scope.car = {};
 
                 addHandlersAndWatchers(scope);
@@ -33,7 +33,7 @@
                  * @returns {string|string|*|filterOptions}
                  */
                 scope.getFilterOptions = function () {
-                    return scope.filterOptions
+                    return scope.filterOptions;
                 };
 
 
@@ -59,7 +59,7 @@
                 filterOptions += getOption(filterOptions,generateSimpleOption(scope.car.fuelType, "FuelType"));
 
 
-                if (filterOptions == "") {
+                if (filterOptions === '') {
                     scope.filterOptions = "true";
                 } else {
                     scope.filterOptions = filterOptions;
@@ -69,9 +69,9 @@
             /**
              * ClearFilter handler
              */
-            scope.$on('ClearFilter', function (event, args) {
+            scope.$on('ClearFilter', function () {
                 scope.filterOptions = "true";
-            })
+            });
         }
 
         /**
@@ -93,11 +93,11 @@
             }
 
             if (fromValue) {
-                filterOptions += getOption(filterOptions, propertyName + " >= " + fromValue)
+                filterOptions += getOption(filterOptions, propertyName + ' >= ' + fromValue);
             }
 
             if (toValue) {
-                filterOptions += getOption(filterOptions, propertyName + " <= " + toValue)
+                filterOptions += getOption(filterOptions, propertyName + ' <= ' + toValue);
             }
 
             return filterOptions;
@@ -110,7 +110,7 @@
          */
         function generateSimpleOption(value, propertyName){
             if(value){
-                return propertyName + "=" +  value;
+                return propertyName + '=' +  value;
             }
 
             return "";
@@ -123,10 +123,10 @@
          * @returns {*}
          */
         function getOption(filterOptions, option) {
-            if (filterOptions == "" || option == "") {
+            if (filterOptions === '' || option === '') {
                 return option;
             } else {
-                return " and " + option;
+                return ' and ' + option;
             }
         }
 

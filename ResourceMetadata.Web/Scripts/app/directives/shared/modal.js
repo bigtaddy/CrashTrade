@@ -6,8 +6,8 @@
         return {
             required: 'ngModel',
             restrict: 'A',
-            link: function (scope, element, attrs, ngModelCtrl) {
-                element.on('click', function (e) {
+            link: function (scope, element, attrs) {
+                element.on('click', function () {
                     var modalId = '#' + attrs.cstModal;
                     $(modalId).modal('show');
                 });

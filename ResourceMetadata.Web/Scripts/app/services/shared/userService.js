@@ -13,7 +13,7 @@
          */
         Object.defineProperty(user, 'data', {
             get: function () {
-                return localStorageService.get(global.CrashTradeSettings.userDataKey)
+                return localStorageService.get(global.CrashTradeSettings.userDataKey);
             },
             set: function (user) {
                 if (user) {
@@ -27,7 +27,7 @@
 
         $rootScope.$on('logOff', function () {
             clearUserData();
-        })
+        });
 
         /**
          * setUserData
@@ -51,8 +51,9 @@
          */
         function getRoles() {
             var role = _.get(user.data, 'Roles');
+
             if (!role) {
-                return ['anonymous']
+                return ['anonymous'];
             }
 
             return [role];
@@ -71,6 +72,6 @@
             setUserData: setUserData,
             clearUserData: clearUserData
         };
-    })
+    });
 
 }(window));
