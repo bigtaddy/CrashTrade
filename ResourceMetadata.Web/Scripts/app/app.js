@@ -75,13 +75,19 @@
                 }
             })
             .when('/Login', {
-                templateUrl: '/Scripts/app/parts/shared/Login.html'
+                templateUrl: '/Scripts/app/parts/shared/Login.html',
+                data: {
+                    menuSection: 'Login'
+                }
             })
             .when('/Login/userId/:userId/code/:code', {
                 templateUrl: '/Scripts/app/parts/shared/Login.html'
             })
             .when('/Register', {
-                templateUrl: '/Scripts/app/parts/shared/Register.html'
+                templateUrl: '/Scripts/app/parts/shared/Register.html',
+                data: {
+                    menuSection: 'Register'
+                }
             })
             .when('/About', {
                 templateUrl: '/Scripts/app/parts/about/About.html',
@@ -208,6 +214,10 @@
                 $rootScope.userData = userData;
             }
         }
+
+        $rootScope.$on("$routeChangeSuccess", function (event, next, current) {
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
+        });
     }]);
 
     global.utilities = angular.module("custom-utilities", []);

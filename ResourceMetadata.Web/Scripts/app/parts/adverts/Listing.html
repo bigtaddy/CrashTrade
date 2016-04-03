@@ -1,17 +1,18 @@
 <div class="row">
     <div class="col-sm-2">
         <div>
-            <adverts-sort-options-directive sort-options="sortOptions"></adverts-sort-options-directive>
+            <adverts-sort-options-directive without-price="::advertType != 'Sale'" sort-options="sortOptions"></adverts-sort-options-directive>
         </div>
         <div>
             <div>
-                <adverts-filter-options get-filter-options="getFilterOptions" should-be-filtered="shouldBeFiltered">
+                <adverts-filter-options get-filter-options="getFilterOptions" should-be-filtered="shouldBeFiltered" advert-type="advertType">
                 </adverts-filter-options>
 
                 <a class="btn btn-default" ng-click="filter()">Ок</a>
                 <a class="btn btn-default" ng-click="clearFilter()">Сброс</a>
             </div>
         </div>
+        <div style="min-height: 10px"></div>
     </div>
 
     <div class="col-sm-10">
@@ -19,11 +20,12 @@
         <div class="row" ng-repeat="advert in adverts">
             <div ng-show="advert.Id">
                 <div class="col-sm-6">
-                    <h5 ng-if="advert.ImageInfos.length == 0">Нет изображения</h5>
+                    <h5 ng-if="advert.ImageInfos.length == 0"><i class="glyphicon glyphicon-picture"></i> Нет изображения</h5>
 
-                    <div ng-if="advert.ImageInfos.length > 0">
-                        <img class="img-responsive img-rounded shadow" alt="" style="max-height: 250px; max-width: 250px"
-                             ng-src="{{advert.ImageInfos[0].FullName}}">
+                    <div style="max-width: 250px; max-height: 250px">
+                        <a ng-if="advert.ImageInfos.length > 0" href="#/Adverts/{{advert.Id}}">
+                            <img class="img-responsive img-rounded shadow" alt="" ng-src="{{advert.ImageInfos[0].FullName}}">
+                        </a>
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -44,10 +46,10 @@
                     </div>
                     <div ng-show="userData.isAdmin">
                         <br/>
-                        <a href="#/Adverts/Edit/{{advert.Id}}">Редактировать</a>
-                        <i style="float: right;" title="Удалить"
+                        <a href="#/Adverts/Edit/{{advert.Id}}"><i class="glyphicon glyphicon-pencil"></i> Редактировать</a>
+                        <i style="float: right;" title="Удалawdить"
                            message="Вы хотите удалить данный элемент?" modal-id="{{advert.Id}}"
-                           on-approve="deleteAdvert(advert.Id);" cst-confirm-modal>Удалить</i>
+                           on-approve="deleteAdvert(advert.Id);" cst-confirm-modal></i>
 
                     </div>
                 </div>

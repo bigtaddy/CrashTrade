@@ -15,6 +15,14 @@
                     <th>VIN:</th>
                     <th>{{::advert.VIN}}</th>
                 </tr>
+                <tr>
+                    <th>Тип топлива:</th>
+                    <th>{{::advert.FuelType | fuelTypeName}}</th>
+                </tr>
+                <tr>
+                    <th>Коробка передач:</th>
+                    <th>{{::advert.TransmissionType | transmissionTypeName}}</th>
+                </tr>
             </table>
         </div>
 

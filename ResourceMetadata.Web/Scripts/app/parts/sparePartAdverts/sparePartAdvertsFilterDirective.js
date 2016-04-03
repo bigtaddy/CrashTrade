@@ -55,6 +55,8 @@
 
                 filterOptions += getOption(filterOptions,generateSimpleOption(scope.car.manufactureId, "ManufactureId"));
                 filterOptions += getOption(filterOptions,generateSimpleOption(scope.car.carModelId, "CarModelId"));
+                filterOptions += getOption(filterOptions,generateSimpleOption(scope.car.transmissionType, "TransmissionType"));
+                filterOptions += getOption(filterOptions,generateSimpleOption(scope.car.fuelType, "FuelType"));
 
 
                 if (filterOptions == "") {

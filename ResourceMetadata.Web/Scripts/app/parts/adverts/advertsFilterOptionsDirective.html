@@ -17,7 +17,7 @@
     </ui-select-choices>
 </ui-select>
 
-<span>Коробка передач:</span>
+<div ng-show="::advertType == 'Sale'"><span>Коробка передач:</span>
 <ui-select ng-model="car.transmissionType" id="TransmissionType">
     <ui-select-match allow-clear="true" placeholder="Коробка передач">{{$select.selected.Name}}
     </ui-select-match>
@@ -33,7 +33,7 @@
     <ui-select-choices repeat="fuelType.Id as fuelType in CrashTradeSettings.fuelTypes | filter: $select.search">
         <span ng-bind-html="fuelType.Name | highlight: $select.search"></span>
     </ui-select-choices>
-</ui-select>
+</ui-select></div>
 
 <div class="form-group">
     <span>Год:</span>
@@ -55,6 +55,7 @@
         </ui-select-choices>
     </ui-select>
 </div>
+
 <div ng-show="advertType == 'Sale'">
     <div class="form-group">
         <span>Цена:</span>

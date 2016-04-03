@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ResourceMetadata.Models;
 
 namespace ResourceMetadata.API.ViewModels
 {
@@ -28,6 +29,10 @@ namespace ResourceMetadata.API.ViewModels
         public ICollection<ImageViewModel> ImageInfos { get; set; }
 
         public string VIN { get; set; }
+
+        public FuelType FuelType { get; set; }
+
+        public TransmissionType TransmissionType { get; set; }
 
         public bool IsSparePart { get; set; }
     }

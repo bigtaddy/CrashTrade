@@ -11,11 +11,12 @@
         <div class="row" ng-repeat="advert in adverts">
             <div ng-show="advert.Id">
                 <div class="col-sm-6">
-                    <h5 ng-if="advert.ImageInfos.length == 0">Нет изображения</h5>
+                    <h5 ng-if="advert.ImageInfos.length == 0"><i class="glyphicon glyphicon-picture"></i> Нет изображения</h5>
 
-                    <div ng-if="advert.ImageInfos.length > 0">
-                        <img class="img-responsive img-rounded shadow" alt="" style="max-height: 250px; max-width: 250px"
-                             ng-src="{{advert.ImageInfos[0].FullName}}">
+                    <div style="max-width: 250px; max-height: 250px">
+                        <a ng-if="advert.ImageInfos.length > 0" href="#/{{advert.IsSparePart == true ? 'SparePartAdverts' : 'Adverts'}}/{{advert.Id}}">
+                            <img class="img-responsive img-rounded shadow" alt="" ng-src="{{advert.ImageInfos[0].FullName}}">
+                        </a>
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -32,7 +33,7 @@
                     </div>
                     <div>
                         <br/>
-                        <a href="#/{{advert.IsSparePart == true ? 'SparePartAdverts' : 'Adverts'}}/Edit/{{advert.Id}}">Редактировать</a>
+                        <a href="#/{{advert.IsSparePart == true ? 'SparePartAdverts' : 'Adverts'}}/Edit/{{advert.Id}}"><i class="glyphicon glyphicon-pencil"></i> Редактировать</a>
                         <i style="float: right;" title="Удалить"
                            message="Вы хотите удалить данный элемент?" modal-id="{{advert.Id}}"
                            on-approve="deleteAdvert(advert.Id);" cst-confirm-modal>Удалить</i>
