@@ -7,7 +7,7 @@
   "dependencies": {},
   "devDependencies": {
     "gulp-util": "~2.2.14",
-    "gulp": "~3.5.2",
+    "gulp": "~3.8.6",
     "gulp-concat": "~2.1.7",
     "gulp-uglify": "~0.2.1",
     "jshint": "~2.4.3",
@@ -20,6 +20,7 @@
     "gulp-open": "~0.2.8",
     "gulp-connect": "~2.0.5",
     "gulp-preprocess": "~2.0.0",
+    "gulp-ng-annotate": "~2.0.0",
     "mime": "~1.2.11",
     "request": "~2.34.0"
   }

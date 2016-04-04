@@ -15,43 +15,48 @@ var gulp = require('gulp'),
     clean = require('gulp-clean'),
     rename = require('gulp-rename'),
     open = require('gulp-open'),
+    ngAnnotate = require('gulp-ng-annotate'),
     connect = require('gulp-connect');
 
+
 var filePath = {
-    appjsminify: { src: './Scripts/app/!**!/!*.js', dest: './dest/Scripts/app' },
-    libsjsminify: { src: ['./Scripts/libs/!**!/!*.js', '!*.min.js', '!/!**!/!*.min.js'], dest: './dest/Scripts/libs/' },
+    appjsconcat: {
+        src: [
+            './Scripts/config.js',
+            './Scripts/app/app.js',
+            './Scripts/app/**/*.js'
+        ],
+        dest: './dist/Scripts/'
+    },
+    libsjsconcat: {
+        src: [
+            './Scripts/libs/angular.js',
+            './Scripts/libs/angular-sanitize.js',
+            './Scripts/libs/angular-route.js',
+            './Scripts/libs/angular-resource.js',
+            './Scripts/libs/angular-animate.js',
+            './Scripts/libs/select/select.js',
+            './Scripts/libs/ng-flow-standalone.js',
+            './Scripts/libs/ng-table/ng-table.js',
+            './Scripts/libs/photoswipe.min.js',
+            './Scripts/libs/truncate.js',
+            './Scripts/libs/photoswipe-ui-default.min.js',
+            './Scripts/libs/angular-photoswipe.js',
+            './Scripts/libs/loading-bar.js',
+            './Scripts/libs/ui-bootstrap/ui-bootstrap-tpls-0.14.3.min.js',
+            './Scripts/libs/angular-local-storage.js'
+        ],
+        dest: './dist/Scripts/libs'
+    },
     jshint: {src: './Scripts/app/**/*.js'},
-    minifycss: {src: ['./styles/**/*.css', '!*.min.css', '!/**/*.min.css'], dest: './dist/styles/'}
+    concatcss: {
+        src: [
+            './styles/*.css',
+            './styles/**/*.css'
+        ],
+        dest: './dist/styles/'
+    }
 };
-
-
-/* var filePath = {
-    appjsminify: { src: './Scripts/app/!**!/!*.js', dest: './Scripts/app' },
-libsjsminify: { src: ['./Scripts/libs/!**!/!*.js', '!*.min.js', '!/!**!/!*.min.js'], dest: './Scripts/libs/' },
-jshint: { src: './Scripts/app/!**!/!*.js' },
-minifycss: { src: ['./Content/themes/!**!/!*.css', '!*.min.css', '!/!**!/!*.min.css'], dest: './Content/themes/' }
-};
- */
-
-
-
-gulp.task('libs-js-minify', function () {
-    /*Excludes already minified files.*/
-    gulp.src(filePath.libsjsminify.src)
-        .pipe(uglify())
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest(filePath.libsjsminify.dest));
-});
-
-
-
-gulp.task('app-js-minify', function () {
-    gulp.src(filePath.appjsminify.src)
-        .pipe(uglify())
-        .pipe(size())
-        .pipe(gulp.dest(filePath.appjsminify.dest));
-});
-
 
 gulp.task('jshint', function () {
     gulp.src(filePath.jshint.src)
@@ -59,52 +64,65 @@ gulp.task('jshint', function () {
         .pipe(jshint.reporter(jshintreporter));
 });
 
-
-gulp.task('minify-css', function () {
-    /*Excludes already minified files.*/
-    gulp.src(filePath.minifycss.src)
-        .pipe(minifycss())
-        .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest(filePath.minifycss.dest));
+gulp.task('clean', function () {
+    gulp.src(
+        [
+            'dist'
+        ], {read: false})
+        .pipe(clean({force: true}));
 });
 
-/*gulp.task('clean', function () {
- gulp.src(
- [
- './dist/Scripts/app/site.min.js',
- './dist/Scripts/libs/libs.min.js',
- './dist/styles/site.min.css'
- ], { read: false })
- .pipe(clean({ force: true }));
- });*/
+gulp.task('copy', function () {
+    /* gulp.src(['assets', 'Content', 'fonts', 'images'])
+     .pipe(gulp.dest('dist'));*/
+    gulp.src([
+        './Scripts/app/**/*.html',
+        './Scripts/app/**/**/*.html'
+    ])
+        .pipe(gulp.dest('dist/Scripts/app'));
+});
 
 gulp.task('concat', function () {
+    gulp.src(filePath.appjsconcat.src)
+        .pipe(concat('app.js'))
+        .pipe(ngAnnotate())
+        .pipe(uglify())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest(filePath.appjsconcat.dest));
+
+
+    gulp.src(filePath.libsjsconcat.src)
+        .pipe(concat('libs.js'))
+        .pipe(ngAnnotate())
+        .pipe(uglify())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest(filePath.libsjsconcat.dest));
+
+
     gulp.src([
-            './dist/Scripts/config.js',
-            './dist/Scripts/app.js',
-            './dist/Scripts/**/*.js',
-            './dist/Scripts/**/**/*.js'
-        ])
-        .pipe(concat('app.min.js'))
-        .pipe(gulp.dest('./dist/Scripts/'));
-
-
-    gulp.src(['./dist/styles/*.css', './dist/styles/**/*.css'])
-        .pipe(concat('app.min.css'))
+        './styles/*.css',
+        './styles/**/*.css'
+    ])
+        .pipe(concat('app.css'))
+        .pipe(minifycss())
+        .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('./dist/styles/'));
-
 });
 
 
-gulp.task('build-release-html', function() {
+gulp.task('preprocess', function () {
     gulp.src('./index.html')
-        .pipe(preprocess({context: { RELEASE: true}})) //To set environment variables in-line
+        .pipe(preprocess({context: {RELEASE: true}})) //To set environment variables in-line
         .pipe(gulp.dest('./dist/'))
 });
 
 
-
-gulp.task('build', ['jshint', 'app-js-minify', 'minify-css', 'concat', 'build-release-html']);
+gulp.task('build', [
+    'clean',
+    'concat',
+    'copy',
+    'preprocess'
+]);
 gulp.task('cleanbuild', ['clean']);
 
 /*gulp.task('tests', function () {
