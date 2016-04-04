@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-sm-2">
+    <div class="col-sm-3 col-lg-2">
         <div>
             <adverts-sort-options-directive without-price="::advertType != 'Sale'" sort-options="sortOptions"></adverts-sort-options-directive>
         </div>
@@ -15,9 +15,9 @@
         <div style="min-height: 10px"></div>
     </div>
 
-    <div class="col-sm-10">
+    <div class="col-sm-9 col-lg-10">
 
-        <div class="row" ng-repeat="advert in adverts">
+        <div class="row advert" ng-repeat="advert in adverts">
             <div ng-show="advert.Id">
                 <div class="col-sm-6">
                     <h5 ng-if="advert.ImageInfos.length == 0"><i class="glyphicon glyphicon-picture"></i> Нет изображения</h5>

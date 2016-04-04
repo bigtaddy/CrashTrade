@@ -13,17 +13,20 @@
                 sortOptions: "=",
                 withoutPrice: "=?"
             },
-            template: '<span>Сортировать по:<span/>' +
-            '<select class="form-control input-sm"  ng-model="sortProperty" data-placeholder="Сортировать по"">' +
+            template: '<div class="form-group">' +
+            '<span>Сортировать по:<span/>' +
+            '<select class="form-control"  ng-model="sortProperty" data-placeholder="Сортировать по"">' +
             '<option value="CreatedOn">Дате Создания</option>' +
             '<option value="Year">Году выпуска</option>' +
             '<option ng-hide="withoutPrice" value="Price">Стоимости</option>' +
             '</select>' +
-            '<br />' +
-            '<select class="form-control input-sm"  ng-model="sortOrder" data-placeholder="Порядок сортировки">' +
+            '</div>' +
+            '<div class="form-group">' +
+            '<select class="form-control"  ng-model="sortOrder" data-placeholder="Порядок сортировки">' +
             '<option value="ascending">По возрастанию</option>' +
             '<option value="descending">По убывавнию</option>' +
-            '</select>',
+            '</select>' +
+            '</div>',
 
             link: function (scope, element, attrs) {
                 scope.sortProperty = 'CreatedOn';
