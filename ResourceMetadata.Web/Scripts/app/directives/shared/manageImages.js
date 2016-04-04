@@ -17,14 +17,14 @@
             '      <a class="btn btn-xs btn-danger" style="margin-top: 10px; margin-bottom: 5px" ng-click="deleteImage(image.Id, $index)"> Удалить </a>' +
             '  </div>' +
             '</div>',
-            link: function (scope, element, attrs) {
+            link: function (scope) {
                 scope.deleteImage = function (imageId, index) {
 
                     entityService.deleteByIds([imageId], 'Images')
                         .then(function (data) {
-                            scope.images.splice(index, 1)
+                            scope.images.splice(index, 1);
                         });
-                }
+                };
             }
         };
     }]);

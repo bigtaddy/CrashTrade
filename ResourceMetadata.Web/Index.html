@@ -4,15 +4,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Crash Trade</title>
+
+    <!-- @ifndef RELEASE -->
     <link rel="stylesheet" href="styles/ng-table/ng-table.css"/>
     <link rel="stylesheet" href="styles/app.css"/>
     <link href="styles/bootstrap.css" media="all" rel="stylesheet"/>
     <link rel="stylesheet" href="styles/photo-swipe/photoswipe.css"/>
     <link rel="stylesheet" href="styles/photo-swipe/default-skin.css"/>
+    <link rel="stylesheet" href="styles/photo-swipe/angular-photoswipe.css"/>
     <link rel="stylesheet" href="styles/select/select.min.css"/>
     <link rel="stylesheet" href="styles/loading-bar.css"/>
+    <!-- @endif -->
+
+
+    <!-- @ifdef RELEASE -->
+    <!-- @include assets/includes/release-head.html -->
+    <!-- @endif -->
+
 </head>
 <body>
+
 <div style="max-width: 1400px; margin: auto" ng-controller="AccountCtrl">
 
     <div class="menu-container">
@@ -24,6 +35,8 @@
     </div>
     <cst-loading-overlay class="hide"></cst-loading-overlay>
 </div>
+
+
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
@@ -90,12 +103,14 @@
     </div>
 
 </div>
+
+<!-- @ifndef RELEASE -->
 <script src="Scripts/libs/angular.js"></script>
 <script src="Scripts/libs/angular-sanitize.js"></script>
 <script src="Scripts/libs/angular-route.js"></script>
 <script src="Scripts/libs/angular-resource.js"></script>
 <script src="Scripts/libs/angular-animate.js"></script>
-<script src="Scripts/libs/select/select.js"></script>
+<script src="Scripts/libs/select/select.js"></script> 
 <script src="Scripts/libs/ng-flow-standalone.js"></script>
 <script src="Scripts/libs/ng-table/ng-table.js"></script>
 <script src="Scripts/libs/photoswipe.min.js"></script>
@@ -140,6 +155,12 @@
 <script src="Scripts/app/parts/carModels/carModelsController.js"></script>
 <script src="Scripts/app/parts/carModels/carModelController.js"></script>
 <script src="Scripts/app/parts/userManagement/usersManagementController.js"></script>
+<!-- @endif -->
+
+<!-- @ifdef RELEASE -->
+<!-- @include assets/includes/release-foot.html -->
+<!-- @endif -->
+
 
 </body>
 </html>

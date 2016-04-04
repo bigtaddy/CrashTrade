@@ -17,7 +17,7 @@
             templateUrl: "/Scripts/app/partials/confirm-modal.html",
             link: function (scope, element) {
                 if(!scope.linkText){
-                    scope.linkText = 'Удалить'
+                    scope.linkText = 'Удалить';
                 }
 
                 function showModal() {
@@ -37,7 +37,7 @@
                     if (scope.onDeny) {
                         scope.onDeny();
                     }
-                }
+                };
 
                 element.on('click', showModal);
 

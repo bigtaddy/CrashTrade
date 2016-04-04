@@ -14,12 +14,12 @@
 
         return {
             login: function (formData) {
-                    return $http({
-                        method: 'POST',
-                        url: tokenUrl,
-                        data: formData,
-                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                    })
+                return $http({
+                    method: 'POST',
+                    url: tokenUrl,
+                    data: formData,
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                });
             },
 
             registerUser: function (userRegistration) {
@@ -30,19 +30,19 @@
                     method: 'POST',
                     url: global.CrashTradeSettings.baseUrl + 'Account/Register/',
                     data: userRegistration
-                })
+                });
             },
             deleteUser: function (id) {
                 return $http({
                     method: 'POST',
                     url: global.CrashTradeSettings.baseUrl + 'Account/DeleteUser/' + id
-                })
+                });
             },
             changePremiumStatus: function (id) {
                 return $http({
                     method: 'POST',
                     url: global.CrashTradeSettings.baseUrl + 'Account/ChangePremiumStatus/' + id
-                })
+                });
             },
             confirmUser: function (userId, code) {
                 return $http({
@@ -52,7 +52,7 @@
                         userId: userId,
                         code: code
                     }
-                })
+                });
             },
             logOffUser: function () {
                 $rootScope.$broadcast('logOff');
@@ -61,7 +61,7 @@
                 return $http({
                     method: 'GET',
                     url: global.CrashTradeSettings.baseUrl + 'Account/GetCurrentUser/'
-                })
+                });
             }
         };
     }]);

@@ -7,7 +7,8 @@
             restrict: 'E',
             replace: true,
             templateUrl: 'Scripts/app/partials/TopMenu.html',
-            link: function (scope, element, attrs) {
+            link: function (scope) {
+
                 scope.isCollapsed = true;
 
                 if($route.current && $route.current.data){
@@ -51,6 +52,7 @@
 
                     scope.isCollapsed = true;
                 });
+
             }
         };
     });

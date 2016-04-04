@@ -96,7 +96,7 @@ gulp.task('concat', function () {
 });
 
 
-gulp.task('html', function() {
+gulp.task('build-release-html', function() {
     gulp.src('./index.html')
         .pipe(preprocess({context: { RELEASE: true}})) //To set environment variables in-line
         .pipe(gulp.dest('./dist/'))
@@ -104,7 +104,7 @@ gulp.task('html', function() {
 
 
 
-gulp.task('build', ['jshint', 'app-js-minify', 'minify-css', 'concat']);
+gulp.task('build', ['jshint', 'app-js-minify', 'minify-css', 'concat', 'build-release-html']);
 gulp.task('cleanbuild', ['clean']);
 
 /*gulp.task('tests', function () {

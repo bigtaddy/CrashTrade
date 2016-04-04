@@ -21,9 +21,9 @@
                         return false;
                     }
                     return true;
-                }
+                };
             }
-        }
+        };
     });
 
     /**
@@ -33,6 +33,6 @@
         return {
             restrict: "E",
             templateUrl: "/Scripts/app/parts/adverts/advertsFormDirective.html"
-        }
+        };
     });
 }(window));

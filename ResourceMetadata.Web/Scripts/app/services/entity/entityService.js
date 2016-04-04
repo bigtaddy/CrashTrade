@@ -61,7 +61,7 @@
                 method: 'POST',
                 url: baseUrl + modelName + '/DeleteByIds/',
                 data: ids
-            })
+            });
         };
 
 

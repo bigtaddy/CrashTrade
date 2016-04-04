@@ -2,7 +2,8 @@
 
     'use strict';
 
-    app.controller('AdvertCtrl', ['$scope', '$location', '$routeParams', 'entityService', 'manufactureService', 'carModelService', 'advertService', '$http', 'flowFactory', '$q', '$route',
+    app.controller('AdvertCtrl',
+        ['$scope', '$location', '$routeParams', 'entityService', 'manufactureService', 'carModelService', 'advertService', '$http', 'flowFactory', '$q', '$route',
         function ($scope, $location, $routeParams, entityService, manufactureService, carModelService, advertService, $http, flowFactory, $q, $route) {
 
             $scope.flowObject = flowFactory.create({
@@ -68,19 +69,21 @@
              * @param advert
              */
             $scope.addAdvert = function (advert) {
-                if(!verifyAdvertTypes(advert)){
+                if (!verifyAdvertTypes(advert)) {
                     return;
                 }
+
+                var url = "Adverts/Create";
+
                 if ($route.current.data.advertType == 'SparePartAdvert') {
-                    var url = "SparePartAdverts/Create";
-                } else {
-                    var url = "Adverts/Create";
+                    url = "SparePartAdverts/Create";
                 }
+
                 entityService.add(advert, url)
                     .then(function (response) {
                         uploadImages(response.data.Id, function () {
                             $location.path('/Adverts/List/My');
-                        })
+                        });
                     });
             };
 
@@ -89,19 +92,20 @@
              * @param advert
              */
             $scope.editAdvert = function (advert) {
-                if(!verifyAdvertTypes(advert)){
+                if (!verifyAdvertTypes(advert)) {
                     return;
                 }
+
+                var url = "Adverts/Edit";
+
                 if ($route.current.data.advertType == 'SparePartAdvert') {
-                    var url = "SparePartAdverts/Edit";
-                } else {
-                    var url = "Adverts/Edit";
+                    url = "SparePartAdverts/Edit";
                 }
                 entityService.edit(advert, url)
-                    .then(function (response) {
+                    .then(function () {
                         uploadImages(advert.Id, function () {
                             $location.path('/Adverts/List/My');
-                        })
+                        });
 
                     });
             };
@@ -112,11 +116,13 @@
             function init() {
                 if ($routeParams.advertId > 0) {
                     $scope.imagesPromise = $q.defer();
+
+                    var url = "Adverts/GetById";
+
                     if ($route.current.data.advertType == 'SparePartAdvert') {
-                        var url = "SparePartAdverts/GetById";
-                    } else {
-                        var url = "Adverts/GetById";
+                        url = "SparePartAdverts/GetById";
                     }
+
                     entityService.getById($routeParams.advertId, url).then(function (response) {
                         $scope.advert = response.data;
                         getDropDownDataData();
