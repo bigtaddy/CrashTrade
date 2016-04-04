@@ -27,7 +27,7 @@
                         $scope.carModel = response.data;
                     });
                 }
-                manufactureService.getAll().then(function (response) {
+                manufactureService.getAll(true).then(function (response) {
                     $scope.manufactures = response.data;
                 });
             }

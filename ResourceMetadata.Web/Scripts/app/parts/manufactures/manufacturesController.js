@@ -4,7 +4,7 @@
 
     app.controller('ManufacturesCtrl', ['$scope', 'ngTableParams', 'manufactureService',
         function ($scope, ngTableParams, manufactureService) {
-            manufactureService.getAll().then(function (response) {
+            manufactureService.getAll(true).then(function (response) {
                 $scope.tableParams = new ngTableParams({
                     count: 10,
                     page: 1
@@ -16,7 +16,7 @@
 
             $scope.deleteManufacture = function (manufactureId) {
                 manufactureService.deleteById(manufactureId).then(function (data, responseHeaders) {
-                    manufactureService.getAll().then(function (response) {
+                    manufactureService.getAll(true).then(function (response) {
                         $scope.tableParams = new ngTableParams({
                             count: 10,
                             page: 1
