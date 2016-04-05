@@ -16,6 +16,7 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     open = require('gulp-open'),
     ngAnnotate = require('gulp-ng-annotate'),
+    del = require('del'),
     connect = require('gulp-connect');
 
 
@@ -65,21 +66,23 @@ gulp.task('jshint', function () {
 });
 
 gulp.task('clean', function () {
-    gulp.src(
-        [
-            'dist'
-        ], {read: false})
-        .pipe(clean({force: true}));
+    del(['dist']);
 });
 
 gulp.task('copy', function () {
-    /* gulp.src(['assets', 'Content', 'fonts', 'images'])
-     .pipe(gulp.dest('dist'));*/
+    gulp.src([
+        'assets/images/*.*',
+        'assets/images/photoswipe/*.*'
+    ])
+        .pipe(gulp.dest('dist/assets/images'));
+
+    gulp.src(['assets/images/photoswipe/*.*'])
+        .pipe(gulp.dest('dist/assets/images/photoswipe'));
+
     gulp.src([
         './Scripts/app/**/*.html',
         './Scripts/app/**/**/*.html'
-    ])
-        .pipe(gulp.dest('dist/Scripts/app'));
+    ]).pipe(gulp.dest('dist/Scripts/app'));
 });
 
 gulp.task('concat', function () {
@@ -123,7 +126,6 @@ gulp.task('build', [
     'copy',
     'preprocess'
 ]);
-gulp.task('cleanbuild', ['clean']);
 
 /*gulp.task('tests', function () {
  connect.server({
