@@ -1,14 +1,11 @@
 <div class="row" ng-init="filterOptions = 'true'">
-    <div class="col-sm-2">
-        <div class="thumbnail">
-            <adverts-sort-options-directive without-price="true"
-                                            sort-options="sortOptions"></adverts-sort-options-directive>
-        </div>
+    <div class="col-sm-3 col-lg-2">
+        <adverts-sort-options-directive without-price="true" sort-options="sortOptions"></adverts-sort-options-directive>
+        <a class="btn btn-default" ng-click="filter()">Ок</a>
     </div>
 
-    <div class="col-sm-10">
-
-        <div class="row" ng-repeat="advert in adverts">
+    <div class="col-sm-9 col-lg-10">
+        <div class="row advert" ng-repeat="advert in adverts">
             <div ng-show="advert.Id">
                 <div class="col-sm-6">
                     <h5 ng-if="advert.ImageInfos.length == 0"><i class="glyphicon glyphicon-picture"></i> Нет изображения</h5>
@@ -45,11 +42,11 @@
             <hr class="col-sm-12">
         </div>
 
-        <div class="row">
+        <div ng-if="adverts.length > 0" class="row advert">
             <div class="col-sm-6">
 
                 <uib-pagination boundary-links="true" total-items="count" items-per-page="pageSize"
-                                ng-model="currentPage"
+                                ng-model="$parent.currentPage"
                                 class="pagination-sm" ng-change="pageChanged()" previous-text="&lsaquo;"
                                 next-text="&rsaquo;" first-text="&laquo;"
                                 last-text="&raquo;"></uib-pagination>
@@ -57,7 +54,7 @@
 
             <div class="col-sm-3">
                 <label>Объявлений на странице:</label>
-                <select convert-to-number class="form-control" ng-model="pageSize">
+                <select convert-to-number class="form-control" ng-model="$parent.pageSize">
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="20">20</option>

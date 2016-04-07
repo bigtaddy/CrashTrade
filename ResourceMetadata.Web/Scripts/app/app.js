@@ -215,8 +215,12 @@
             }
         }
 
-        $rootScope.$on("$routeChangeSuccess", function (event, next, current) {
+        $rootScope.scrollTop = function() {
             document.body.scrollTop = document.documentElement.scrollTop = 0;
+        }
+
+        $rootScope.$on("$routeChangeSuccess", function (event, next, current) {
+            $rootScope.scrollTop();
         });
     }]);
 
