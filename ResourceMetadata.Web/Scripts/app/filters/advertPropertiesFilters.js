@@ -6,7 +6,7 @@
 
     'use strict';
 
-    app.filter('fuelTypeName', function () {
+    global.app.filter('fuelTypeName', function () {
         return function (input) {
             var fuelTypeName;
             CrashTradeSettings.fuelTypes.every(function(element){
@@ -21,7 +21,7 @@
         };
     });
 
-    app.filter('transmissionTypeName', function () {
+    global.app.filter('transmissionTypeName', function () {
         return function (input) {
             var transmissionType;
             CrashTradeSettings.transmissionTypes.every(function(element){

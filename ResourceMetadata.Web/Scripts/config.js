@@ -20,7 +20,7 @@
             { Id: 7, Name: "Дизель / Газ" }, { Id: 8, Name: "Биоэтанол" }],
         transmissionTypes: [{ Id: 1, Name: "Ручная" }, { Id: 2, Name: "Автоматическая" }],
         years: fetYears()
-    }
+    };
 
     /**
      * fetYears
