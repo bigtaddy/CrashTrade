@@ -1,19 +1,20 @@
-﻿<!doctype html>
-<html data-ng-app="resourceManagerApp">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <title>Crash Trade</title>
 
+    <!-- Bootstrap Core CSS -->
+
+
+
     <!-- @ifndef RELEASE -->
-    <link rel="stylesheet" href="styles/ng-table/ng-table.css"/>
-    <link rel="stylesheet" href="styles/app.css"/>
-    <link href="styles/bootstrap.css" media="all" rel="stylesheet"/>
-    <link rel="stylesheet" href="styles/photo-swipe/photoswipe.css"/>
-    <link rel="stylesheet" href="styles/photo-swipe/default-skin.css"/>
-    <link rel="stylesheet" href="styles/photo-swipe/angular-photoswipe.css"/>
-    <link rel="stylesheet" href="styles/select/select.min.css"/>
-    <link rel="stylesheet" href="styles/loading-bar.css"/>
+    <link rel="stylesheet" href="dist/styles/app.min.css"/>
     <!-- @endif -->
 
 
@@ -21,147 +22,264 @@
     <!-- @include assets/includes/release-head.html -->
     <!-- @endif -->
 
+    <!-- Custom CSS -->
+
+    <!-- Custom Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <style>
+        .navbar {
+            margin-bottom: 0;
+        }
+    </style>
+
 </head>
+
 <body>
 
-<div style="max-width: 1400px; margin: auto" ng-controller="AccountCtrl">
-
-    <div class="menu-container">
-        <cst-top-menu/>
-    </div>
-    <div >
-        <div data-ng-view ng-animate class="slide-load" style="margin: 1.5rem">
-        </div>
-    </div>
-    <cst-loading-overlay class="hide"></cst-loading-overlay>
-</div>
-
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe.
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides.
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Crash Trade</a>
         </div>
 
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="app/#/Adverts/List/Sale">Продажа</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Ремонт <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="app/#/Adverts/List/MechanicalRepair">Механический ремонт</a></li>
+                        <li><a href="app/#/Adverts/List/CoachworkRepair">Кузовной ремонт</a></li>
+                    </ul>
+                </li>
 
-            <div class="pswp__top-bar">
+                <li><a href="app/#/Adverts/List/SparePart">Запчасти</a></li>
+            </ul>
 
-                <!--  Controls are self-explanatory. Order can be changed. -->
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown forAdminOnly" style="display: none">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Админка <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="app/#/Admin/Manufactures">Производители</a></li>
+                        <li><a href="app/#/Admin/CarModels">Модели</a></li>
+                        <li><a href="app/#/Admin/Users">Пользователи</a></li>
+                    </ul>
+                </li>
 
-                <div class="pswp__counter"></div>
 
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <li class="forMembersOnly" style="display: none"><a href="app/#/Adverts/Add"><i class="glyphicon glyphicon-edit"></i> Добавить объявление</a></li>
+                <li class="forMembersOnly" style="display: none"><a href="app/#/Adverts/List/My"><i class="glyphicon glyphicon-home"></i> Мои объявления</a></li>
+                <p class="navbar-text" id="navbarEmail"></p>
+                <li class="forMembersOnly" style="display: none"><a class="pointerCursor" id="logOffButton"><i class="glyphicon glyphicon-log-out"></i> Выйти</a></li>
+                <li class="forGuestsOnly" style="display: none"><a class="pointerCursor" href="app/#/Login"><i class="glyphicon glyphicon-log-in"></i> Войти</a></li>
+                <li class="forGuestsOnly" style="display: none"><a class="pointerCursor" href="app/#/Register"><i class="glyphicon glyphicon-user"></i><i class="glyphicon glyphicon-user"></i> Регистрация</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
 
-                <button class="pswp__button pswp__button--share" title="Share"></button>
 
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<!-- Header -->
+<div class="intro-header">
+    <div class="container">
 
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-message">
+                    <h1>Crash Trade</h1>
 
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
+                    <h3>Мы знаем об автомобилях все!</h3>
+                    <hr class="intro-divider">
+                    <ul class="list-inline intro-social-buttons">
+                        <li>
+                            <a href="app/#/Adverts/List/Sale" class="btn btn-default btn-lg"><span class="network-name">Продажа</span></a>
+                        </li>
+                        <li>
+                            <a href="app/#/Adverts/List/MechanicalRepair" class="btn btn-default btn-lg"><span class="network-name">Ремонт</span></a>
+                        </li>
+                        <li>
+                            <a href="app/#/Adverts/List/SparePart" class="btn btn-default btn-lg"><span class="network-name">Запчасти</span></a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
         </div>
 
     </div>
+    <!-- /.container -->
 
 </div>
+<!-- /.intro-header -->
 
-<!-- @ifndef RELEASE -->
-<script src="Scripts/libs/angular.js"></script>
-<script src="Scripts/libs/angular-sanitize.js"></script>
-<script src="Scripts/libs/angular-route.js"></script>
-<script src="Scripts/libs/angular-resource.js"></script>
-<script src="Scripts/libs/angular-animate.js"></script>
-<script src="Scripts/libs/select/select.js"></script> 
-<script src="Scripts/libs/ng-flow-standalone.js"></script>
-<script src="Scripts/libs/ng-table/ng-table.js"></script>
-<script src="Scripts/libs/photoswipe.min.js"></script>
-<script src="Scripts/libs/truncate.js"></script>
-<script src="Scripts/libs/photoswipe-ui-default.min.js"></script>
-<script src="Scripts/libs/angular-photoswipe.js"></script>
-<script src="Scripts/libs/loading-bar.js"></script>
-<script src="Scripts/libs/ui-bootstrap/ui-bootstrap-tpls-0.14.3.min.js"></script>
-<script src="Scripts/libs/angular-local-storage.js"></script>
-<script src="Scripts/config.js"></script>
-<script src="Scripts/app/app.js"></script>
-<script src="Scripts/app/helpers/authorizationinterceptor.js"></script>
-<script src="Scripts/app/parts/shared/accountController.js"></script>
-<script src="Scripts/app/services/shared/accountService.js"></script>
-<script src="Scripts/app/directives/shared/datepicker.js"></script>
-<script src="Scripts/app/directives/shared/modal.js"></script>
-<script src="Scripts/app/directives/shared/confirmmodal.js"></script>
-<script src="Scripts/app/directives/shared/topmenu.js"></script>
-<script src="Scripts/app/directives/shared/loadingoverlay.js"></script>
-<script src="Scripts/app/directives/shared/ngThumb.js"></script>
-<script src="Scripts/app/directives/shared/progress.js"></script>
-<script src="Scripts/app/directives/shared/manageImages.js"></script>
-<script src="Scripts/app/directives/shared/convertToNumber.js"></script>
-<script src="Scripts/app/services/shared/servicehelper.js"></script>
-<script src="Scripts/app/services/shared/userService.js"></script>
-<script src="Scripts/app/services/manufactures/manufactureService.js"></script>
-<script src="Scripts/app/services/carModels/carModelService.js"></script>
-<script src="Scripts/app/filters/advertPropertiesFilters.js"></script>
-<script src="Scripts/app/parts/adverts/advertController.js"></script>
-<script src="Scripts/app/parts/adverts/advertsController.js"></script>
-<script src="Scripts/app/services/entity/entityService.js"></script>
-<script src="Scripts/app/services/adverts/advertService.js"></script>
-<script src="Scripts/app/parts/adverts/advertDirectives.js"></script>
-<script src="Scripts/app/parts/adverts/advertsSortOptionsDirective.js"></script>
-<script src="Scripts/app/parts/adverts/advertsFilterDirective.js"></script>
+<!-- Page Content -->
 
-<script src="Scripts/app/parts/sparePartAdverts/sparePartAdvertDirectives.js"></script>
-<script src="Scripts/app/parts/sparePartAdverts/sparePartAdvertsFilterDirective.js"></script>
+<a name="services"></a>
 
-<script src="Scripts/app/parts/manufactures/manufacturesController.js"></script>
-<script src="Scripts/app/parts/manufactures/manufactureController.js"></script>
-<script src="Scripts/app/parts/carModels/carModelsController.js"></script>
-<script src="Scripts/app/parts/carModels/carModelController.js"></script>
-<script src="Scripts/app/parts/userManagement/usersManagementController.js"></script>
-<!-- @endif -->
+<div class="content-section-a">
 
-<!-- @ifdef RELEASE -->
-<!-- @include assets/includes/release-foot.html -->
-<!-- @endif -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Поврежденные авто:</h2>
 
+                <p class="lead">Что такое Crash Trade? В 2015 году мы создали площадку, которая помогает Вам решить абсолютно все вопросы, возникающие при необходимости ремонта автомобиля.</p>
+            </div>
+            <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                <img class="img-responsive" src="/assets/images/ipad.png" alt="">
+            </div>
+        </div>
 
+    </div>
+    <!-- /.container -->
+
+</div>
+<!-- /.content-section-a -->
+
+<div class="content-section-b">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Кузовной ремонт</h2>
+
+                <p class="lead">Каждый может выставить на продажу авто, которое требует ремонт, получить предложения по ремонту своего автомобиля, оставить заявку на приобретение необходимых запасных частей к авто.</p>
+            </div>
+            <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                <img class="img-responsive" src="/assets/images/dog.png" alt="">
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+</div>
+<!-- /.content-section-b -->
+
+<div class="content-section-a">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-5 col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Запчасти</h2>
+
+                <p class="lead">Наша цель - экономия Вашего времени и средств, по решению проблемы, связанной с ремонтом автомоблия.</p>
+            </div>
+            <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                <img class="img-responsive" src="/assets/images/phones.png" alt="">
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+</div>
+<!-- /.content-section-a -->
+
+<a name="contact"></a>
+
+<div class="banner">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Crash Trade - http://c-tr.by/</h2>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+</div>
+<!-- /.banner -->
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#">Главная</a>
+                    </li>
+                    <li class="footer-menu-divider">&sdot;</li>
+                    <li>
+                        <a href="#/Adverts/List/Sale">Продажа</a>
+                    </li>
+                    <li class="footer-menu-divider">&sdot;</li>
+                    <li>
+                        <a href="#/Adverts/List/MechanicalRepair">Ремонт</a>
+                    </li>
+                    <li class="footer-menu-divider">&sdot;</li>
+                    <li>
+                        <a href="#/Adverts/List/SparePart">Запчасти</a>
+                    </li>
+
+                </ul>
+                <p class="copyright text-muted small">&copy; CrashTrade.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function() {
+        applyMenuItemsVisibilitySettings();
+
+        $('#logOffButton').bind('click', function() {
+            window.localStorage.removeItem('ls.CRASH_TRADE.USER_DATA');
+            window.localStorage.removeItem('CRASH_TRADE.ACCESS_TOKEN');
+            applyMenuItemsVisibilitySettings();
+        })
+    });
+
+    function applyMenuItemsVisibilitySettings() {
+        hideAllDynamicMenuItems();
+        var userData = JSON.parse(window.localStorage.getItem('ls.CRASH_TRADE.USER_DATA'));
+        if (userData == null || userData == undefined) {
+            $('.forGuestsOnly').show();
+        } else {
+            if (userData.isAdmin) {
+                $('.forAdminOnly').show();
+            }
+            $('.forMembersOnly').show();
+            $('#navbarEmail').text(userData.Email);
+        }
+    }
+
+    function hideAllDynamicMenuItems(){
+        $('.forGuestsOnly').hide();
+        $('.forMembersOnly').hide();
+        $('.forAdminOnly').hide();
+        $('#navbarEmail').text('');
+    }
+</script>
 </body>
 </html>
-
