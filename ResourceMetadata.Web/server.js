@@ -38,7 +38,7 @@
             });
 
         } else {
-            if (theUrl === '/') {
+            if (theUrl === '/' || theUrl === '/app/') {
                 someFileName += 'index.html';
             }
             fs.exists(someFileName, function (exists) {

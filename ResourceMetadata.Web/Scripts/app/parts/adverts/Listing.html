@@ -85,8 +85,8 @@
         </div>
     </div>
 
-    <div class="mobileOnly mobileBottomButton" ng-class="{ 'mobileHide': showSettingsOnMobile }">
-        <button ng-click="showSettingsOnMobile = !showSettingsOnMobile; scrollTop()" class="mui-btn mui-btn--fab mui-btn--primary"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
+    <div class="mobileOnly mobileBottomButton">
+        <button ng-click="showSettingsOnMobile = !showSettingsOnMobile; scrollTop()" class="mui-btn mui-btn--fab mui-btn--primary"><span ng-class="{ 'glyphicon glyphicon-chevron-left': showSettingsOnMobile , 'glyphicon glyphicon-wrench': !showSettingsOnMobile }" aria-hidden="true"></span></button>
     </div>
 </div>
 
