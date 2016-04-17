@@ -136,7 +136,7 @@ namespace ResourceMetadata.API.Controllers
 
                     string code = await this.AppUserManager.GenerateEmailConfirmationTokenAsync(user.Id);
 
-                    var callbackUrl = "http://c-tr.by/#/Login/?userId=" + user.Id + "&code=" + Base64ForUrlEncode(code);
+                    var callbackUrl = "http://c-tr.by/app/#/Login/?userId=" + user.Id + "&code=" + Base64ForUrlEncode(code);
 
                    // var callbackUrl = new Uri(Url.Link("ConfirmEmailRoute", new { userId = user.Id, code = code }));
 
