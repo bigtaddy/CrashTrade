@@ -120,39 +120,20 @@ textarea {
 /* Smooth Load
 */
 .slide-load.ng-enter {
-    transition: all 1s ease;
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
+    transition: all 1.2s ease;
+    -webkit-transition: all 1.2s ease;
+    -moz-transition: all 1.2s ease;
+    -o-transition: all 1.2s ease;
 
-    transition-delay: 0.4s;
-    -webkit-transition-delay: 0.4s;
-    -o-transition-delay: 0.4s;
-    -moz-transition-delay: 0.4s;
-    z-index: inherit;
-    position: relative;
     opacity: 0;
 }
 
 .slide-load.ng-enter.ng-enter-active {
     opacity: 1;
-
-}
-
-.slide-load.ng-leave {
-    transition: all 0.2s ease;
-    -webkit-transition: all 0.2s ease;
-    -moz-transition: all 0.2s ease;
-    -o-transition: all 0.2s ease;
-    position: relative;
-    opacity: 1;
-    z-index: 1;
-
 }
 
 .slide-load.ng-leave.ng-leave-active {
-    opacity: 0;
-    z-index: 9999;
+    display: none;
 }
 
 .gallery-box {
@@ -242,6 +223,11 @@ textarea {
     opacity: 1;
 }
 
+.advertImgInList{
+    max-height: 220px;
+}
+
+
 .animate-show.ng-hide-add, .animate-show.ng-hide-remove {
     transition: all linear 1s;
 }
@@ -263,7 +249,8 @@ textarea {
 .mobileBottomButton {
     position: fixed;
     bottom: 20px;
-    right: 10px
+    right: 10px;
+    z-index: 100;
 }
 
 
@@ -283,7 +270,6 @@ textarea {
     .mobileHide {
         display: none;
     }
-
 }
 
 @font-face {
@@ -325,18 +311,15 @@ html {
 
 footer {
     position: absolute;
-    bottom: -80px;
+    bottom: -90px;
     width: 100%;
     /* Set the fixed height of the footer here */
     min-height: 80px;
     background-color: #333;
-
-
-
 }
 
 footer .footer-bg{
-    background: url(../assets/images/test.png) no-repeat left center;
+    background: url(../assets/images/footerbg.png) no-repeat left center;
     min-height: 80px;
     padding-top: 20px;
     padding-bottom: 10px;
@@ -355,6 +338,11 @@ footer .footerLogo{
     font-size: 1.2em;
 }
 
+@media screen and (max-width: 767px) {
+    footer {
+        bottom: -180px;
+    }
+}
 
 body,
 h1,
