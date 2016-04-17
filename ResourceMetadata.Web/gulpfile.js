@@ -126,9 +126,15 @@ gulp.task('preprocess', function () {
 });
 
 gulp.task('minify-html', ['minify-inline', 'copy'], function () {
-    return gulp.src('./dist/**/*.html')
-        .pipe(htmlmin({collapseWhitespace: true, removeComments: true, processScripts: 'text/ng-template'}))
-        .pipe(gulp.dest('./dist/'))
+    var options = {collapseWhitespace: true, removeComments: true, processScripts: 'text/ng-template'};
+
+    gulp.src('./dist/*.html')
+        .pipe(htmlmin(options))
+        .pipe(gulp.dest('./dist/'));
+
+    gulp.src('./dist/**/*.html')
+        .pipe(htmlmin(options))
+        .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('minify-inline', ['preprocess'], function () {
