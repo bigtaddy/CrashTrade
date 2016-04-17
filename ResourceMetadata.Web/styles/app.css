@@ -328,7 +328,7 @@ footer {
     bottom: -80px;
     width: 100%;
     /* Set the fixed height of the footer here */
-    height: 80px;
+    min-height: 80px;
     background-color: #333;
 
 
@@ -337,7 +337,7 @@ footer {
 
 footer .footer-bg{
     background: url(../assets/images/test.png) no-repeat left center;
-    height: 80px;
+    min-height: 80px;
     padding-top: 20px;
     padding-bottom: 10px;
 }
