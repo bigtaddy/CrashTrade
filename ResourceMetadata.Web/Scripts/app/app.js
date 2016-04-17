@@ -150,7 +150,7 @@
                 }
             })
             .when('/Adverts/List/SparePart', {
-                templateUrl: '/Scripts/app/parts/SparePartAdverts/Listing.html',
+                templateUrl: '/Scripts/app/parts/sparePartAdverts/Listing.html',
                 controller: 'AdvertsCtrl',
                 data: {
                     advertType: 'SparePart',
@@ -159,7 +159,7 @@
             })
 
             .when('/SparePartAdverts/Add', {
-                templateUrl: '/Scripts/app/parts/SparePartAdverts/Add.html',
+                templateUrl: '/Scripts/app/parts/sparePartAdverts/Add.html',
                 controller: 'AdvertCtrl',
                 data: {
                     advertType: 'SparePartAdvert',
@@ -167,14 +167,14 @@
                 }
             })
             .when('/SparePartAdverts/Edit/:advertId', {
-                templateUrl: '/Scripts/app/parts/SparePartAdverts/Edit.html',
+                templateUrl: '/Scripts/app/parts/sparePartAdverts/Edit.html',
                 controller: 'AdvertCtrl',
                 data: {
                     advertType: 'SparePartAdvert'
                 }
             })
             .when('/SparePartAdverts/:advertId', {
-                templateUrl: '/Scripts/app/parts/SparePartAdverts/Details.html',
+                templateUrl: '/Scripts/app/parts/sparePartAdverts/Details.html',
                 controller: 'AdvertCtrl',
                 data: {
                     advertType: 'SparePartAdvert'

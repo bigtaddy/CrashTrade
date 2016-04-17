@@ -1,15 +1,14 @@
 ﻿body {
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     overflow-y: scroll;
+    overflow-x: hidden;
     word-wrap: break-word;
 }
 
 a {
-    color: #333;
     outline: none;
     padding-left: 3px;
     padding-right: 3px;
-    text-decoration: underline;
 }
 
 .menu-container {
@@ -317,11 +316,45 @@ textarea {
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-body,
+
 html {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
+    position: relative;
 }
+
+footer {
+    position: absolute;
+    bottom: -80px;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 80px;
+    background-color: #333;
+
+
+
+}
+
+footer .footer-bg{
+    background: url(../assets/images/test.png) no-repeat left center;
+    height: 80px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+footer a{
+    color: #666;
+    font-weight: bold;
+    font-family: "Proxima Nova Condensed", "proxima-nova-condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    font-size: 1em;
+    text-shadow: 2px 2px 2px rgba(41, 41, 41, 0.81);
+}
+
+footer .footerLogo{
+    font-size: 1.2em;
+}
+
 
 body,
 h1,
@@ -471,11 +504,6 @@ h6 {
     ul.banner-social-buttons > li:last-child {
         margin-bottom: 0;
     }
-}
-
-footer {
-    padding: 50px 0;
-    background-color: #f8f8f8;
 }
 
 p.copyright {
