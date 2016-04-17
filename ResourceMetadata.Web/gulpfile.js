@@ -18,7 +18,8 @@ var gulp = require('gulp'),
     ngAnnotate = require('gulp-ng-annotate'),
     del = require('del'),
     connect = require('gulp-connect'),
-    minifyInline = require('gulp-minify-inline');
+    minifyInline = require('gulp-minify-inline'),
+    htmlmin = require('gulp-htmlmin');
 
 
 var filePath = {
@@ -80,7 +81,7 @@ gulp.task('copy', function () {
     gulp.src(['assets/images/photoswipe/*.*'])
         .pipe(gulp.dest('dist/assets/images/photoswipe'));
 
-    gulp.src([
+    return gulp.src([
         './Scripts/app/**/*.html',
         './Scripts/app/**/**/*.html'
     ]).pipe(gulp.dest('dist/Scripts/app'));
@@ -117,10 +118,16 @@ gulp.task('concat', function () {
 gulp.task('preprocess', function () {
     gulp.src('./app/index.html')
         .pipe(preprocess({context: {RELEASE: true}})) //To set environment variables in-line
-        .pipe(gulp.dest('./dist/app/'))
+        .pipe(gulp.dest('./dist/app/'));
 
     return gulp.src('./index.html')
         .pipe(preprocess({context: {RELEASE: true}})) //To set environment variables in-line
+        .pipe(gulp.dest('./dist/'))
+});
+
+gulp.task('minify-html', ['minify-inline', 'copy'], function () {
+    return gulp.src('./dist/**/*.html')
+        .pipe(htmlmin({collapseWhitespace: true, removeComments: true, processScripts: 'text/ng-template'}))
         .pipe(gulp.dest('./dist/'))
 });
 
@@ -142,7 +149,7 @@ gulp.task('minify-inline', ['preprocess'], function () {
     };
 
 
-    gulp.src('./dist/index.html')
+    return gulp.src('./dist/index.html')
         .pipe(minifyInline(options))
         .pipe(gulp.dest('./dist/'))
 });
@@ -152,7 +159,8 @@ gulp.task('build', [
     'clean',
     'concat',
     'copy',
-    'minify-inline'
+    'minify-inline',
+    'minify-html'
 ]);
 
 /*gulp.task('tests', function () {
