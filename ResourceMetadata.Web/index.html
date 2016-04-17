@@ -12,7 +12,6 @@
     <!-- Bootstrap Core CSS -->
 
 
-
     <!-- @ifndef RELEASE -->
     <link rel="stylesheet" href="dist/styles/app.min.css"/>
     <!-- @endif -->
@@ -240,41 +239,45 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+        crossorigin="anonymous"></script>
 
 <script>
-    $(document).ready(function() {
-        applyMenuItemsVisibilitySettings();
-
-        $('#logOffButton').bind('click', function() {
-            window.localStorage.removeItem('ls.CRASH_TRADE.USER_DATA');
-            window.localStorage.removeItem('CRASH_TRADE.ACCESS_TOKEN');
+    (function (global, doc) {
+        $(doc).ready(function () {
             applyMenuItemsVisibilitySettings();
-        })
 
-        $('#emailBottomHref').attr('href', 'mailto:Crach.trade@yandex.ru')
-    });
+            $('#logOffButton').bind('click', function () {
+                global.localStorage.removeItem('ls.CRASH_TRADE.USER_DATA');
+                global.localStorage.removeItem('CRASH_TRADE.ACCESS_TOKEN');
+                applyMenuItemsVisibilitySettings();
+            })
 
-    function applyMenuItemsVisibilitySettings() {
-        hideAllDynamicMenuItems();
-        var userData = JSON.parse(window.localStorage.getItem('ls.CRASH_TRADE.USER_DATA'));
-        if (userData == null || userData == undefined) {
-            $('.forGuestsOnly').show();
-        } else {
-            if (userData.isAdmin) {
-                $('.forAdminOnly').show();
+            $('#emailBottomHref').attr('href', 'mailto:Crach.trade@yandex.ru')
+        });
+
+        function applyMenuItemsVisibilitySettings() {
+            hideAllDynamicMenuItems();
+            var userData = JSON.parse(global.localStorage.getItem('ls.CRASH_TRADE.USER_DATA'));
+            if (userData == null || userData == undefined) {
+                $('.forGuestsOnly').show();
+            } else {
+                if (userData.isAdmin) {
+                    $('.forAdminOnly').show();
+                }
+                $('.forMembersOnly').show();
+                $('#navbarEmail').text(userData.Email);
             }
-            $('.forMembersOnly').show();
-            $('#navbarEmail').text(userData.Email);
         }
-    }
 
-    function hideAllDynamicMenuItems(){
-        $('.forGuestsOnly').hide();
-        $('.forMembersOnly').hide();
-        $('.forAdminOnly').hide();
-        $('#navbarEmail').text('');
-    }
+        function hideAllDynamicMenuItems() {
+            $('.forGuestsOnly').hide();
+            $('.forMembersOnly').hide();
+            $('.forAdminOnly').hide();
+            $('#navbarEmail').text('');
+        }
+    }(window, document));
 </script>
 </body>
 </html>

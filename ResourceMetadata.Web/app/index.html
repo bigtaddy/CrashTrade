@@ -43,7 +43,7 @@
 <footer>
     <div class="footer-bg">
         <div class="container">
-            <div class="row">
+            <div ng-controller="AccountCtrl" class="row">
                 <div class="col-lg-10">
                     <ul class="list-inline">
                         <li>
@@ -68,7 +68,7 @@
                     </ul>
                     <p class="copyright text-muted small">&copy; CrashTrade.</p>
                 </div>
-                <div class="col-lg-2"><a href="mailto:Crach.trade@yandex.ru" style="color: #666; font-size: 3em; float: right" class="glyphicon glyphicon-envelope" id="emailBottomHref"></a></div>
+                <div class="col-lg-2"><a ng-href="{{::emailBottomHref}}" style="color: #666; font-size: 3em; float: right" class="glyphicon glyphicon-envelope" id="emailBottomHref"></a></div>
             </div>
         </div>
     </div>

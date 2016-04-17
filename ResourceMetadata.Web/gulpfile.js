@@ -17,7 +17,8 @@ var gulp = require('gulp'),
     open = require('gulp-open'),
     ngAnnotate = require('gulp-ng-annotate'),
     del = require('del'),
-    connect = require('gulp-connect');
+    connect = require('gulp-connect'),
+    minifyInline = require('gulp-minify-inline');
 
 
 var filePath = {
@@ -114,21 +115,44 @@ gulp.task('concat', function () {
 
 
 gulp.task('preprocess', function () {
-    gulp.src('./index.html')
-        .pipe(preprocess({context: {RELEASE: true}})) //To set environment variables in-line
-        .pipe(gulp.dest('./dist/'))
-
     gulp.src('./app/index.html')
         .pipe(preprocess({context: {RELEASE: true}})) //To set environment variables in-line
         .pipe(gulp.dest('./dist/app/'))
+
+    return gulp.src('./index.html')
+        .pipe(preprocess({context: {RELEASE: true}})) //To set environment variables in-line
+        .pipe(gulp.dest('./dist/'))
 });
 
+gulp.task('minify-inline', ['preprocess'], function () {
+    var options = {
+        js: {
+            mangle: true,
+            compress: {
+                sequences: true,
+                dead_code: true,
+                conditionals: true,
+                booleans: true,
+                unused: true,
+                if_return: true,
+                join_vars: true,
+                drop_console: true
+            }
+        }
+    };
+
+
+    gulp.src('./dist/index.html')
+        .pipe(minifyInline(options))
+        .pipe(gulp.dest('./dist/'))
+});
 
 gulp.task('build', [
+    'preprocess',
     'clean',
     'concat',
     'copy',
-    'preprocess'
+    'minify-inline'
 ]);
 
 /*gulp.task('tests', function () {

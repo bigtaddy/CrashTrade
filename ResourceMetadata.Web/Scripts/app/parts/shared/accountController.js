@@ -6,6 +6,7 @@
         function ($scope, $location, $http, $rootScope, $routeParams, accountService, UserService, $modal, localStorageService) {
 
             $scope.isRegistrationInProcess = false;
+            $scope.emailBottomHref = 'mailto:Crach.trade@yandex.ru';
             /*
              "http://c-tr.by/#/Login/userId/dec4b918-a377-42de-afd7-3bca18a2f1a2/code/Mo1O9+ewjJ1VcXeuPVaW+njyw1QbwfH+KapVOoThgoAfWI8FuaL83nAvpqJxy4R+uiP2eh6s02VkFzjqgdhFiyPQ0yzFyrKILXSoTmkShcGF1Y8Gkr5qBoAXmtqvl0RvjmGm+YU9oWVivIDRjuLTbz3JgtdZg3kncTe5qAycMo1cTFGYt7EOWYmbSxoDQke3"
              */
@@ -82,7 +83,7 @@
                         if(userLogin.rememberMe){
                             localStorageService.set(global.CrashTradeSettings.tokenKey, response.data.access_token);
                         }
-                        accountService.getCurrentUser().then(function (userData, qwer) {
+                        accountService.getCurrentUser().then(function (userData) {
                             userData.data.rememberMe = userLogin.rememberMe;
                             UserService.setUserData(userData.data);
                             $scope.$emit('logOn');
