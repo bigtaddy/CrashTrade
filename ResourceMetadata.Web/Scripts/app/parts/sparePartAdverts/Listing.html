@@ -1,10 +1,10 @@
 <div class="row">
-    <div class="col-sm-3 col-lg-2">
+    <div class="col-sm-3 col-lg-2" ng-class="{ 'mobileHide': !showSettingsOnMobile }">
         <div>
             <adverts-sort-options-directive without-price="true" sort-options="sortOptions">
             </adverts-sort-options-directive>
         </div>
-        <div >
+        <div>
             <div>
                 <spare-part-adverts-filter-options get-filter-options="getFilterOptions"
                                                    should-be-filtered="shouldBeFiltered">
@@ -17,7 +17,7 @@
         <div style="min-height: 10px"></div>
     </div>
 
-    <div class="col-sm-9 col-lg-10">
+    <div class="col-sm-9 col-lg-10" ng-class="{ 'mobileHide': showSettingsOnMobile }">
 
         <div class="row advert" ng-repeat="advert in adverts">
             <div ng-show="advert.Id">
@@ -58,11 +58,11 @@
             <hr class="col-sm-12">
         </div>
 
-        <div class="row">
+        <div ng-if="adverts.length > 0" class="row advert">
             <div class="col-sm-6">
 
                 <uib-pagination boundary-links="true" total-items="count" items-per-page="pageSize"
-                                ng-model="currentPage"
+                                ng-model="$parent.currentPage"
                                 class="pagination-sm" ng-change="pageChanged()" previous-text="&lsaquo;"
                                 next-text="&rsaquo;" first-text="&laquo;"
                                 last-text="&raquo;"></uib-pagination>
@@ -70,7 +70,7 @@
 
             <div class="col-sm-3">
                 <label>Объявлений на странице:</label>
-                <select convert-to-number class="form-control" ng-model="pageSize">
+                <select convert-to-number class="form-control" ng-model="$parent.pageSize">
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="20">20</option>
@@ -82,6 +82,9 @@
         </div>
     </div>
 
+    <div class="mobileOnly mobileBottomButton">
+        <button ng-click="showSettingsOnMobile = !showSettingsOnMobile; scrollTop()" class="mui-btn mui-btn--fab mui-btn--primary"><span ng-class="{ 'glyphicon glyphicon-chevron-left': showSettingsOnMobile , 'glyphicon glyphicon-wrench': !showSettingsOnMobile }" aria-hidden="true"></span></button>
+    </div>
 </div>
 
 

@@ -8,7 +8,7 @@
 
         return {
             restrict: 'E',
-            templateUrl: 'Scripts/app/partials/Loader.html',
+            templateUrl: '/Scripts/app/partials/Loader.html',
             link: function (scope, element, attribute) {
                 var requestQueue = [];
                 httpInterceptor.request = function (config) {

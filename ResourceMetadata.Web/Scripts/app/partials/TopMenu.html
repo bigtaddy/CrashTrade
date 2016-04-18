@@ -1,4 +1,4 @@
-﻿<nav class="navbar navbar-inverse">
+﻿<nav class="navbar navbar-inverse navbar-fixed-top topnav">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#/Adverts/List/Sale">Crash Trade</a>
+            <a class="navbar-brand" href="/">Crash Trade</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -41,6 +41,7 @@
 
                 <li ng-class="{ 'active': currentMenuSection == 'AddAdvert' }" ng-show="userData"><a href="#/Adverts/Add"><i class="glyphicon glyphicon-edit"></i>  Добавить объявление</a></li>
                 <li ng-class="{ 'active': currentMenuSection == 'MyAdverts' }" ng-show="userData"><a ng-class="{ 'active': currentMenuSection == 'MyAdverts' }" href="#/Adverts/List/My"><i class="glyphicon glyphicon-home"></i> Мои объявления</a></li>
+                <p class="navbar-text">{{userData.Email}}</p>
                 <li ng-show="userData"><a class="pointerCursor" ng-click="logOff();"><i class="glyphicon glyphicon-log-out"></i> Выйти</a></li>
                 <li ng-show="!userData"  ng-class="{ 'active': currentMenuSection == 'Login' }"><a class="pointerCursor" ng-click="goToLogin();"><i class="glyphicon glyphicon-log-in"></i> Войти</a></li>
                 <li ng-show="!userData"  ng-class="{ 'active': currentMenuSection == 'Register' }"><a class="pointerCursor" ng-click="goToRegistration();"><i class="glyphicon glyphicon-user"></i><i class="glyphicon glyphicon-user"></i> Регистрация</a></li>

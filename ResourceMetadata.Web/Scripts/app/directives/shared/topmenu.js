@@ -6,7 +6,7 @@
         return {
             restrict: 'E',
             replace: true,
-            templateUrl: 'Scripts/app/partials/TopMenu.html',
+            templateUrl: '/Scripts/app/partials/TopMenu.html',
             link: function (scope) {
 
                 scope.isCollapsed = true;

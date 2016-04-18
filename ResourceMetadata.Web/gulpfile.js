@@ -117,6 +117,10 @@ gulp.task('preprocess', function () {
     gulp.src('./index.html')
         .pipe(preprocess({context: {RELEASE: true}})) //To set environment variables in-line
         .pipe(gulp.dest('./dist/'))
+
+    gulp.src('./app/index.html')
+        .pipe(preprocess({context: {RELEASE: true}})) //To set environment variables in-line
+        .pipe(gulp.dest('./dist/app/'))
 });
 
 
