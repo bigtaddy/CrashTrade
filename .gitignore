@@ -47,3 +47,4 @@ packages/jQuery.1.10.2/Content/Scripts/jquery-1.10.2.js
 packages/jQuery.1.10.2/Content/Scripts/jquery-1.10.2.min.js
 packages/jQuery.Validation.1.11.1/Content/Scripts/jquery.validate.js
 packages/jQuery.Validation.1.11.1/Content/Scripts/jquery.validate.min.js
+dist

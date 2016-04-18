@@ -1,0 +1,38 @@
+<div class ="name1 center">
+  Решившие задачу: <%= link_to @task.title, @task %> 
+</div> <br>
+
+<div id = "profiles">
+  <% @profiles.each do |user| %>
+<%= will_paginate %>
+
+     <div class ="tooltipus" >
+
+     <div class= "avatar2 pull-left">
+      <%= image_tag(user.profile.avatar_url, class:"img-rounded1") if user.profile.avatar? %>
+     </div> 
+
+     <div class ="name ">
+      <%= link_to user.profile.name, user.profile %> <br>  
+     <div style ="color:red"> <%= user.resolved_tasks.count %> </div>  
+
+    </div>                
+    
+   </div> <br>
+    
+  <% end %>
+<%= will_paginate %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

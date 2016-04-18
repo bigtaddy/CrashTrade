@@ -1,0 +1,2 @@
+For full text search run:
+$ rake sunspot:solr:start
