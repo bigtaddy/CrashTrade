@@ -6,7 +6,7 @@
 
     'use strict';
 
-    utilities.directive('advertsSortOptionsDirective', ['entityService', function (entityService) {
+    utilities.directive('advertsSortOptionsDirective', function () {
         return {
             restrict: 'E',
             scope: {
@@ -24,7 +24,7 @@
             '<div class="form-group">' +
             '<select class="form-control"  ng-model="sortOrder" data-placeholder="Порядок сортировки">' +
             '<option value="ascending">По возрастанию</option>' +
-            '<option value="descending">По убывавнию</option>' +
+            '<option value="descending">По убыванию</option>' +
             '</select>' +
             '</div>',
 
@@ -49,6 +49,6 @@
                 });
             }
         };
-    }]);
+    });
 
 }(window));

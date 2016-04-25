@@ -60,10 +60,10 @@
 <div ng-show="advertType == 'Sale'">
     <div class="form-group">
         <span>Цена:</span>
-        <input ng-model="car.priceFrom" placeholder="От" type="number" class="form-control">
+        <input ng-model="car.priceFrom" numeric min="0" decimals="0" placeholder="От" class="form-control">
     </div>
 
     <div class="form-group">
-        <input ng-model="car.priceTo" placeholder="До" type="number" class="form-control">
+        <input ng-model="car.priceTo" numeric min="0" decimals="0" placeholder="До" class="form-control">
     </div>
 </div>
